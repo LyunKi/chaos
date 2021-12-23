@@ -1,0 +1,12 @@
+{
+    "name": "@chaos/prettier-config",
+    "version": "1.0.0",
+    "description": "LyunKi's personal Prettier config",
+    "main": "index.js",
+    "author": {
+        "name": "LyunKi",
+        "email": "ly1169134156@163.com",
+        "url": "https://github.com/LyunKi/"
+    },
+    "license": "MIT"
+}
