@@ -3,6 +3,7 @@
     "version": "2.0.0",
     "description": "LyunKi's personal Prettier config",
     "main": "index.js",
+    "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/prettier-config",
     "author": {
         "name": "LyunKi",
         "email": "ly1169134156@163.com",
