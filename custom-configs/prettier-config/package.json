@@ -1,5 +1,5 @@
 {
-    "name": "@chaos/prettier-config",
+    "name": "@cloud-dragon/prettier-config",
     "version": "2.0.0",
     "description": "LyunKi's personal Prettier config",
     "main": "index.js",

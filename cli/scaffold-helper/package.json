@@ -1,5 +1,5 @@
 {
-  "name": "@chaos/scaffold-helper",
+  "name": "@cloud-dragon/scaffold-helper",
   "version": "0.0.0",
   "description": "Cli app to generate framework configs",
   "main": "src/index.ts",
