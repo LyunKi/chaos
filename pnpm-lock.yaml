@@ -10,11 +10,20 @@ importers:
       '@changesets/cli': registry.npmmirror.com/@changesets/cli/2.19.0
       typescript: registry.npmmirror.com/typescript/4.5.4
 
-  cli/set_up_env:
+  cli/scaffold-helper:
     specifiers:
       commander: ^8.3.0
     dependencies:
       commander: registry.npmmirror.com/commander/8.3.0
+
+  cli/scaffold-helper/dist:
+    specifiers:
+      commander: ^8.3.0
+    dependencies:
+      commander: registry.npmmirror.com/commander/8.3.0
+
+  custom-configs/prettier-config:
+    specifiers: {}
 
 packages:
 
@@ -1336,7 +1345,7 @@ packages:
     dev: true
 
   registry.npmmirror.com/commander/8.3.0:
-    resolution: {integrity: sha1-SDfqGy2me5xhamevuw+v7lZ7ymY=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/commander/download/commander-8.3.0.tgz?cache=0&sync_timestamp=1634887824095&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcommander%2Fdownload%2Fcommander-8.3.0.tgz}
+    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/commander/download/commander-8.3.0.tgz}
     name: commander
     version: 8.3.0
     engines: {node: '>= 12'}
