@@ -1,6 +1,6 @@
-# @chaos/prettier-config
+# @cloud-dragon/prettier-config
 
-## 2.0.0
-### Major Changes
+## 0.0.1
+### Patch Changes
 
-- Init Lyunki's personal prettier config
+- Initial publish of Lyunki's personal prettier config
