@@ -1,19 +1,19 @@
-# @chaos/prettier-config
+# @cloud-dragon/prettier-config
 
 > Lyunki's TypeScript configuration
 ## Installation
 
 ```
-pnpm add -D @chaos/prettier-config
+pnpm add -D @cloud-dragon/prettier-config
 ```
 
 ## Usage
 
-Create the following `prettierrc.js` file:
+Create the following `.prettierrc.js` file:
 
 ```js
 module.exports = {
-    ...require("@company/prettier-config"),
+    ...require("@cloud-dragon/prettier-config"),
 };
 ```
 
