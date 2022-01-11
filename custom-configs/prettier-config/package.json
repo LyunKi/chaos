@@ -1,6 +1,6 @@
 {
     "name": "@cloud-dragon/prettier-config",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "LyunKi's personal Prettier config",
     "main": "index.js",
     "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/prettier-config",
