@@ -5,9 +5,11 @@ importers:
   .:
     specifiers:
       '@changesets/cli': ^2.19.0
+      '@cloud-dragon/prettier-config': workspace:*
       typescript: ^4.5.4
     devDependencies:
       '@changesets/cli': registry.npmmirror.com/@changesets/cli/2.19.0
+      '@cloud-dragon/prettier-config': link:custom-configs/prettier-config
       typescript: registry.npmmirror.com/typescript/4.5.4
 
   cli/scaffold-helper:
