@@ -1,6 +1,6 @@
 # @cloud-dragon/prettier-config
 
-> Lyunki's TypeScript configuration
+> Lyunki's prettier configuration
 ## Installation
 
 ```
