@@ -1,0 +1,12 @@
+{
+    "name": "@cloud-dragon/tsconfig-recommended",
+    "version": "0.0.0",
+    "description": "LyunKi's personal Typescript config",
+    "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/tsconfig-recommended",
+    "author": {
+        "name": "LyunKi",
+        "email": "ly1169134156@163.com",
+        "url": "https://github.com/LyunKi/"
+    },
+    "license": "MIT"
+}
