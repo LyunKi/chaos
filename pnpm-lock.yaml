@@ -7,6 +7,7 @@ importers:
       '@changesets/cli': ^2.19.0
       '@cloud-dragon/eslint-config': workspace:*
       '@cloud-dragon/prettier-config': workspace:*
+      '@cloud-dragon/tsconfig-recommended': workspace:*
       eslint: ^8.2.0
       prettier: ^2.5.1
       typescript: ^4.5.4
@@ -14,6 +15,7 @@ importers:
       '@changesets/cli': registry.npmmirror.com/@changesets/cli/2.19.0
       '@cloud-dragon/eslint-config': link:custom-configs/eslint-config
       '@cloud-dragon/prettier-config': link:custom-configs/prettier-config
+      '@cloud-dragon/tsconfig-recommended': link:custom-configs/tsconfig-recommended
       eslint: registry.npmmirror.com/eslint/8.6.0
       prettier: registry.npmmirror.com/prettier/2.5.1
       typescript: registry.npmmirror.com/typescript/4.5.4
@@ -62,6 +64,9 @@ importers:
       prettier: registry.npmmirror.com/prettier/2.5.1
 
   custom-configs/prettier-config:
+    specifiers: {}
+
+  custom-configs/tsconfig-recommended:
     specifiers: {}
 
 packages:

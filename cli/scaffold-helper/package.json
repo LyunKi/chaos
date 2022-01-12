@@ -1,25 +1,25 @@
 {
-  "name": "@cloud-dragon/scaffold-helper",
-  "version": "0.0.0",
-  "description": "Cli app to generate framework configs",
-  "main": "src/index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
-  },
-  "keywords": [
-    "cli"
-  ],
-  "bin": {
-    "sdh": "./dist/src/index.js"
-  },
-  "author": {
-    "name": "LyunKi",
-    "email": "ly1169134156@163.com",
-    "url": "https://github.com/LyunKi/"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "commander": "^8.3.0"
-  }
+    "name": "@cloud-dragon/scaffold-helper",
+    "version": "0.0.0",
+    "description": "Cli app to generate framework configs",
+    "main": "src/index.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc"
+    },
+    "keywords": [
+        "cli"
+    ],
+    "bin": {
+        "sdh": "./dist/src/index.js"
+    },
+    "author": {
+        "name": "LyunKi",
+        "email": "ly1169134156@163.com",
+        "url": "https://github.com/LyunKi/"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "commander": "^8.3.0"
+    }
 }
