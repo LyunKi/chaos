@@ -1,15 +1,18 @@
 {
-    "private": true,
-    "engines": {
-        "node": ">=14",
-        "pnpm": ">=6"
-    },
-    "scripts": {
-        "preinstall": "npx only-allow pnpm"
-    },
-    "devDependencies": {
-        "@changesets/cli": "^2.19.0",
-        "typescript": "^4.5.4",
-        "@cloud-dragon/prettier-config": "workspace:*"
-    }
+  "private": true,
+  "engines": {
+    "node": ">=14",
+    "pnpm": ">=6"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.19.0",
+    "@cloud-dragon/eslint-config": "workspace:*",
+    "@cloud-dragon/prettier-config": "workspace:*",
+    "eslint": "^8.2.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
+  }
 }
