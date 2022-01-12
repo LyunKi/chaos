@@ -1,6 +1,7 @@
 # @cloud-dragon/prettier-config
 
 > Lyunki's prettier configuration
+
 ## Installation
 
 ```
@@ -13,8 +14,8 @@ Create the following `.prettierrc.js` file:
 
 ```js
 module.exports = {
-    ...require("@cloud-dragon/prettier-config"),
-};
+    ...require('@cloud-dragon/prettier-config'),
+}
 ```
 
 ## License

@@ -4,10 +4,10 @@
 
 ### Patch Changes
 
-- fix doc error
+-   fix doc error
 
 ## 0.0.1
 
 ### Patch Changes
 
-- Initial publish of Lyunki's personal prettier config
+-   Initial publish of Lyunki's personal prettier config
