@@ -8,5 +8,8 @@
         "email": "ly1169134156@163.com",
         "url": "https://github.com/LyunKi/"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "@tsconfig/recommended": "^1.0.1"
+    }
 }
