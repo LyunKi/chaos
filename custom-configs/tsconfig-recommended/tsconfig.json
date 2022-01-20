@@ -1,4 +1,7 @@
 {
-    "extends": "@tsconfig/recommended/tsconfig.json",
-    "$schema": "https://json.schemastore.org/tsconfig"
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "resolveJsonModule": true
+  },
+  "$schema": "https://json.schemastore.org/tsconfig"
 }

@@ -8,6 +8,7 @@ importers:
       '@cloud-dragon/eslint-config': workspace:*
       '@cloud-dragon/prettier-config': workspace:*
       '@cloud-dragon/stylelint-config-standard': workspace:*
+      '@cloud-dragon/tsconfig-recommended': workspace:*
       '@commitlint/cli': ^16.0.2
       '@commitlint/config-conventional': ^16.0.0
       eslint: ^8.2.0
@@ -21,6 +22,7 @@ importers:
       '@cloud-dragon/eslint-config': link:custom-configs/eslint-config
       '@cloud-dragon/prettier-config': link:custom-configs/prettier-config
       '@cloud-dragon/stylelint-config-standard': link:custom-configs/stylelint-config-standard
+      '@cloud-dragon/tsconfig-recommended': link:custom-configs/tsconfig-recommended
       '@commitlint/cli': registry.npmmirror.com/@commitlint/cli/16.0.2
       '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/16.0.0
       eslint: registry.npmmirror.com/eslint/8.6.0
@@ -32,9 +34,12 @@ importers:
 
   cli/scaffold-helper:
     specifiers:
+      '@cloud-dragon/tsconfig-recommended': workspace:*
       commander: ^8.3.0
     dependencies:
       commander: registry.npmmirror.com/commander/8.3.0
+    devDependencies:
+      '@cloud-dragon/tsconfig-recommended': link:../../custom-configs/tsconfig-recommended
 
   cli/scaffold-helper/dist:
     specifiers:
