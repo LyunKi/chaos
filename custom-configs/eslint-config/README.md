@@ -12,9 +12,19 @@ pnpm add -D @cloud-dragon/eslint-config
 
 Create the following `.eslintrc.js` file:
 
+### common
+
 ```js
 module.exports = {
-    extends: ['@cloud-dragon/eslint-config/xxxx'],
+  extends: ['@cloud-dragon'],
+}
+```
+
+### nestjs
+
+```js
+module.exports = {
+  extends: ['@cloud-dragon/eslint-config/nest'],
 }
 ```
 
