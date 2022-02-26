@@ -2,33 +2,18 @@ import {
   NavigationContainer,
   DefaultTheme,
   DarkTheme,
-  NavigationContainerRef,
+  createNavigationContainerRef,
 } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import * as React from 'react'
 import { ColorSchemeName } from 'react-native'
-import Login from '../screens/Login'
-import SignUp from '../screens/SignUp'
+import Login from '../pages/Login'
+import SignUp from '../pages/SignUp'
 import LinkingConfiguration from './LinkingConfiguration'
 import { RootStackParamList } from '../types'
+import * as SplashScreen from 'expo-splash-screen'
 
-const navigationRef =
-  React.createRef<NavigationContainerRef<RootStackParamList>>()
-
-const isReadyRef = {
-  current: false,
-}
-
-export const navigate = <
-  RouteName extends keyof RootStackParamList,
-  Params extends RootStackParamList[RouteName]
->(
-  ...args: undefined extends Params ? [RouteName] : [RouteName, Params]
-) => {
-  if (isReadyRef.current && navigationRef.current) {
-    navigationRef.current.navigate(...args)
-  }
-}
+export const Navigator = createNavigationContainerRef()
 
 export default function Navigation({
   colorScheme,
@@ -37,12 +22,10 @@ export default function Navigation({
 }) {
   return (
     <NavigationContainer
+      onReady={SplashScreen.hideAsync}
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-      ref={navigationRef}
-      onReady={() => {
-        isReadyRef.current = true
-      }}
+      ref={Navigator}
     >
       <RootNavigator />
     </NavigationContainer>

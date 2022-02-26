@@ -1,15 +1,14 @@
-import { SafeAreaView } from 'react-native'
 import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../types'
-
+import { SafeArea } from '../components'
 interface LoginProps
   extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
 
 export default function Login(props: LoginProps) {
   const { navigation } = props
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeArea>
       <TopNavigation title="MyApp" alignment="center" />
       <Divider />
       <Layout
@@ -19,6 +18,6 @@ export default function Login(props: LoginProps) {
           OPEN SignUp
         </Button>
       </Layout>
-    </SafeAreaView>
+    </SafeArea>
   )
 }

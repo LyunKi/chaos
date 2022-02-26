@@ -1,8 +1,11 @@
 import en from './en'
 import zh from './zh'
+import Storage from '../utils/storage'
+import * as Localization from 'expo-localization'
 import { memoize } from 'lodash'
 import i18n, { Scope, TranslateOptions } from 'i18n-js'
-import Storage from '../utils/storage'
+import * as Updates from 'expo-updates'
+import { I18nManager } from 'react-native'
 
 const LanguagePacks = {
   zh,
@@ -19,23 +22,17 @@ const DEFAULT_LOCALE = 'zh'
 
 const I18N_STORAGE_KEY = 'user_languages'
 
-function detectLocale() {
-  const languages = navigator.languages ?? [navigator.language]
-  const avaliableLocales = Object.keys(LanguagePacks)
-  for (const language of languages) {
-    if (avaliableLocales.includes(language)) {
-      return language
-    }
-  }
-  return DEFAULT_LOCALE
-}
-
 class I18n {
   static async init() {
-    const locale = await Storage.getOrInsert(I18N_STORAGE_KEY, detectLocale())
+    const { isRTL, locale } = await Localization.getLocalizationAsync()
+    const storedLocale = await Storage.getOrInsert(
+      I18N_STORAGE_KEY,
+      locale.split(/(_|-|[A-Z])/)[0]
+    )
     i18n.translations = LanguagePacks
     i18n.defaultLocale = DEFAULT_LOCALE
-    i18n.locale = locale
+    i18n.locale = storedLocale
+    I18nManager.forceRTL(isRTL)
     i18n.fallbacks = true
   }
   static async updateLocale(locale: string) {
@@ -43,6 +40,7 @@ class I18n {
       translate.cache.clear()
     }
     await Storage.setItem(I18N_STORAGE_KEY, locale)
+    await Updates.reloadAsync()
   }
   static t(key: Scope, config?: TranslateOptions) {
     return translate(key, config)
