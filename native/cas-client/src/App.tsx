@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import * as eva from '@eva-design/eva'
-import { ApplicationProvider, Layout, Text } from '@ui-kitten/components'
+import { ApplicationProvider } from '@ui-kitten/components'
+import AppLoading from 'expo-app-loading'
 
 import useCachedResources from './hooks/useCachedResources'
 import useColorScheme from './hooks/useColorScheme'
@@ -12,12 +13,11 @@ export default function App() {
   const colorScheme = useColorScheme()
 
   if (!isLoadingComplete) {
-    return null
+    return <AppLoading />
   } else {
     return (
       <ApplicationProvider {...eva} theme={eva[colorScheme]}>
         <SafeAreaProvider>
-          <Text>123</Text>
           <Navigation colorScheme={colorScheme} />
           <StatusBar />
         </SafeAreaProvider>

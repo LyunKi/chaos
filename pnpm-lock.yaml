@@ -119,6 +119,7 @@ importers:
       '@types/react-native': ~0.64.12
       '@ui-kitten/components': ^5.1.1
       expo: ~44.0.0
+      expo-app-loading: ^1.3.0
       expo-asset: ~8.4.4
       expo-constants: ~13.0.0
       expo-font: ~10.0.4
@@ -148,6 +149,7 @@ importers:
       '@react-navigation/native-stack': 6.5.0_e26cace8871f37c4026776d27613cbcb
       '@ui-kitten/components': 5.1.1_react-native-svg@12.1.1
       expo: 44.0.6_@babel+core@7.17.5
+      expo-app-loading: 1.3.0_expo@44.0.6
       expo-asset: 8.4.6
       expo-constants: 13.0.2_expo@44.0.6
       expo-font: 10.0.5_expo@44.0.6
@@ -4810,6 +4812,16 @@ packages:
       jest-message-util: 26.6.2
       jest-regex-util: 26.0.0
     dev: true
+
+  /expo-app-loading/1.3.0_expo@44.0.6:
+    resolution: {integrity: sha512-IbMI1w2a79IXw2uH/dgwxWmXW9uR5DNjY/mDKdUCGR0tjMeeliZRq66gGdRLgCkfXS2b2WMIi03gB05l7SiQeg==, tarball: https://cmc.centralrepo.rnd.huawei.com/artifactory/api/npm/npm-public/expo-app-loading/-/expo-app-loading-1.3.0.tgz}
+    dependencies:
+      expo-splash-screen: 0.14.2_expo@44.0.6
+    transitivePeerDependencies:
+      - encoding
+      - expo
+      - supports-color
+    dev: false
 
   /expo-application/4.0.2_expo@44.0.6:
     resolution: {integrity: sha512-ngTaFplTkWn0X45gMC+VNXGyJfGxX4wOwKmtr17rNMVWOQUhhLlyMkTj9bAamzsuwZh35l3S/eD/N1aMWWUwMw==, tarball: https://cmc.centralrepo.rnd.huawei.com/artifactory/api/npm/npm-public/expo-application/-/expo-application-4.0.2.tgz}
