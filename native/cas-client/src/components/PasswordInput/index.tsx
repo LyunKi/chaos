@@ -11,7 +11,6 @@ export default function PasswordInput(props: PasswordInputProps) {
   const [showPwd, setShowPwd] = React.useState(false)
   const showPwdIconName = showPwd ? 'eye-off-outline' : 'eye-outline'
   const handlePwdIconPressed = () => {
-    console.log('showPwd', showPwd)
     setShowPwd(!showPwd)
   }
   return (

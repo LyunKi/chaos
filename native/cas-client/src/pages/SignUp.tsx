@@ -1,4 +1,10 @@
-import { Divider, Layout, TopNavigation } from '@ui-kitten/components'
+import {
+  Divider,
+  Layout,
+  TopNavigation,
+  Button,
+  Text,
+} from '@ui-kitten/components'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
@@ -21,6 +27,7 @@ const FormFields = {
 
 const Container = styled(Layout)`
   padding: ${remToPx(1)};
+  flex: 1;
 `
 
 const InitialValues = {
@@ -29,6 +36,16 @@ const InitialValues = {
   verifyCode: '',
 }
 
+const Welcome = styled(Text)`
+  font-size: ${remToPx(1.5)};
+  font-weight: 600;
+`
+
+const Tip = styled(Text)`
+  font-size: ${remToPx(1)};
+  margin-vertical: ${remToPx(1.5)};
+`
+
 export default function SignUp(props: SignUpProps) {
   const signUpSchema = Yup.object().shape(
     Schema.load([FormFields.mobile, FormFields.password, FormFields.verifyCode])
@@ -36,34 +53,36 @@ export default function SignUp(props: SignUpProps) {
   const register = () => {}
   return (
     <SafeArea>
-      <TopNavigation title={I18n.t('back')} accessoryLeft={BackAction} />
+      <TopNavigation
+        alignment="center"
+        title={I18n.t('companyName')}
+        accessoryLeft={BackAction}
+      />
       <Divider />
-      <Formik
-        initialValues={InitialValues}
-        validationSchema={signUpSchema}
-        onSubmit={register}
-      >
-        {({ values, errors, handleChange, handleBlur, touched }) => {
-          return (
-            <Container>
-              <PasswordInput
-                onChangeText={handleChange(FormFields.password)}
-                onBlur={handleBlur(FormFields.password)}
-                placeholder={I18n.t('schema.password.placeholder')}
-                value={values.password}
-                error={touched.password && errors.password}
-              />
-              <PasswordInput
-                onChangeText={handleChange(FormFields.password)}
-                onBlur={handleBlur(FormFields.password)}
-                placeholder={I18n.t('schema.password.placeholder')}
-                value={values.password}
-                error={touched.password && errors.password}
-              />
-            </Container>
-          )
-        }}
-      </Formik>
+      <Container>
+        <Welcome>{I18n.t('registration.welcome')}</Welcome>
+        <Tip>{I18n.t('registration.tip')}</Tip>
+        <Formik
+          initialValues={InitialValues}
+          validationSchema={signUpSchema}
+          onSubmit={register}
+        >
+          {({ values, errors, handleChange, handleBlur, touched }) => {
+            return (
+              <>
+                <PasswordInput
+                  onChangeText={handleChange(FormFields.password)}
+                  onBlur={handleBlur(FormFields.password)}
+                  placeholder={I18n.t('schema.password.placeholder')}
+                  value={values.password}
+                  error={touched.password && errors.password}
+                />
+                <Button>{I18n.t('actions.register')}</Button>
+              </>
+            )
+          }}
+        </Formik>
+      </Container>
     </SafeArea>
   )
 }

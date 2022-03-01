@@ -15,6 +15,7 @@ export default function App() {
   const isLoadingComplete = useCachedResources()
   const colorScheme = useColorScheme()
   const theme = eva[colorScheme]
+  console.log('theme', theme)
 
   if (!isLoadingComplete) {
     return <AppLoading />
