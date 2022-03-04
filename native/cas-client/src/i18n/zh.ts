@@ -11,6 +11,11 @@ const MESSAGES = {
     required: '{{name}}不能为空',
   },
   schema: {
+    verificationCode: {
+      name: '验证码',
+      placeholder: '请输入您的验证码',
+      sendTip: '发送验证码',
+    },
     password: {
       name: '密码',
       placeholder: '请输入您的密码',

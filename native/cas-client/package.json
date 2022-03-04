@@ -8,8 +8,6 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
-    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\"",
     "test": "jest --watchAll"
   },
   "jest": {
@@ -25,6 +23,8 @@
     "@react-navigation/native-stack": "^6.1.0",
     "@ui-kitten/components": "^5.1.1",
     "@ui-kitten/eva-icons": "^5.1.1",
+    "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
     "expo": "~44.0.0",
     "expo-app-loading": "^1.3.0",
     "expo-asset": "~8.4.4",
@@ -37,6 +37,7 @@
     "expo-updates": "^0.11.6",
     "expo-web-browser": "~10.1.0",
     "formik": "^2.2.9",
+    "humps": "^2.0.1",
     "i": "^0.3.7",
     "i18n-js": "^3.8.0",
     "polished": "^4.1.4",
@@ -55,6 +56,7 @@
     "@babel/core": "^7.12.9",
     "@cloud-dragon/eslint-config": "workspace:*",
     "@cloud-dragon/stylelint-config-standard": "workspace:*",
+    "@types/humps": "^2.0.1",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "@types/styled-components-react-native": "^5.1.3",
@@ -62,7 +64,6 @@
     "jest-expo": "~44.0.1",
     "postcss": "^8.4.7",
     "react-test-renderer": "17.0.1",
-    "tailwindcss": "^3.0.23",
     "typescript": "~4.3.5"
   },
   "private": true

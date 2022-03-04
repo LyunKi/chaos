@@ -12,7 +12,12 @@ import styled from 'styled-components/native'
 import { remToPx } from 'polished'
 
 import { RootStackParamList } from '../types'
-import { BackAction, SafeArea, PasswordInput } from '../components'
+import {
+  BackAction,
+  SafeArea,
+  VerificationCodeInput,
+  PasswordInput,
+} from '../components'
 import { Schema } from '../utils'
 import I18n from '../i18n'
 
@@ -22,7 +27,7 @@ interface SignUpProps
 const FormFields = {
   mobile: 'mobile',
   password: 'password',
-  verifyCode: 'verifyCode',
+  verificationCode: 'verificationCode',
 }
 
 const Container = styled(Layout)`
@@ -33,7 +38,7 @@ const Container = styled(Layout)`
 const InitialValues = {
   password: '',
   mobile: '',
-  verifyCode: '',
+  verificationCode: '',
 }
 
 const Welcome = styled(Text)`
@@ -48,7 +53,11 @@ const Tip = styled(Text)`
 
 export default function SignUp(props: SignUpProps) {
   const signUpSchema = Yup.object().shape(
-    Schema.load([FormFields.mobile, FormFields.password, FormFields.verifyCode])
+    Schema.load([
+      FormFields.mobile,
+      FormFields.password,
+      FormFields.verificationCode,
+    ])
   )
   const register = () => {}
   return (
@@ -76,6 +85,13 @@ export default function SignUp(props: SignUpProps) {
                   placeholder={I18n.t('schema.password.placeholder')}
                   value={values.password}
                   error={touched.password && errors.password}
+                />
+                <VerificationCodeInput
+                  onChangeText={handleChange(FormFields.verificationCode)}
+                  onBlur={handleBlur(FormFields.verificationCode)}
+                  placeholder={I18n.t('schema.verificationCode.placeholder')}
+                  value={values.verificationCode}
+                  error={touched.verificationCode && errors.verificationCode}
                 />
                 <Button>{I18n.t('actions.register')}</Button>
               </>

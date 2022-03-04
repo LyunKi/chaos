@@ -44,13 +44,11 @@ class Schema {
           })
         ),
       }),
-      nickname: Yup.string()
-        .matches(/^\S{1,10}$/, I18n.t('schema.nickname.limit'))
-        .required(
-          I18n.t('errors.required', {
-            name: I18n.t('schema.nickname.name'),
-          })
-        ),
+      verificationCode: Yup.string().required(
+        I18n.t('errors.required', {
+          name: I18n.t('schema.verificationCode.name'),
+        })
+      ),
       password: Yup.string()
         .max(30, I18n.t('schema.password.limit'))
         .required(
