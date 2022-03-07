@@ -1,5 +1,6 @@
-import Schema from './schema'
-import Storage from './storage'
-import Scheduler, { transformDhms, Task } from './scheduler'
+import Schema from './Schema'
+import Storage from './Storage'
+import Api from './Api'
+import Scheduler, { transformDhms, Task } from './Scheduler'
 
-export { Schema, Storage, Scheduler, transformDhms, Task }
+export { Schema, Storage, Scheduler, Api, transformDhms, Task }

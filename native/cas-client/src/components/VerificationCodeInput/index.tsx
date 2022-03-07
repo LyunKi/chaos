@@ -2,6 +2,8 @@ import Sender from '../Sender'
 import EvaIcon from '../EvaIcon'
 import FormInput, { FormInputProps } from '../FormInput'
 import I18n from '../../i18n'
+import { Api } from '../../utils'
+import * as Constants from '../../constants'
 
 export default function VerificationCodeInput(props: FormInputProps) {
   return (
@@ -12,7 +14,9 @@ export default function VerificationCodeInput(props: FormInputProps) {
       accessoryRight={
         <Sender
           text={I18n.t('schema.verificationCode.sendTip')}
-          onSend={() => {}}
+          onSend={() => {
+            Api.post(Constants.SMS_CODE)
+          }}
         />
       }
       {...props}

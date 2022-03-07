@@ -1,6 +1,6 @@
 import en from './en'
 import zh from './zh'
-import Storage from '../utils/storage'
+import Storage from '../utils/Storage'
 import * as Localization from 'expo-localization'
 import { memoize } from 'lodash'
 import i18n, { Scope, TranslateOptions } from 'i18n-js'
