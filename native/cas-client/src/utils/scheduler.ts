@@ -11,6 +11,14 @@ interface Time {
 
 type TaskCallback = (timeObj: Time, seconds: number) => any
 
+interface TaskConfig {
+  current: number
+  onComplete?: () => any
+  callback?: TaskCallback
+  showDay?: boolean
+  interval?: number
+}
+
 class Task {
   callback?: (timeObj: Time, seconds: number) => any
   onComplete?: () => any
@@ -20,20 +28,17 @@ class Task {
   //当前时刻，距离执行回调还需要多少基本时长
   timeToExecute: number
   /**
-   * 创建一个任务需要的参数
-   * @param current 当前倒计时（单位秒）
-   * @param onComplete? 倒计时结束执行的回调
-   * @param callback? 每秒执行的回调
-   * @param showDay? 是否展示天（默认不展示）
-   * @param interval 任务间隔时长（默认1基本时长）
+   * 创建一个任务需要的参数.
+   * @param {TaskConfig} config
+   * @param config.current 当前倒计时（单位秒）
+   * @param config.onComplete? 倒计时结束执行的回调
+   * @param config.callback? 每秒执行的回调
+   * @param config.showDay? 是否展示天（默认不展示）
+   * @param config.interval 任务间隔时长（默认1基本时长）
+   * @memberof Task
    */
-  constructor(
-    current: number,
-    onComplete?: () => any,
-    callback?: TaskCallback,
-    showDay?: boolean,
-    interval = 1
-  ) {
+  constructor(config: TaskConfig) {
+    const { current, onComplete, callback, showDay, interval = 1 } = config
     this.callback = callback
     this.current = current
     this.onComplete = onComplete

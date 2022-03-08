@@ -1,12 +1,9 @@
 import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components'
-import type { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { RootStackParamList } from '../types'
 import { SafeArea } from '../components'
-interface LoginProps
-  extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
+import { Navigator } from '../navigation'
+interface LoginProps {}
 
 export default function Login(props: LoginProps) {
-  const { navigation } = props
   return (
     <SafeArea>
       <TopNavigation title="MyApp" alignment="center" />
@@ -14,7 +11,7 @@ export default function Login(props: LoginProps) {
       <Layout
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
       >
-        <Button onPress={() => navigation.navigate('SignUp')}>
+        <Button onPress={() => Navigator.navigate('SignUp')}>
           OPEN SignUp
         </Button>
       </Layout>

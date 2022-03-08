@@ -1,6 +1,6 @@
-import { ExpoConfig } from '@expo/config'
+import 'dotenv/config'
 
-const config: ExpoConfig = {
+const config = {
   name: 'cas-client',
   slug: 'cas-client',
   version: '1.0.0',
@@ -30,7 +30,7 @@ const config: ExpoConfig = {
     favicon: './assets/images/favicon.png',
   },
   extra: {
-    server: process.env.SERVER,
+    baseUrl: process.env.BASE_URL,
   },
 }
 

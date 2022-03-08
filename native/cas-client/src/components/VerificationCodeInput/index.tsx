@@ -15,7 +15,9 @@ export default function VerificationCodeInput(props: FormInputProps) {
         <Sender
           text={I18n.t('schema.verificationCode.sendTip')}
           onSend={() => {
-            Api.post(Constants.SMS_CODE)
+            Api.post(Constants.SMS_CODE, {
+              mobile: '+8617764189136',
+            })
           }}
         />
       }

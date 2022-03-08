@@ -9,10 +9,13 @@ const EvaIcon = React.forwardRef((props: IconProps, ref?: LegacyRef<any>) => {
     height: height ?? size ?? style?.height,
     tintColor: color ?? style.tintColor,
   })
-  return (
+  const InnerIcon = <Icon ref={ref} pack="eva" style={mergedStyle} {...rest} />
+  return onPress ? (
     <TouchableWithoutFeedback onPress={onPress}>
-      <Icon ref={ref} pack="eva" style={mergedStyle} {...rest} />
+      {InnerIcon}
     </TouchableWithoutFeedback>
+  ) : (
+    InnerIcon
   )
 })
 

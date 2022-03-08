@@ -7,8 +7,8 @@ import EvaIcon from '../EvaIcon'
 const BackAction = () =>
   Navigator.canGoBack?.() ? (
     <TopNavigationAction
-      icon={(props) => <EvaIcon {...props} name="chevron-left-outline" />}
       onPress={Navigator.goBack}
+      icon={(props) => <EvaIcon {...props} name="chevron-left-outline" />}
     />
   ) : null
 

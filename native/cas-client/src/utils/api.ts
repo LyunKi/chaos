@@ -7,8 +7,15 @@ export const PATH_VARIABLES = '$pathVariables'
 
 const defaults = axios.defaults
 
+enum Method {
+  POST = 'POST',
+  GET = 'GET',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+}
+
 const instance = axios.create({
-  baseURL: Constants.manifest?.extra?.server,
+  baseURL: Constants.manifest?.extra?.baseUrl,
   timeout: 10000,
   headers: { 'Content-Type': 'application/json' },
   transformResponse: [
@@ -44,15 +51,20 @@ instance.interceptors.request.use((config) => {
 class Api {
   public async request(config: AxiosRequestConfig) {
     const { [PATH_VARIABLES]: pathVariables, ...rest } = config
-    const result = await instance({
-      [PATH_VARIABLES]: pathVariables,
-      ...rest,
-    })
-    return result
+    try {
+      const result = await instance({
+        [PATH_VARIABLES]: pathVariables,
+        ...rest,
+      })
+      return result
+    } catch (e) {
+      console.debug(e)
+    }
   }
 
   public async get(url: string, config: AxiosRequestConfig = {}) {
     return this.request({
+      method: Method.GET,
       url,
       ...config,
     })
@@ -60,6 +72,7 @@ class Api {
 
   public async delete(url: string, config: AxiosRequestConfig = {}) {
     return this.request({
+      method: Method.DELETE,
       url,
       ...config,
     })
@@ -67,6 +80,7 @@ class Api {
 
   public async put(url: string, data?: any, config: AxiosRequestConfig = {}) {
     return this.request({
+      method: Method.PUT,
       url,
       data,
       ...config,
@@ -75,6 +89,7 @@ class Api {
 
   public async post(url: string, data?: any, config: AxiosRequestConfig = {}) {
     return this.request({
+      method: Method.POST,
       url,
       data,
       ...config,
@@ -88,7 +103,7 @@ class Api {
   ) {
     return this.request({
       ...config,
-      method: 'post',
+      method: Method.POST,
       data: formData,
       url,
       transformRequest: [...(defaults.transformRequest as any)],

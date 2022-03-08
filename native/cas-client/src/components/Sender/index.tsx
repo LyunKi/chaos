@@ -30,19 +30,18 @@ export default function Sender(props: SenderProps) {
     setLoading(true)
     const sendAction = async () => {
       try {
-        const sendPromise = onSend()
-        const sendTask = new Task(
-          duration,
-          () => {
+        await onSend()
+        const sendTask = new Task({
+          current: duration,
+          onComplete() {
             setLoading(false)
             setCountdown(duration)
           },
-          (_, current) => {
+          callback(_, current) {
             setCountdown(current)
-          }
-        )
+          },
+        })
         Scheduler.spawnTasks(sendTask)
-        await sendPromise
       } catch (e) {
         console.warn('Faile to execute send action,caused by:', e)
       }
