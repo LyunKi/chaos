@@ -10,6 +10,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import useCachedResources from './hooks/useCachedResources'
 import useColorScheme from './hooks/useColorScheme'
 import Navigation from './navigation'
+import { CountriesIconsPack } from './components'
 
 export default function App() {
   const isLoadingComplete = useCachedResources()
@@ -22,7 +23,7 @@ export default function App() {
   } else {
     return (
       <ApplicationProvider {...eva} theme={theme}>
-        <IconRegistry icons={EvaIconsPack} />
+        <IconRegistry icons={[EvaIconsPack, CountriesIconsPack]} />
         <SafeAreaProvider>
           <RootSiblingParent>
             <ThemeProvider theme={theme}>

@@ -1,10 +1,11 @@
-import { TouchableHighlight, View } from 'react-native'
-import { Text } from '@ui-kitten/components'
+import { IconProps } from '@ui-kitten/components'
+import EvaIcon from '../EvaIcon'
 
-export default function CountryPicker() {
-  return (
-    <TouchableHighlight>
-      <View>123</View>
-    </TouchableHighlight>
-  )
+interface CountryPickerProps extends IconProps {
+  countryCode?: string | null
+}
+
+export default function CountryPicker(props: CountryPickerProps) {
+  const { countryCode, ...rest } = props
+  return <EvaIcon pack="countries" name={countryCode} {...rest} />
 }

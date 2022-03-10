@@ -17,10 +17,10 @@ import {
   SafeArea,
   VerificationCodeInput,
   PasswordInput,
+  MobileInput,
 } from '../components'
 import { FormHelper, Schema } from '../utils'
 import I18n from '../i18n'
-import PhoneInput from '../components/PhoneInput'
 
 interface SignUpProps
   extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
@@ -32,7 +32,10 @@ const Container = styled(Layout)`
 
 const InitialValues = {
   password: '',
-  mobile: '',
+  mobile: {
+    countryCode: I18n.country.countryCode,
+    number: '',
+  },
   verificationCode: '',
 }
 
@@ -70,7 +73,7 @@ export default function SignUp(props: SignUpProps) {
           {(formikProps) => {
             return (
               <>
-                <PhoneInput
+                <MobileInput
                   {...FormHelper.generateFormInputProps({
                     formikProps,
                     fieldName: 'mobile',

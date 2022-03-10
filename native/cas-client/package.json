@@ -39,6 +39,7 @@
     "humps": "^2.0.1",
     "i": "^0.3.7",
     "i18n-js": "^3.8.0",
+    "libphonenumber-js": "^1.9.49",
     "polished": "^4.1.4",
     "process": "^0.11.10",
     "react": "17.0.1",
@@ -50,7 +51,6 @@
     "react-native-svg": "^12.1.1",
     "react-native-web": "0.17.1",
     "styled-components": "^5.3.3",
-    "world-countries": "^4.0.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

@@ -1,8 +1,16 @@
 import BackAction from './BackAction'
 import SafeArea from './SafeArea'
 import PasswordInput from './PasswordInput'
-import EvaIcon from './EvaIcon'
+import EvaIcon, { CountriesIconsPack } from './EvaIcon'
 import VerificationCodeInput from './VerificationCodeInput'
-import PhoneInput from './PhoneInput'
+import MobileInput from './MobileInput'
 
-export { BackAction, SafeArea, PasswordInput, EvaIcon, VerificationCodeInput }
+export {
+  BackAction,
+  SafeArea,
+  CountriesIconsPack,
+  PasswordInput,
+  EvaIcon,
+  VerificationCodeInput,
+  MobileInput,
+}

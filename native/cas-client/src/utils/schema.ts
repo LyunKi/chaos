@@ -32,18 +32,22 @@ class Schema {
 
   public async init() {
     this.innerSchema = {
-      mobile: Yup.object().shape({
-        areaCode: Yup.string().required(
+      mobile: Yup.object()
+        .shape({
+          countryCode: Yup.string(),
+          number: Yup.string(),
+        })
+        .test({
+          message: I18n.t(''),
+          async test(value) {
+            return false
+          },
+        })
+        .required(
           I18n.t('errors.required', {
-            name: I18n.t('schema.mobileAreaCode.name'),
+            name: I18n.t('schema.mobile.name'),
           })
         ),
-        number: Yup.string().required(
-          I18n.t('errors.required', {
-            name: I18n.t('schema.mobileNumber.name'),
-          })
-        ),
-      }),
       verificationCode: Yup.string().required(
         I18n.t('errors.required', {
           name: I18n.t('schema.verificationCode.name'),

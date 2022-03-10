@@ -24,7 +24,7 @@ const MESSAGES = {
     mobile: {
       name: '手机号',
       placeholder: '请输入您的手机号',
-      limit: '您的手机号不合法',
+      limit: '您输入的手机号不合法',
     },
   },
 }
