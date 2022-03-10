@@ -18,17 +18,12 @@ import {
   VerificationCodeInput,
   PasswordInput,
 } from '../components'
-import { Schema } from '../utils'
+import { FormHelper, Schema } from '../utils'
 import I18n from '../i18n'
+import PhoneInput from '../components/PhoneInput'
 
 interface SignUpProps
   extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
-
-const FormFields = {
-  mobile: 'mobile',
-  password: 'password',
-  verificationCode: 'verificationCode',
-}
 
 const Container = styled(Layout)`
   padding: ${remToPx(1)};
@@ -53,11 +48,7 @@ const Tip = styled(Text)`
 
 export default function SignUp(props: SignUpProps) {
   const signUpSchema = Yup.object().shape(
-    Schema.load([
-      FormFields.mobile,
-      FormFields.password,
-      FormFields.verificationCode,
-    ])
+    Schema.load(['mobile', 'password', 'verificationCode'])
   )
   const register = () => {}
   return (
@@ -76,22 +67,26 @@ export default function SignUp(props: SignUpProps) {
           validationSchema={signUpSchema}
           onSubmit={register}
         >
-          {({ values, errors, handleChange, handleBlur, touched }) => {
+          {(formikProps) => {
             return (
               <>
-                <PasswordInput
-                  onChangeText={handleChange(FormFields.password)}
-                  onBlur={handleBlur(FormFields.password)}
-                  placeholder={I18n.t('schema.password.placeholder')}
-                  value={values.password}
-                  error={touched.password && errors.password}
+                <PhoneInput
+                  {...FormHelper.generateFormInputProps({
+                    formikProps,
+                    fieldName: 'mobile',
+                  })}
                 />
                 <VerificationCodeInput
-                  onChangeText={handleChange(FormFields.verificationCode)}
-                  onBlur={handleBlur(FormFields.verificationCode)}
-                  placeholder={I18n.t('schema.verificationCode.placeholder')}
-                  value={values.verificationCode}
-                  error={touched.verificationCode && errors.verificationCode}
+                  {...FormHelper.generateFormInputProps({
+                    formikProps,
+                    fieldName: 'verificationCode',
+                  })}
+                />
+                <PasswordInput
+                  {...FormHelper.generateFormInputProps({
+                    formikProps,
+                    fieldName: 'password',
+                  })}
                 />
                 <Button>{I18n.t('actions.register')}</Button>
               </>

@@ -155,6 +155,7 @@ importers:
       react-test-renderer: 17.0.1
       styled-components: ^5.3.3
       typescript: ~4.3.5
+      world-countries: ^4.0.0
       yup: ^0.32.11
     dependencies:
       '@eva-design/eva': 2.1.1
@@ -193,6 +194,7 @@ importers:
       react-native-svg: 12.1.1_react-native@0.64.3+react@17.0.1
       react-native-web: 0.17.1_react-dom@17.0.1+react@17.0.1
       styled-components: 5.3.3_react-dom@17.0.1+react@17.0.1
+      world-countries: 4.0.0
       yup: 0.32.11
     devDependencies:
       '@babel/core': 7.17.5
@@ -11100,6 +11102,10 @@ packages:
     dependencies:
       microevent.ts: 0.1.1
     dev: true
+
+  /world-countries/4.0.0:
+    resolution: {integrity: sha512-LsFFYmggquj0U+i7VUaJOZYz5F4QNu+oceGw8odnyVHMT2LxYSdVncqdouOEnq1esr7yCakp9+3BZTztuSw1Pg==, tarball: https://cmc.centralrepo.rnd.huawei.com/artifactory/api/npm/npm-public/world-countries/-/world-countries-4.0.0.tgz}
+    dev: false
 
   /wrap-ansi/6.2.0:
     resolution: {integrity: sha1-6Tk7oHEC5skaOyIUePAlfNKFblM=, tarball: https://cmc.centralrepo.rnd.huawei.com/artifactory/api/npm/npm-public/wrap-ansi/6.2.0/wrap-ansi-6.2.0.tgz}

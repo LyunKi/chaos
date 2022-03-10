@@ -21,6 +21,11 @@ const MESSAGES = {
       placeholder: '请输入您的密码',
       limit: '密码长度不能超过30个字符',
     },
+    mobile: {
+      name: '手机号',
+      placeholder: '请输入您的手机号',
+      limit: '您的手机号不合法',
+    },
   },
 }
 
