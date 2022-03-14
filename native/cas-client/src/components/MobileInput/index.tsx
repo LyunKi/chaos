@@ -15,7 +15,7 @@ export interface MobileInputProps
 
 export default function MobileInput(props: MobileInputProps) {
   const { value = {}, onChangeText, ...rest } = props
-  const { countryCode = I18n.localization.region, number } = value
+  const { countryCode = 'CN', number } = value
   return (
     <FormInput
       accessoryLeft={(props) => (

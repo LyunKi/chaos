@@ -2,7 +2,6 @@ import {
   NavigationContainer,
   DefaultTheme,
   DarkTheme,
-  createNavigationContainerRef,
 } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import * as React from 'react'
@@ -12,8 +11,7 @@ import SignUp from '../pages/SignUp'
 import LinkingConfiguration from './LinkingConfiguration'
 import { RootStackParamList } from '../types'
 import * as SplashScreen from 'expo-splash-screen'
-
-export const Navigator = createNavigationContainerRef()
+import Navigator from './Navigator'
 
 export default function Navigation({
   colorScheme,

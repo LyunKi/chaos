@@ -1,7 +1,7 @@
 import { TopNavigationAction } from '@ui-kitten/components'
 import { RenderProp } from '@ui-kitten/components/devsupport'
 
-import { Navigator } from '../../navigation'
+import Navigator from '../../navigation/Navigator'
 import EvaIcon from '../EvaIcon'
 
 const BackAction = () =>

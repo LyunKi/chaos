@@ -30,9 +30,12 @@ const DEFAULT_COUNTRY = 'CN'
 const I18N_STORAGE_KEY = 'user_languages'
 
 class I18n {
-  static localization: Localization.Localization
+  static _localization: Localization.Localization
+  static get localization() {
+    return I18n._localization
+  }
   static get country() {
-    const { region } = I18n.localization
+    const { region } = I18n._localization
     const countryCode = I18n.isValidCountryCode(region)
       ? region
       : DEFAULT_COUNTRY
@@ -44,7 +47,7 @@ class I18n {
       I18N_STORAGE_KEY,
       userLocalization
     )
-    I18n.localization = storedLocalization
+    I18n._localization = storedLocalization
     const { isRTL, locale } = storedLocalization
     i18n.translations = LanguagePacks
     i18n.defaultLocale = DEFAULT_LOCALE
@@ -56,8 +59,8 @@ class I18n {
     if (translate.cache.clear) {
       translate.cache.clear()
     }
-    I18n.localization.locale = locale
-    await Storage.setItem(I18N_STORAGE_KEY, I18n.localization)
+    I18n._localization.locale = locale
+    await Storage.setItem(I18N_STORAGE_KEY, I18n._localization)
     await Updates.reloadAsync()
   }
   static t(key: Scope, config?: TranslateOptions) {
