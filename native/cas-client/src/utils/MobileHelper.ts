@@ -1,19 +1,17 @@
 import I18n, { CountryCode } from '../i18n'
 import * as MobileLib from 'libphonenumber-js'
 
-export default class Mobile {
+export interface Mobile {
   countryCode: CountryCode
   number: String
-  get mobile() {
-    return `+${I18n.getCountryByCode(this.countryCode).callingCode[0]}${
-      this.number
+}
+export default class MobileHelper {
+  static formatMobile(mobile: Mobile): string{
+    return `+${I18n.getCountryByCode(mobile.countryCode).callingCode[0]}${
+      mobile.number
     }`
   }
-  constructor(countryCode: CountryCode, number: String) {
-    this.countryCode = countryCode
-    this.number = number
-  }
-  isValid() {
-    return MobileLib.isValidPhoneNumber(this.mobile)
+  static isValid(mobile: Mobile):boolean{
+    return MobileLib.isValidPhoneNumber(MobileHelper.formatMobile(mobile));
   }
 }

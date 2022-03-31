@@ -12,6 +12,7 @@ import LinkingConfiguration from './LinkingConfiguration'
 import { RootStackParamList } from '../types'
 import * as SplashScreen from 'expo-splash-screen'
 import Navigator from './Navigator'
+import CountryPicker from '../modals/CountryPicker'
 
 export default function Navigation({
   colorScheme,
@@ -35,16 +36,15 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 function RootNavigator() {
   return (
     <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{ headerShown: false }}
-      />
+      <Stack.Group screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+      </Stack.Group>
+      <Stack.Group
+        screenOptions={{ presentation: 'modal', headerShown: false }}
+      >
+        <Stack.Screen name="CountryPicker" component={CountryPicker} />
+      </Stack.Group>
     </Stack.Navigator>
   )
 }

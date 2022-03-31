@@ -1,5 +1,6 @@
 import I18n from '../i18n'
 import * as Yup from 'yup'
+import MobileHelper, { Mobile } from './MobileHelper'
 import { isString } from 'formik'
 
 interface SchemaMap {
@@ -38,9 +39,13 @@ class Schema {
           number: Yup.string(),
         })
         .test({
-          message: I18n.t(''),
+          message: I18n.t('schema.mobile.limit'),
           async test(value) {
-            return false
+            const countryCode = value.countryCode;
+            if (!I18n.isValidCountryCode(countryCode)) {
+              return false
+            }
+            return MobileHelper.isValid(value as Mobile)
           },
         })
         .required(

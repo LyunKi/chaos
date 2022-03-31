@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../../../rustProjects/cas-server"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

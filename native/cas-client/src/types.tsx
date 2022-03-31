@@ -12,4 +12,5 @@ declare global {
 export type RootStackParamList = {
   Login: undefined
   SignUp: undefined
+  CountryPicker: undefined
 }

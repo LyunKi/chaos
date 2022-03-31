@@ -15,6 +15,7 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Login: 'login',
       SignUp: 'sign_up',
+      CountryPicker: 'country_picker',
     },
   },
 }

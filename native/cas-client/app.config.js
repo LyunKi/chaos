@@ -5,11 +5,11 @@ const config = {
   slug: 'cas-client',
   version: '1.0.0',
   orientation: 'portrait',
-  icon: './assets/images/icon.png',
-  scheme: 'myapp',
+  icon: './assets/images/logo.png',
+  scheme: 'cas',
   userInterfaceStyle: 'automatic',
   splash: {
-    image: './assets/images/splash.png',
+    image: './assets/images/logo.png',
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
   },
@@ -22,7 +22,7 @@ const config = {
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: './assets/images/adaptive-icon.png',
+      foregroundImage: './assets/images/logo.png',
       backgroundColor: '#ffffff',
     },
   },

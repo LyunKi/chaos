@@ -1,5 +1,6 @@
 import { IconProps } from '@ui-kitten/components'
 import EvaIcon from '../EvaIcon'
+import Navigator from '../../navigation/Navigator'
 
 interface CountryPickerProps extends IconProps {
   countryCode?: string | null
@@ -7,5 +8,12 @@ interface CountryPickerProps extends IconProps {
 
 export default function CountryPicker(props: CountryPickerProps) {
   const { countryCode, ...rest } = props
-  return <EvaIcon pack="countries" name={countryCode} {...rest} />
+  return (
+    <EvaIcon
+      {...rest}
+      pack="countries"
+      name={countryCode}
+      onPress={() => Navigator.navigate('CountryPicker')}
+    />
+  )
 }
