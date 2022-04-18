@@ -41,7 +41,7 @@ class Schema {
         .test({
           message: I18n.t('schema.mobile.limit'),
           async test(value) {
-            const countryCode = value.countryCode;
+            const countryCode = value.countryCode
             if (!I18n.isValidCountryCode(countryCode)) {
               return false
             }
