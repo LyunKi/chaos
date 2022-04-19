@@ -19,8 +19,6 @@ const translate = memoize(
     config ? key + JSON.stringify(config) : key
 )
 
-type Countries = typeof Countries
-
 export type Country = {
   countryCode: CountryCode
   name: {
@@ -28,7 +26,7 @@ export type Country = {
   }
 }
 
-export type CountryCode = keyof Countries
+export type CountryCode = keyof typeof Countries
 
 const DEFAULT_LOCALE = 'zh'
 

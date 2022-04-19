@@ -129,3 +129,5 @@ dist
 .changeset/
 
 .DS_Store
+
+pnpm-lock.yaml
