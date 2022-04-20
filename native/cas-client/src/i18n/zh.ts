@@ -1,5 +1,9 @@
 const MESSAGES = {
   companyName: '云龙',
+  countryPicker: {
+    title: '国家或地区',
+    placeholder: '请选择您所在的国家或地区',
+  },
   registration: {
     welcome: '有朋自远方来，不亦乐乎？',
     tip: '完成注册流程，即刻享有云龙开发者团队下所有应用的会员权限',

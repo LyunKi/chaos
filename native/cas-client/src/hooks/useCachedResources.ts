@@ -12,11 +12,11 @@ export default function useCachedResources() {
       try {
         SplashScreen.preventAutoHideAsync()
 
-        // init field schemas with i18n settings;
+        // init settings;
         await I18n.init()
         await Schema.init()
       } catch (e) {
-        console.warn(e)
+        console.warn('Failed to loadResourcesAndDataAsync', e)
       } finally {
         setLoadingComplete(true)
       }

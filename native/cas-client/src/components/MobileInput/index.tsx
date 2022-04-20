@@ -1,5 +1,5 @@
 import FormInput, { FormInputProps } from '../FormInput'
-import CountryPicker from '../CountryPicker'
+import CountryPickerIcon from '../CountryPickerIcon'
 import React from 'react'
 import I18n, { CountryCode } from '../../i18n'
 
@@ -19,7 +19,7 @@ export default function MobileInput(props: MobileInputProps) {
   return (
     <FormInput
       accessoryLeft={(props) => (
-        <CountryPicker countryCode={countryCode} {...props} />
+        <CountryPickerIcon countryCode={countryCode} {...props} />
       )}
       {...rest}
       value={''}

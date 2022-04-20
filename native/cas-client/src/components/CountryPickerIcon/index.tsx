@@ -6,7 +6,7 @@ interface CountryPickerProps extends IconProps {
   countryCode?: string | null
 }
 
-export default function CountryPicker(props: CountryPickerProps) {
+export default function CountryPickerIcon(props: CountryPickerProps) {
   const { countryCode, ...rest } = props
   return (
     <EvaIcon
