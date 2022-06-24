@@ -7,8 +7,8 @@ import {
   TopNavigation,
 } from '@ui-kitten/components'
 import { SafeArea, EvaIcon, BackAction } from '../components'
-import { CountryList } from '../constants'
-import I18n, { Country, CountryCode } from '../i18n'
+import { COUNTRY_LIST } from '../constants'
+import I18n, { Country } from '../i18n'
 import React from 'react'
 import { remToPx } from 'polished'
 
@@ -26,6 +26,8 @@ function CountryItem(props: CountryItemProps) {
     </View>
   )
 }
+
+const ITEM_HEIGHT = 10
 
 export interface CountryPickerProps {}
 
@@ -71,21 +73,14 @@ export default function CountryPicker(props: CountryPickerProps) {
               offset: ITEM_HEIGHT * index,
               index,
             })}
-            data={[
-              { title: 'Title Text', key: 'item1' },
-              { title: 'Title Text', key: 'item2' },
-              { title: 'Title Text', key: 'item3' },
-              { title: 'Title Text', key: 'item4' },
-            ]}
+            data={COUNTRY_LIST}
             renderItem={({ item, index, separators }) => (
               <TouchableHighlight
-                key={item.key}
+                key={item.countryCode}
                 onShowUnderlay={separators.highlight}
                 onHideUnderlay={separators.unhighlight}
               >
-                <View>
-                  <Text>{item.title}</Text>
-                </View>
+                <CountryItem country={item} />
               </TouchableHighlight>
             )}
           />

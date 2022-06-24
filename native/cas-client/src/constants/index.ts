@@ -3,7 +3,7 @@ import countries from './countries.json'
 export * from './urls'
 export * from './regex'
 
-const CountryList = Object.entries(countries).map(([countryCode, country]) => {
+const COUNTRY_LIST = Object.entries(countries).map(([countryCode, country]) => {
   const { name } = country
   const commonName = name.common
   return {
@@ -18,4 +18,4 @@ const CountryList = Object.entries(countries).map(([countryCode, country]) => {
   }
 })
 
-export { countries as Countries, CountryList }
+export { countries as Countries, COUNTRY_LIST }
