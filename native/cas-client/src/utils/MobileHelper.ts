@@ -6,12 +6,12 @@ export interface Mobile {
   number: String
 }
 export default class MobileHelper {
-  static formatMobile(mobile: Mobile): string{
-    return `+${I18n.getCountryByCode(mobile.countryCode).callingCode[0]}${
+  static formatMobile(mobile: Mobile): string {
+    return `${I18n.getCountryByCode(mobile.countryCode).callingCode}${
       mobile.number
     }`
   }
-  static isValid(mobile: Mobile):boolean{
-    return MobileLib.isValidPhoneNumber(MobileHelper.formatMobile(mobile));
+  static isValid(mobile: Mobile): boolean {
+    return MobileLib.isValidPhoneNumber(MobileHelper.formatMobile(mobile))
   }
 }

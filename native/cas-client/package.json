@@ -59,6 +59,7 @@
     "@cloud-dragon/stylelint-config-standard": "workspace:*",
     "@expo/webpack-config": "^0.16.18",
     "@types/humps": "^2.0.1",
+    "@types/i18n-js": "^3.8.2",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "@types/styled-components-react-native": "^5.1.3",

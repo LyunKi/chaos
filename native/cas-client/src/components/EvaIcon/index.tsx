@@ -1,5 +1,4 @@
 import React, { LegacyRef } from 'react'
-import { View } from 'react-native'
 import { Icon, IconProps } from '@ui-kitten/components'
 import { StyleSheet, TouchableWithoutFeedback, Image } from 'react-native'
 import I18n from '../../i18n'
