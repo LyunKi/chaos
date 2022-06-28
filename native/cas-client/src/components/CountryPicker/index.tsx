@@ -10,14 +10,15 @@ import filter from 'lodash/filter'
 import React from 'react'
 import { remToPx } from 'polished'
 import styled from 'styled-components/native'
-import { COUNTRIES } from '../../constants'
-import I18n, { Country } from '../../i18n'
+import I18n, { COUNTRIES } from '../../i18n'
 import EvaIcon from '../EvaIcon'
 import SafeArea from '../SafeArea'
 import BackAction from '../BackAction'
+import { Country } from '../../i18n/countries'
 
 interface CountryItemProps {
   country: Country
+  selectedCountry?: Country
 }
 const CountryItemContainer = styled(View)`
   flex-flow: row;
@@ -37,15 +38,17 @@ const Checkbox = styled(View)`
 const CountryKeyProp = styled(Text)``
 
 function CountryItem(props: CountryItemProps) {
-  const { country } = props
+  const { country, selectedCountry } = props
   const { countryCode, name, callingCode } = country
   return (
     <CountryItemContainer>
       <EvaIcon name={countryCode} pack="countries" />
       <CountryName>{name[I18n.currentLocale]}</CountryName>
-      <CountryKeyProp>+{callingCode}</CountryKeyProp>
+      <CountryKeyProp>{callingCode}</CountryKeyProp>
       <Checkbox>
-        {countryCode === 'CN' && <EvaIcon name="checkmark-outline" />}
+        {countryCode === selectedCountry?.countryCode && (
+          <EvaIcon name="checkmark-outline" />
+        )}
       </Checkbox>
     </CountryItemContainer>
   )
@@ -62,32 +65,36 @@ export interface CountryPickerProps {
 
 function useCountryItems(params: {
   searchValue?: string
-  selectedCountry: Country
-  keyProp: KeyProp
+  selectedCountry?: Country
+  keyProp?: KeyProp
 }) {
   const { searchValue, selectedCountry, keyProp } = params
   return React.useMemo(() => {
-    const tmp = filter(COUNTRIES, (country) => {
+    const countryItems = filter(COUNTRIES, (country) => {
       const { countryCode, name } = country
       const { common, zh, en } = name
       return (
-        countryCode !== selectedCountry.countryCode &&
+        countryCode !== selectedCountry?.countryCode &&
         (!searchValue ||
           common.includes(searchValue) ||
           en.includes(searchValue) ||
           zh.includes(searchValue) ||
-          country[keyProp].includes(searchValue))
+          !!(keyProp && country[keyProp].includes(searchValue)))
       )
     })
-    tmp.unshift(selectedCountry)
-    return tmp
+    if (selectedCountry) {
+      countryItems.unshift(selectedCountry)
+    }
+    return countryItems
   }, [searchValue, selectedCountry, keyProp])
 }
 
 export function CountryPicker(props: CountryPickerProps) {
   const { country, keyProp } = props
   const [searchValue, setSearchValue] = React.useState(undefined)
-  const seachCountry = React.useCallback((inputText) => {}, [])
+  const seachCountry = React.useCallback((inputText) => {
+    setSearchValue(inputText)
+  }, [])
   const countryItems = useCountryItems({
     searchValue,
     selectedCountry: country,
@@ -121,14 +128,14 @@ export function CountryPicker(props: CountryPickerProps) {
               offset: ITEM_HEIGHT * index,
               index,
             })}
-            data={COUNTRIES}
+            data={countryItems}
             renderItem={({ item, separators }) => (
               <TouchableHighlight
                 key={item.countryCode}
                 onShowUnderlay={separators.highlight}
                 onHideUnderlay={separators.unhighlight}
               >
-                <CountryItem country={item} />
+                <CountryItem country={item} selectedCountry={country} />
               </TouchableHighlight>
             )}
           />

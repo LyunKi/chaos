@@ -1,7 +1,8 @@
 import FormInput, { FormInputProps } from '../FormInput'
 import CountryPickerIcon from '../CountryPickerIcon'
 import React from 'react'
-import I18n, { CountryCode } from '../../i18n'
+import I18n from '../../i18n'
+import { CountryCode } from '../../i18n/countries'
 
 interface Mobile {
   countryCode?: CountryCode

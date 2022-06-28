@@ -6,7 +6,7 @@ import { memoize } from 'lodash'
 import i18n, { Scope, TranslateOptions } from 'i18n-js'
 import * as Updates from 'expo-updates'
 import { I18nManager } from 'react-native'
-import { COUNTRIES } from '../constants'
+import { COUNTRIES, CountryCode } from './countries'
 
 const LanguagePacks = {
   zh,
@@ -18,18 +18,6 @@ const translate = memoize(
   (key: Scope, config?: TranslateOptions) =>
     config ? key + JSON.stringify(config) : key
 )
-
-export type Country = {
-  countryCode: CountryCode
-  callingCode: string
-  name: {
-    common: string
-    zh: string
-    en: string
-  }
-}
-
-export type CountryCode = keyof typeof COUNTRIES
 
 export type SupportedLocale = 'zh' | 'en'
 
@@ -103,3 +91,4 @@ class I18n {
 }
 
 export default I18n
+export { COUNTRIES } from './countries'
