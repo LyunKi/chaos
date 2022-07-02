@@ -79,10 +79,7 @@ class I18n {
   }
 
   static getCountryByCode(code: CountryCode) {
-    return {
-      ...COUNTRIES[code],
-      countryCode: code,
-    }
+    return COUNTRIES[code]
   }
 
   static isValidCountryCode(code?: string | null): code is CountryCode {

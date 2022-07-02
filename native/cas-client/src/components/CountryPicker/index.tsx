@@ -14,7 +14,7 @@ import I18n, { COUNTRIES } from '../../i18n'
 import EvaIcon from '../EvaIcon'
 import SafeArea from '../SafeArea'
 import BackAction from '../BackAction'
-import { Country } from '../../i18n/countries'
+import { Country, CountryCurrentPropKey } from '../../i18n/countries'
 
 interface CountryItemProps {
   country: Country
@@ -56,17 +56,15 @@ function CountryItem(props: CountryItemProps) {
 
 const ITEM_HEIGHT = 10
 
-type KeyProp = Exclude<keyof Country, 'name'>
-
 export interface CountryPickerProps {
   country?: Country
-  keyProp?: KeyProp
+  keyProp?: CountryCurrentPropKey
 }
 
 function useCountryItems(params: {
   searchValue?: string
   selectedCountry?: Country
-  keyProp?: KeyProp
+  keyProp?: CountryCurrentPropKey
 }) {
   const { searchValue, selectedCountry, keyProp } = params
   return React.useMemo(() => {

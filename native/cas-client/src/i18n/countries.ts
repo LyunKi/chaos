@@ -6,6 +6,7 @@ export type CountryCode = keyof typeof countries
 export type Country = {
   countryCode: CountryCode
   callingCode: string
+  flag: string
   name: {
     common: string
     zh: string
@@ -26,3 +27,5 @@ export const COUNTRIES = mapValues(countries, (country, countryCode) => {
     },
   } as Country
 })
+
+export type CountryCurrentPropKey = Exclude<keyof Country, 'name'>
