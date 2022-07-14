@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Spinner } from '@ui-kitten/components'
-import { Scheduler, Task } from '../../utils'
+import { Button } from '@ui-kitten/components'
+import { BASE_PERIOD, Scheduler } from '../../utils'
 import styled from 'styled-components/native'
 
 const SMS_DURATION = 60
@@ -31,19 +31,22 @@ export default function Sender(props: SenderProps) {
     const sendAction = async () => {
       try {
         await onSend()
-        const sendTask = new Task({
-          current: duration,
-          onComplete() {
-            setLoading(false)
-            setCountdown(duration)
-          },
-          callback(_, current) {
-            setCountdown(current)
-          },
-        })
-        Scheduler.spawnTasks(sendTask)
+        Scheduler.spawnTasks(
+          new Scheduler.Task({
+            totalPeriod: (duration * 1000) / BASE_PERIOD,
+            onComplete() {
+              setLoading(false)
+              setCountdown(duration)
+            },
+            intervalPeriod: 1000 / BASE_PERIOD,
+            intervalCallback(experiencedPeriod) {
+              console.log('experiencedPeriod', experiencedPeriod)
+              setCountdown(60 - experiencedPeriod / 1000)
+            },
+          })
+        )
       } catch (e) {
-        console.warn('Faile to execute send action,caused by:', e)
+        console.warn('Failed to execute send action,caused by:', e)
       }
     }
     sendAction()

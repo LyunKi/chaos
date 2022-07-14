@@ -83,6 +83,7 @@ export default function SignUp(props: SignUpProps) {
                   error={touched.mobile?.number && errors.mobile}
                 />
                 <VerificationCodeInput
+                  mobile={values.mobile}
                   {...FormHelper.generateFormInputProps({
                     formikProps,
                     fieldName: 'verificationCode',

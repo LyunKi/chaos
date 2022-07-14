@@ -4,22 +4,32 @@ import FormInput, { FormInputProps } from '../FormInput'
 import I18n from '../../i18n'
 import { Api } from '../../utils'
 import * as Constants from '../../constants'
+import MobileHelper, { Mobile } from '../../utils/MobileHelper'
 
-export default function VerificationCodeInput(props: FormInputProps) {
+export interface VerificationCodeInputProps extends FormInputProps {
+  mobile: Mobile
+}
+
+export default function VerificationCodeInput(
+  props: VerificationCodeInputProps
+) {
+  const { mobile } = props
   return (
     <FormInput
       accessoryLeft={(props) => (
         <EvaIcon {...props} name="message-square-outline" />
       )}
       accessoryRight={
-        <Sender
-          text={I18n.t('schema.verificationCode.sendTip')}
-          onSend={() => {
-            Api.post(Constants.SMS_CODE, {
-              mobile: '+8617764189136',
-            })
-          }}
-        />
+        MobileHelper.isValid(mobile) ? (
+          <Sender
+            text={I18n.t('schema.verificationCode.sendTip')}
+            onSend={() => {
+              Api.post(Constants.SMS_CODE, {
+                mobile: MobileHelper.formatMobile(mobile),
+              })
+            }}
+          />
+        ) : undefined
       }
       {...props}
     />
