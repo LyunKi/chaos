@@ -2,13 +2,15 @@ import { IconProps } from '@ui-kitten/components'
 import EvaIcon from '../EvaIcon'
 import Navigator from '../../navigation/Navigator'
 import { CountryCode } from '../../i18n/countries'
+import { Fn } from '../../common/types'
 
 interface CountryPickerProps extends IconProps {
-  countryCode?: CountryCode
+  countryCode: CountryCode
+  onChange: Fn
 }
 
 export default function CountryPickerIcon(props: CountryPickerProps) {
-  const { countryCode, ...rest } = props
+  const { countryCode, onChange, ...rest } = props
   return (
     <EvaIcon
       {...rest}
@@ -18,6 +20,7 @@ export default function CountryPickerIcon(props: CountryPickerProps) {
         Navigator.navigate('CountryPicker', {
           keyProp: 'callingCode',
           countryCode,
+          onChange,
         })
       }
     />

@@ -6,6 +6,7 @@ import AppLoading from 'expo-app-loading'
 import { RootSiblingParent } from 'react-native-root-siblings'
 import { ThemeProvider } from 'styled-components/native'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
+import { RecoilRoot } from 'recoil'
 
 import useCachedResources from './hooks/useCachedResources'
 import useColorScheme from './hooks/useColorScheme'
@@ -22,17 +23,19 @@ export default function App() {
     return <AppLoading />
   } else {
     return (
-      <ApplicationProvider {...eva} theme={theme}>
-        <IconRegistry icons={[EvaIconsPack, CountriesIconsPack]} />
-        <SafeAreaProvider>
-          <RootSiblingParent>
-            <ThemeProvider theme={theme}>
-              <Navigation colorScheme={colorScheme} />
-            </ThemeProvider>
-          </RootSiblingParent>
-          <StatusBar />
-        </SafeAreaProvider>
-      </ApplicationProvider>
+      <RecoilRoot>
+        <ApplicationProvider {...eva} theme={theme}>
+          <IconRegistry icons={[EvaIconsPack, CountriesIconsPack]} />
+          <SafeAreaProvider>
+            <RootSiblingParent>
+              <ThemeProvider theme={theme}>
+                <Navigation colorScheme={colorScheme} />
+              </ThemeProvider>
+            </RootSiblingParent>
+            <StatusBar />
+          </SafeAreaProvider>
+        </ApplicationProvider>
+      </RecoilRoot>
     )
   }
 }

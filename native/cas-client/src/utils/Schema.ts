@@ -39,12 +39,9 @@ class Schema {
           number: Yup.string(),
         })
         .test({
+          name: 'valid-mobile',
           message: I18n.t('schema.mobile.limit'),
           async test(value) {
-            const countryCode = value.countryCode
-            if (!I18n.isValidCountryCode(countryCode)) {
-              return false
-            }
             return MobileHelper.isValid(value as Mobile)
           },
         })

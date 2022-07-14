@@ -13,7 +13,7 @@ export default class FormHelper {
     const { formikProps, fieldName } = input
     const { values, errors, handleChange, handleBlur, touched } = formikProps
     return {
-      onChangeText: handleChange(fieldName),
+      onChange: handleChange(fieldName),
       onBlur: handleBlur(fieldName),
       placeholder: I18n.t(`schema.${fieldName}.placeholder`),
       value: values[fieldName],

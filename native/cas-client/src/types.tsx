@@ -3,6 +3,7 @@
  * https://reactnavigation.org/docs/typescript/
  */
 
+import { Fn } from './common/types'
 import { CountryCode, CountryCurrentPropKey } from './i18n/countries'
 
 declare global {
@@ -15,7 +16,8 @@ export type RootStackParamList = {
   Login: undefined
   SignUp: undefined
   CountryPicker: {
+    countryCode: CountryCode
     keyProp?: CountryCurrentPropKey
-    countryCode?: CountryCode
+    onChange?: Fn
   }
 }

@@ -4,7 +4,7 @@ import React from 'react'
 import { CountryCode } from '../../i18n/countries'
 
 interface Mobile {
-  countryCode?: CountryCode
+  countryCode: CountryCode
   number?: string
 }
 
@@ -14,15 +14,21 @@ export interface MobileInputProps
 }
 
 export default function MobileInput(props: MobileInputProps) {
-  const { value = {}, onChangeText, ...rest } = props
-  const { countryCode } = value
+  const { value, onChange, onBlur, ...rest } = props
+  const { countryCode, number } = value
   return (
     <FormInput
-      accessoryLeft={(props) => (
-        <CountryPickerIcon countryCode={countryCode} {...props} />
-      )}
       {...rest}
-      value={''}
+      accessoryLeft={(props) => (
+        <CountryPickerIcon
+          countryCode={countryCode}
+          onChange={onChange('mobile.countryCode')}
+          {...props}
+        />
+      )}
+      value={number}
+      onChange={onChange('mobile.number')}
+      onBlur={onBlur('mobile.number')}
     />
   )
 }

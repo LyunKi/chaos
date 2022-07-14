@@ -41,7 +41,10 @@ function RootNavigator() {
         <Stack.Screen name="SignUp" component={SignUp} />
       </Stack.Group>
       <Stack.Group
-        screenOptions={{ presentation: 'modal', headerShown: false }}
+        screenOptions={{
+          presentation: 'modal',
+          headerShown: false,
+        }}
       >
         <Stack.Screen name="CountryPicker" component={CountryPicker} />
       </Stack.Group>

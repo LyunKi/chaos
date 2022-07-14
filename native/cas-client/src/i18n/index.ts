@@ -25,7 +25,7 @@ const DEFAULT_LOCALE: SupportedLocale = 'zh'
 
 const ENGLISH_LOCALE: SupportedLocale = 'en'
 
-const DEFAULT_COUNTRY: CountryCode = 'CN'
+export const DEFAULT_COUNTRY: CountryCode = 'CN'
 
 const I18N_STORAGE_KEY = 'user_languages'
 

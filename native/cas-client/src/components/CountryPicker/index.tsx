@@ -15,6 +15,8 @@ import EvaIcon from '../EvaIcon'
 import SafeArea from '../SafeArea'
 import BackAction from '../BackAction'
 import { Country, CountryCurrentPropKey } from '../../i18n/countries'
+import { Fn } from '../../common/types'
+import Navigator from '../../navigation/Navigator'
 
 interface CountryItemProps {
   country: Country
@@ -59,6 +61,7 @@ const ITEM_HEIGHT = 10
 export interface CountryPickerProps {
   country?: Country
   keyProp?: CountryCurrentPropKey
+  onChange?: Fn
 }
 
 function useCountryItems(params: {
@@ -88,7 +91,7 @@ function useCountryItems(params: {
 }
 
 export function CountryPicker(props: CountryPickerProps) {
-  const { country, keyProp } = props
+  const { country, keyProp, onChange } = props
   const [searchValue, setSearchValue] = React.useState(undefined)
   const seachCountry = React.useCallback((inputText) => {
     setSearchValue(inputText)
@@ -132,6 +135,10 @@ export function CountryPicker(props: CountryPickerProps) {
                 key={item.countryCode}
                 onShowUnderlay={separators.highlight}
                 onHideUnderlay={separators.unhighlight}
+                onPress={() => {
+                  Navigator.goBack()
+                  onChange?.(item.countryCode)
+                }}
               >
                 <CountryItem country={item} selectedCountry={country} />
               </TouchableHighlight>

@@ -3,10 +3,13 @@ import React from 'react'
 import { Input, InputProps } from '@ui-kitten/components'
 import styled from 'styled-components/native'
 import { remToPx } from 'polished'
-
 import ErrorTip from '../ErrorTip'
-export interface FormInputProps extends Omit<InputProps, 'caption'> {
-  error?: string | null | false
+import { Fn } from '../../common/types'
+export interface FormInputProps
+  extends Omit<InputProps, 'caption' | 'onChangeText' | 'onChange' | 'onBlur'> {
+  error?: any | null | false
+  onChange: Fn
+  onBlur: Fn
 }
 
 const CaptionContainer = styled(View)`
@@ -17,10 +20,12 @@ export default function FormInput({
   error,
   status,
   style,
+  onChange,
   ...inputProps
 }: FormInputProps) {
   const formInputProps: InputProps = {
     status: error ? 'danger' : status,
+    onChangeText: onChange,
     caption: (props) => {
       return (
         <CaptionContainer>

@@ -71,13 +71,16 @@ export default function SignUp(props: SignUpProps) {
           onSubmit={register}
         >
           {(formikProps) => {
+            const { handleChange, handleBlur, values, touched, errors } =
+              formikProps
             return (
               <>
                 <MobileInput
-                  {...FormHelper.generateFormInputProps({
-                    formikProps,
-                    fieldName: 'mobile',
-                  })}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder={I18n.t('schema.mobile.placeholder')}
+                  value={values.mobile}
+                  error={touched.mobile?.number && errors.mobile}
                 />
                 <VerificationCodeInput
                   {...FormHelper.generateFormInputProps({
