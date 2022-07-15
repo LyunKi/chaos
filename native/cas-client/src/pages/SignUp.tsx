@@ -1,29 +1,30 @@
 import {
+  Button,
   Divider,
   Layout,
-  TopNavigation,
-  Button,
   Text,
+  TopNavigation,
 } from '@ui-kitten/components'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import styled from 'styled-components/native'
 import { remToPx } from 'polished'
-
+import React from 'react'
 import { RootStackParamList } from '../types'
 import {
   BackAction,
+  MobileInput,
+  PasswordInput,
   SafeArea,
   VerificationCodeInput,
-  PasswordInput,
-  MobileInput,
 } from '../components'
-import { FormHelper, Schema } from '../utils'
+import { Api, FormHelper, Schema } from '../utils'
+import * as Constants from '../constants'
 import I18n from '../i18n'
 
 interface SignUpProps
-  extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
+  extends NativeStackScreenProps<RootStackParamList, 'SignUp'> {}
 
 const Container = styled(Layout)`
   padding: ${remToPx(1)};
@@ -53,7 +54,9 @@ export default function SignUp(props: SignUpProps) {
   const signUpSchema = Yup.object().shape(
     Schema.load(['mobile', 'password', 'verificationCode'])
   )
-  const register = () => {}
+  const register = React.useCallback(() => {
+    Api.post(Constants.REGISTER, {})
+  }, [])
   return (
     <SafeArea>
       <TopNavigation

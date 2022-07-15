@@ -90,6 +90,14 @@ function useCountryItems(params: {
   }, [searchValue, selectedCountry, keyProp])
 }
 
+const ListContainer = styled(View)`
+  flex: 1;
+`
+
+const ScrollLayout = styled(Layout)`
+  flex: 1;
+`
+
 export function CountryPicker(props: CountryPickerProps) {
   const { country, keyProp, onChange } = props
   const [searchValue, setSearchValue] = React.useState(undefined)
@@ -109,7 +117,7 @@ export function CountryPicker(props: CountryPickerProps) {
         accessoryLeft={BackAction}
       />
       <Divider />
-      <Layout>
+      <ScrollLayout>
         <View style={{ padding: remToPx(1) }}>
           <Input
             accessoryLeft={(props) => (
@@ -121,7 +129,7 @@ export function CountryPicker(props: CountryPickerProps) {
           />
         </View>
         <Divider />
-        <View>
+        <ListContainer>
           <FlatList
             ItemSeparatorComponent={() => <Divider />}
             getItemLayout={(_data, index) => ({
@@ -144,8 +152,8 @@ export function CountryPicker(props: CountryPickerProps) {
               </TouchableHighlight>
             )}
           />
-        </View>
-      </Layout>
+        </ListContainer>
+      </ScrollLayout>
     </SafeArea>
   )
 }

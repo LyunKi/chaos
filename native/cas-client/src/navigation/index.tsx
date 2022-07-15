@@ -6,13 +6,13 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import * as React from 'react'
 import { ColorSchemeName } from 'react-native'
+import * as SplashScreen from 'expo-splash-screen'
 import Login from '../pages/Login'
 import SignUp from '../pages/SignUp'
-import LinkingConfiguration from './LinkingConfiguration'
 import { RootStackParamList } from '../types'
-import * as SplashScreen from 'expo-splash-screen'
-import Navigator from './Navigator'
 import CountryPicker from '../modals/CountryPicker'
+import LinkingConfiguration from './LinkingConfiguration'
+import Navigator from './Navigator'
 
 export default function Navigation({
   colorScheme,

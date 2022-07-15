@@ -223,10 +223,6 @@ export class Scheduler {
    * @memberof Scheduler
    */
   public static spawnTasks(...tasks: SchedulerTask[]) {
-    if (isEmpty(tasks)) {
-      throw new Error('Please arrange at least one task')
-    }
-    // 如果没有创建单例,自动创建
     const instance = new Scheduler()
     const currentIds: string[] = []
     const intervals: number[] = []
@@ -247,10 +243,13 @@ export class Scheduler {
       // 优化轮询次数
       instance.multiple = gcd(...intervals)
     }
-    instance.listen()
-    // 方便初始的展示和调用者强行中断相应的任务
+    if (!isEmpty(currentIds)) {
+      // 只有存在任务时才需要启动定时器
+      instance.listen()
+    }
     return {
       instance,
+      // 方便调用者根据 id 强行中断相应的任务
       taskIds: currentIds,
     }
   }
