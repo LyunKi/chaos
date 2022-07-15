@@ -2,9 +2,8 @@ import Sender from '../Sender'
 import EvaIcon from '../EvaIcon'
 import FormInput, { FormInputProps } from '../FormInput'
 import I18n from '../../i18n'
-import { Api } from '../../utils'
-import * as Constants from '../../common/constants'
-import MobileHelper, { Mobile } from '../../utils/MobileHelper'
+import MobileHelper, { Mobile } from '../../common/utils/MobileHelper'
+import { sendVerificationCode } from '../../apis'
 
 export interface VerificationCodeInputProps extends FormInputProps {
   mobile: Mobile
@@ -20,16 +19,11 @@ export default function VerificationCodeInput(
         <EvaIcon {...props} name="message-square-outline" />
       )}
       accessoryRight={
-        MobileHelper.isValid(mobile) ? (
-          <Sender
-            text={I18n.t('schema.verificationCode.sendTip')}
-            onSend={() => {
-              Api.post(Constants.SMS_CODE, {
-                mobile: MobileHelper.formatMobile(mobile),
-              })
-            }}
-          />
-        ) : undefined
+        <Sender
+          text={I18n.t('schema.verificationCode.sendTip')}
+          disabled={!MobileHelper.isValid(mobile)}
+          onSend={sendVerificationCode}
+        />
       }
       {...props}
     />

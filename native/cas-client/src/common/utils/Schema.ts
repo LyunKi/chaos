@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 import { isString } from 'formik'
-import I18n from '../i18n'
+import I18n from '../../i18n'
 import MobileHelper, { Mobile } from './MobileHelper'
 
 interface SchemaMap {

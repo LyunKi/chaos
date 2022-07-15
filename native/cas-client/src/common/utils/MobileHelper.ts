@@ -1,5 +1,5 @@
 import * as MobileLib from 'libphonenumber-js'
-import { COUNTRIES, CountryCode } from '../i18n/countries'
+import { COUNTRIES, CountryCode } from '../../i18n/countries'
 
 export interface Mobile {
   countryCode: CountryCode

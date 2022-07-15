@@ -48,6 +48,8 @@ instance.interceptors.request.use((config) => {
   }
 })
 
+const INTERNAL_SERVER_ERROR = '500'
+
 class Api {
   public async request(config: AxiosRequestConfig) {
     const { [PATH_VARIABLES]: pathVariables, ...rest } = config
@@ -58,7 +60,12 @@ class Api {
       })
       return result
     } catch (e) {
-      console.debug(e)
+      console.log(JSON.parse(JSON.stringify(e)))
+      throw {
+        code: INTERNAL_SERVER_ERROR,
+        msg: e.message,
+        errors: [],
+      }
     }
   }
 

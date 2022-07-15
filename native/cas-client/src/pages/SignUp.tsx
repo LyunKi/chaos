@@ -19,10 +19,10 @@ import {
   SafeArea,
   VerificationCodeInput,
 } from '../components'
-import { Api, FormHelper, Schema } from '../utils'
+import { Api, FormHelper, Schema } from '../common/utils'
 import * as Constants from '../common/constants'
 import I18n from '../i18n'
-import MobileHelper from '../utils/MobileHelper'
+import MobileHelper from '../common/utils/MobileHelper'
 
 interface SignUpProps
   extends NativeStackScreenProps<RootStackParamList, 'SignUp'> {}

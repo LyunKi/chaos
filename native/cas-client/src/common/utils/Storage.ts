@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import packageMetadata from '../../package.json'
+import packageMetadata from '../../../package.json'
 
 const STORAGE_PREFIX = packageMetadata.name
 

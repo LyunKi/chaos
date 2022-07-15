@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@ui-kitten/components'
-import { BASE_PERIOD, Scheduler } from '../../utils'
 import styled from 'styled-components/native'
+import { BASE_PERIOD, Scheduler } from '../../common/utils'
 
 const SMS_DURATION = 60
 
@@ -9,6 +9,7 @@ export interface SenderProps {
   text: string
   onSend: Function
   duration?: number
+  disabled?: boolean
 }
 
 const SenderButton = styled(Button)`
@@ -17,14 +18,14 @@ const SenderButton = styled(Button)`
 `
 
 export default function Sender(props: SenderProps) {
-  const { text, onSend, duration = SMS_DURATION } = props
+  const { text, onSend, duration = SMS_DURATION, disabled } = props
   const [loading, setLoading] = React.useState(false)
   const [countdown, setCountdown] = React.useState(duration)
   React.useLayoutEffect(() => {
     setCountdown(duration)
   }, [duration])
   const onPress = React.useCallback(() => {
-    if (loading) {
+    if (loading || disabled) {
       return
     }
     setLoading(true)
@@ -50,7 +51,7 @@ export default function Sender(props: SenderProps) {
       }
     }
     sendAction()
-  }, [loading, duration, onSend])
+  }, [loading, duration, onSend, disabled])
   return (
     <SenderButton size={'tiny'} onPress={onPress} appearance="ghost">
       {loading ? `${countdown}s` : text}
