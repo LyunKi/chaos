@@ -17,7 +17,6 @@ module.exports = {
   plugins: ['autofix', 'unused-imports', 'import'],
   rules: {
     'autofix/no-debugger': 'error',
-    'autofix/no-console': 'error',
     'autofix/no-plusplus': 'error',
     'import/no-unresolved': 'error',
     'import/order': 'error',
@@ -27,6 +26,7 @@ module.exports = {
     'import/no-named-as-default-member': 'off',
     'import/default': 'off',
     'import/namespace': 'off',
+    'no-throw-literal': 'off',
     'unused-imports/no-unused-vars': [
       'warn',
       {
