@@ -14,7 +14,9 @@ declare global {
 
 export type RootStackParamList = {
   Login: undefined
-  SignUp: undefined
+  SignUp?: {
+    service?: string
+  }
   CountryPicker: {
     countryCode: CountryCode
     keyProp?: CountryCurrentPropKey

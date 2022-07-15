@@ -3,7 +3,7 @@ import EvaIcon from '../EvaIcon'
 import FormInput, { FormInputProps } from '../FormInput'
 import I18n from '../../i18n'
 import { Api } from '../../utils'
-import * as Constants from '../../constants'
+import * as Constants from '../../common/constants'
 import MobileHelper, { Mobile } from '../../utils/MobileHelper'
 
 export interface VerificationCodeInputProps extends FormInputProps {

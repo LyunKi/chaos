@@ -11,7 +11,7 @@ export default function Login(props: LoginProps) {
       <Layout
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
       >
-        <Button onPress={() => Navigator.navigate('SignUp')}>
+        <Button onPress={() => Navigator.navigate('SignUp', { service: '' })}>
           OPEN SignUp
         </Button>
       </Layout>

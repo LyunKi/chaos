@@ -20,8 +20,9 @@ import {
   VerificationCodeInput,
 } from '../components'
 import { Api, FormHelper, Schema } from '../utils'
-import * as Constants from '../constants'
+import * as Constants from '../common/constants'
 import I18n from '../i18n'
+import MobileHelper from '../utils/MobileHelper'
 
 interface SignUpProps
   extends NativeStackScreenProps<RootStackParamList, 'SignUp'> {}
@@ -51,12 +52,21 @@ const Tip = styled(Text)`
 `
 
 export default function SignUp(props: SignUpProps) {
+  const { route } = props
+  const service = route.params?.service
   const signUpSchema = Yup.object().shape(
     Schema.load(['mobile', 'password', 'verificationCode'])
   )
-  const register = React.useCallback(() => {
-    Api.post(Constants.REGISTER, {})
-  }, [])
+  const register = React.useCallback(
+    async (values) => {
+      await Api.post(Constants.REGISTER, {
+        ...values,
+        service,
+        mobile: MobileHelper.formatMobile(values.mobile),
+      })
+    },
+    [service]
+  )
   return (
     <SafeArea>
       <TopNavigation
@@ -74,8 +84,14 @@ export default function SignUp(props: SignUpProps) {
           onSubmit={register}
         >
           {(formikProps) => {
-            const { handleChange, handleBlur, values, touched, errors } =
-              formikProps
+            const {
+              handleChange,
+              handleBlur,
+              values,
+              touched,
+              errors,
+              handleSubmit,
+            } = formikProps
             return (
               <>
                 <MobileInput
@@ -98,7 +114,9 @@ export default function SignUp(props: SignUpProps) {
                     fieldName: 'password',
                   })}
                 />
-                <Button>{I18n.t('actions.register')}</Button>
+                <Button onPress={handleSubmit}>
+                  {I18n.t('actions.register')}
+                </Button>
               </>
             )
           }}

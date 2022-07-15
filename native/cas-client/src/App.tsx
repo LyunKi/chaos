@@ -8,8 +8,8 @@ import { ThemeProvider } from 'styled-components/native'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import { RecoilRoot } from 'recoil'
 
-import useCachedResources from './hooks/useCachedResources'
-import useColorScheme from './hooks/useColorScheme'
+import useCachedResources from './utils/hooks/useCachedResources'
+import useColorScheme from './utils/hooks/useColorScheme'
 import Navigation from './navigation'
 import { CountriesIconsPack } from './components'
 

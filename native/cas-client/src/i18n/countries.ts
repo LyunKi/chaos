@@ -1,5 +1,5 @@
-import countries from '../constants/countries.json'
 import mapValues from 'lodash/mapValues'
+import countries from '../common/constants/countries.json'
 
 export type CountryCode = keyof typeof countries
 

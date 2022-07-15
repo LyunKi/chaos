@@ -1,7 +1,7 @@
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect, useState } from 'react'
-import I18n from '../i18n'
-import { Schema } from '../utils'
+import I18n from '../../i18n'
+import { Schema } from '..'
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = useState(false)
@@ -16,7 +16,6 @@ export default function useCachedResources() {
         await I18n.init()
         await Schema.init()
       } catch (e) {
-        console.warn('Failed to loadResourcesAndDataAsync', e)
       } finally {
         setLoadingComplete(true)
       }
