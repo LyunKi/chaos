@@ -25,6 +25,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'error',
     'import/no-named-as-default-member': 'off',
+    'import/default': 'off',
     'import/namespace': 'off',
     'unused-imports/no-unused-vars': [
       'warn',
