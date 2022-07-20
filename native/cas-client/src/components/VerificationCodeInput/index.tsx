@@ -22,7 +22,7 @@ export default function VerificationCodeInput(
         <Sender
           text={I18n.t('schema.verificationCode.sendTip')}
           disabled={!MobileHelper.isValid(mobile)}
-          onSend={sendVerificationCode}
+          onSend={() => sendVerificationCode(mobile)}
         />
       }
       {...props}

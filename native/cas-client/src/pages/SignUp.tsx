@@ -59,11 +59,16 @@ export default function SignUp(props: SignUpProps) {
   )
   const register = React.useCallback(
     async (values) => {
-      await Api.post(Constants.REGISTER, {
-        ...values,
-        service,
-        mobile: MobileHelper.formatMobile(values.mobile),
-      })
+      await Api.post(
+        Constants.REGISTER,
+        {
+          ...values,
+          service,
+          mobile: MobileHelper.formatMobile(values.mobile),
+        },
+        { showErrorToast: true }
+      )
+      // 注册完毕，自动登录
     },
     [service]
   )

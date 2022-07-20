@@ -2,6 +2,8 @@ import axios, { AxiosRequestConfig } from 'axios'
 import Constants from 'expo-constants'
 import humps from 'humps'
 import qs from 'qs'
+import isEmpty from 'lodash/isEmpty'
+import { Toast } from './Toast'
 
 export const PATH_VARIABLES = '$pathVariables'
 
@@ -48,11 +50,9 @@ instance.interceptors.request.use((config) => {
   }
 })
 
-const INTERNAL_SERVER_ERROR = '500'
-
 class Api {
   public async request(config: AxiosRequestConfig) {
-    const { [PATH_VARIABLES]: pathVariables, ...rest } = config
+    const { [PATH_VARIABLES]: pathVariables, showErrorToast, ...rest } = config
     try {
       const result = await instance({
         [PATH_VARIABLES]: pathVariables,
@@ -60,11 +60,23 @@ class Api {
       })
       return result
     } catch (e) {
-      console.log(JSON.parse(JSON.stringify(e)))
+      let msg = e.message
+      const response = e.response?.data
+      const errors = response?.errors ?? []
+      if (response) {
+        msg = response.msg
+        if (!isEmpty(errors)) {
+          msg = `${msg}:${errors[0].msg}`
+        }
+      }
+      const code = response?.code ?? e.status
+      if (showErrorToast) {
+        Toast.show(msg)
+      }
       throw {
-        code: INTERNAL_SERVER_ERROR,
-        msg: e.message,
-        errors: [],
+        code,
+        msg,
+        errors,
       }
     }
   }

@@ -28,10 +28,10 @@ export default function Sender(props: SenderProps) {
     if (loading || disabled) {
       return
     }
-    setLoading(true)
     const sendAction = async () => {
       try {
         await onSend()
+        setLoading(true)
         Scheduler.spawnTasks(
           new Scheduler.Task({
             totalPeriod: (duration * 1000) / BASE_PERIOD,
@@ -41,19 +41,24 @@ export default function Sender(props: SenderProps) {
             },
             intervalPeriod: 1000 / BASE_PERIOD,
             intervalCallback(experiencedPeriod) {
-              console.log('experiencedPeriod', experiencedPeriod)
               setCountdown(60 - experiencedPeriod / 1000)
             },
           })
         )
       } catch (e) {
+        setLoading(false)
         console.warn('Failed to execute send action,caused by:', e)
       }
     }
     sendAction()
   }, [loading, duration, onSend, disabled])
   return (
-    <SenderButton size={'tiny'} onPress={onPress} appearance="ghost">
+    <SenderButton
+      disabled={disabled}
+      size={'tiny'}
+      onPress={onPress}
+      appearance="ghost"
+    >
       {loading ? `${countdown}s` : text}
     </SenderButton>
   )

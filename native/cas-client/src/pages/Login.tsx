@@ -1,6 +1,7 @@
 import { Button, Divider, Layout, TopNavigation } from '@ui-kitten/components'
 import { SafeArea } from '../components'
 import Navigator from '../navigation/Navigator'
+
 interface LoginProps {}
 
 export default function Login(props: LoginProps) {
