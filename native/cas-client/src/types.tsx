@@ -13,7 +13,10 @@ declare global {
 }
 
 export type RootStackParamList = {
-  Login: undefined
+  Login: {
+    service: string
+    redirectUrl: string
+  }
   SignUp?: {
     service?: string
   }

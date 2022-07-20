@@ -20,9 +20,9 @@ import {
   VerificationCodeInput,
 } from '../components'
 import { Api, FormHelper, Schema } from '../common/utils'
-import * as Constants from '../common/constants'
 import I18n from '../i18n'
 import MobileHelper from '../common/utils/MobileHelper'
+import { REGISTER } from '../common/constants'
 
 interface SignUpProps
   extends NativeStackScreenProps<RootStackParamList, 'SignUp'> {}
@@ -60,7 +60,7 @@ export default function SignUp(props: SignUpProps) {
   const register = React.useCallback(
     async (values) => {
       await Api.post(
-        Constants.REGISTER,
+        REGISTER,
         {
           ...values,
           service,
@@ -68,7 +68,6 @@ export default function SignUp(props: SignUpProps) {
         },
         { showErrorToast: true }
       )
-      // 注册完毕，自动登录
     },
     [service]
   )
