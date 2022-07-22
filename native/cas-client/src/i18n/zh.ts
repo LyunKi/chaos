@@ -9,7 +9,8 @@ const MESSAGES = {
     tip: '完成注册流程，即刻享有云龙开发者团队下所有应用的会员权限',
   },
   actions: {
-    register: '立即注册',
+    register: '注册',
+    login: '登录',
   },
   errors: {
     required: '{{name}}不能为空',

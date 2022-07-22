@@ -58,7 +58,7 @@ class Api {
         [PATH_VARIABLES]: pathVariables,
         ...rest,
       })
-      return result
+      return result.data
     } catch (e) {
       let msg = e.message
       const response = e.response?.data

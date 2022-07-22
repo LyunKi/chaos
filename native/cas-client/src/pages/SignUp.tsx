@@ -1,10 +1,4 @@
-import {
-  Button,
-  Divider,
-  Layout,
-  Text,
-  TopNavigation,
-} from '@ui-kitten/components'
+import { Button, Divider, Text, TopNavigation } from '@ui-kitten/components'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
@@ -14,6 +8,7 @@ import React from 'react'
 import { RootStackParamList } from '../types'
 import {
   BackAction,
+  Container,
   MobileInput,
   PasswordInput,
   SafeArea,
@@ -27,12 +22,7 @@ import { REGISTER } from '../common/constants'
 interface SignUpProps
   extends NativeStackScreenProps<RootStackParamList, 'SignUp'> {}
 
-const Container = styled(Layout)`
-  padding: ${remToPx(1)};
-  flex: 1;
-`
-
-const InitialValues = {
+const INITIAL_VALUES = {
   password: '',
   mobile: {
     countryCode: I18n.country.countryCode,
@@ -83,7 +73,7 @@ export default function SignUp(props: SignUpProps) {
         <Welcome>{I18n.t('registration.welcome')}</Welcome>
         <Tip>{I18n.t('registration.tip')}</Tip>
         <Formik
-          initialValues={InitialValues}
+          initialValues={INITIAL_VALUES}
           validationSchema={signUpSchema}
           onSubmit={register}
         >
