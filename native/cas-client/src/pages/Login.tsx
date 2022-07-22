@@ -6,7 +6,6 @@ import * as Yup from 'yup'
 import {
   SafeArea,
   Container,
-  Loading,
   BackAction,
   MobileInput,
   PasswordInput,
@@ -109,7 +108,7 @@ function LoginForm(props) {
 
 export default function Login(props: LoginProps) {
   const { route } = props
-  const [validating, setValidating] = useState(true)
+  const [, setValidating] = useState(true)
   const { service, redirectUrl } = route.params
   useTgtCheck({ service, redirectUrl, setValidating })
   return (
@@ -121,11 +120,7 @@ export default function Login(props: LoginProps) {
       />
       <Divider />
       <Container>
-        {validating ? (
-          <Loading />
-        ) : (
-          <LoginForm service={service} redirectUrl={redirectUrl} />
-        )}
+        <LoginForm service={service} redirectUrl={redirectUrl} />
       </Container>
     </SafeArea>
   )
