@@ -1,7 +1,7 @@
 import { RouteProp } from '@react-navigation/native'
-import { CountryPicker } from '../components'
-import I18n from '../i18n'
-import { RootStackParamList } from '../types'
+import { CountryPicker } from '../../components'
+import I18n from '../../i18n'
+import { RootStackParamList } from '../../types'
 
 interface CountryPickerModalProps {
   route: RouteProp<RootStackParamList, 'CountryPicker'>

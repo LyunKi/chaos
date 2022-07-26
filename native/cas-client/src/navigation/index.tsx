@@ -10,7 +10,7 @@ import * as SplashScreen from 'expo-splash-screen'
 import Login from '../pages/Login'
 import SignUp from '../pages/SignUp'
 import { RootStackParamList } from '../types'
-import CountryPicker from '../modals/CountryPicker'
+import CountryPicker from '../pages/modals/CountryPicker'
 import LinkingConfiguration from './LinkingConfiguration'
 import Navigator from './Navigator'
 

@@ -49,7 +49,7 @@ function CountryItem(props: CountryItemProps) {
       <CountryKeyProp>{callingCode}</CountryKeyProp>
       <Checkbox>
         {countryCode === selectedCountry?.countryCode && (
-          <EvaIcon name="checkmark-outline" />
+          <EvaIcon status="success" name="checkmark-outline" />
         )}
       </Checkbox>
     </CountryItemContainer>

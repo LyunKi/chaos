@@ -1,5 +1,5 @@
 import React, { LegacyRef } from 'react'
-import { Icon, IconProps } from '@ui-kitten/components'
+import { Icon, IconProps, useTheme } from '@ui-kitten/components'
 import { StyleSheet, TouchableWithoutFeedback, Image } from 'react-native'
 import I18n from '../../i18n'
 
@@ -44,16 +44,22 @@ const EvaIcon = React.forwardRef((props: IconProps, ref?: LegacyRef<any>) => {
     height,
     color,
     onPress,
+    status,
     pack = 'eva',
     ...rest
   } = props
+  const theme = useTheme()
+  let iconColor = color ?? style.tintColor
+  if (!iconColor && status) {
+    iconColor = theme[`color-${status}-default`]
+  }
   const mergedStyle = StyleSheet.flatten([
     style,
     {
       width: width ?? size ?? style?.width ?? 24,
       height: height ?? size ?? style?.height ?? 24,
       marginHorizontal: style?.marginHorizontal ?? 8,
-      tintColor: color ?? style.tintColor,
+      tintColor: iconColor,
     },
   ])
   const InnerIcon = <Icon ref={ref} pack={pack} style={mergedStyle} {...rest} />

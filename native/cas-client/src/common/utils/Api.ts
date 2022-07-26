@@ -3,7 +3,7 @@ import Constants from 'expo-constants'
 import humps from 'humps'
 import qs from 'qs'
 import isEmpty from 'lodash/isEmpty'
-import { Toast } from './Toast'
+import { Modal } from './Modal'
 
 export const PATH_VARIABLES = '$pathVariables'
 
@@ -71,7 +71,7 @@ class Api {
       }
       const code = response?.code ?? e.status
       if (showErrorToast) {
-        Toast.show(msg)
+        Modal.showErrorToast({ msg: msg })
       }
       throw {
         code,
