@@ -3,7 +3,6 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import styled from 'styled-components/native'
-import { remToPx } from 'polished'
 import React from 'react'
 import { RootStackParamList } from '../types'
 import {
@@ -18,6 +17,7 @@ import { Api, FormHelper, Schema } from '../common/utils'
 import I18n from '../i18n'
 import MobileHelper from '../common/utils/MobileHelper'
 import { REGISTER } from '../common/constants'
+import { remToPx } from '../common/utils/style'
 
 interface SignUpProps
   extends NativeStackScreenProps<RootStackParamList, 'SignUp'> {}

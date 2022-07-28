@@ -2,7 +2,7 @@ import React from 'react'
 import { TextProps, View } from 'react-native'
 import { Text } from '@ui-kitten/components'
 import styled from 'styled-components/native'
-import { remToPx } from 'polished'
+import { remToPx } from '../../common/utils/style'
 
 const ErrorTipContainer = styled(View)`
   flex-flow: row;

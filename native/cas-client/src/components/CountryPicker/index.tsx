@@ -8,7 +8,6 @@ import {
 } from '@ui-kitten/components'
 import filter from 'lodash/filter'
 import React from 'react'
-import { remToPx } from 'polished'
 import styled from 'styled-components/native'
 import I18n, { COUNTRIES } from '../../i18n'
 import EvaIcon from '../EvaIcon'
@@ -17,6 +16,7 @@ import BackAction from '../BackAction'
 import { Country, CountryCurrentPropKey } from '../../i18n/countries'
 import { Fn } from '../../common/types'
 import Navigator from '../../navigation/Navigator'
+import { remToPx } from '../../common/utils/style'
 
 interface CountryItemProps {
   country: Country
@@ -98,6 +98,10 @@ const ScrollLayout = styled(Layout)`
   flex: 1;
 `
 
+const FilterContainer = styled(View)`
+  padding: remToPx(1);
+`
+
 export function CountryPicker(props: CountryPickerProps) {
   const { country, keyProp, onChange } = props
   const [searchValue, setSearchValue] = React.useState(undefined)
@@ -118,7 +122,7 @@ export function CountryPicker(props: CountryPickerProps) {
       />
       <Divider />
       <ScrollLayout>
-        <View style={{ padding: remToPx(1) }}>
+        <FilterContainer>
           <Input
             accessoryLeft={(props) => (
               <EvaIcon {...props} name="search-outline" />
@@ -127,7 +131,7 @@ export function CountryPicker(props: CountryPickerProps) {
             value={searchValue}
             onChangeText={seachCountry}
           />
-        </View>
+        </FilterContainer>
         <Divider />
         <ListContainer>
           <FlatList
