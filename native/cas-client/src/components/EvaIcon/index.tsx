@@ -43,13 +43,14 @@ const EvaIcon = React.forwardRef((props: IconProps, ref?: LegacyRef<any>) => {
     size,
     height,
     color,
+    colorKey,
     onPress,
     status,
     pack = 'eva',
     ...rest
   } = props
   const theme = useTheme()
-  let iconColor = color ?? style.tintColor
+  let iconColor = color ?? theme[colorKey] ?? style.tintColor
   if (!iconColor && status) {
     iconColor = theme[`color-${status}-default`]
   }

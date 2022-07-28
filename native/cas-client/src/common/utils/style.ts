@@ -1,6 +1,6 @@
 import isNumber from 'lodash/isNumber'
 
-const BASE_FONT_SIZE = 16
+export const BASE_FONT_SIZE = 16
 
 export function remToPx(rem: number): string {
   return `${rem * BASE_FONT_SIZE}px`

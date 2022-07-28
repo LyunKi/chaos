@@ -7,23 +7,16 @@ import { ThemeProvider } from 'styled-components/native'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import { RecoilRoot } from 'recoil'
 
-import { useEffect } from 'react'
 import useCachedResources from './common/utils/hooks/useCachedResources'
-import useColorScheme from './common/utils/hooks/useColorScheme'
 import Navigation from './navigation'
 import { CountriesIconsPack } from './components'
 
 export default function App() {
   const isLoadingComplete = useCachedResources()
-  const colorScheme = useColorScheme()
+  // const colorScheme = useColorScheme()
+  const colorScheme = 'dark'
+  // const colorScheme = 'light'
   const theme = eva[colorScheme]
-
-  useEffect(() => {
-    if (isLoadingComplete) {
-      console.log('eva theme', theme)
-      // Modal.showErrorToast({ msg: '123' })
-    }
-  }, [isLoadingComplete, theme])
 
   if (!isLoadingComplete) {
     return <AppLoading />

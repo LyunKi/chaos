@@ -49,7 +49,7 @@ function CountryItem(props: CountryItemProps) {
       <CountryKeyProp>{callingCode}</CountryKeyProp>
       <Checkbox>
         {countryCode === selectedCountry?.countryCode && (
-          <EvaIcon status="success" name="checkmark-outline" />
+          <EvaIcon colorKey={'text-basic-color'} name="checkmark-outline" />
         )}
       </Checkbox>
     </CountryItemContainer>
@@ -99,7 +99,7 @@ const ScrollLayout = styled(Layout)`
 `
 
 const FilterContainer = styled(View)`
-  padding: remToPx(1);
+  padding: ${remToPx(1)};
 `
 
 export function CountryPicker(props: CountryPickerProps) {

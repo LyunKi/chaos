@@ -1,5 +1,6 @@
 const MESSAGES = {
   companyName: '云龙',
+  loading: '加载中',
   countryPicker: {
     title: '国家或地区',
     placeholder: '请选择您所在的国家或地区',

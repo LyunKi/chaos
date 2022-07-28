@@ -61,17 +61,21 @@ class Api {
       return result.data
     } catch (e) {
       let msg = e.message
-      const response = e.response?.data
-      const errors = response?.errors ?? []
-      if (response) {
-        msg = response.msg
+      const responseData = e.response?.data
+      const errors = responseData?.errors ?? []
+      const code = responseData?.code ?? e.status
+      if (responseData) {
+        msg = responseData.msg
         if (!isEmpty(errors)) {
           msg = `${msg}:${errors[0].msg}`
         }
       }
-      const code = response?.code ?? e.status
       if (showErrorToast) {
-        Modal.showErrorToast({ msg: msg })
+        if (responseData) {
+          Modal.showWarningToast({ msg })
+        } else {
+          Modal.showErrorToast({ msg })
+        }
       }
       throw {
         code,
