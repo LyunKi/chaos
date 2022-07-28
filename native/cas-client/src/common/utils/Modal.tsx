@@ -59,7 +59,7 @@ function renderIconByStatus(status: string) {
     case 'loading':
       return <Spinner status="info" size="small" />
     case 'warning':
-      return <EvaIcon size={24} status={status} name="alert-triangle-outline" />
+      return <EvaIcon size={24} status={status} name="alert-circle-outline" />
     case 'info':
       return <EvaIcon size={24} status={status} name="info-outline" />
     case 'success':

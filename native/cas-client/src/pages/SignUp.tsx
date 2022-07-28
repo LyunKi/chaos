@@ -41,7 +41,7 @@ const Tip = styled(Text)`
   margin-vertical: ${remToPx(1.5)};
 `
 
-export default function SignUp(props: SignUpProps) {
+function SignUp(props: SignUpProps) {
   const { route } = props
   const service = route.params?.service
   const signUpSchema = Yup.object().shape(
@@ -119,3 +119,5 @@ export default function SignUp(props: SignUpProps) {
     </SafeArea>
   )
 }
+
+export default SignUp
