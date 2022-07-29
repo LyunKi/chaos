@@ -1,16 +1,16 @@
 {
-    "name": "@cloud-dragon/stylelint-config-standard",
-    "version": "0.0.0",
-    "description": "LyunKi's personal stylelint config",
-    "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/stylelint-config-standard",
-    "author": {
-        "name": "LyunKi",
-        "email": "ly1169134156@163.com",
-        "url": "https://github.com/LyunKi/"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "stylelint-config-standard": "^24.0.0",
-        "stylelint-order": "^5.0.0"
-    }
+  "name": "@cloud-dragon/stylelint-config-standard",
+  "version": "0.0.1",
+  "description": "LyunKi's personal stylelint config",
+  "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/stylelint-config-standard",
+  "author": {
+    "name": "LyunKi",
+    "email": "ly1169134156@163.com",
+    "url": "https://github.com/LyunKi/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0"
+  }
 }

@@ -1,13 +1,19 @@
 # @cloud-dragon/prettier-config
 
+## 0.0.3
+
+### Patch Changes
+
+- ready to test
+
 ## 0.0.2
 
 ### Patch Changes
 
--   fix doc error
+- fix doc error
 
 ## 0.0.1
 
 ### Patch Changes
 
--   Initial publish of Lyunki's personal prettier config
+- Initial publish of Lyunki's personal prettier config
