@@ -23,7 +23,7 @@
     "husky": "^7.0.0"
   },
   "publishConfig": {
-    "registry": "http://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org"
   },
   "pnpm": {
     "//": "See https://github.com/facebook/create-react-app/issues/11773",
