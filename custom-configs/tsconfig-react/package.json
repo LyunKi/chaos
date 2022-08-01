@@ -1,0 +1,15 @@
+{
+  "name": "@cloud-dragon/tsconfig-react",
+  "version": "0.0.0",
+  "description": "LyunKi's personal Typescript config for react",
+  "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/tsconfig-react",
+  "author": {
+    "name": "LyunKi",
+    "email": "ly1169134156@163.com",
+    "url": "https://github.com/LyunKi/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@cloud-dragon/tsconfig-recommended": "*"
+  }
+}

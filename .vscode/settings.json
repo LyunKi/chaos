@@ -7,8 +7,5 @@
   },
   "[postcss]": {
     "editor.defaultFormatter": "stylelint.vscode-stylelint"
-  },
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false
+  }
 }
