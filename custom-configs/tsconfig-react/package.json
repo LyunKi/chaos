@@ -1,6 +1,6 @@
 {
   "name": "@cloud-dragon/tsconfig-react",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "LyunKi's personal Typescript config for react",
   "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/tsconfig-react",
   "author": {
