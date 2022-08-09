@@ -1,5 +1,6 @@
 packages:
   - 'custom-configs/**'
+  - 'common/**'
   # - 'apps/**'
   # 用react native开发web页面 mobile first!
   - 'native/**'
