@@ -1,0 +1,28 @@
+{
+  "name": "@cloud-dragon/common-utils",
+  "description": "Common utils for ES",
+  "homepage": "https://github.com/LyunKi/chaos/tree/master/common/common-utils",
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "module": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
+  "typings": "./src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LyunKi/chaos.git",
+    "directory": "common/common-utils"
+  },
+  "version": "0.0.0",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "pnpm build"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@cloud-dragon/common-types": "workspace:*",
+    "@cloud-dragon/tsconfig-react": "workspace:*",
+    "@cloud-dragon/eslint-config": "workspace:*"
+  }
+}
