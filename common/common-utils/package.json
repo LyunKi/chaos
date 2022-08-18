@@ -3,10 +3,8 @@
   "description": "Common utils for ES",
   "homepage": "https://github.com/LyunKi/chaos/tree/master/common/common-utils",
   "license": "MIT",
-  "main": "./src/index.ts",
-  "module": "./dist/index.ts",
+  "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
-  "typings": "./src/index.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/LyunKi/chaos.git",
