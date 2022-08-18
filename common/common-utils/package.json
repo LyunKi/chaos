@@ -20,6 +20,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "devDependencies": {
     "@cloud-dragon/common-types": "workspace:*",
     "@cloud-dragon/tsconfig-react": "workspace:*",
