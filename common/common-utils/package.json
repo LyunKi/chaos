@@ -12,7 +12,7 @@
     "url": "https://github.com/LyunKi/chaos.git",
     "directory": "common/common-utils"
   },
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "build": "tsc",
     "prepublish": "pnpm build"
