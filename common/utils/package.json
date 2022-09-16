@@ -8,11 +8,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/LyunKi/chaos.git",
-    "directory": "common/common-utils"
+    "directory": "common/utils"
   },
   "version": "0.0.2",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p ./tsconfig.build.json",
     "prepublish": "pnpm build"
   },
   "files": [
