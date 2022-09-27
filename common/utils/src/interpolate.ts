@@ -1,4 +1,4 @@
-import { KV } from '@cloud-dragon/common-types'
+import type { KV } from '@cloud-dragon/common-types'
 
 interface InterpolateOptions {
   template?: string

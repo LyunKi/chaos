@@ -1,7 +1,0 @@
-{
-  "extends": "@cloud-dragon/tsconfig-react",
-  "compilerOptions": {
-    "rootDir": "."
-  },
-  "include": ["**/**/src", "**/**/test"]
-}

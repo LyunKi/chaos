@@ -1,16 +1,16 @@
 {
-  "name": "@cloud-dragon/common-utils",
-  "description": "Common utils for ES",
-  "homepage": "https://github.com/LyunKi/chaos/tree/master/common/common-utils",
+  "name": "@cloud-dragon/react-utils",
+  "description": "Common utils for React",
+  "homepage": "https://github.com/LyunKi/chaos/tree/master/common/react-utils",
   "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/LyunKi/chaos.git",
-    "directory": "common/utils"
+    "directory": "common/react-utils"
   },
-  "version": "0.0.2",
+  "version": "0.0.0",
   "scripts": {
     "build": "tsc",
     "prepublish": "pnpm build"
@@ -21,9 +21,13 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "peerDependencies": {
+    "react": "18.2.0"
+  },
   "devDependencies": {
     "@cloud-dragon/common-types": "workspace:*",
+    "@cloud-dragon/eslint-config": "workspace:*",
     "@cloud-dragon/tsconfig-react": "workspace:*",
-    "@cloud-dragon/eslint-config": "workspace:*"
+    "react": "18.2.0"
   }
 }
