@@ -1,5 +1,11 @@
 # @cloud-dragon/eslint-config
 
+## 0.1.0
+
+### Minor Changes
+
+- customize default ts eslint config
+
 ## 0.0.2
 
 ### Patch Changes

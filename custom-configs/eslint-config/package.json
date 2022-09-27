@@ -1,6 +1,6 @@
 {
   "name": "@cloud-dragon/eslint-config",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "LyunKi's personal eslint config",
   "main": "index.js",
   "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/eslint-config",
