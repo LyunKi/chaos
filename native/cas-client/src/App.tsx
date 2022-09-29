@@ -5,21 +5,30 @@ import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
 import AppLoading from 'expo-app-loading'
 import { ThemeProvider } from 'styled-components/native'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
-
 import { useColorScheme } from 'react-native'
+import React from 'react'
+import { ConfigProvider } from '@cloud-design/components'
 import useCachedResources from './common/utils/hooks/useCachedResources'
 import Navigation from './navigation'
-import { CountriesIconsPack } from './components'
+import { CountriesIconsPack, SafeArea } from './components'
 
 export default function App() {
   const isLoadingComplete = useCachedResources()
   const colorScheme = useColorScheme() ?? 'light'
-  // const theme = `cloud-${colorScheme}`;
-  const theme = eva[colorScheme]
+  const theme = `cloud-${colorScheme}`
+  // const theme = eva[colorScheme]
 
   if (!isLoadingComplete) {
     return <AppLoading />
   }
+  return (
+    <SafeAreaProvider>
+      <ConfigProvider themeMode={colorScheme} themePack={theme}>
+        <SafeArea />
+        {/* <Navigation colorScheme={colorScheme} /> */}
+      </ConfigProvider>
+    </SafeAreaProvider>
+  )
   return (
     <ApplicationProvider {...eva} theme={theme}>
       <IconRegistry icons={[EvaIconsPack, CountriesIconsPack]} />

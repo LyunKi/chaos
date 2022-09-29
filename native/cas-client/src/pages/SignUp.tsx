@@ -1,4 +1,4 @@
-import { Button, Divider, Text, TopNavigation } from '@ui-kitten/components'
+import { Button, Divider, Text } from '@ui-kitten/components'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 import React from 'react'
 import { RootStackParamList } from '../types'
 import {
-  BackAction,
   Container,
   MobileInput,
   PasswordInput,
@@ -63,11 +62,11 @@ function SignUp(props: SignUpProps) {
   )
   return (
     <SafeArea>
-      <TopNavigation
+      {/* <TopNavigation
         alignment="center"
         title={I18n.t('companyName')}
         accessoryLeft={BackAction}
-      />
+      /> */}
       <Divider />
       <Container>
         <Welcome>{I18n.t('registration.welcome')}</Welcome>

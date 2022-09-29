@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 const SafeAreaContainer = styled(SafeAreaView)`
@@ -7,5 +7,7 @@ const SafeAreaContainer = styled(SafeAreaView)`
 `
 
 export default function SafeArea(props: PropsWithChildren<{}>) {
+  const insets = useSafeAreaInsets()
+  console.log('insets', insets)
   return <SafeAreaContainer>{props.children}</SafeAreaContainer>
 }
