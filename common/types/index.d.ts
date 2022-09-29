@@ -5,3 +5,5 @@ export type NestedString = {
 }
 
 export type Prefix<K extends string, T extends string = string> = `${K}${T}`
+
+export type Fn<P = any[], R = any> = (...args: P) => R
