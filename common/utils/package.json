@@ -21,7 +21,12 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "peerDependencies": {
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
+    "lodash": "^4.17.21",
+    "@types/lodash": "^4.14.182",
     "@cloud-dragon/common-types": "workspace:*",
     "@cloud-dragon/tsconfig-react": "workspace:*",
     "@cloud-dragon/eslint-config": "workspace:*"
