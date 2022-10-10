@@ -1,5 +1,11 @@
 # @cloud-dragon/common-utils
 
+## 0.1.1
+
+### Patch Changes
+
+- feat(common-utils): export gcd and Scheduler utils
+
 ## 0.1.0
 
 ### Minor Changes
