@@ -22,6 +22,7 @@ module.exports = {
   },
   rules: {
     'no-shadow': 'off',
+    'max-classes-per-file': 'off',
     '@typescript-eslint/no-shadow': ['error'],
     'import/prefer-default-export': 'off',
     'import/extensions': [
