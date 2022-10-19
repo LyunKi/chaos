@@ -1,6 +1,6 @@
 {
   "name": "@cloud-dragon/tsconfig-node",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "LyunKi's personal Typescript config",
   "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/tsconfig-node",
   "author": {
