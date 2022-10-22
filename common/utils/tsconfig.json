@@ -1,8 +1,12 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist"
+    "rootDir": ".",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@cloud-dragon/common-utils": ["./src"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "tests"]
 }

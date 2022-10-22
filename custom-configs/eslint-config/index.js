@@ -1,25 +1,34 @@
 module.exports = {
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.ts'],
+      },
+      typescript: {
+        alwaysTryTypes: true,
+      },
+    },
+  },
   extends: [
-    'airbnb-base',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
     'prettier',
     'prettier/prettier',
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'eslint-plugin-import'],
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
-  },
+  plugins: [
+    '@typescript-eslint',
+    'eslint-plugin-import',
+    'autofix',
+    'unused-imports',
+    'import',
+  ],
   rules: {
     'no-shadow': 'off',
     'max-classes-per-file': 'off',
@@ -33,6 +42,26 @@ module.exports = {
         jsx: 'never',
         ts: 'never',
         tsx: 'never',
+      },
+    ],
+    'autofix/no-debugger': 'error',
+    'autofix/no-plusplus': 'error',
+    'import/no-unresolved': 'off',
+    'import/order': 'error',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'import/no-named-as-default-member': 'off',
+    'import/default': 'off',
+    'import/namespace': 'off',
+    'no-throw-literal': 'off',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
       },
     ],
   },
