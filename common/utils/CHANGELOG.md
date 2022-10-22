@@ -1,5 +1,11 @@
 # @cloud-dragon/common-utils
 
+## 0.3.0
+
+### Minor Changes
+
+- fix publish error
+
 ## 0.2.0
 
 ### Minor Changes
