@@ -1,5 +1,11 @@
 # @cloud-dragon/common-utils
 
+## 0.2.0
+
+### Minor Changes
+
+- add AcceptLanguageParser to handle accept languages header
+
 ## 0.1.1
 
 ### Patch Changes

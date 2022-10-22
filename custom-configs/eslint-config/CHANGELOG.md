@@ -1,5 +1,11 @@
 # @cloud-dragon/eslint-config
 
+## 0.3.0
+
+### Minor Changes
+
+- support autofix for the unused imports in ts
+
 ## 0.2.0
 
 ### Minor Changes
