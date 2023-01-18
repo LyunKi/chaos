@@ -5,7 +5,7 @@
     "pnpm": ">=6"
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "chmod +x ./node_modules/husky/lib/bin.js && husky install",
     "publish:prettier": "pnpm publish --filter=@cloud-dragon/prettier-config --access public --registry=https://registry.npm.taobao.org"
   },
   "devDependencies": {

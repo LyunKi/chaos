@@ -4,6 +4,8 @@ import { gcd } from './gcd'
 
 export type TaskCallback = (experiencedTime: number) => any
 
+export type TaskConfig = OnceTaskConfig | IntervalTaskConfig
+
 /**
  * 类似于 setTimeout， 仅仅执行一次。
  *
@@ -30,8 +32,6 @@ export type IntervalTaskConfig = {
   totalPeriod?: number
 }
 
-export type TaskConfig = OnceTaskConfig | IntervalTaskConfig
-
 function isIntervalTaskConfig(task: TaskConfig): task is IntervalTaskConfig {
   return (
     Object.hasOwnProperty.call(task, 'intervalPeriod') &&
@@ -45,7 +45,6 @@ function isIntervalTaskConfig(task: TaskConfig): task is IntervalTaskConfig {
  */
 export const BASE_PERIOD = 10
 
-// eslint-disable-next-line no-use-before-define
 export type SchedulerTask = InstanceType<typeof Scheduler.Task>
 
 export interface SchedulerTasks {
@@ -114,7 +113,7 @@ export class Scheduler {
      *
      * @private
      */
-    public checkTotalPeriod() {
+    private checkTotalPeriod() {
       if (this.totalPeriod !== undefined) {
         if (
           this.totalPeriod < (this.intervalPeriod ?? 1) ||
@@ -130,7 +129,7 @@ export class Scheduler {
      *
      * @private
      */
-    public checkIntervalPeriod() {
+    private checkIntervalPeriod() {
       if (this.intervalPeriod !== undefined) {
         if (this.intervalPeriod < 1 || !Number.isInteger(this.intervalPeriod)) {
           throw new Error('Illegal SchedulerTask config: intervalPeriod')
@@ -174,7 +173,7 @@ export class Scheduler {
   private action = () => {
     const completedTasks: string[] = []
     const actions = map(this.tasks, async (task, id) => {
-      this.tasks[id].experiencedPeriod += this.multiple
+      task.experiencedPeriod += this.multiple
       // 如果到了周期任务的执行时间
       if (
         task.intervalPeriod &&
