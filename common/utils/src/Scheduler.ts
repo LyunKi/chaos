@@ -113,7 +113,7 @@ export class Scheduler {
      *
      * @private
      */
-    private checkTotalPeriod() {
+    checkTotalPeriod() {
       if (this.totalPeriod !== undefined) {
         if (
           this.totalPeriod < (this.intervalPeriod ?? 1) ||
@@ -129,7 +129,7 @@ export class Scheduler {
      *
      * @private
      */
-    private checkIntervalPeriod() {
+    checkIntervalPeriod() {
       if (this.intervalPeriod !== undefined) {
         if (this.intervalPeriod < 1 || !Number.isInteger(this.intervalPeriod)) {
           throw new Error('Illegal SchedulerTask config: intervalPeriod')
