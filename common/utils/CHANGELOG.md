@@ -1,5 +1,11 @@
 # @cloud-dragon/common-utils
 
+## 0.4.0
+
+### Minor Changes
+
+- add some features
+
 ## 0.3.0
 
 ### Minor Changes
