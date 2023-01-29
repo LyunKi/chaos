@@ -48,7 +48,9 @@ export class ValidationSchema {
         let schema = this.schema[schemaName]
         if (required) {
           schema = schema.required(
-            isString(required) ? required : `errors.field.${fieldName}.required`
+            isString(required)
+              ? required
+              : `errors.fields.${fieldName}.required`
           )
         } else {
           schema = schema.notRequired()
@@ -68,7 +70,7 @@ export const enum ValidateType {
 }
 
 export class CommonValidator {
-  public static validateEmail(email: string) {
-    return EMAIL_REGEX.test(email)
+  public static validateEmail(email?: string | null) {
+    return email && EMAIL_REGEX.test(email)
   }
 }
