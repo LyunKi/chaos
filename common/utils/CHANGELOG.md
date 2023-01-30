@@ -1,5 +1,11 @@
 # @cloud-dragon/common-utils
 
+## 0.5.0
+
+### Minor Changes
+
+- add validation utils
+
 ## 0.4.0
 
 ### Minor Changes
