@@ -1,5 +1,11 @@
 # @cloud-dragon/react-utils
 
+## 0.5.0
+
+### Minor Changes
+
+- add new functions
+
 ## 0.4.0
 
 ### Minor Changes
