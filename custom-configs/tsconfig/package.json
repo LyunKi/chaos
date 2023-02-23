@@ -1,0 +1,17 @@
+{
+  "name": "@cloud-dragon/tsconfig",
+  "version": "0.0.0",
+  "description": "LyunKi's Typescript config",
+  "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/tsconfig",
+  "author": {
+    "name": "LyunKi",
+    "email": "ly1169134156@163.com",
+    "url": "https://github.com/LyunKi/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@tsconfig/create-react-app": "^1.0.3",
+    "@tsconfig/node16-strictest-esm": "^1.0.3",
+    "@tsconfig/recommended": "^1.0.3"
+  }
+}

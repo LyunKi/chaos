@@ -27,7 +27,7 @@
   "devDependencies": {
     "@cloud-dragon/common-types": "workspace:*",
     "@cloud-dragon/eslint-config": "workspace:*",
-    "@cloud-dragon/tsconfig-react": "workspace:*",
+    "@cloud-dragon/tsconfig": "workspace:*",
     "@types/react": "~18.0.15",
     "react": "18.2.0"
   },
