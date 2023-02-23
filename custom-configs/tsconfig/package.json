@@ -1,6 +1,6 @@
 {
   "name": "@cloud-dragon/tsconfig",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "LyunKi's Typescript config",
   "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/tsconfig",
   "author": {
@@ -12,6 +12,6 @@
   "dependencies": {
     "@tsconfig/create-react-app": "^1.0.3",
     "@tsconfig/node16-strictest-esm": "^1.0.3",
-    "@tsconfig/recommended": "^1.0.3"
+    "@tsconfig/recommended": "^1.0.2"
   }
 }
