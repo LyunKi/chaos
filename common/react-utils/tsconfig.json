@@ -1,8 +1,17 @@
 {
   "extends": "@cloud-dragon/tsconfig/react",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist"
+    "types": ["vite/client"],
+    "noEmit": true
   },
-  "include": ["src"]
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }
