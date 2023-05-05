@@ -1,5 +1,5 @@
 {
-  "name": "@harmony-design/headless",
+  "name": "@cloud-design/headless",
   "private": true,
   "version": "0.0.0",
   "files": [
@@ -28,6 +28,6 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@harmony/react-utils": "workspace:*"
+    "@cloud-dragon/react-utils": "workspace:*"
   }
 }

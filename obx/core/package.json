@@ -1,5 +1,5 @@
 {
-  "name": "@harmony/obx-core",
+  "name": "@cloud-dragon/obx-core",
   "private": true,
   "version": "0.1.0",
   "files": [
@@ -23,6 +23,6 @@
     "test:updateSnap": "jest --updateSnapshot"
   },
   "devDependencies": {
-    "@harmony/common-types": "workspace:*"
+    "@cloud-dragon/common-types": "workspace:*"
   }
 }

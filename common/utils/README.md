@@ -1,3 +1,3 @@
 # Installation
 
-> `npm i @harmony/utils`
+> `npm i @cloud-dragon/utils`

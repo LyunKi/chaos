@@ -1,4 +1,4 @@
-import { Fn } from '@harmony/common-types';
+import { Fn } from '@cloud-dragon/common-types';
 import { DependenciesManager } from './dependencies-manager';
 
 export class Observer {

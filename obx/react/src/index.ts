@@ -1,2 +1,2 @@
-export * from '@harmony/obx-core';
+export * from '@cloud-dragon/obx-core';
 export * from './observer';

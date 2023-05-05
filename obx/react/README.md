@@ -1,1 +1,1 @@
-Reactive state management for react, based on @harmony/obx-core
+Reactive state management for react, based on @cloud-dragon/obx-core

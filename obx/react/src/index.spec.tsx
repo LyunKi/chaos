@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { action, observable, runInAction } from '@harmony/obx-core';
+import { action, observable, runInAction } from '@cloud-dragon/obx-core';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { observer } from './';
 

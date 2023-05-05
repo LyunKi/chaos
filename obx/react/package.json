@@ -1,5 +1,5 @@
 {
-  "name": "@harmony/obx-react",
+  "name": "@cloud-dragon/obx-react",
   "private": true,
   "version": "0.0.0",
   "files": [
@@ -28,11 +28,11 @@
   },
   "devDependencies": {
     "react": "^18.2.0",
-    "@harmony/common-types": "workspace:*",
+    "@cloud-dragon/common-types": "workspace:*",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@harmony/obx-core": "workspace:*",
-    "@harmony/react-utils": "workspace:*"
+    "@cloud-dragon/obx-core": "workspace:*",
+    "@cloud-dragon/react-utils": "workspace:*"
   }
 }

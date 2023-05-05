@@ -1,6 +1,6 @@
-import { Fn, Constructor } from '@harmony/common-types';
-import { subscribe } from '@harmony/obx-core';
-import { useForceUpdate } from '@harmony/react-utils';
+import { Fn, Constructor } from '@cloud-dragon/common-types';
+import { subscribe } from '@cloud-dragon/obx-core';
+import { useForceUpdate } from '@cloud-dragon/react-utils';
 
 export function observer<F extends Fn, C extends Constructor>(
   value: F | C,

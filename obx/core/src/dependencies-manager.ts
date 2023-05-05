@@ -1,4 +1,4 @@
-import { ObjectKey } from '@harmony/common-types';
+import { ObjectKey } from '@cloud-dragon/common-types';
 import { Observer } from './observers';
 
 class DependenciesManagerClass {

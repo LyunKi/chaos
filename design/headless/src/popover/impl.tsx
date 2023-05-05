@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import invoke from 'lodash/invoke';
 import isNil from 'lodash/isNil';
 import isEqual from 'lodash/isEqual';
-import { combineRefs } from '@harmony/react-utils';
+import { combineRefs } from '@cloud-dragon/react-utils';
 import { SizeObserver } from '../size-observer';
 import {
   OverlayPosition,
