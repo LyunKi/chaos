@@ -1,5 +1,5 @@
 {
-  "extends": "@cloud-dragon/tsconfig/react",
+  "extends": "@harmony-configs/tsconfig/react",
   "compilerOptions": {
     "types": ["vite/client"],
     "noEmit": true

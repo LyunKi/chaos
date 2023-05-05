@@ -1,14 +1,8 @@
 {
-  "name": "@cloud-dragon/eslint-config",
-  "version": "0.3.0",
-  "description": "LyunKi's personal eslint config",
+  "name": "@harmony-configs/eslint-config",
+  "version": "0.1.0",
+  "description": "Eslint config",
   "main": "index.js",
-  "repository": "https://github.com/LyunKi/chaos/tree/master/custom-configs/eslint-config",
-  "author": {
-    "name": "LyunKi",
-    "email": "ly1169134156@163.com",
-    "url": "https://github.com/LyunKi/"
-  },
   "devDependencies": {
     "eslint": "^8.2.0",
     "prettier": "^2.5.1"

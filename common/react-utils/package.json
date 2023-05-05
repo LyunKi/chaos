@@ -1,18 +1,21 @@
 {
-  "name": "@cloud-dragon/react-utils",
+  "name": "@harmony/react-utils",
   "description": "Common utils for React",
-  "homepage": "https://github.com/LyunKi/chaos/tree/master/common/react-utils",
+  "homepage": "https://github.com/LyunKi/harmony/tree/master/common/react-utils",
   "license": "MIT",
-  "main": "./dist/index.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/LyunKi/chaos.git",
-    "directory": "common/react-utils"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.umd.js"
+    }
   },
-  "version": "0.5.0",
+  "version": "0.1.0",
   "scripts": {
-    "build": "tsc",
+    "build": "vite build && tsc -p tsconfig.lib.json",
     "prepublish": "pnpm build",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -21,23 +24,8 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
   "peerDependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@cloud-dragon/common-types": "workspace:*",
-    "@cloud-dragon/eslint-config": "workspace:*",
-    "@cloud-dragon/tsconfig": "workspace:*",
-    "@types/react": "~18.0.15",
-    "@types/react-dom": "^18.0.10",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.17.11"
   }
 }

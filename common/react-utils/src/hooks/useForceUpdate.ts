@@ -1,8 +1,8 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react';
 
 export function useForceUpdate() {
-  const [_, setFlag] = useState({})
+  const [_, setFlag] = useState({});
   return useCallback(() => {
-    setFlag({})
-  }, [])
+    setFlag({});
+  }, []);
 }

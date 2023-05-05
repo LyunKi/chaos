@@ -1,27 +1,34 @@
 {
-  "name": "@cloud-dragon/common-utils",
+  "name": "@harmony/common-utils",
   "description": "Common utils for ES",
-  "homepage": "https://github.com/LyunKi/chaos/tree/master/common/common-utils",
+  "homepage": "https://github.com/LyunKi/harmony/tree/master/common/utils",
   "license": "MIT",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.umd.js"
+    }
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/LyunKi/chaos.git",
+    "url": "https://github.com/LyunKi/harmony.git",
     "directory": "common/utils"
   },
-  "version": "0.6.0",
+  "version": "0.1.0",
   "scripts": {
-    "build": "tsc",
-    "test": "pnpm jest",
-    "prepublish": "pnpm build"
+    "build": "vite build && tsc -p tsconfig.lib.json",
+    "prepublish": "pnpm build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:updateSnap": "jest --updateSnapshot"
   },
   "files": [
-    "dist/src"
+    "dist"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
   "peerDependencies": {
     "lodash": "^4.17.21"
   },
@@ -42,3 +49,4 @@
     "yup": "^0.32.11"
   }
 }
+

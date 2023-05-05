@@ -1,14 +1,8 @@
 {
-  "name": "@cloud-dragon/common-types",
+  "name": "@harmony/common-types",
   "description": "Frequently used common TypeScript definitions",
-  "homepage": "https://github.com/LyunKi/chaos/tree/master/common/types",
   "license": "MIT",
   "main": "",
   "types": "index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/LyunKi/chaos.git",
-    "directory": "common/types"
-  },
-  "version": "0.2.0"
+  "version": "0.1.0"
 }

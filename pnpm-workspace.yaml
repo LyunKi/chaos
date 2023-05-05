@@ -1,8 +1,7 @@
 packages:
-  - 'custom-configs/**'
-  - 'common/**'
-  # - 'apps/**'
-  # 用react native开发web页面 mobile first!
-  - 'native/**'
-  # 不包括在 test 文件夹下的 package
-  - '!**/test/**'
+  - 'design/*'
+  - 'packages/*'
+  - 'custom-configs/*'
+  - 'common/*'
+  - 'obx/*'
+  - '!common/utils'
