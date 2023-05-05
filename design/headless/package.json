@@ -1,0 +1,33 @@
+{
+  "name": "@harmony-design/headless",
+  "private": true,
+  "version": "0.0.0",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "rimraf dist/ && rollup --config rollup.config.ts --configPlugin typescript && tsc -p tsconfig.lib.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:updateSnap": "jest --updateSnapshot"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "lodash": "^4.17.21",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@harmony/react-utils": "workspace:*"
+  }
+}
