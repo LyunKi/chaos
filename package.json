@@ -16,9 +16,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@harmony-configs/eslint-config": "workspace:*",
-    "@harmony-configs/prettier-config": "workspace:*",
-    "@harmony-configs/tsconfig": "workspace:*",
+    "@cloud-dragon/eslint-config": "workspace:*",
+    "@cloud-dragon/prettier-config": "workspace:*",
+    "@cloud-dragon/tsconfig": "workspace:*",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-typescript": "^11.0.0",
     "@swc/core": "^1.3.36",

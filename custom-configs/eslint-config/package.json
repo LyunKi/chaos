@@ -1,5 +1,5 @@
 {
-  "name": "@harmony-configs/eslint-config",
+  "name": "@cloud-dragon/eslint-config",
   "version": "0.1.0",
   "description": "Eslint config",
   "main": "index.js",

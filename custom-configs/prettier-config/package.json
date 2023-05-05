@@ -1,5 +1,5 @@
 {
-  "name": "@harmony-configs/prettier-config",
+  "name": "@cloud-dragon/prettier-config",
   "version": "0.1.0",
   "description": "Prettier config",
   "main": "index.js",

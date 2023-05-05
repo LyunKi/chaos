@@ -1,5 +1,5 @@
 {
-  "name": "@harmony-configs/tsconfig",
+  "name": "@cloud-dragon/tsconfig",
   "version": "0.1.0",
   "description": "Typescript config",
   "license": "MIT",

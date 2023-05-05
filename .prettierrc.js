@@ -1,3 +1,3 @@
 module.exports = {
-  ...require("@harmony-configs/prettier-config"),
+  ...require("@cloud-dragon/prettier-config"),
 };

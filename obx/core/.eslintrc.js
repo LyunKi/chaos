@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@harmony-configs/eslint-config'],
+  extends: ['@cloud-dragon/eslint-config'],
 }
