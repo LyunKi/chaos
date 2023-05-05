@@ -5,3 +5,4 @@ packages:
   - 'common/*'
   - 'obx/*'
   - '!common/utils'
+  - '!design/components'
