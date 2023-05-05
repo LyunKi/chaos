@@ -1,7 +1,7 @@
 {
-  "name": "@harmony/react-utils",
+  "name": "@cloud-dragon/react-utils",
   "description": "Common utils for React",
-  "homepage": "https://github.com/LyunKi/harmony/tree/master/common/react-utils",
+  "homepage": "https://github.com/LyunKi/chaos/tree/master/common/react-utils",
   "license": "MIT",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.mjs",
