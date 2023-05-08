@@ -11,6 +11,7 @@ module.exports = {
     '!**/node_modules/**',
     '!**/dist/**',
   ],
+  passWithNoTests: true,
   transform: {
     '^.+\\.(jsx?|tsx?)$': [
       'ts-jest',

@@ -7,6 +7,7 @@ const globals = {
   globals: {
     'react-dom': 'ReactDom',
     react: 'React',
+    lodash: '_',
   },
 };
 

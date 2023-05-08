@@ -17,36 +17,14 @@
     }
   },
   "scripts": {
-    "build": "rimraf dist/ && rollup --config rollup.config.ts --configPlugin typescript && tsc -p tsconfig.lib.json",
-    "dev": "storybook dev -p 6006",
+    "build": "vite build && tsc -p tsconfig.lib.json",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:updateSnap": "jest --updateSnapshot",
-    "build-storybook": "storybook build"
+    "test:updateSnap": "jest --updateSnapshot"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
     "lodash": "^4.17.21",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.0-beta.47",
-    "@storybook/addon-interactions": "^7.0.0-beta.47",
-    "@storybook/addon-links": "^7.0.0-beta.47",
-    "@storybook/blocks": "^7.0.0-beta.47",
-    "@storybook/react": "^7.0.0-beta.47",
-    "@storybook/react-vite": "^7.0.0-beta.47",
-    "@storybook/testing-library": "^0.0.14-next.1",
-    "@testing-library/react": "^13.4.0",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "@vitejs/plugin-react-swc": "^3.0.0",
-    "less": "^4.1.3",
-    "postcss": "^8.4.21",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "storybook": "^7.0.0-beta.47",
-    "vite": "^4.1.0"
+    "react-dom": "^18.2.0"
   }
 }
