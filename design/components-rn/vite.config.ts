@@ -7,7 +7,6 @@ const globals = {
   globals: {
     'react-dom': 'ReactDom',
     react: 'React',
-    lodash: '_',
   },
 };
 
@@ -16,7 +15,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: './src/index.ts',
-      name: 'ReactUtils',
+      name: 'CloudDesignComponentsRn',
       fileName: 'index',
     },
     rollupOptions: {

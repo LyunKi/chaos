@@ -3,7 +3,7 @@ module.exports = {
   resetMocks: true,
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
-  testMatch: ['<rootDir>/src/**/*.spec.[jt]s?(x)'],
+  testMatch: ['<rootDir>/src/**/*.(spec|test).[jt]s?(x)'],
   collectCoverage: true,
   coverageDirectory: '<rootDir>/coverage',
   collectCoverageFrom: [

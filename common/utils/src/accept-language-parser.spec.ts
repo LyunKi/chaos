@@ -1,4 +1,4 @@
-import { AcceptLanguageParser } from './';
+import { AcceptLanguageParser } from '.';
 
 describe('AcceptLanguageParser', () => {
   it('should parse language string', () => {

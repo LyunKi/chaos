@@ -4,5 +4,3 @@ packages:
   - 'custom-configs/*'
   - 'common/*'
   - 'obx/*'
-  - '!common/utils'
-  - '!design/components'
