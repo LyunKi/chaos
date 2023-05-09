@@ -18,6 +18,8 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.lib.json",
+    "dev": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:updateSnap": "jest --updateSnapshot"
