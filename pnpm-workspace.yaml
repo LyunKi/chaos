@@ -4,3 +4,4 @@ packages:
   - 'custom-configs/*'
   - 'common/*'
   - 'obx/*'
+  - '!!design/components-rn-backup'
