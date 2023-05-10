@@ -2,7 +2,7 @@ import { IterableWeakSet } from './iterable-weak-set';
 
 describe('IterableWeakSet', () => {
   it('should act like weakset but iterable', () => {
-    const a: any = [{}, {}, {}];
+    const a: any = [{ a: 0 }, { a: 1 }, { a: 2 }];
     const set = new IterableWeakSet([a[0]]);
     set.add(a[1]);
     set.add(a[2]);

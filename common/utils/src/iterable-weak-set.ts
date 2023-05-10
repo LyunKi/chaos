@@ -1,6 +1,5 @@
 export class IterableWeakSet<V extends object> {
   private inner: Set<WeakRef<V>> = new Set();
-  private records: WeakMap<V, WeakRef<V>> = new WeakMap();
 
   public constructor(iterables: Iterable<V> = []) {
     for (const element of iterables) {
@@ -9,28 +8,34 @@ export class IterableWeakSet<V extends object> {
   }
 
   public add(element: V) {
-    let record = this.records.get(element);
-    if (!record) {
-      record = new WeakRef(element);
-      this.records.set(element, record);
+    this.inner.add(new WeakRef(element));
+  }
+
+  private find(element: V) {
+    for (const wrap of this.inner) {
+      const innerObject = wrap.deref();
+      if (!innerObject) {
+        this.deleteWeakRef(wrap);
+        continue;
+      }
+      if (innerObject === element) {
+        return wrap;
+      }
     }
-    this.inner.add(record);
+    return null;
   }
 
   public delete(element: V) {
-    let record = this.records.get(element);
-    if (!record) {
-      return false;
+    const target = this.find(element);
+    if (target) {
+      return this.inner.delete(target);
     }
-    return this.inner.delete(record);
+    return false;
   }
 
   public has(element: V) {
-    let record = this.records.get(element);
-    if (!record) {
-      return false;
-    }
-    return this.inner.has(record);
+    const target = this.find(element);
+    return !!target;
   }
 
   private deleteWeakRef(element: WeakRef<V>) {
