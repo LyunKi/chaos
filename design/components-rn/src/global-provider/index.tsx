@@ -16,7 +16,7 @@ export interface ThemeConfig {
    *
    */
   themePack?: ThemePack;
-  themeMode: string;
+  themeMode?: string;
   themeContext?: Partial<Omit<ThemeContext, 'windowWidth' | 'windowHeight'>>;
 }
 
