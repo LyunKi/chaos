@@ -8,7 +8,9 @@ export class IterableWeakSet<V extends object> {
   }
 
   public add(element: V) {
-    this.inner.add(new WeakRef(element));
+    if (!this.find(element)) {
+      this.inner.add(new WeakRef(element));
+    }
   }
 
   private find(element: V) {
