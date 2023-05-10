@@ -23,6 +23,7 @@
     "test:updateSnap": "jest --updateSnapshot"
   },
   "devDependencies": {
-    "@cloud-dragon/common-types": "workspace:*"
+    "@cloud-dragon/common-types": "workspace:*",
+    "@cloud-dragon/common-utils": "workspace:*"
   }
 }

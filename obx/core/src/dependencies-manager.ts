@@ -1,14 +1,18 @@
 import { ObjectKey } from '@cloud-dragon/common-types';
+import { IterableWeakSet } from '@cloud-dragon/common-utils';
 import { Observer } from './observers';
 
 class DependenciesManagerClass {
   private isCollecting = false;
   private countChangingAction = 0;
   // 将要执行的任务集合
-  private tasks: Set<Observer> | null = null;
+  private tasks: IterableWeakSet<Observer> | null = null;
   private observers: Observer[] = [];
 
-  public dependenciesMap = new WeakMap<any, Record<ObjectKey, Set<Observer>>>();
+  public dependenciesMap = new WeakMap<
+    any,
+    Record<ObjectKey, IterableWeakSet<Observer>>
+  >();
 
   private get currentObserver() {
     return this.observers[this.observers.length - 1];
@@ -32,14 +36,14 @@ class DependenciesManagerClass {
     if (dependencies[propKey]) {
       dependencies[propKey].add(this.currentObserver);
     } else {
-      dependencies[propKey] = new Set([this.currentObserver]);
+      dependencies[propKey] = new IterableWeakSet([this.currentObserver]);
     }
     this.dependenciesMap.set(target, dependencies);
   }
 
   public startAction() {
     if (this.countChangingAction === 0) {
-      this.tasks = new Set();
+      this.tasks = new IterableWeakSet();
     }
     this.countChangingAction += 1;
   }
@@ -53,19 +57,18 @@ class DependenciesManagerClass {
     }
     const dependencies = this.dependenciesMap.get(target);
     const observers = dependencies?.[propKey] ?? [];
-    observers.forEach((observer) => {
+    for (const observer of observers) {
       this.tasks?.add(observer);
-    });
+    }
   }
 
   public endAction() {
     this.countChangingAction -= 1;
     if (this.countChangingAction === 0) {
       // 确认所有action都执行完毕时通知 observers 执行
-      this.tasks?.forEach((observer) => {
-        // observers 执行的过程中重新构建了
+      for (const observer of this.tasks ?? []) {
         observer.call();
-      });
+      }
       this.tasks = null;
     }
   }
