@@ -4,10 +4,6 @@ import { Button } from './index';
 const meta = {
   title: 'Example/Button',
   component: Button,
-  parameters: {
-    layout: 'fullscreen',
-  },
-  tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
 
 export default meta;

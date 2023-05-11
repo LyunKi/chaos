@@ -1,18 +1,24 @@
 import React from 'react';
 import { GlobalProvider } from '../src/';
-import { themes, ensure } from '@storybook/theming';
+import { themes } from '@storybook/theming';
 import { Preview } from '@storybook/react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { DocsContainer } from '@storybook/blocks';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 const preview = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
   darkMode: {
     dark: { ...themes.dark },
     light: { ...themes.normal },
     stylePreview: true,
   },
   parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
+    layout: 'fullscreen',
+    viewport: {
+      viewports: INITIAL_VIEWPORTS,
+      defaultViewport: 'iphone6',
+    },
     controls: {
       sort: 'requiredFirst',
       extends: true,
