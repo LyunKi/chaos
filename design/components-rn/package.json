@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@cloud-dragon/common-types": "workspace:*",
-    "@cloud-dragon/react-utils": "workspace:*"
+    "@cloud-dragon/react-utils": "workspace:*",
+    "@cloud-dragon/common-utils": "workspace:*"
   }
 }

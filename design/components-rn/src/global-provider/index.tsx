@@ -1,8 +1,7 @@
-import React, { PropsWithChildren, useEffect } from 'react';
+import React, { Fragment, PropsWithChildren, useEffect } from 'react';
 import { Dimensions } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PortalProvider } from '@gorhom/portal';
-import { useForceUpdate } from '@cloud-dragon/react-utils';
 import {
   SupportedLocale,
   ThemeContext,
@@ -44,7 +43,7 @@ export const GlobalProvider = ({
   children,
 }: PropsWithChildren<GlobalProviderProps>) => {
   const [ready, setReady] = React.useState<boolean>(false);
-  const forceUpdate = useForceUpdate();
+  const [key, setKey] = React.useState(0);
   useEffect(() => {
     // local
     I18nManager.setLocale(locale);
@@ -60,25 +59,26 @@ export const GlobalProvider = ({
       ThemeManager.setThemePack(themePack);
     }
     ThemeManager.computeTheme();
-
     const subscription = Dimensions.addEventListener('change', ({ window }) => {
       ThemeManager.updateThemeContext({
         windowWidth: window.width,
         windowHeight: window.height,
       });
       ThemeManager.computeTheme();
-      forceUpdate();
+      setKey((previous) => previous + 1);
     });
+    setKey((previous) => previous + 1);
     setReady(true);
     return () => {
       setReady(false);
       subscription?.remove();
     };
-  }, [locale, themeMode, themePack, themeContext, forceUpdate]);
-
+  }, [locale, themeMode, themePack, themeContext, setKey]);
   return (
     <PortalProvider>
-      <SafeAreaProvider style={{}}>{ready && children}</SafeAreaProvider>
+      <SafeAreaProvider>
+        {ready && <Fragment key={key}>{children}</Fragment>}
+      </SafeAreaProvider>
     </PortalProvider>
   );
 };

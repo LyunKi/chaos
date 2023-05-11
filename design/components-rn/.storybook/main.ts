@@ -17,13 +17,15 @@ const config: StorybookConfig = {
         },
       },
     },
+    'storybook-dark-mode',
   ],
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: true,
+    docsMode: true,
   },
 };
 export default config;

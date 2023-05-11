@@ -7,6 +7,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
 
 export default meta;
