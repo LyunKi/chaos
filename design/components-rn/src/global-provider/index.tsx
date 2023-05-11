@@ -9,6 +9,7 @@ import {
   ThemeManager,
   ThemePack,
   I18nManager,
+  ThemeMode,
 } from '../common';
 
 export interface ThemeConfig {
@@ -19,7 +20,7 @@ export interface ThemeConfig {
   /**
    * Theme mode: This option allows you to choose which theme in the pack will be used. The default theme is light.
    */
-  themeMode?: string;
+  themeMode?: ThemeMode;
   /**
    * Theme context: This option controls some global theme settings, such as “fontSize”.
    */
@@ -77,7 +78,7 @@ export const GlobalProvider = ({
 
   return (
     <PortalProvider>
-      <SafeAreaProvider>{ready && children}</SafeAreaProvider>
+      <SafeAreaProvider style={{}}>{ready && children}</SafeAreaProvider>
     </PortalProvider>
   );
 };

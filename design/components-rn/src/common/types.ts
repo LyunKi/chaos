@@ -1,18 +1,22 @@
 import { KV, Fn } from '@cloud-dragon/common-types';
 import { ReactNode } from 'react';
+import { StyleProp } from 'react-native';
 import { COUNTRIES } from './constants';
 
 export type CloudDesignTheme = KV<any>;
 
-export type ThemePack = KV<CloudDesignTheme>;
+export type ThemeMode = 'light' | 'dark';
+
+export type ThemePack = {
+  light: CloudDesignTheme;
+  dark: CloudDesignTheme;
+};
 
 export type ThemeStyle = KV;
 
-export type RnStyle = KV;
-
-export type Themeable<Props = any> = Props & {
+export type Themed<Props = any, Component = any> = Props & {
   ts?: ThemeStyle;
-  style?: RnStyle;
+  style?: StyleProp<Component>;
 };
 
 export type RenderProp<T extends any[] = any[]> = Fn<T, ReactNode>;

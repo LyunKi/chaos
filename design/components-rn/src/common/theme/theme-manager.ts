@@ -1,6 +1,6 @@
 import { NestedString, KV } from '@cloud-dragon/common-types';
 import { reduce, isObject, get, isString, mapValues, merge } from 'lodash';
-import { CloudDesignTheme, ThemePack } from '../types';
+import { CloudDesignTheme, ThemeMode, ThemePack } from '../types';
 import { CLOUD_THEME_PACK } from './cloud';
 import { ThemeContext, DEFAULT_THEME_CONTEXT } from './config';
 
@@ -29,6 +29,7 @@ function handleVwValue(value: string, windowWidth: number) {
 function isVhValue(value: any) {
   return isString(value) && value.startsWith('$vh:');
 }
+
 function handleVhValue(value: string, windowHeight: number) {
   const multiple = Number(value.slice(4));
   return (windowHeight / 100) * multiple;
@@ -55,9 +56,15 @@ class ThemeManagerClass {
     this.themePack = themePack;
   }
 
-  public mode = 'light';
+  private theme: CloudDesignTheme = {};
 
-  public setMode(themeMode: string) {
+  public computeTheme() {
+    this.theme = this.processTheme();
+  }
+
+  private mode: ThemeMode = 'light';
+
+  public setMode(themeMode: ThemeMode) {
     this.mode = themeMode;
   }
 
@@ -97,22 +104,6 @@ class ThemeManagerClass {
     );
   };
 
-  private processTheme = (): CloudDesignTheme => {
-    return this.processThemeReferences(
-      this.processThemePresets(this.themePack[this.mode])
-    );
-  };
-
-  public theme: CloudDesignTheme = {};
-
-  public computeTheme() {
-    this.theme = this.processTheme();
-  }
-
-  public get isDark() {
-    return this.mode === 'dark';
-  }
-
   private handlePresetThemeValue(value: any) {
     const { baseFontSize, windowHeight, windowWidth } = this.themeContext;
     if (isRemValue(value)) {
@@ -125,6 +116,16 @@ class ThemeManagerClass {
       return handleVhValue(value, windowHeight);
     }
     return value;
+  }
+
+  private processTheme = (): CloudDesignTheme => {
+    return this.processThemeReferences(
+      this.processThemePresets(this.themePack[this.mode])
+    );
+  };
+
+  public get isDark() {
+    return this.mode === 'dark';
   }
 
   public themedValue(value: any) {
