@@ -13,27 +13,35 @@ import {
 
 export interface ThemeConfig {
   /**
-   *
+   * Theme pack: This option includes a dark theme and a light theme by default, and it can be customized by users.
    */
   themePack?: ThemePack;
+  /**
+   * Theme mode: This option allows you to choose which theme in the pack will be used. The default theme is light.
+   */
   themeMode?: string;
+  /**
+   * Theme context: This option controls some global theme settings, such as “fontSize”.
+   */
   themeContext?: Partial<Omit<ThemeContext, 'windowWidth' | 'windowHeight'>>;
 }
 
 export interface I18nConfig {
+  /**
+   * Locale: This option controls the current language and regional settings of the library.
+   */
   locale?: SupportedLocale;
 }
 
 export interface GlobalProviderProps extends ThemeConfig, I18nConfig {}
 
-export function GlobalProvider(props: PropsWithChildren<GlobalProviderProps>) {
-  const {
-    themePack,
-    themeMode = 'light',
-    themeContext,
-    locale = 'en_US',
-    children,
-  } = props;
+export const GlobalProvider = ({
+  themePack,
+  themeMode = 'light',
+  themeContext,
+  locale = 'en_US',
+  children,
+}: PropsWithChildren<GlobalProviderProps>) => {
   const [ready, setReady] = React.useState<boolean>(false);
   const forceUpdate = useForceUpdate();
   useEffect(() => {
@@ -72,4 +80,4 @@ export function GlobalProvider(props: PropsWithChildren<GlobalProviderProps>) {
       <SafeAreaProvider>{ready && children}</SafeAreaProvider>
     </PortalProvider>
   );
-}
+};
