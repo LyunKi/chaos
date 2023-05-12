@@ -4,7 +4,7 @@ import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { Text } from '../text';
 import { View } from '../view';
-import { GlobalProvider } from './index';
+import { GlobalProvider, GlobalProviderProps } from './index';
 
 const meta = {
   title: 'Cloud-Design/GlobalProvider',
@@ -19,7 +19,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const Template = (args) => {
+const Template = (args: GlobalProviderProps) => {
   return (
     <GlobalProvider {...args}>
       <View ts={{ background: '$color.bg.layout' }}>
@@ -34,6 +34,6 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const text = await canvas.findByTestId('text');
-    expect(text).toBeInTheDocument();
+    await expect(text).toBeInTheDocument();
   },
 };

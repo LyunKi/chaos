@@ -4,9 +4,17 @@
     "outDir": "build",
     "module": "commonjs",
     "jsx": "react",
-    "types": ["jest"]
+    "types": [
+      "jest",
+      "@testing-library/jest-native",
+      "@testing-library/jest-dom"
+    ]
   },
   "include": [
+    "src/*.stories.ts",
+    "src/*.stories.js",
+    "src/*.stories.jsx",
+    "src/*.stories.tsx",
     "jest.config.js",
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
