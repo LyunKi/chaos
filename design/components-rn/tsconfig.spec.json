@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "build",
     "module": "commonjs",
     "jsx": "react",
     "types": [
@@ -11,10 +10,10 @@
     ]
   },
   "include": [
-    "src/*.stories.ts",
-    "src/*.stories.js",
-    "src/*.stories.jsx",
-    "src/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.js",
+    "**/*.stories.jsx",
+    "**/*.stories.tsx",
     "jest.config.js",
     "src/**/*.test.ts",
     "src/**/*.spec.ts",

@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 const Template = (args: GlobalProviderProps) => {
   return (
     <GlobalProvider {...args}>
-      <View ts={{ background: '$color.bg.layout' }}>
+      <View ts={{ backgroundColor: '$color.bg.layout' }}>
         <Text testID="text" value={'themed text'} />
       </View>
     </GlobalProvider>

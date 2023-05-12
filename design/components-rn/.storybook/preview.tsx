@@ -22,7 +22,7 @@ const preview: Preview & { darkMode: any } = {
     controls: {
       sort: 'requiredFirst',
       extends: true,
-      exclude: ['children'],
+      exclude: ['children', 'testID'],
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
