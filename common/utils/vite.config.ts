@@ -2,13 +2,9 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import pkg from './package.json';
 
-const externals = [...Object.keys(pkg.peerDependencies)];
+const externals = [...Object.keys((pkg as any).peerDependencies ?? {})];
 const globals = {
-  globals: {
-    'react-dom': 'ReactDom',
-    react: 'React',
-    lodash: '_',
-  },
+  globals: {},
 };
 
 // https://vitejs.dev/config/

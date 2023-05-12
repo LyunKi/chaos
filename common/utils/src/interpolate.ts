@@ -1,9 +1,9 @@
-import type { KV } from '@cloud-dragon/common-types'
+import type { KV } from '@cloud-dragon/common-types';
 
 interface InterpolateOptions {
-  template?: string
-  context?: KV
-  placeholder?: RegExp
+  template?: string;
+  context?: KV;
+  placeholder?: RegExp;
 }
 
 export function interpolate({
@@ -13,7 +13,7 @@ export function interpolate({
 }: InterpolateOptions) {
   return context
     ? template?.replace(placeholder, (_match, paramKey: string) => {
-        return context[paramKey]
+        return context[paramKey];
       })
-    : template
+    : template;
 }

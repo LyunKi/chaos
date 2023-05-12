@@ -1,69 +1,69 @@
-import isString from 'lodash/isString'
-import * as Yup from 'yup'
+import { isString } from 'lodash';
+import * as Yup from 'yup';
 
 interface SchemaMap {
-  [key: string]: Yup.BaseSchema
+  [key: string]: Yup.BaseSchema;
 }
 
 interface FieldConfig {
-  schemaName?: string
-  fieldName: string
-  required?: string | boolean
+  schemaName?: string;
+  fieldName: string;
+  required?: string | boolean;
 }
 
 export class ValidationSchema {
-  private schema: SchemaMap = {}
+  private schema: SchemaMap = {};
 
   public constructor(schema?: SchemaMap) {
     if (schema) {
-      this.schema = schema
+      this.schema = schema;
     }
   }
 
   public init(schema: SchemaMap) {
-    this.schema = schema
+    this.schema = schema;
   }
 
   public load(schemas: Array<string | FieldConfig>) {
     return Yup.object().shape(
       schemas.reduce((prev, current) => {
-        let fieldConfig
+        let fieldConfig;
         if (isString(current)) {
           fieldConfig = {
             required: false,
             fieldName: current,
             schemaName: current,
-          }
-          prev[current] = this.schema[current].nullable()
+          };
+          prev[current] = this.schema[current].nullable();
         } else {
-          const { fieldName, schemaName, required } = current
+          const { fieldName, schemaName, required } = current;
           fieldConfig = {
             fieldName,
             schemaName: schemaName ?? fieldName,
             required,
-          }
+          };
         }
 
-        const { schemaName, fieldName, required } = fieldConfig
-        let schema = this.schema[schemaName]
+        const { schemaName, fieldName, required } = fieldConfig;
+        let schema = this.schema[schemaName];
         if (required) {
           schema = schema.required(
             isString(required)
               ? required
               : `errors.fields.${fieldName}.required`
-          )
+          );
         } else {
-          schema = schema.notRequired()
+          schema = schema.notRequired();
         }
-        prev[fieldName] = schema
-        return prev
+        prev[fieldName] = schema;
+        return prev;
       }, {} as SchemaMap)
-    )
+    );
   }
 }
 
 const EMAIL_REGEX =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export const enum ValidateType {
   EMAIL,
@@ -71,6 +71,6 @@ export const enum ValidateType {
 
 export class CommonValidator {
   public static validateEmail(email?: string | null) {
-    return email && EMAIL_REGEX.test(email)
+    return email && EMAIL_REGEX.test(email);
   }
 }

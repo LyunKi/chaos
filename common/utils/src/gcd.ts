@@ -7,12 +7,12 @@
  */
 export function gcd(...numbers: Array<number>): number {
   if (numbers.length < 1) {
-    throw new Error('Please provide at least one number')
+    throw new Error('Please provide at least one number');
   }
   return numbers.reduce((first, second) => {
     if (second === 0) {
-      return first
+      return first;
     }
-    return gcd(second, first % second)
-  })
+    return gcd(second, first % second);
+  });
 }

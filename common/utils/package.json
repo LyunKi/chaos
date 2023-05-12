@@ -29,18 +29,14 @@
   "files": [
     "dist"
   ],
-  "peerDependencies": {
-    "lodash": "^4.17.21"
-  },
   "devDependencies": {
     "@cloud-dragon/common-types": "workspace:*",
     "@cloud-dragon/eslint-config": "workspace:*",
     "@cloud-dragon/tsconfig": "workspace:*",
-    "@types/lodash": "^4.14.182",
-    "lodash": "^4.17.21",
     "ts-node": "^10.9.1"
   },
   "dependencies": {
+    "lodash": "npm:lodash-es@^4.17.21",
     "yup": "^0.32.11"
   }
 }
