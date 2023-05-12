@@ -6,7 +6,7 @@ import { useDarkMode } from 'storybook-dark-mode';
 import { DocsContainer } from '@storybook/blocks';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
-const preview = {
+const preview: Preview & { darkMode: any } = {
   darkMode: {
     dark: { ...themes.dark },
     light: { ...themes.normal },
@@ -29,7 +29,7 @@ const preview = {
       },
     },
     docs: {
-      container: ({ children, context, ...props }) => {
+      container: ({ children, context, ...props }: any) => {
         const theme = useDarkMode() ? 'dark' : 'light';
         return (
           <DocsContainer context={context} theme={themes[theme]} {...props}>
@@ -49,6 +49,6 @@ const preview = {
       );
     },
   ],
-} as Preview;
+};
 
 export default preview;

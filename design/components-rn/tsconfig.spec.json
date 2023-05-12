@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "build",
     "module": "commonjs",
+    "jsx": "react",
     "types": ["jest"]
   },
   "include": [

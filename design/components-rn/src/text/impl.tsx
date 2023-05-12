@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text as RnText, StyleSheet } from 'react-native';
+import { Platform, Text as RnText, StyleSheet } from 'react-native';
 import { ThemeManager } from '../common';
 import { TextProps } from './api';
 
@@ -21,13 +21,14 @@ export function Text({
       numberOfLines={numberOfLines}
       style={StyleSheet.flatten([
         computedStyle,
-        numberOfLines && {
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          display: '-webkit-box',
-          WebkitBoxOrient: 'vertical',
-          WebkitLineClamp: numberOfLines,
-        },
+        numberOfLines &&
+          Platform.OS === 'web' && {
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: numberOfLines,
+          },
         style,
       ])}
     >

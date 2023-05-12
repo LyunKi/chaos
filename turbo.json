@@ -15,6 +15,7 @@
       "outputs": ["coverage/**"]
     },
     "test:updateSnap": {
+      "dependsOn": ["^build"],
       "outputs": ["__snapshots__/**"]
     },
     "test:watch": {

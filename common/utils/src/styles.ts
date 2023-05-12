@@ -1,20 +1,20 @@
-import { KV } from '@cloud-dragon/common-types'
-import { reduce } from 'lodash'
+import { KV } from '@cloud-dragon/common-types';
+import { reduce } from 'lodash';
 
-export type ConditionStyle = [boolean | undefined, KV]
+export type ConditionStyle = [boolean | undefined, KV];
 
 export function styles(...conditionStyles: ConditionStyle[]) {
   return reduce(
     conditionStyles,
     (record, value) => {
-      const [condition, style] = value
+      const [condition, style] = value;
       if (condition) {
-        Object.assign(record, style)
+        Object.assign(record, style);
       }
-      return record
+      return record;
     },
     {}
-  )
+  );
 }
 
 /**
@@ -26,9 +26,9 @@ export function styles(...conditionStyles: ConditionStyle[]) {
  */
 function hexToRgba(hex: string, opacity = 1) {
   if (!/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-    throw new Error('Bad Hex')
+    throw new Error('Bad Hex');
   }
-  let hexArray = hex.substring(1).split('')
+  let hexArray = hex.substring(1).split('');
   if (hexArray.length === 3) {
     hexArray = [
       hexArray[0],
@@ -37,12 +37,12 @@ function hexToRgba(hex: string, opacity = 1) {
       hexArray[1],
       hexArray[2],
       hexArray[2],
-    ]
+    ];
   }
-  const bigint: any = '0x' + hexArray.join('')
+  const bigint: any = '0x' + hexArray.join('');
   return `rgba(${[(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255].join(
     ','
-  )},${opacity})`
+  )},${opacity})`;
 }
 
 /**
@@ -53,13 +53,13 @@ function hexToRgba(hex: string, opacity = 1) {
  * @returns
  */
 export function opacityColor(color: string, percentage: number) {
-  const rgb = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
+  const rgb = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
   if (rgb) {
-    return `rgba(${rgb[1]},${rgb[2]},${rgb[3]},${percentage})`
+    return `rgba(${rgb[1]},${rgb[2]},${rgb[3]},${percentage})`;
   }
-  const hex = /^#([A-Fa-f0-9]{3}){1,2}$/.test(color)
+  const hex = /^#([A-Fa-f0-9]{3}){1,2}$/.test(color);
   if (hex) {
-    return hexToRgba(color, percentage)
+    return hexToRgba(color, percentage);
   }
-  return color
+  return color;
 }

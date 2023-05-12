@@ -20,7 +20,7 @@ export const Default: Story = {
     return (
       <Text
         numberOfLines={2}
-        ts={{ width: 375 }}
+        ts={{ width: '100%' }}
         value={
           '这是多行文字，会自动在超过 2 行时折断，这是多行文字，会自动在超过 2 行时折断，这是多行文字，会自动在超过 2 行时折断'
         }

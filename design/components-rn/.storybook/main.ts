@@ -3,6 +3,10 @@ import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  framework: {
+    name: '@storybook/react-vite',
+    options: {},
+  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -20,10 +24,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     'storybook-dark-mode',
   ],
-  framework: {
-    name: '@storybook/react-vite',
-    options: {},
-  },
   docs: {
     autodocs: true,
   },

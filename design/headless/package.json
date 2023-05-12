@@ -24,11 +24,10 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "lodash": "^4.17.21",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "lodash": "npm:lodash-es@^4.17.21",
+    "lodash": "^4.17.21",
     "@cloud-dragon/react-utils": "workspace:*"
   }
 }

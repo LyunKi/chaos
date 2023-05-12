@@ -20,8 +20,8 @@
     "build": "tsc -p tsconfig.lib.json",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "test-storybook",
-    "test:watch": "test-storybook --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "test:updateSnap": "jest --updateSnapshot"
   },
   "peerDependencies": {
@@ -29,7 +29,7 @@
     "react-native": "^0.71.7"
   },
   "dependencies": {
-    "lodash": "npm:lodash-es@^4.17.21",
+    "lodash": "^4.17.21",
     "@gorhom/portal": "^1.0.14",
     "react-native-safe-area-context": "^4.5.2"
   },
