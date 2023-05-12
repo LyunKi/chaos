@@ -1,0 +1,27 @@
+import {
+  Title,
+  Canvas,
+  Meta,
+  Controls,
+  Source,
+  IconGallery,
+  IconItem,
+} from '@storybook/blocks';
+import * as Stories from './index.stories';
+import { Icon as IconExample } from './';
+
+<Meta of={Stories} />
+
+<Title />
+
+## Props
+
+<Controls />
+
+## Icon gallery
+
+<IconGallery>
+  <IconItem name="activity">
+    <IconExample name="activity" />
+  </IconItem>
+</IconGallery>

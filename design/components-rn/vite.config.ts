@@ -26,6 +26,7 @@ export default defineConfig({
     extensions,
     alias: {
       'react-native': 'react-native-web',
+      'react-native-svg': 'react-native-svg-web',
     },
   },
 });

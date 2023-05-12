@@ -1,3 +1,4 @@
+import { TextStyle } from 'react-native';
 import { Size, CloudDesignWrap } from '../common';
 
 export interface BasicTextProps {
@@ -6,4 +7,4 @@ export interface BasicTextProps {
   numberOfLines?: number;
 }
 
-export type TextProps = CloudDesignWrap<BasicTextProps>;
+export type TextProps = CloudDesignWrap<BasicTextProps, TextStyle>;

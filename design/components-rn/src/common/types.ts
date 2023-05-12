@@ -1,4 +1,4 @@
-import { KV, Fn } from '@cloud-dragon/common-types';
+import { KV, Fn, Prefix } from '@cloud-dragon/common-types';
 import { ReactNode } from 'react';
 import { StyleProp } from 'react-native';
 import { COUNTRIES } from './constants';
@@ -12,16 +12,18 @@ export type ThemePack = {
   dark: CloudDesignTheme;
 };
 
-export type ThemeStyle = KV;
-
-export type Themed<Props = any, Component = any> = Props & {
-  ts?: ThemeStyle;
-  style?: StyleProp<Component>;
+export type ThemeStyle<ComponentStyle = any> = {
+  [key in keyof ComponentStyle]?: ComponentStyle[key] | Prefix<'$'>;
 };
 
-export type CloudDesignWrap<Props = any, Component = any> = Themed<
+export type Themed<Props = any, ComponentStyle = any> = Props & {
+  ts?: ThemeStyle<ComponentStyle>;
+  style?: StyleProp<ComponentStyle>;
+};
+
+export type CloudDesignWrap<Props = any, ComponentStyle = any> = Themed<
   Props,
-  Component
+  ComponentStyle
 > & {
   testID?: string;
 };
