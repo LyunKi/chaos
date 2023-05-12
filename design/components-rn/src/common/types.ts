@@ -19,6 +19,13 @@ export type Themed<Props = any, Component = any> = Props & {
   style?: StyleProp<Component>;
 };
 
+export type CloudDesignWrap<Props = any, Component = any> = Themed<
+  Props,
+  Component
+> & {
+  testID?: string;
+};
+
 export type RenderProp<T extends any[] = any[]> = Fn<T, ReactNode>;
 
 export type Id = string | number;

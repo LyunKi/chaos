@@ -1,4 +1,4 @@
-import { Size, Themed } from '../common';
+import { Size, CloudDesignWrap } from '../common';
 
 export interface BasicTextProps {
   value?: string;
@@ -6,4 +6,4 @@ export interface BasicTextProps {
   numberOfLines?: number;
 }
 
-export type TextProps = Themed<BasicTextProps>;
+export type TextProps = CloudDesignWrap<BasicTextProps>;

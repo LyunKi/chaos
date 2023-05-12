@@ -9,6 +9,7 @@ export function Text({
   style,
   numberOfLines,
   size = 'md',
+  testID,
 }: TextProps) {
   const fontSize = `$fontSize.${size}`;
   const computedStyle = ThemeManager.themed({
@@ -18,6 +19,7 @@ export function Text({
   });
   return (
     <RnText
+      testID={testID}
       numberOfLines={numberOfLines}
       style={StyleSheet.flatten([
         computedStyle,

@@ -50,7 +50,6 @@ function createObservableObjectHandler<T extends object>(): ProxyHandler<T> {
         console.warn(`Property not found: ${String(propKey)}`);
         return false;
       }
-      console.log('propKey', propKey);
       delete target[propKey as keyof T];
       DependenciesManager.notifyObservers(target, propKey);
       return true;
