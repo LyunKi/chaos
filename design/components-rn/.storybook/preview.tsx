@@ -17,7 +17,7 @@ const preview: Preview & { darkMode: any } = {
     layout: 'fullscreen',
     viewport: {
       viewports: INITIAL_VIEWPORTS,
-      defaultViewport: 'iphone6',
+      defaultViewport: 'ipad',
     },
     controls: {
       sort: 'requiredFirst',

@@ -1,5 +1,5 @@
-import merge from 'lodash/merge'
-import variables from './variables'
+import merge from 'lodash/merge';
+import variables from './variables';
 
 const DARK_THEME = merge({}, variables, {
   color: {
@@ -33,7 +33,30 @@ const DARK_THEME = merge({}, variables, {
     brand: {
       ...variables.color.teal,
     },
+    button: {
+      normal: {
+        font: '$color.font.default',
+      },
+      primary: {
+        font: '$color.font.reverse',
+      },
+      secondary: {
+        font: '$color.font.reverse',
+      },
+      info: {
+        font: '$color.font.reverse',
+      },
+      success: {
+        font: '$color.font.reverse',
+      },
+      warning: {
+        font: '$color.font.reverse',
+      },
+      error: {
+        font: '$color.font.reverse',
+      },
+    },
   },
-})
+});
 
-export default DARK_THEME
+export default DARK_THEME;

@@ -158,7 +158,7 @@ const COLOR = {
     800: '#702459',
     900: '#521B41',
   },
-}
+};
 
 const FONT_SIZE = {
   xs: '$rem:0.75',
@@ -167,7 +167,7 @@ const FONT_SIZE = {
   default: '$rem:1',
   lg: '$rem:1.125',
   xl: '$rem:1.25',
-}
+};
 
 const FONT_WEIGHT = {
   light: 100,
@@ -175,16 +175,12 @@ const FONT_WEIGHT = {
   default: 400,
   semibold: 600,
   bold: 700,
-}
+};
 
 const SPACE = {
-  0.5: '$rem:0.125',
   1: '$rem:0.25',
-  1.5: '$rem:0.375',
   2: '$rem:0.5',
-  2.5: '$rem:0.625',
   3: '$rem:0.75',
-  3.5: '$rem:0.875',
   4: '$rem:1',
   5: '$rem:1.25',
   6: '$rem:1.5',
@@ -210,7 +206,7 @@ const SPACE = {
   72: '$rem:18',
   80: '$rem:20',
   96: '$rem:24',
-}
+};
 
 const RADIUS = {
   xs: '$rem:0.125',
@@ -221,7 +217,7 @@ const RADIUS = {
   '2xl': '$rem:1',
   '3xl': '$rem:1.5',
   full: '9999px',
-}
+};
 
 const _LARGE_SIZE = {
   full: '100%',
@@ -239,7 +235,7 @@ const _LARGE_SIZE = {
   '6xl': '72rem',
   '7xl': '80rem',
   '8xl': '90rem',
-}
+};
 
 const SIZE = {
   ...SPACE,
@@ -250,7 +246,7 @@ const SIZE = {
     lg: 1024,
     xl: 1280,
   },
-}
+};
 
 const Z_INDEX = {
   hide: -1,
@@ -266,11 +262,11 @@ const Z_INDEX = {
   skipLink: 1600,
   toast: 1700,
   tooltip: 1800,
-}
+};
 
 const OPACITY = {
   disabled: 0.4,
-}
+};
 
 const VARIABLES = {
   fontSize: FONT_SIZE,
@@ -281,6 +277,6 @@ const VARIABLES = {
   size: SIZE,
   opacity: OPACITY,
   zIndex: Z_INDEX,
-}
+};
 
-export default VARIABLES
+export default VARIABLES;

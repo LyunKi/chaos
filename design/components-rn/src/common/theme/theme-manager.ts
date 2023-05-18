@@ -1,7 +1,16 @@
 import { NestedString, KV } from '@cloud-dragon/common-types';
-import { reduce, isObject, get, isString, mapValues, merge } from 'lodash';
+import {
+  isObject,
+  get,
+  isString,
+  mapValues,
+  merge,
+  forEach,
+  isEmpty,
+  setWith,
+} from 'lodash';
 import { CloudDesignTheme, ThemeMode, ThemePack } from '../types';
-import { CLOUD_THEME_PACK } from './cloud';
+import { CHAKRA_THEME_PACK } from './chakra';
 import { ThemeContext, DEFAULT_THEME_CONTEXT } from './config';
 
 function isReferenceValue(value: string | NestedString): value is string {
@@ -46,20 +55,21 @@ class ThemeManagerClass {
     merge(this.themeContext, themeContext);
   }
 
-  private themePack: ThemePack = CLOUD_THEME_PACK;
+  private pack: ThemePack = CHAKRA_THEME_PACK;
 
   public getThemePack() {
-    return this.themePack;
+    return this.pack;
   }
 
   public setThemePack(themePack: ThemePack) {
-    this.themePack = themePack;
+    this.pack = themePack;
   }
 
   private theme: CloudDesignTheme = {};
 
   public computeTheme() {
-    this.theme = this.processTheme();
+    this.processTheme();
+    console.log('theme', this.theme);
   }
 
   private mode: ThemeMode = 'light';
@@ -67,42 +77,6 @@ class ThemeManagerClass {
   public setMode(themeMode: ThemeMode) {
     this.mode = themeMode;
   }
-
-  private processThemePresets = (theme: CloudDesignTheme): CloudDesignTheme => {
-    return reduce(
-      theme,
-      (records, value, key) => {
-        if (isObject(value)) {
-          records[key] = this.processThemePresets(value);
-        } else {
-          records[key] = this.handlePresetThemeValue(value);
-        }
-        return records;
-      },
-      {} as CloudDesignTheme
-    );
-  };
-
-  private processThemeReferences = (
-    theme: CloudDesignTheme,
-    fullTheme?: CloudDesignTheme
-  ): CloudDesignTheme => {
-    const fullRecords = fullTheme ?? theme;
-    return reduce(
-      theme,
-      (records, value, key) => {
-        if (isObject(value)) {
-          records[key] = this.processThemeReferences(value, fullRecords);
-        } else if (isReferenceValue(value)) {
-          records[key] = get(fullRecords, value.slice(1));
-        } else {
-          records[key] = value;
-        }
-        return records;
-      },
-      {} as CloudDesignTheme
-    );
-  };
 
   private handlePresetThemeValue(value: any) {
     const { baseFontSize, windowHeight, windowWidth } = this.themeContext;
@@ -118,10 +92,72 @@ class ThemeManagerClass {
     return value;
   }
 
-  private processTheme = (): CloudDesignTheme => {
-    return this.processThemeReferences(
-      this.processThemePresets(this.themePack[this.mode])
-    );
+  private flatTheme(
+    flatTheme: CloudDesignTheme,
+    theme: CloudDesignTheme,
+    path?: string
+  ) {
+    forEach(theme, (value, key) => {
+      const currentPath = path ? `${path}.${key}` : key;
+      const firstProcessed = this.handlePresetThemeValue(value);
+      if (isObject(firstProcessed)) {
+        this.flatTheme(flatTheme, firstProcessed, currentPath);
+        return;
+      }
+      flatTheme[currentPath] = firstProcessed;
+    });
+  }
+
+  private maxReferrenceDepth = 10;
+
+  public setMaxReferrenceDepth(themeMaxReferrenceDepth: number) {
+    this.maxReferrenceDepth = themeMaxReferrenceDepth;
+  }
+
+  private reduceReferences(flatTheme: CloudDesignTheme) {
+    const references: CloudDesignTheme = {};
+    forEach(flatTheme, (value, key) => {
+      if (!isReferenceValue(value)) {
+        return;
+      }
+      references[key] = value;
+    });
+    // Handle reference values recursively
+    let recursiveFlag = true;
+    let depth = 0;
+    while (!isEmpty(references) && recursiveFlag) {
+      recursiveFlag = false;
+      depth += 1;
+      if (depth > this.maxReferrenceDepth) {
+        throw new Error('Your reference theme value is too deep');
+      }
+      for (const key of Reflect.ownKeys(references)) {
+        const value = references[key];
+        let referenceValue = get(flatTheme, value.slice(1));
+        if (!referenceValue) {
+          continue;
+        }
+        if (isReferenceValue(referenceValue)) {
+          references[key] = referenceValue;
+          continue;
+        }
+        delete references[key];
+        flatTheme[key] = referenceValue;
+      }
+    }
+  }
+
+  private calcTheme(flatTheme: CloudDesignTheme) {
+    forEach(flatTheme, (value, key) => {
+      setWith(this.theme, key, value, Object);
+    });
+  }
+
+  private processTheme = () => {
+    const flatTheme = {};
+    this.flatTheme(flatTheme, this.pack[this.mode]);
+    this.reduceReferences(flatTheme);
+    this.calcTheme(flatTheme);
   };
 
   public get isDark() {

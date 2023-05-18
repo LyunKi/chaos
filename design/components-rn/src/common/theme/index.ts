@@ -1,3 +1,3 @@
 export * from './config';
 export * from './theme-manager';
-export * from './cloud';
+export * from './chakra';

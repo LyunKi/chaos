@@ -24,6 +24,8 @@ export interface ThemeConfig {
    * Theme context: This option controls some global theme settings, such as “fontSize”.
    */
   themeContext?: Partial<Omit<ThemeContext, 'windowWidth' | 'windowHeight'>>;
+
+  themeMaxReferrenceDepth?: number;
 }
 
 export interface I18nConfig {
@@ -40,6 +42,7 @@ export const GlobalProvider = ({
   themeMode = 'light',
   themeContext,
   locale = 'en_US',
+  themeMaxReferrenceDepth = 10,
   children,
 }: PropsWithChildren<GlobalProviderProps>) => {
   const [ready, setReady] = React.useState<boolean>(false);
@@ -55,6 +58,7 @@ export const GlobalProvider = ({
       windowHeight: window.height,
     });
     ThemeManager.setMode(themeMode);
+    ThemeManager.setMaxReferrenceDepth(themeMaxReferrenceDepth);
     if (themePack) {
       ThemeManager.setThemePack(themePack);
     }
@@ -73,7 +77,14 @@ export const GlobalProvider = ({
       setReady(false);
       subscription?.remove();
     };
-  }, [locale, themeMode, themePack, themeContext, setKey]);
+  }, [
+    locale,
+    themeMode,
+    themePack,
+    themeContext,
+    setKey,
+    themeMaxReferrenceDepth,
+  ]);
   return (
     <PortalProvider>
       <SafeAreaProvider>
