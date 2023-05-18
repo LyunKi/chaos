@@ -1,7 +1,6 @@
 import React, { Ref } from 'react';
 import { Animated } from 'react-native';
-import { getIconAnimation } from '../common/animation';
-import { ThemeManager } from '../common';
+import { getIconAnimation, ThemeManager } from '../common';
 import { IconRegistry } from './registry';
 import { IconProps, IconRef } from './api';
 
@@ -14,6 +13,7 @@ export const Icon = React.forwardRef(
       size = '$rem:1',
       color = '$color.font.default',
       animation,
+      testID,
     }: IconProps,
     ref: Ref<IconRef>
   ) => {
@@ -32,7 +32,7 @@ export const Icon = React.forwardRef(
       };
     });
     return Icon ? (
-      <Animated.View {...animationInstance?.toProps()}>
+      <Animated.View {...animationInstance?.toProps()} testID={testID}>
         {React.createElement(
           Icon,
           ThemeManager.themed({

@@ -21,12 +21,13 @@ export type Themed<Props = any, ComponentStyle = any> = Props & {
   style?: StyleProp<ComponentStyle>;
 };
 
-export type CloudDesignWrap<Props = any, ComponentStyle = any> = Themed<
-  Props,
-  ComponentStyle
-> & {
+export type Testable<Props = any> = Props & {
   testID?: string;
 };
+
+export type CloudDesignWrap<Props = any, ComponentStyle = any> = Testable<
+  Themed<Props, ComponentStyle>
+>;
 
 export type RenderProp<T extends any[] = any[]> = Fn<T, ReactNode>;
 

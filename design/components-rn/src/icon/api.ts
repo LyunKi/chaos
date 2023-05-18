@@ -1,4 +1,4 @@
-import { AnimationConfig, SupportedAnimation } from '../common/animation';
+import { Testable, AnimationConfig, SupportedAnimation } from '../common';
 import { IconRegistry } from './registry';
 
 export type IconAnimationProp = {
@@ -6,14 +6,14 @@ export type IconAnimationProp = {
   config?: AnimationConfig;
 };
 
-export interface IconProps {
+export type IconProps = Testable<{
   name: keyof typeof IconRegistry;
   size?: number | string;
   width?: number | string;
   height?: number | string;
   color?: string;
   animation?: IconAnimationProp;
-}
+}>;
 
 export interface IconRef {
   startAnimation?: Function;
