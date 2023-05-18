@@ -38,8 +38,8 @@ const LIGHT_THEME = merge({}, variables, {
         font: '$color.font.default',
         solid: {
           bg: '$color.gray.100',
-          hoveredBg: '$color.gray.200',
-          pressedBg: '$color.gray.300',
+          'bg-hover': '$color.gray.200',
+          'bg-active': '$color.gray.300',
         },
         outline: {},
         ghost: {},

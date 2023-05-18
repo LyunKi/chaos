@@ -5,3 +5,4 @@ export * from './accept-language-parser';
 export * from './validation';
 export * from './styles';
 export * from './iterable-weak-set';
+export * from './string';

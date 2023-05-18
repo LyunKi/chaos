@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable } from 'react-native';
 import { KV } from '@cloud-dragon/common-types';
 import { isFunction, isString } from 'lodash';
-import { styles } from '@cloud-dragon/common-utils';
+import { styles, buildString } from '@cloud-dragon/common-utils';
 import { View } from '../view';
 import { Text } from '../text';
 import { ActivityIndicator } from '../activity-indicator';
@@ -12,34 +12,25 @@ function computeStyles({
   variant,
   disabled,
   status,
-  pressed,
+  actived,
   hovered,
 }: any): any {
   const fontColor = `$color.button.${status}.font`;
+  const bg = buildString(`$color.button.${status}.${variant}.bg`, {
+    '-hover': !actived && hovered,
+    '-active': actived,
+  });
+  console.log('bg', bg);
   return {
     computedViewStyle: {
-      backgroundColor: `$color.button.${status}.${variant}.bg`,
-      ...styles(
-        [
-          hovered,
-          {
-            backgroundColor: `$color.button.${status}.${variant}.hoveredBg`,
-          },
-        ],
-        [
-          pressed,
-          {
-            backgroundColor: `$color.button.${status}.${variant}.pressedBg`,
-          },
-        ],
-        [
-          disabled,
-          {
-            cursor: 'not-allowed',
-            opacity: `$opacity.disabled`,
-          },
-        ]
-      ),
+      backgroundColor: bg,
+      ...styles([
+        disabled,
+        {
+          cursor: 'not-allowed',
+          opacity: `$opacity.disabled`,
+        },
+      ]),
     },
     computedTextStyle: {
       color: fontColor,
@@ -75,7 +66,7 @@ export function Button({
         const { computedViewStyle, computedTextStyle } = computeStyles({
           variant,
           status,
-          pressed: isActive || pressed,
+          actived: isActive || pressed,
           disabled: disabled || loading,
           hovered,
         });
