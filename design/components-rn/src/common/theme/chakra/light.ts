@@ -56,10 +56,6 @@ const LIGHT_THEME = merge({}, variables, {
       disabled: '$color.gray.100',
       layout: '$color.white',
       mask: '$color.blackAlpha.600',
-      normal: {
-        pressed: '$color.gray.200',
-        hovered: '$color.gray.100',
-      },
     },
     font: {
       default: '$color.gray.800',
@@ -70,7 +66,7 @@ const LIGHT_THEME = merge({}, variables, {
     },
     button: {
       normal: {
-        outlineColor: '$color.gray.200',
+        outlineColor: '$color.border.default',
         solid: {
           font: '$color.font.default',
           'font-active': '$color.font.default',
@@ -98,7 +94,6 @@ const LIGHT_THEME = merge({}, variables, {
         },
       },
       primary: genButtonStyle('brand'),
-      secondary: genButtonStyle('blackAlpha'),
       info: genButtonStyle('blue'),
       success: genButtonStyle('green'),
       warning: genButtonStyle('orange'),

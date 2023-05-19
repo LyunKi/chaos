@@ -14,10 +14,9 @@ const preview: Preview & { darkMode: any } = {
   },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    layout: 'fullscreen',
+    layout: 'centered',
     viewport: {
       viewports: INITIAL_VIEWPORTS,
-      defaultViewport: 'ipad',
     },
     controls: {
       sort: 'requiredFirst',

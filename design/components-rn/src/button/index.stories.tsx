@@ -22,27 +22,22 @@ const Template = (args: ButtonProps) => {
         flexDirection: 'column',
         gap: '$rem:1',
         flexWrap: 'wrap',
+        backgroundColor: '$color.bg.layout',
       }}
     >
       {['solid', 'outline', 'ghost', 'link'].map((variant) => (
         <View key={variant} ts={{ gap: '$rem:1', flexWrap: 'wrap' }}>
-          {[
-            'primary',
-            'normal',
-            'secondary',
-            'success',
-            'error',
-            'warning',
-            'info',
-          ].map((status) => (
-            <Button
-              key={status}
-              value={'Button'}
-              {...args}
-              status={status as any}
-              variant={variant as any}
-            />
-          ))}
+          {['primary', 'normal', 'success', 'error', 'warning', 'info'].map(
+            (status) => (
+              <Button
+                key={status}
+                value={'Button'}
+                {...args}
+                status={status as any}
+                variant={variant as any}
+              />
+            )
+          )}
         </View>
       ))}
     </View>
@@ -84,6 +79,7 @@ export const IconButtons: Story = {
           gap: 16,
           flexWrap: 'wrap',
           padding: '$rem:1',
+          backgroundColor: '$color.bg.layout',
         }}
       >
         <Button

@@ -4,7 +4,6 @@ import { AccessoryRenderProp, CloudDesignWrap, ThemeStyle } from '../common';
 export type ButtonStatus =
   | 'primary'
   | 'normal'
-  | 'secondary'
   | 'success'
   | 'error'
   | 'warning'
