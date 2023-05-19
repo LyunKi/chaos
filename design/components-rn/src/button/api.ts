@@ -18,11 +18,11 @@ export interface BasicButtonProps {
   value?: string | AccessoryRenderProp;
   textTs?: ThemeStyle;
   onPress?: (event?: any) => any;
-  renderLeft?: AccessoryRenderProp;
-  renderRight?: AccessoryRenderProp;
   onFocus?: (event: any) => void;
   onLongPress?: (event: GestureResponderEvent) => void;
   onBlur?: (event: any) => void;
+  renderLeft?: AccessoryRenderProp;
+  renderRight?: AccessoryRenderProp;
   viewRef?: React.Ref<View>;
   loading?: boolean;
   loadingText?: string;

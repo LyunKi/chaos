@@ -69,7 +69,6 @@ class ThemeManagerClass {
 
   public computeTheme() {
     this.processTheme();
-    console.log('theme', this.theme);
   }
 
   private mode: ThemeMode = 'light';

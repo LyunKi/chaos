@@ -25,7 +25,7 @@ const Template = (args: ButtonProps) => {
       }}
     >
       {['solid', 'outline', 'ghost', 'link'].map((variant) => (
-        <View key={variant} ts={{ gap: '$rem:1' }}>
+        <View key={variant} ts={{ gap: '$rem:1', flexWrap: 'wrap' }}>
           {[
             'primary',
             'normal',
@@ -62,7 +62,7 @@ export const LoadingButtons: Story = {
   },
   args: {
     loading: true,
-    loadingText: 'Loading...',
+    loadingText: 'L...',
   },
 };
 
@@ -78,7 +78,14 @@ export const DisabledButtons: Story = {
 export const IconButtons: Story = {
   render: (args) => {
     return (
-      <View ts={{ alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+      <View
+        ts={{
+          alignItems: 'center',
+          gap: 16,
+          flexWrap: 'wrap',
+          padding: '$rem:1',
+        }}
+      >
         <Button
           {...args}
           value={'Button'}
@@ -93,7 +100,5 @@ export const IconButtons: Story = {
       </View>
     );
   },
-  args: {
-    disabled: true,
-  },
+  args: {},
 };

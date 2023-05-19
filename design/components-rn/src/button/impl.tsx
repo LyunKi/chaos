@@ -2,10 +2,11 @@ import React from 'react';
 import { Pressable } from 'react-native';
 import { KV } from '@cloud-dragon/common-types';
 import { isFunction, isString } from 'lodash';
-import { styles, buildString } from '@cloud-dragon/common-utils';
+import { styles, buildString, opacityColor } from '@cloud-dragon/common-utils';
 import { View } from '../view';
 import { Text } from '../text';
 import { ActivityIndicator } from '../activity-indicator';
+import { ThemeManager } from '../common';
 import { ButtonProps } from './api';
 
 function computeStyles({
@@ -15,25 +16,63 @@ function computeStyles({
   actived,
   hovered,
 }: any): any {
-  const fontColor = `$color.button.${status}.font`;
-  const bg = buildString(`$color.button.${status}.${variant}.bg`, {
-    '-hover': !actived && hovered,
-    '-active': actived,
-  });
-  console.log('bg', bg);
+  const fontColor = `$color.button.${status}.${variant}.font`;
+  const activedFontColor = `$color.button.${status}.${variant}.font-active`;
+  const bgOpacity =
+    ThemeManager.themedValue(
+      buildString(`$color.button.${status}.${variant}.bgOpacity`, {
+        '-hover': !actived && hovered,
+        '-active': actived,
+      })
+    ) ?? 1;
+  const bg = opacityColor(
+    buildString(`$color.button.${status}.${variant}.bg`, {
+      '-hover': !actived && hovered,
+      '-active': actived,
+    }),
+    bgOpacity
+  );
+  const outlineColor = buildString(`$color.button.${status}.outlineColor`);
   return {
     computedViewStyle: {
       backgroundColor: bg,
-      ...styles([
-        disabled,
-        {
-          cursor: 'not-allowed',
-          opacity: `$opacity.disabled`,
-        },
-      ]),
+      ...styles(
+        [
+          disabled,
+          {
+            cursor: 'not-allowed',
+            opacity: `$opacity.disabled`,
+          },
+        ],
+        [
+          variant === 'outline',
+          {
+            outlineColor: outlineColor,
+            outlineWidth: 1,
+            outlineStyle: 'solid',
+          },
+        ]
+      ),
     },
     computedTextStyle: {
       color: fontColor,
+      ...styles(
+        [
+          variant === 'link' && (hovered || actived),
+          {
+            textDecorationLine: 'underline',
+            textDecorationStyle: 'solid',
+            textDecorationColor: fontColor,
+          },
+        ],
+        [
+          actived,
+          {
+            color: activedFontColor,
+            textDecorationColor: activedFontColor,
+          },
+        ]
+      ),
     },
   };
 }
@@ -46,6 +85,9 @@ export function Button({
   status = 'normal',
   textTs,
   onPress,
+  onBlur,
+  onFocus,
+  onLongPress,
   renderLeft,
   renderRight,
   viewRef,
@@ -61,6 +103,9 @@ export function Button({
       pointerEvents="auto"
       disabled={disabled || loading}
       onPress={onPress}
+      onLongPress={onLongPress}
+      onBlur={onBlur}
+      onFocus={onFocus}
     >
       {({ pressed, hovered }: any) => {
         const { computedViewStyle, computedTextStyle } = computeStyles({
@@ -90,7 +135,8 @@ export function Button({
               height: '$size.10',
               paddingHorizontal: '$space.3',
               gap: '$rem:0.5',
-              outline: 'none',
+              outline: 'unset',
+              boxSizing: 'border-box',
               ...computedViewStyle,
               ...ts,
             }}

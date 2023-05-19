@@ -52,7 +52,7 @@ function hexToRgba(hex: string, opacity = 1) {
  * @param percentage
  * @returns
  */
-export function opacityColor(color: string, percentage: number) {
+export function opacityColor(color: string, percentage: number = 1) {
   const rgb = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
   if (rgb) {
     return `rgba(${rgb[1]},${rgb[2]},${rgb[3]},${percentage})`;
