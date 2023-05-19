@@ -14,7 +14,7 @@ export const View = forwardRef(
       <RnView
         ref={ref}
         style={StyleSheet.flatten([
-          { flexDirection: 'row' },
+          { flexDirection: 'row', boxSizing: 'border-box' },
           styles([!!onPress, { cursor: 'pointer' }]),
           ThemeManager.themed(ts),
           style,
