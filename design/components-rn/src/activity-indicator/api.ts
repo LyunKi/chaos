@@ -1,4 +1,7 @@
-import { ActivityIndicatorProps as RnActivityIndicatorProps } from 'react-native';
+import {
+  ActivityIndicatorProps as RnActivityIndicatorProps,
+  ViewStyle,
+} from 'react-native';
 import { CloudDesignWrap, Size } from '../common';
 
 export type ActivityIndicatorProps = CloudDesignWrap<
@@ -10,5 +13,6 @@ export type ActivityIndicatorProps = CloudDesignWrap<
      * @type {Size}
      */
     size?: Size;
-  }
+  },
+  ViewStyle
 >;

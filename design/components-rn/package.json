@@ -17,6 +17,7 @@
     }
   },
   "scripts": {
+    "generate": "pnpm exec ts-node scripts/gen-icons.ts",
     "build": "tsc -p tsconfig.lib.json",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",

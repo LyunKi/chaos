@@ -1,3 +1,5 @@
+import { SvgProps } from 'react-native-svg';
+import { ComponentType } from 'react';
 import { Testable, AnimationConfig, SupportedAnimation } from '../common';
 import { IconRegistry } from './registry';
 
@@ -6,8 +8,10 @@ export type IconAnimationProp = {
   config?: AnimationConfig;
 };
 
+export type PresetIcons = keyof typeof IconRegistry;
+
 export type IconProps = Testable<{
-  name: keyof typeof IconRegistry;
+  icon: PresetIcons | ComponentType<SvgProps>;
   size?: number | string;
   width?: number | string;
   height?: number | string;

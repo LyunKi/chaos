@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
-import { ThemeManager } from '../common';
+import { Image, ImageStyle, StyleSheet, ViewStyle } from 'react-native';
+import { ThemeManager, ThemeStyle } from '../common';
 import { Icon } from '../icon';
 import { View } from '../view';
 import { AvatarProps } from './api';
@@ -11,7 +11,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   size = '$size.6',
   src,
 }) => {
-  const themeStyle = {
+  const themeStyle: ThemeStyle<ViewStyle & ImageStyle> = {
     borderRadius: '$radius.full',
     width: size,
     height: size,
@@ -23,11 +23,10 @@ export const Avatar: React.FC<AvatarProps> = ({
       <View
         ts={{
           backgroundColor: '$color.gray.400',
-          borderRadius: '100%',
           ...computedStyle,
         }}
       >
-        <Icon color="white" name="person" size={size} />
+        <Icon color="white" icon="person" size={size} />
       </View>
     );
   }

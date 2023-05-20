@@ -1,5 +1,6 @@
 import React, { Ref } from 'react';
 import { Animated } from 'react-native';
+import { isString } from 'lodash';
 import { getIconAnimation, ThemeManager } from '../common';
 import { IconRegistry } from './registry';
 import { IconProps, IconRef } from './api';
@@ -7,7 +8,7 @@ import { IconProps, IconRef } from './api';
 export const Icon = React.forwardRef(
   (
     {
-      name,
+      icon,
       width,
       height,
       size = '$rem:1',
@@ -17,7 +18,7 @@ export const Icon = React.forwardRef(
     }: IconProps,
     ref: Ref<IconRef>
   ) => {
-    const Icon = IconRegistry[name];
+    const Icon = isString(icon) ? IconRegistry[icon] : icon;
     const animationInstance = React.useMemo(() => {
       if (!animation) {
         return;

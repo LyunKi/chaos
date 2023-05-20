@@ -1,4 +1,9 @@
-import { GestureResponderEvent, View } from 'react-native';
+import {
+  GestureResponderEvent,
+  TextStyle,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { AccessoryRenderProp, CloudDesignWrap, ThemeStyle } from '../common';
 
 export type ButtonStatus =
@@ -15,7 +20,7 @@ export interface BasicButtonProps {
   status?: ButtonStatus;
   disabled?: boolean;
   value?: string | AccessoryRenderProp;
-  textTs?: ThemeStyle;
+  textTs?: ThemeStyle<TextStyle>;
   onPress?: (event?: any) => any;
   onFocus?: (event: any) => void;
   onLongPress?: (event: GestureResponderEvent) => void;
@@ -27,4 +32,4 @@ export interface BasicButtonProps {
   loadingText?: string;
 }
 
-export type ButtonProps = CloudDesignWrap<BasicButtonProps>;
+export type ButtonProps = CloudDesignWrap<BasicButtonProps, ViewStyle>;

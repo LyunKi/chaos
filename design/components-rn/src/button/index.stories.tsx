@@ -85,13 +85,13 @@ export const IconButtons: Story = {
         <Button
           {...args}
           value={'Button'}
-          renderLeft={(props) => <Icon {...props} name="star" />}
+          renderLeft={(props) => <Icon {...props} icon="star" />}
         />
-        <Button {...args} value={(props) => <Icon {...props} name="star" />} />
+        <Button {...args} value={(props) => <Icon {...props} icon="star" />} />
         <Button
           {...args}
           value={'Button'}
-          renderRight={(props) => <Icon {...props} name="star" />}
+          renderRight={(props) => <Icon {...props} icon="star" />}
         />
       </View>
     );

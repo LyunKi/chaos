@@ -1,3 +1,4 @@
+import { ViewStyle } from 'react-native';
 import { CloudDesignWrap } from '../common';
 
 export interface BasicDividerProps {
@@ -7,4 +8,4 @@ export interface BasicDividerProps {
   color?: string;
 }
 
-export type DividerProps = CloudDesignWrap<BasicDividerProps>;
+export type DividerProps = CloudDesignWrap<BasicDividerProps, ViewStyle>;

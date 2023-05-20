@@ -12,11 +12,11 @@ export type ThemePack = {
   dark: CloudDesignTheme;
 };
 
-export type ThemeStyle<ComponentStyle = any> = {
+export type ThemeStyle<ComponentStyle> = {
   [key in keyof ComponentStyle]?: ComponentStyle[key] | Prefix<'$'>;
 };
 
-export type Themed<Props = any, ComponentStyle = any> = Props & {
+export type Themed<Props, ComponentStyle> = Props & {
   ts?: ThemeStyle<ComponentStyle>;
   style?: StyleProp<ComponentStyle>;
 };
@@ -25,7 +25,7 @@ export type Testable<Props = any> = Props & {
   testID?: string;
 };
 
-export type CloudDesignWrap<Props = any, ComponentStyle = any> = Testable<
+export type CloudDesignWrap<Props, ComponentStyle> = Testable<
   Themed<Props, ComponentStyle>
 >;
 

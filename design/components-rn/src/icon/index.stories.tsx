@@ -44,6 +44,6 @@ export const Default: Story = {
     return <Template {...args} />;
   },
   args: {
-    name: 'activity',
+    icon: 'activity',
   },
 };
