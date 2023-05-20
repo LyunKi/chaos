@@ -2,7 +2,7 @@ import React, { Ref } from 'react';
 import { Animated } from 'react-native';
 import { isString } from 'lodash';
 import { getIconAnimation, ThemeManager } from '../common';
-import { IconRegistry } from './registry';
+import { IconRegistry } from './generated';
 import { IconProps, IconRef } from './api';
 
 export const Icon = React.forwardRef(

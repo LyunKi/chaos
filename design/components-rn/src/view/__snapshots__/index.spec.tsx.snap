@@ -6,6 +6,7 @@ exports[`View should match snapshot 1`] = `
     {
       "alignItems": "center",
       "backgroundColor": undefined,
+      "boxSizing": "border-box",
       "flexDirection": "row",
       "height": 48,
       "justifyContent": "center",

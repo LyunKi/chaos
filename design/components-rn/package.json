@@ -3,8 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "files": [
-    "dist",
-    "index.d.ts"
+    "dist"
   ],
   "main": "./dist/index.umd.js",
   "module": "./dist/index.mjs",
@@ -17,7 +16,7 @@
     }
   },
   "scripts": {
-    "generate": "pnpm exec ts-node scripts/gen-icons.ts",
+    "gen-icons": "pnpm exec ts-node --esm scripts/gen-icons.mts",
     "build": "tsc -p tsconfig.lib.json",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { kebabCase } from 'lodash';
-import { getFileNameFromPath, pascalCase } from './common';
+import _ from 'lodash';
+import { getFileNameFromPath, pascalCase } from './common.mjs';
 
 interface ReplacementMap {
   [source: string]: string;
@@ -41,7 +41,7 @@ export function generateIconsForSourceDir(sourceDir: string, destDir: string) {
   iconFiles.forEach((file: string) => {
     const sourceFilePath: string = path.resolve(sourceDir, file);
 
-    const fileName: string = kebabCase(getFileNameFromPath(sourceFilePath));
+    const fileName: string = _.kebabCase(getFileNameFromPath(sourceFilePath));
     const destFilePath: string = path.resolve(
       destDir,
       `assets/${fileName}.tsx`

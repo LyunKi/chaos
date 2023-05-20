@@ -5,6 +5,7 @@ exports[`Icon should match snapshot 1`] = `
   style={
     {
       "alignItems": "center",
+      "boxSizing": "border-box",
       "flexDirection": "row",
       "justifyContent": "center",
     }

@@ -1,12 +1,13 @@
 import fs from 'fs-extra';
-import { generateIconsForSourceDir } from './gen-icon-assets';
-import { generateIndexForSourceDir } from './gen-icon-registry';
+import path from 'path';
+import { generateIconsForSourceDir } from './gen-icon-assets.mjs';
+import { generateIndexForSourceDir } from './gen-icon-index.mjs';
 
-main('./src/icon/registry');
+main('./src/icon/generated');
 
 function main(destDir: string) {
   fs.removeSync(destDir);
-  fs.ensureDirSync(destDir);
+  fs.ensureDirSync(path.join(destDir, 'assets'));
 
   generateIconsForSourceDir('./assets/fill', destDir);
   generateIconsForSourceDir('./assets/outline', destDir);

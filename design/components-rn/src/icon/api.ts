@@ -1,7 +1,7 @@
 import { SvgProps } from 'react-native-svg';
 import { ComponentType } from 'react';
 import { Testable, AnimationConfig, SupportedAnimation } from '../common';
-import { IconRegistry } from './registry';
+import { IconRegistry } from './generated';
 
 export type IconAnimationProp = {
   type: SupportedAnimation;
