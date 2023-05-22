@@ -27,7 +27,7 @@ function renderSearch({ onSearch }: SearchFormat, value?: string) {
   };
 }
 
-function rednerPassword(
+function renderPassword(
   secureTextEntry: boolean,
   setSecureTextEntry: Function
 ) {
@@ -81,7 +81,7 @@ export const Input: React.FC<InputProps> = forwardRef(
         );
       }
       if (format?.type === 'password') {
-        computedRenderRight = rednerPassword(
+        computedRenderRight = renderPassword(
           secureTextEntry,
           setSecureTextEntry
         );
