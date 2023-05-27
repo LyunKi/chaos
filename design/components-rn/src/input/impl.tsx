@@ -6,7 +6,7 @@ import { AccessoryProps, ThemeManager } from '../common';
 import { Icon } from '../icon';
 import { Button } from '../button';
 import { View } from '../view';
-import { InputProps, SearchFormat } from './api';
+import { SearchFormat, InputProps } from './api';
 
 function renderSearch({ onSearch }: SearchFormat, value?: string) {
   return (props: AccessoryProps) => {
@@ -50,9 +50,9 @@ function renderPassword(
   };
 }
 
-export const Input: React.FC<InputProps> = forwardRef(
-  (props, ref: Ref<TextInput>) => {
-    const {
+export const Input = forwardRef(
+  (
+    {
       ts,
       style,
       placeholder,
@@ -67,7 +67,9 @@ export const Input: React.FC<InputProps> = forwardRef(
       onChange,
       error,
       ...rest
-    } = props;
+    }: InputProps,
+    ref: Ref<TextInput>
+  ) => {
     const [secureTextEntry, setSecureTextEntry] = useState(
       format?.type === 'password'
     );

@@ -488,6 +488,7 @@ import { WifiOffOutline } from './assets/wifi-off-outline';
 import { WifiOff } from './assets/wifi-off';
 import { WifiOutline } from './assets/wifi-outline';
 import { Wifi } from './assets/wifi';
+
 export const IconRegistry = {
   'activity-outline': ActivityOutline,
   activity: Activity,
@@ -980,3 +981,4 @@ export const IconRegistry = {
   'wifi-outline': WifiOutline,
   wifi: Wifi,
 };
+

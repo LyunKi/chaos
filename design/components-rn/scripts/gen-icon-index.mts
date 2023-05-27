@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { getFileNameFromPath, pascalCase } from './common.mjs';
 
-const REGISTRY = 'export const IconRegistry = {';
+const REGISTRY = '\nexport const IconRegistry = {';
 
 const REGISTRY_END: string = '};';
 
