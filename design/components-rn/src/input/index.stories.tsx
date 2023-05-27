@@ -71,9 +71,7 @@ export const PresetInput: Story = {
           placeholder="Search input"
           format={{
             type: 'search',
-            onSearch: (v) => {
-              action(`Search input ${v}`);
-            },
+            onSearch: action('Search input'),
           }}
           {...args}
         />
