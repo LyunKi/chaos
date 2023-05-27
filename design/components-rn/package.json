@@ -29,14 +29,16 @@
     "react-native": "^0.71.7"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
     "@gorhom/portal": "^1.0.14",
-    "react-native-svg": "^13.9.0",
-    "react-native-safe-area-context": "^4.5.2"
+    "lodash": "^4.17.21",
+    "react-native-safe-area-context": "^4.5.2",
+    "react-native-svg": "^13.9.0"
   },
   "devDependencies": {
     "@cloud-dragon/common-types": "workspace:*",
+    "@cloud-dragon/common-utils": "workspace:*",
     "@cloud-dragon/react-utils": "workspace:*",
-    "@cloud-dragon/common-utils": "workspace:*"
+    "formik": "^2.3.2",
+    "yup": "^0.32.11"
   }
 }
