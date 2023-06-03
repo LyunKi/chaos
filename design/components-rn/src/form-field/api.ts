@@ -24,12 +24,12 @@ export interface BasicFormFieldProps {
   renderField: (props: FieldProps) => ReactElement;
   label?: string;
   tip?: string;
-  isRequired?: boolean;
   tipTs?: ThemeStyle<ViewStyle>;
+  isRequired?: boolean;
   /**
    * It's designed to be used with formik
    */
-  formConfig: FormConfig;
+  formConfig?: FormConfig;
 }
 
 export type FormFieldProps = CloudDesignWrap<BasicFormFieldProps, ViewStyle>;

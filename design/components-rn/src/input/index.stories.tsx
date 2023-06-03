@@ -22,7 +22,12 @@ export const Default: Story = {
 export const IconInput: Story = {
   render: (args) => {
     return (
-      <View ts={{ flexDirection: 'column', gap: '$rem:1' }}>
+      <View
+        ts={{
+          flexDirection: 'column',
+          gap: '$rem:1',
+        }}
+      >
         <Input
           renderLeft={(props) => (
             <Button

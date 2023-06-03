@@ -1,5 +1,5 @@
-import React from 'react';
-import { GlobalProvider } from '../src/';
+import React, { useEffect } from 'react';
+import { GlobalProvider, View } from '../src/';
 import { themes } from '@storybook/theming';
 import { Preview } from '@storybook/react';
 import { useDarkMode } from 'storybook-dark-mode';
@@ -8,7 +8,7 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 const preview: Preview & { darkMode: any } = {
   darkMode: {
-    dark: { ...themes.dark },
+    dark: { ...themes.dark, appBg: 'black' },
     light: { ...themes.normal },
     stylePreview: true,
   },
@@ -30,6 +30,11 @@ const preview: Preview & { darkMode: any } = {
     docs: {
       container: ({ children, context, ...props }: any) => {
         const theme = useDarkMode() ? 'dark' : 'light';
+        useEffect(() => {
+          const backgroundColor =
+            theme === 'dark' ? themes.dark.appBg : themes.light.appBg;
+          document.body.style.backgroundColor = backgroundColor || 'inherit';
+        }, [theme]);
         return (
           <DocsContainer context={context} theme={themes[theme]} {...props}>
             {children}
