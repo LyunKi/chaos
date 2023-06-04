@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout should match snapshot 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": undefined,
+      "boxSizing": "border-box",
+      "flexDirection": "row",
+      "height": 48,
+      "justifyContent": "center",
+      "width": 375,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": undefined,
+        "fontSize": undefined,
+      }
+    }
+  >
+    Hello, world!
+  </Text>
+</View>
+`;

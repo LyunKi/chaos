@@ -8,3 +8,4 @@ export * from './button';
 export * from './layout';
 export * from './input';
 export * from './form-field';
+export * from './safe-area';
