@@ -16,3 +16,7 @@ export type Fn<P extends Array<any> = any[], R = any, This = any> = (
 export interface Constructor<T = any> {
   new (...args: any[]): T;
 }
+
+export type ObjectWithKey<Key extends ObjectKey = 'id'> = {
+  [key in Key]: ObjectKey;
+};
