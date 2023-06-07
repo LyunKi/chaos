@@ -3,7 +3,7 @@ import { Animated } from 'react-native';
 import { isString } from 'lodash';
 import { getIconAnimation, ThemeManager } from '../common';
 import { IconRegistry } from './generated';
-import { IconProps, IconRef } from './api';
+import { IconComponentProps, IconProps, IconRef } from './api';
 
 export const Icon = React.forwardRef(
   (
@@ -32,16 +32,21 @@ export const Icon = React.forwardRef(
         stopAnimation: animationInstance?.stop,
       };
     });
+    const props = ThemeManager.themed({
+      width: width ?? size,
+      height: height ?? size,
+      size,
+      fill: color,
+      color: color,
+    });
+    props.style = {
+      width: props.width,
+      height: props.height,
+      color: props.color,
+    };
     return Icon ? (
       <Animated.View {...animationInstance?.toProps()} testID={testID}>
-        {React.createElement(
-          Icon,
-          ThemeManager.themed({
-            width: width ?? size,
-            height: height ?? size,
-            fill: color,
-          })
-        )}
+        {React.createElement(Icon, props as IconComponentProps)}
       </Animated.View>
     ) : null;
   }

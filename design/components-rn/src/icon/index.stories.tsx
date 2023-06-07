@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { View } from '../view';
 import { Button } from '../button';
-import { Text } from '../text';
+import { Input } from '../input';
 import { IconRegistry } from './generated';
 import { IconRef, Icon, PresetIcons, IconProps } from './';
 
@@ -52,10 +52,42 @@ const GalleryTemplate = (args: IconProps) => {
       <View
         ts={{ flexDirection: 'column', alignItems: 'center', gap: '$rem:1' }}
       >
-        <Text value="Outline icons" />
         <View ts={{ flexWrap: 'wrap', width: '$vw:30' }}>
           {Object.keys(IconRegistry)
             .filter((iconName) => iconName.includes('outline'))
+            .map((iconName) => {
+              return (
+                <Button
+                  variant="ghost"
+                  ts={{
+                    width: '$rem:2',
+                    height: '$rem:2',
+                    marginHorizontal: '$rem:0.25',
+                  }}
+                  onPress={async () => {
+                    try {
+                      await navigator.clipboard.writeText(iconName);
+                      alert(`Icon copied: ${iconName}`);
+                    } catch (err) {
+                      console.error('Failed to copy: ', err);
+                    }
+                  }}
+                  renderLeft={() => {
+                    return (
+                      <Icon
+                        key={iconName}
+                        {...args}
+                        icon={iconName as PresetIcons}
+                      />
+                    );
+                  }}
+                />
+              );
+            })}
+        </View>
+        <View ts={{ flexWrap: 'wrap', width: '$vw:30' }}>
+          {Object.keys(IconRegistry)
+            .filter((iconName) => !iconName.includes('outline'))
             .map((iconName) => {
               return (
                 <Button
