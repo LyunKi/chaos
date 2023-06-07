@@ -1,7 +1,7 @@
 {
   "name": "@cloud-design/components",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.7.0",
   "files": [
     "dist",
     "index.d.ts"
