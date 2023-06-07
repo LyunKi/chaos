@@ -1,6 +1,5 @@
 {
   "name": "@cloud-dragon/prettier-config",
-  "private": true,
   "version": "0.7.0",
   "description": "Prettier config",
   "main": "index.js",

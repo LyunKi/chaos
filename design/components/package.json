@@ -1,6 +1,5 @@
 {
   "name": "@cloud-design/components",
-  "private": true,
   "version": "0.7.0",
   "files": [
     "dist",
