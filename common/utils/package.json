@@ -18,6 +18,7 @@
     "url": "https://github.com/LyunKi/chaos.git",
     "directory": "common/utils"
   },
+  "private": true,
   "version": "0.6.0",
   "scripts": {
     "build": "vite build && tsc -p tsconfig.lib.json",

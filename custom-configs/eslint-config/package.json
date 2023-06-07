@@ -1,5 +1,6 @@
 {
   "name": "@cloud-dragon/eslint-config",
+  "private": true,
   "version": "0.6.0",
   "description": "Eslint config",
   "main": "index.js",

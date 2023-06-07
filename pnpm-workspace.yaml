@@ -1,6 +1,5 @@
 packages:
   - 'design/*'
-  - 'packages/*'
   - 'custom-configs/*'
   - 'common/*'
   - 'obx/*'

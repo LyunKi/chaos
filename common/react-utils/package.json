@@ -14,6 +14,7 @@
     }
   },
   "version": "0.6.0",
+  "private": true,
   "scripts": {
     "build": "vite build && tsc -p tsconfig.lib.json",
     "prepublish": "pnpm build",
