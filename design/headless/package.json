@@ -1,7 +1,6 @@
 {
   "name": "@cloud-design/headless",
   "private": true,
-  "version": "0.0.0",
   "files": [
     "dist",
     "index.d.ts"
