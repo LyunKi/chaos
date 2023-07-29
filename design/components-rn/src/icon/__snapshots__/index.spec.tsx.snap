@@ -25,13 +25,14 @@ exports[`Icon should match snapshot 1`] = `
   >
     <RNSVGSvgView
       align="xMidYMid"
-      bbHeight="64"
-      bbWidth="64"
+      bbHeight="16"
+      bbWidth="16"
       focusable={false}
-      height={64}
+      height={16}
       meetOrSlice={0}
       minX={0}
       minY={0}
+      size={16}
       style={
         [
           {
@@ -39,15 +40,20 @@ exports[`Icon should match snapshot 1`] = `
             "borderWidth": 0,
           },
           {
+            "color": undefined,
+            "height": 16,
+            "width": 16,
+          },
+          {
             "flex": 0,
-            "height": 64,
-            "width": 64,
+            "height": 16,
+            "width": 16,
           },
         ]
       }
       vbHeight={24}
       vbWidth={24}
-      width={64}
+      width={16}
     >
       <RNSVGGroup
         fill={

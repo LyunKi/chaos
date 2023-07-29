@@ -1,8 +1,8 @@
 import React, { forwardRef, Ref, useRef, useState } from 'react';
-import { TextInput, StyleSheet } from 'react-native';
+import { TextInput, StyleSheet, StyleProp, TextStyle } from 'react-native';
 import { combineRefs } from '@cloud-dragon/react-utils';
 import { styles } from '@cloud-dragon/common-utils';
-import { AccessoryProps, ThemeManager } from '../common';
+import { AccessoryProps, FONT_BASE, ThemeManager } from '../common';
 import { Icon } from '../icon';
 import { Button } from '../button';
 import { View } from '../view';
@@ -118,7 +118,7 @@ export const Input = forwardRef(
       }),
       style,
     ]);
-    const computedInputTs = ThemeManager.themed({
+    const computedInputTs: StyleProp<TextStyle> = ThemeManager.themed({
       paddingLeft: renderLeft ? undefined : '$rem:1',
       paddingRight: renderRight ? undefined : '$rem:1',
       lineHeight: '$rem:1.5',
@@ -131,7 +131,7 @@ export const Input = forwardRef(
     });
     const accessoryProps = {
       color: containerTs.borderColor,
-      size: computedInputTs.fontSize,
+      size: computedInputTs.fontSize ?? FONT_BASE,
     };
     const computedRenderLeft = renderLeft ?? renderLeft;
     return (

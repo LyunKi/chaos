@@ -20,7 +20,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
   render() {
     return (
       <View
@@ -40,9 +40,9 @@ export const Default: Story = {
       </View>
     );
   },
-};
+} as any as Story;
 
-export const UsageWithFormik: Story = {
+export const UsageWithFormik = {
   render() {
     return (
       <View
@@ -79,4 +79,4 @@ export const UsageWithFormik: Story = {
       </View>
     );
   },
-};
+} as any as Story;

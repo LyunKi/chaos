@@ -17,7 +17,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
   render() {
     const TOAST_HOST = 'TOAST_HOST';
     return (
@@ -70,4 +70,4 @@ export const Default: Story = {
       </View>
     );
   },
-};
+} as any as Story;
