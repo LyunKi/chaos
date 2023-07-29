@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { View } from '../view';
 import { Button } from '../button';
-import { Input } from '../input';
 import { IconRegistry } from './generated';
 import { IconRef, Icon, PresetIcons, IconProps } from './';
 
