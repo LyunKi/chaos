@@ -19,6 +19,7 @@
   },
   "scripts": {
     "gen-icons": "pnpm exec ts-node --esm scripts/gen-icons.mts",
+    "prepublish": "pnpm build",
     "build": "tsc -p tsconfig.lib.json",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
