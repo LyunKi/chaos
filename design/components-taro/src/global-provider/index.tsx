@@ -1,5 +1,5 @@
 import React, { Fragment, PropsWithChildren, useEffect } from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions } from '@tarojs/taro';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PortalProvider } from '@gorhom/portal';
 import {

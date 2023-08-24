@@ -3,7 +3,6 @@
   "compilerOptions": {
     "types": ["vite/client"],
     "target": "esnext",
-    "jsx": "react-native",
     "noEmit": true
   },
   "files": [],

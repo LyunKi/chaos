@@ -1,5 +1,5 @@
 {
-  "name": "@cloud-design/components-rn",
+  "name": "@cloud-design/components-taro",
   "version": "0.7.0",
   "files": [
     "dist"
@@ -15,25 +15,24 @@
     }
   },
   "scripts": {
-    "gen-icons": "pnpm exec ts-node --esm scripts/gen-icons.mts",
     "build": "tsc -p tsconfig.lib.json",
-    "dev": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:updateSnap": "jest --updateSnapshot"
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-native": "^0.71.7"
-  },
-  "dependencies": {
-    "@gorhom/portal": "^1.0.14",
+    "@tarojs/components": "^3.6.13",
     "lodash": "^4.17.21",
-    "react-native-safe-area-context": "^4.5.2",
-    "react-native-svg": "^13.9.0"
+    "@tarojs/taro": "^3.6.13"
   },
   "devDependencies": {
+    "react-native": "^0.71.7",
+    "react": "^18.2.0",
+    "lodash": "^4.17.21",
+    "@tarojs/components": "^3.6.13",
+    "@tarojs/taro": "^3.6.13",
+    "@tarojs/taro-h5": "^3.6.13",
     "@cloud-dragon/common-types": "workspace:*",
     "@cloud-dragon/common-utils": "workspace:*",
     "@cloud-dragon/react-utils": "workspace:*",
