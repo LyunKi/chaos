@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should match snapshot 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "borderColor": undefined,
+      "borderRadius": undefined,
+      "borderWidth": 1,
+      "boxSizing": "border-box",
+      "flexDirection": "row",
+      "height": undefined,
+      "width": "100%",
+    }
+  }
+>
+  <TextInput
+    onBlur={[Function]}
+    onFocus={[Function]}
+    secureTextEntry={false}
+    style={
+      {
+        "color": undefined,
+        "flex": 1,
+        "fontSize": undefined,
+        "lineHeight": 24,
+        "minWidth": 0,
+        "outline": "none",
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      }
+    }
+  />
+</View>
+`;

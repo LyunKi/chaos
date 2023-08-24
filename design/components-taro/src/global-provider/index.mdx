@@ -1,0 +1,20 @@
+import { Title, Canvas, Meta, Controls, Source } from '@storybook/blocks';
+
+import * as Stories from './index.stories';
+
+<Meta of={Stories} />
+
+<Title />
+
+A **GlobalProvider** is a global container of cloud-design components. It controls the theme and i18n settings of all the wrapped components. It also includes some other providers:
+
+1. PortalProvider: This is used for creating react portals.
+2. SafeAreaProvider: This is used for providing the SafeAreaView props.
+
+## Props
+
+<Controls />
+
+## Stories
+
+<Canvas of={Stories.Default} />

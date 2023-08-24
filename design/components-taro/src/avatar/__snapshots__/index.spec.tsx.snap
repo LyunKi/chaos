@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar should match snapshot 1`] = `
+<Image
+  source={
+    {
+      "uri": "https://reactnative.dev/img/tiny_logo.png",
+    }
+  }
+  style={
+    {
+      "borderRadius": undefined,
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+/>
+`;

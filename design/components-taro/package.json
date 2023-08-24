@@ -1,0 +1,43 @@
+{
+  "name": "@cloud-design/components-rn",
+  "version": "0.7.0",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.umd.js"
+    }
+  },
+  "scripts": {
+    "gen-icons": "pnpm exec ts-node --esm scripts/gen-icons.mts",
+    "build": "tsc -p tsconfig.lib.json",
+    "dev": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:updateSnap": "jest --updateSnapshot"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-native": "^0.71.7"
+  },
+  "dependencies": {
+    "@gorhom/portal": "^1.0.14",
+    "lodash": "^4.17.21",
+    "react-native-safe-area-context": "^4.5.2",
+    "react-native-svg": "^13.9.0"
+  },
+  "devDependencies": {
+    "@cloud-dragon/common-types": "workspace:*",
+    "@cloud-dragon/common-utils": "workspace:*",
+    "@cloud-dragon/react-utils": "workspace:*",
+    "formik": "^2.3.2",
+    "yup": "^0.32.11"
+  }
+}

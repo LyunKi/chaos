@@ -1,0 +1,19 @@
+{
+  "extends": "@cloud-dragon/tsconfig/react",
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "target": "esnext",
+    "jsx": "react-native",
+    "noEmit": true
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

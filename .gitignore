@@ -34,3 +34,6 @@ yarn-error.log*
 .turbo
 pnpm-lock.yaml
 storybook-static
+
+**/components-taro/**/generated/assets/
+**/components-taro/**/assets/
