@@ -14,6 +14,9 @@
       "require": "./dist/index.umd.js"
     }
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "scripts": {
     "gen-icons": "pnpm exec ts-node --esm scripts/gen-icons.mts",
     "build": "tsc -p tsconfig.lib.json",
