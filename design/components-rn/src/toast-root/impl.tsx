@@ -146,7 +146,7 @@ export class ToastManager {
   };
 
   private toast(options: ToastOptions) {
-    const { id, duration, ...rest } = options;
+    const { id, duration = DEFAULT_DURATION, ...rest } = options;
     const items = this.instance?.getItems() ?? [];
     const itemId = id ?? uniqueId('__toast-item-');
     const newItems = take(
@@ -158,7 +158,7 @@ export class ToastManager {
     );
 
     this.instance?.setItems(newItems);
-    if (duration) {
+    if (duration !== null) {
       this.scheduler?.registerTasks(
         new Scheduler.Task({
           id: id,
@@ -174,28 +174,24 @@ export class ToastManager {
     return this.toast({
       ...options,
       status: 'info',
-      duration: DEFAULT_DURATION,
     });
   }
   public success(options: ToastOptions) {
     return this.toast({
       ...options,
       status: 'success',
-      duration: DEFAULT_DURATION,
     });
   }
   public error(options: ToastOptions) {
     return this.toast({
       ...options,
       status: 'error',
-      duration: DEFAULT_DURATION,
     });
   }
   public warning(options: ToastOptions) {
     return this.toast({
       ...options,
       status: 'warning',
-      duration: DEFAULT_DURATION,
     });
   }
   public loading(options: ToastOptions) {
@@ -237,7 +233,7 @@ export class ToastManager {
 
 export const Toast = new ToastManager();
 
-export const ToastRoot: React.FC<ToastRootProps> = forwardRef(
+export const ToastRoot = forwardRef(
   ({ maxCount = 1, host, closeable, mask, itemTs }: ToastRootProps, ref) => {
     const [items, setItems] = useState<ToastItemProps[]>([]);
     const visible = !isEmpty(items);

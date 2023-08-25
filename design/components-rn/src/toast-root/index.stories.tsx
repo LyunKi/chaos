@@ -8,9 +8,6 @@ import { Toast, ToastRoot } from '.';
 const meta = {
   title: 'Cloud-Design/ToastRoot',
   component: ToastRoot,
-  parameters: {
-    controls: { hideNoControlsWarning: true },
-  },
 } satisfies Meta<typeof ToastRoot>;
 
 export default meta;

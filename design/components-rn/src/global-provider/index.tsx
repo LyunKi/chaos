@@ -25,7 +25,7 @@ export interface ThemeConfig {
    */
   themeContext?: Partial<Omit<ThemeContext, 'windowWidth' | 'windowHeight'>>;
 
-  themeMaxReferrenceDepth?: number;
+  themeMaxReferenceDepth?: number;
 }
 
 export interface I18nConfig {
@@ -42,7 +42,7 @@ export const GlobalProvider = ({
   themeMode = 'light',
   themeContext,
   locale = 'en_US',
-  themeMaxReferrenceDepth = 10,
+  themeMaxReferenceDepth = 10,
   children,
 }: PropsWithChildren<GlobalProviderProps>) => {
   const [ready, setReady] = React.useState<boolean>(false);
@@ -58,7 +58,7 @@ export const GlobalProvider = ({
       windowHeight: window.height,
     });
     ThemeManager.setMode(themeMode);
-    ThemeManager.setMaxReferrenceDepth(themeMaxReferrenceDepth);
+    ThemeManager.setMaxReferenceDepth(themeMaxReferenceDepth);
     if (themePack) {
       ThemeManager.setThemePack(themePack);
     }
@@ -83,7 +83,7 @@ export const GlobalProvider = ({
     themePack,
     themeContext,
     setKey,
-    themeMaxReferrenceDepth,
+    themeMaxReferenceDepth,
   ]);
   return (
     <PortalProvider>

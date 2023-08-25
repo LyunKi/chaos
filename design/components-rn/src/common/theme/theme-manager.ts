@@ -107,10 +107,10 @@ class ThemeManagerClass {
     });
   }
 
-  private maxReferrenceDepth = 10;
+  private maxReferenceDepth = 10;
 
-  public setMaxReferrenceDepth(themeMaxReferrenceDepth: number) {
-    this.maxReferrenceDepth = themeMaxReferrenceDepth;
+  public setMaxReferenceDepth(themeMaxReferenceDepth: number) {
+    this.maxReferenceDepth = themeMaxReferenceDepth;
   }
 
   private reduceReferences(flatTheme: CloudDesignTheme) {
@@ -127,7 +127,7 @@ class ThemeManagerClass {
     while (!isEmpty(references) && recursiveFlag) {
       recursiveFlag = false;
       depth += 1;
-      if (depth > this.maxReferrenceDepth) {
+      if (depth > this.maxReferenceDepth) {
         throw new Error('Your reference theme value is too deep');
       }
       for (const key of Reflect.ownKeys(references)) {

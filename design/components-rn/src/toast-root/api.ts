@@ -21,8 +21,8 @@ export interface ToastItemProps {
   description: string;
   closeable?: boolean;
   render?: Fn<any, ReactNode>;
-  // use -1 to represent no limit
-  duration: number;
+  // use null to represent no limit
+  duration: number | null;
   onClose: Fn;
   ts?: ThemeStyle<ViewStyle>;
 }

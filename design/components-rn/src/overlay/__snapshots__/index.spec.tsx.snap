@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Overlay should match snapshot 1`] = `
+[
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    transparent={true}
+    visible={false}
+  />,
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    pointerEvents="auto"
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": undefined,
+          "borderRadius": undefined,
+          "boxSizing": "border-box",
+          "flexDirection": "row",
+          "gap": 8,
+          "height": undefined,
+          "justifyContent": "center",
+          "outline": "unset",
+          "paddingHorizontal": undefined,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": undefined,
+            "fontSize": undefined,
+            "fontWeight": undefined,
+          }
+        }
+      >
+        Trigger
+      </Text>
+    </View>
+  </View>,
+]
+`;
