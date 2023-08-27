@@ -1,24 +1,23 @@
-import { FlatList } from 'react-native'
-import filter from 'lodash/filter'
-import React from 'react'
-import { Country, I18nManager } from '../common'
-import { View } from '../View'
-import { COUNTRY_PACK, Icon } from '../Icon'
-import { Text } from '../Text'
-import { Divider } from '../Divider'
-import { Input } from '../Input'
-import { COUNTRIES } from '../common/constants'
-import { Button } from '../Button'
+import { FlatList } from 'react-native';
+import filter from 'lodash/filter';
+import React from 'react';
+import { Country, I18nManager, COUNTRIES } from '../common';
+import { View } from '../view';
+import { Icon } from '../icon';
+import { Text } from '../text';
+import { Divider } from '../divider';
+import { Input } from '../input';
+import { Button } from '../button';
 import {
   CountryCurrentPropKey,
   CountryItemProps,
   CountryPickerProps,
-} from './api'
+} from './api';
 
 function CountryItem(props: CountryItemProps) {
-  const { country, selectedCountry, keyProp = 'callingCode' } = props
-  const { countryCode, name, [keyProp]: info } = country
-  const showName = name[I18nManager.locale] ?? name.common
+  const { country, selectedCountry, keyProp = 'callingCode' } = props;
+  const { countryCode, name, [keyProp]: info } = country;
+  const showName = name[I18nManager.locale] ?? name.common;
   return (
     <View
       ts={{
@@ -35,21 +34,21 @@ function CountryItem(props: CountryItemProps) {
         )}
       </View>
     </View>
-  )
+  );
 }
 
-const ITEM_HEIGHT = 10
+const ITEM_HEIGHT = 10;
 
 function useCountryItems(params: {
-  searchValue?: string
-  selectedCountry?: Country
-  keyProp?: CountryCurrentPropKey
+  searchValue?: string;
+  selectedCountry?: Country;
+  keyProp?: CountryCurrentPropKey;
 }) {
-  const { searchValue, selectedCountry, keyProp } = params
+  const { searchValue, selectedCountry, keyProp } = params;
   return React.useMemo(() => {
     const countryItems = filter(COUNTRIES, (country) => {
-      const { countryCode, name } = country
-      const { common, zh_CN, en_US } = name
+      const { countryCode, name } = country;
+      const { common, zh_CN, en_US } = name;
       return (
         countryCode !== selectedCountry?.countryCode &&
         (!searchValue ||
@@ -57,29 +56,29 @@ function useCountryItems(params: {
           en_US?.includes(searchValue) ||
           zh_CN?.includes(searchValue) ||
           !!(keyProp && country[keyProp]?.includes(searchValue)))
-      )
-    })
+      );
+    });
     if (selectedCountry) {
-      countryItems.unshift(selectedCountry)
+      countryItems.unshift(selectedCountry);
     }
-    return countryItems
-  }, [searchValue, selectedCountry, keyProp])
+    return countryItems;
+  }, [searchValue, selectedCountry, keyProp]);
 }
 
 export function CountryPicker(props: CountryPickerProps) {
-  const { value, keyProp, onChange, hideFilter, title } = props
-  const country = value ? I18nManager.getCountryByCode(value) : undefined
+  const { value, keyProp, onChange, hideFilter, title } = props;
+  const country = value ? I18nManager.getCountryByCode(value) : undefined;
   const [searchValue, setSearchValue] = React.useState<string | undefined>(
     undefined
-  )
+  );
   const seachCountry = React.useCallback((inputText: string) => {
-    setSearchValue(inputText)
-  }, [])
+    setSearchValue(inputText);
+  }, []);
   const countryItems = useCountryItems({
     searchValue,
     selectedCountry: country,
     keyProp,
-  })
+  });
   return (
     <View style={{ flex: 1, flexDirection: 'column' }}>
       {title}
@@ -110,7 +109,7 @@ export function CountryPicker(props: CountryPickerProps) {
               key={item.countryCode}
               variant="ghost"
               onPress={() => {
-                onChange?.(item.countryCode)
+                onChange?.(item.countryCode);
               }}
               value={() => (
                 <CountryItem
@@ -124,5 +123,5 @@ export function CountryPicker(props: CountryPickerProps) {
         />
       </View>
     </View>
-  )
+  );
 }
