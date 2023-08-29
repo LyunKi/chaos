@@ -32,14 +32,14 @@ export const AcceptLanguageParser = {
     return languagePacks
       .map((pack) => {
         const { code, region } = pack;
-        let langauge = code;
+        let language = code;
         if (region) {
-          langauge += `-${region}`;
+          language += `-${region}`;
         }
-        return langauge;
+        return language;
       })
-      .find((langauge) => {
-        return supportedLanguages.includes(langauge);
+      .find((language) => {
+        return supportedLanguages.includes(language);
       });
   },
 };

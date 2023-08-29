@@ -49,7 +49,7 @@ export type CountryCode = keyof typeof COUNTRIES;
 
 export type SupportedLocale = 'zh_CN' | 'en_US';
 
-export type Country = (typeof COUNTRIES)['CN'];
+export type Country = typeof COUNTRIES.CN;
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 

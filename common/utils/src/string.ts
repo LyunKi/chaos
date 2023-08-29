@@ -1,9 +1,6 @@
 import { KV } from '@cloud-dragon/common-types';
 
-export function buildString(
-  head: string = '',
-  ...conditions: KV<boolean>[]
-): string {
+export function buildString(head = '', ...conditions: KV<boolean>[]): string {
   let result = head;
   conditions.forEach((condition) => {
     for (const key of Reflect.ownKeys(condition)) {

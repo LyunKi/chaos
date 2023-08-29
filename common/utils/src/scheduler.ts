@@ -1,10 +1,10 @@
-import map from 'lodash/map'
-import isEmpty from 'lodash/isEmpty'
-import { gcd } from './gcd'
+import map from 'lodash/map';
+import isEmpty from 'lodash/isEmpty';
+import { gcd } from './gcd';
 
-export type TaskCallback = (experiencedTime: number) => any
+export type TaskCallback = (experiencedTime: number) => any;
 
-export type TaskConfig = OnceTaskConfig | IntervalTaskConfig
+export type TaskConfig = OnceTaskConfig | IntervalTaskConfig;
 
 /**
  * 类似于 setTimeout， 仅仅执行一次。
@@ -13,9 +13,9 @@ export type TaskConfig = OnceTaskConfig | IntervalTaskConfig
  * @interface OnceTaskConfig
  */
 export interface OnceTaskConfig {
-  id?: string
-  onComplete: () => any
-  totalPeriod: number
+  id?: string;
+  onComplete: () => any;
+  totalPeriod: number;
 }
 
 /**
@@ -25,30 +25,30 @@ export interface OnceTaskConfig {
  * @interface IntervalTaskConfig
  */
 export type IntervalTaskConfig = {
-  id?: string
-  intervalPeriod: number
-  intervalCallback: TaskCallback
-  onComplete?: () => any
-  totalPeriod?: number
-}
+  id?: string;
+  intervalPeriod: number;
+  intervalCallback: TaskCallback;
+  onComplete?: () => any;
+  totalPeriod?: number;
+};
 
 function isIntervalTaskConfig(task: TaskConfig): task is IntervalTaskConfig {
   return (
     Object.hasOwnProperty.call(task, 'intervalPeriod') &&
     Object.hasOwnProperty.call(task, 'intervalCallback')
-  )
+  );
 }
 
 /**
  * 基本间隔周期 10 ms,
  * 出于浏览器规范兼容性，以及便于计算的同时不影响准确性等多方考虑，基本间隔周期为 10 ms
  */
-export const BASE_PERIOD = 10
+export const BASE_PERIOD = 10;
 
-export type SchedulerTask = InstanceType<typeof Scheduler.Task>
+export type SchedulerTask = InstanceType<typeof Scheduler.Task>;
 
 export interface SchedulerTasks {
-  [id: string]: SchedulerTask
+  [id: string]: SchedulerTask;
 }
 
 export enum SchedulerMode {
@@ -58,55 +58,55 @@ export enum SchedulerMode {
   Once = 'Once',
 }
 
-const COMMON_ID_PREFIX = 'Scheduler-Task'
+const COMMON_ID_PREFIX = 'Scheduler-Task';
 
 /**
  * 任务管理类，用于监听倒计时并管理任务表
  */
 export class Scheduler {
   // 任务表，id-value结构，任务都有唯一对应的id
-  private tasks: SchedulerTasks
+  private tasks: SchedulerTasks;
 
   // 计数器，用于生成分配任务对应的id
-  private counter: number
+  private counter: number;
 
   // 监听者，可用于关闭对任务的监听
-  private listener?: ReturnType<typeof setInterval>
+  private listener?: ReturnType<typeof setInterval>;
 
   // 优化场景，如果有多个任务的间隔周期都是 10，或者 10的倍数，可以直接将基础间隔周期 * 10 来进行优化
-  private multiple = 1
+  private multiple = 1;
 
   public get realInterval() {
-    return this.multiple * BASE_PERIOD
+    return this.multiple * BASE_PERIOD;
   }
 
-  private mode: SchedulerMode
+  private mode: SchedulerMode;
 
   /**
    * 私有化构造方法，避免用户手动构造
    */
   private constructor(mode: SchedulerMode) {
-    this.counter = 0
-    this.tasks = {}
-    this.mode = mode
+    this.counter = 0;
+    this.tasks = {};
+    this.mode = mode;
   }
 
   public static Task = class {
     // 可选的 id ，考虑到可能有指定 id 来方便进行任务的中断场景
-    public id: string | undefined
+    public id: string | undefined;
 
-    public intervalCallback?: TaskCallback
+    public intervalCallback?: TaskCallback;
 
-    public onComplete?: () => any
+    public onComplete?: () => any;
 
     // 一共要执行多个少个间隔周期
-    public totalPeriod?: number
+    public totalPeriod?: number;
 
     // 每多少个间隔周期执行一次 intervalCallback
-    public intervalPeriod?: number
+    public intervalPeriod?: number;
 
     // 当前时刻，该任务已经经历过的周期数
-    public experiencedPeriod: number
+    public experiencedPeriod: number;
 
     /**
      * check totalPeriod >= 1  整数 并且 totalPeriod >= intervalPeriod
@@ -119,7 +119,7 @@ export class Scheduler {
           this.totalPeriod < (this.intervalPeriod ?? 1) ||
           !Number.isInteger(this.totalPeriod)
         ) {
-          throw new Error('Illegal SchedulerTask config: totalPeriod')
+          throw new Error('Illegal SchedulerTask config: totalPeriod');
         }
       }
     }
@@ -132,7 +132,7 @@ export class Scheduler {
     checkIntervalPeriod() {
       if (this.intervalPeriod !== undefined) {
         if (this.intervalPeriod < 1 || !Number.isInteger(this.intervalPeriod)) {
-          throw new Error('Illegal SchedulerTask config: intervalPeriod')
+          throw new Error('Illegal SchedulerTask config: intervalPeriod');
         }
       }
     }
@@ -148,20 +148,20 @@ export class Scheduler {
      * @memberof Task
      */
     public constructor(config: TaskConfig) {
-      const { totalPeriod, onComplete, id } = config
-      this.totalPeriod = totalPeriod
-      this.onComplete = onComplete
-      this.id = id
+      const { totalPeriod, onComplete, id } = config;
+      this.totalPeriod = totalPeriod;
+      this.onComplete = onComplete;
+      this.id = id;
       if (isIntervalTaskConfig(config)) {
-        const { intervalCallback, intervalPeriod } = config
-        this.intervalPeriod = intervalPeriod
-        this.intervalCallback = intervalCallback
+        const { intervalCallback, intervalPeriod } = config;
+        this.intervalPeriod = intervalPeriod;
+        this.intervalCallback = intervalCallback;
       }
-      this.checkTotalPeriod()
-      this.checkIntervalPeriod()
-      this.experiencedPeriod = 0
+      this.checkTotalPeriod();
+      this.checkIntervalPeriod();
+      this.experiencedPeriod = 0;
     }
-  }
+  };
 
   /**
    * 监听执行时每秒进行的操作。
@@ -171,26 +171,26 @@ export class Scheduler {
    * @memberof Scheduler
    */
   private action = () => {
-    const completedTasks: string[] = []
+    const completedTasks: string[] = [];
     const actions = map(this.tasks, async (task, id) => {
-      task.experiencedPeriod += this.multiple
+      task.experiencedPeriod += this.multiple;
       // 如果到了周期任务的执行时间
       if (
         task.intervalPeriod &&
         task.intervalCallback &&
         task.experiencedPeriod % task.intervalPeriod === 0
       ) {
-        task.intervalCallback(task.experiencedPeriod * BASE_PERIOD)
+        task.intervalCallback(task.experiencedPeriod * BASE_PERIOD);
       }
       // 如果任务完成，执行 onComplete 回调，并且加入停止队列
       if (task.totalPeriod === task.experiencedPeriod) {
-        task.onComplete?.()
-        completedTasks.push(id)
+        task.onComplete?.();
+        completedTasks.push(id);
       }
-    })
-    Promise.all(actions)
-    this.stopTasks(...completedTasks)
-  }
+    });
+    Promise.all(actions);
+    this.stopTasks(...completedTasks);
+  };
 
   /**
    * 开始监听倒计时
@@ -199,8 +199,8 @@ export class Scheduler {
    * @memberof Scheduler
    */
   private listen() {
-    this.stopListen()
-    this.listener = setInterval(this.action, this.realInterval)
+    this.stopListen();
+    this.listener = setInterval(this.action, this.realInterval);
   }
 
   /**
@@ -211,8 +211,8 @@ export class Scheduler {
    */
   private stopListen() {
     if (this.listener) {
-      clearInterval(this.listener)
-      this.listener = undefined
+      clearInterval(this.listener);
+      this.listener = undefined;
     }
   }
 
@@ -224,7 +224,7 @@ export class Scheduler {
    */
   private judgeAndStop() {
     if (isEmpty(this.tasks)) {
-      this.stopListen()
+      this.stopListen();
     }
   }
 
@@ -236,9 +236,9 @@ export class Scheduler {
    */
   public stopTasks(...taskIds: string[]) {
     taskIds.forEach((taskId) => {
-      delete this.tasks[taskId]
-    })
-    this.judgeAndStop()
+      delete this.tasks[taskId];
+    });
+    this.judgeAndStop();
   }
 
   /**
@@ -250,35 +250,35 @@ export class Scheduler {
    * @memberof Scheduler
    */
   public static spawnTasks(...tasks: SchedulerTask[]) {
-    const instance = new Scheduler(SchedulerMode.Once)
-    const currentIds: string[] = []
-    const intervals: number[] = []
+    const instance = new Scheduler(SchedulerMode.Once);
+    const currentIds: string[] = [];
+    const intervals: number[] = [];
     tasks.forEach((task) => {
-      const id = task.id ?? `${COMMON_ID_PREFIX}-${instance.counter}`
-      instance.tasks[id] = task
-      instance.counter += 1
-      currentIds.push(id)
+      const id = task.id ?? `${COMMON_ID_PREFIX}-${instance.counter}`;
+      instance.tasks[id] = task;
+      instance.counter += 1;
+      currentIds.push(id);
       // 记录间歇周期 和 总周期数，方便判断最合适的执行周期
       if (task.intervalPeriod && task.intervalCallback) {
-        intervals.push(task.intervalPeriod)
+        intervals.push(task.intervalPeriod);
       }
       if (task.totalPeriod) {
-        intervals.push(task.totalPeriod)
+        intervals.push(task.totalPeriod);
       }
-    })
+    });
     if (!isEmpty(intervals)) {
       // 优化轮询次数
-      instance.multiple = gcd(...intervals)
+      instance.multiple = gcd(...intervals);
     }
     if (!isEmpty(currentIds)) {
       // 只有存在任务时才需要启动定时器
-      instance.listen()
+      instance.listen();
     }
     return {
       instance,
       // 方便调用者根据 id 强行中断相应的任务
       taskIds: currentIds,
-    }
+    };
   }
 
   /**
@@ -290,9 +290,9 @@ export class Scheduler {
    * @memberof Scheduler
    */
   public static newFixedInstance(intervalPeriod: number) {
-    const instance = new Scheduler(SchedulerMode.Fixed)
-    instance.multiple = intervalPeriod
-    return instance
+    const instance = new Scheduler(SchedulerMode.Fixed);
+    instance.multiple = intervalPeriod;
+    return instance;
   }
 
   /**
@@ -303,26 +303,26 @@ export class Scheduler {
    */
   public registerTasks(...tasks: SchedulerTask[]) {
     if (this.mode === SchedulerMode.Once) {
-      return 0
+      return 0;
     }
-    const before = this.counter
+    const before = this.counter;
     tasks.forEach((task) => {
-      const { intervalPeriod = 0, totalPeriod = 0 } = task
+      const { intervalPeriod = 0, totalPeriod = 0 } = task;
       if (
         intervalPeriod % this.multiple !== 0 ||
         totalPeriod % this.multiple !== 0
       ) {
-        return
+        return;
       }
-      const id = task.id ?? `${COMMON_ID_PREFIX}-${this.counter}`
-      this.tasks[id] = task
-      this.counter += 1
-    })
-    const result = this.counter - before
+      const id = task.id ?? `${COMMON_ID_PREFIX}-${this.counter}`;
+      this.tasks[id] = task;
+      this.counter += 1;
+    });
+    const result = this.counter - before;
     if (result > 0 && !this.isListening) {
-      this.listen()
+      this.listen();
     }
-    return result
+    return result;
   }
 
   /**
@@ -332,6 +332,6 @@ export class Scheduler {
    * @memberof Scheduler
    */
   public get isListening() {
-    return !!this.listener
+    return !!this.listener;
   }
 }
