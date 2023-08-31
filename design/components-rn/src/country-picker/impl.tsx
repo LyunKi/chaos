@@ -1,7 +1,8 @@
 import { FlatList } from 'react-native';
 import filter from 'lodash/filter';
 import React from 'react';
-import { Country, I18nManager, COUNTRIES } from '../common';
+import { I18nManager } from '../common';
+import { CountriesManager } from '@cloud-dragon/world-countries';
 import { View } from '../view';
 import { Icon } from '../icon';
 import { Text } from '../text';
@@ -67,7 +68,7 @@ function useCountryItems(params: {
 
 export function CountryPicker(props: CountryPickerProps) {
   const { value, keyProp, onChange, hideFilter, title } = props;
-  const country = value ? I18nManager.getCountryByCode(value) : undefined;
+  const country = value ? CountriesManager.getCountryByCca2(value) : undefined;
   const [searchValue, setSearchValue] = React.useState<string | undefined>(
     undefined
   );

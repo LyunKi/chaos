@@ -1,7 +1,6 @@
 import { KV, Fn, Prefix } from '@cloud-dragon/common-types';
 import { ReactNode } from 'react';
 import { StyleProp } from 'react-native';
-import { COUNTRIES } from './constants';
 
 export type CloudDesignTheme = KV<any>;
 
@@ -45,11 +44,7 @@ export interface FormError {
   msg: string;
 }
 
-export type CountryCode = keyof typeof COUNTRIES;
-
 export type SupportedLocale = 'zh_CN' | 'en_US';
-
-export type Country = typeof COUNTRIES.CN;
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
