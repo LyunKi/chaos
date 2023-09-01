@@ -1,6 +1,6 @@
 import React, { Ref } from 'react';
 import { Animated } from 'react-native';
-import { isString } from 'lodash';
+import isString from 'lodash-es/isString';
 import { getIconAnimation, ThemeManager } from '../common';
 import { IconRegistry } from './generated';
 import { IconComponentProps, IconProps, IconRef } from './api';

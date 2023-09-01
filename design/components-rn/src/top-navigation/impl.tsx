@@ -1,5 +1,6 @@
 import React from 'react';
-import { isFunction, isString } from 'lodash';
+import isFunction from 'lodash-es/isFunction';
+import isString from 'lodash-es/isString';
 import { TextStyle, ViewStyle } from 'react-native';
 import { View } from '../view';
 import { Text } from '../text';

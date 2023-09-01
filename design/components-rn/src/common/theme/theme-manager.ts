@@ -1,14 +1,12 @@
 import { NestedString, KV } from '@cloud-dragon/common-types';
-import {
-  isObject,
-  get,
-  isString,
-  mapValues,
-  merge,
-  forEach,
-  isEmpty,
-  setWith,
-} from 'lodash';
+import isObject from 'lodash-es/isObject';
+import get from 'lodash-es/get';
+import isString from 'lodash-es/isString';
+import mapValues from 'lodash-es/mapValues';
+import merge from 'lodash-es/merge';
+import forEach from 'lodash-es/forEach';
+import isEmpty from 'lodash-es/isEmpty';
+import setWith from 'lodash-es/setWith';
 import { CloudDesignTheme, ThemeMode, ThemePack } from '../types';
 import { CHAKRA_THEME_PACK } from './chakra';
 import { ThemeContext, DEFAULT_THEME_CONTEXT } from './config';

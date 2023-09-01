@@ -1,24 +1,27 @@
 import { FlatList } from 'react-native';
-import filter from 'lodash/filter';
+import filter from 'lodash-es/filter';
+import take from 'lodash-es/take';
 import React from 'react';
-import { I18nManager } from '../common';
-import { CountriesManager } from '@cloud-dragon/world-countries';
+import {
+  CountriesManager,
+  Country,
+  COUNTRIES,
+  SupportedCountryKeyProp,
+} from '@cloud-dragon/world-countries';
 import { View } from '../view';
 import { Icon } from '../icon';
 import { Text } from '../text';
 import { Divider } from '../divider';
 import { Input } from '../input';
 import { Button } from '../button';
-import {
-  CountryCurrentPropKey,
-  CountryItemProps,
-  CountryPickerProps,
-} from './api';
+import { Image } from 'react-native';
+import { CountryItemProps, CountryPickerProps } from './api';
 
 function CountryItem(props: CountryItemProps) {
   const { country, selectedCountry, keyProp = 'callingCode' } = props;
-  const { countryCode, name, [keyProp]: info } = country;
-  const showName = name[I18nManager.locale] ?? name.common;
+  const { cca2 } = country;
+  const keyPropValue = CountriesManager.getKeyPropValue(country, keyProp);
+  const showName = CountriesManager.getShowName(country, selectedCountry);
   return (
     <View
       ts={{
@@ -26,12 +29,19 @@ function CountryItem(props: CountryItemProps) {
         width: '100%',
       }}
     >
-      <Icon name={countryCode} pack={COUNTRY_PACK} />
+      <Icon
+        icon={(iconProps) => (
+          <Image
+            {...iconProps}
+            source={{ uri: CountriesManager.getFlagCdnUrl(country) }}
+          />
+        )}
+      />
       <Text ts={{ marginLeft: '$rem:0.5', flex: 1 }} value={showName} />
-      <Text value={info} />
+      {keyPropValue && <Text value={keyPropValue} />}
       <View style={{ width: 40, justifyContent: 'center' }}>
-        {countryCode === selectedCountry?.countryCode && (
-          <Icon color="$color.status.success" name="checkmark-outline" />
+        {cca2 === selectedCountry?.cca2 && (
+          <Icon color="$color.status.success" icon="checkmark-outline" />
         )}
       </View>
     </View>
@@ -43,20 +53,20 @@ const ITEM_HEIGHT = 10;
 function useCountryItems(params: {
   searchValue?: string;
   selectedCountry?: Country;
-  keyProp?: CountryCurrentPropKey;
+  keyProp?: SupportedCountryKeyProp;
 }) {
   const { searchValue, selectedCountry, keyProp } = params;
   return React.useMemo(() => {
-    const countryItems = filter(COUNTRIES, (country) => {
-      const { countryCode, name } = country;
-      const { common, zh_CN, en_US } = name;
+    const countryItems = filter(take(COUNTRIES, 10), (country) => {
+      const { cca2 } = country;
       return (
-        countryCode !== selectedCountry?.countryCode &&
-        (!searchValue ||
-          common?.includes(searchValue) ||
-          en_US?.includes(searchValue) ||
-          zh_CN?.includes(searchValue) ||
-          !!(keyProp && country[keyProp]?.includes(searchValue)))
+        !searchValue ||
+        (cca2 !== selectedCountry?.cca2 &&
+          !CountriesManager.matchSearch({
+            keyProp,
+            searchValue,
+            country,
+          }))
       );
     });
     if (selectedCountry) {
@@ -67,12 +77,13 @@ function useCountryItems(params: {
 }
 
 export function CountryPicker(props: CountryPickerProps) {
+  console.log('COUNTRIES', COUNTRIES);
   const { value, keyProp, onChange, hideFilter, title } = props;
   const country = value ? CountriesManager.getCountryByCca2(value) : undefined;
   const [searchValue, setSearchValue] = React.useState<string | undefined>(
     undefined
   );
-  const seachCountry = React.useCallback((inputText: string) => {
+  const searchCountry = React.useCallback((inputText: string) => {
     setSearchValue(inputText);
   }, []);
   const countryItems = useCountryItems({
@@ -89,7 +100,7 @@ export function CountryPicker(props: CountryPickerProps) {
             <Input
               format={{ type: 'search' }}
               value={searchValue}
-              onChange={seachCountry}
+              onChange={searchCountry}
             />
           </View>
           <Divider />

@@ -1,4 +1,4 @@
-import { isNil } from 'lodash';
+import isNil from 'lodash/isNil';
 import React, { useEffect } from 'react';
 import { ZIndex } from '../common/constants';
 import { Portal } from '../portal';

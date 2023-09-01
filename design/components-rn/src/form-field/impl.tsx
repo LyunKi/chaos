@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import get from 'lodash/get';
+import get from 'lodash-es/get';
 import { styles } from '@cloud-dragon/common-utils';
 import { TextStyle, ViewStyle } from 'react-native';
 import { View } from '../view';

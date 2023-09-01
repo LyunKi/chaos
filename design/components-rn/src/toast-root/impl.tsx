@@ -1,4 +1,6 @@
-import { isEmpty, take, uniqueId } from 'lodash';
+import isEmpty from 'lodash-es/isEmpty';
+import take from 'lodash-es/take';
+import uniqueId from 'lodash-es/uniqueId';
 import React, {
   forwardRef,
   useCallback,

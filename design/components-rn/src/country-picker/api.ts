@@ -1,12 +1,13 @@
 import { Fn } from '@cloud-dragon/common-types';
 import { ReactNode } from 'react';
-import { Country } from '@cloud-dragon/world-countries';
-
-export type CountryCurrentPropKey = keyof Country;
+import {
+  Country,
+  SupportedCountryKeyProp,
+} from '@cloud-dragon/world-countries';
 
 export interface CountryPickerProps {
   value?: string;
-  keyProp?: CountryCurrentPropKey;
+  keyProp?: SupportedCountryKeyProp;
   onChange?: Fn;
   hideFilter?: boolean;
   title?: ReactNode;
@@ -15,5 +16,5 @@ export interface CountryPickerProps {
 export interface CountryItemProps {
   country: Country;
   selectedCountry?: Country;
-  keyProp?: CountryCurrentPropKey;
+  keyProp?: SupportedCountryKeyProp;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 import { KV } from '@cloud-dragon/common-types';
-import { isFunction, isString } from 'lodash';
+import isFunction from 'lodash-es/isFunction';
+import isString from 'lodash-es/isString';
 import { styles, buildString, opacityColor } from '@cloud-dragon/common-utils';
 import { View } from '../view';
 import { Text } from '../text';
@@ -13,22 +14,22 @@ function computeStyles({
   variant,
   disabled,
   status,
-  actived,
+  active,
   hovered,
 }: any): any {
   const fontColor = `$color.button.${status}.${variant}.font`;
-  const activedFontColor = `$color.button.${status}.${variant}.font-active`;
+  const activeFontColor = `$color.button.${status}.${variant}.font-active`;
   const bgOpacity =
     ThemeManager.themedValue(
       buildString(`$color.button.${status}.${variant}.bgOpacity`, {
-        '-hover': !actived && hovered,
-        '-active': actived,
+        '-hover': !active && hovered,
+        '-active': active,
       })
     ) ?? 1;
   const bg = opacityColor(
     buildString(`$color.button.${status}.${variant}.bg`, {
-      '-hover': !actived && hovered,
-      '-active': actived,
+      '-hover': !active && hovered,
+      '-active': active,
     }),
     bgOpacity
   );
@@ -58,7 +59,7 @@ function computeStyles({
       color: fontColor,
       ...styles(
         [
-          variant === 'link' && (hovered || actived),
+          variant === 'link' && (hovered || active),
           {
             textDecorationLine: 'underline',
             textDecorationStyle: 'solid',
@@ -66,10 +67,10 @@ function computeStyles({
           },
         ],
         [
-          actived,
+          active,
           {
-            color: activedFontColor,
-            textDecorationColor: activedFontColor,
+            color: activeFontColor,
+            textDecorationColor: activeFontColor,
           },
         ]
       ),
@@ -111,7 +112,7 @@ export function Button({
         const { computedViewStyle, computedTextStyle } = computeStyles({
           variant,
           status,
-          actived: isActive || pressed,
+          active: isActive || pressed,
           disabled: disabled || loading,
           hovered,
         });

@@ -2,6 +2,7 @@
   "extends": "@cloud-dragon/tsconfig/node",
   "compilerOptions": {
     "types": ["vite/client"],
+    "target": "esnext",
     "noEmit": true
   },
   "files": [],
