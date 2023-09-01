@@ -18,13 +18,13 @@ export const Default: Story = {
   render(args) {
     const [code, setCountryCode] = React.useState('CN');
     return (
-      <View style={{ width: 375 }}>
+      <View ts={{ width: 375, height: 667 }}>
         <CountryPicker
-          {...args}
           title={<TopNavigation title="Country Picker" />}
+          keyProp="callingCode"
+          {...args}
           value={code}
           onChange={(countryCode) => setCountryCode(countryCode)}
-          keyProp="callingCode"
         />
       </View>
     );

@@ -1,5 +1,6 @@
 import worldCountries, { Country } from 'world-countries';
 import { filter, lowerCase } from 'lodash-es';
+import { includesIgnoreCase } from '@cloud-dragon/common-utils';
 
 const COUNTRIES = worldCountries as unknown as Country[];
 
@@ -26,13 +27,17 @@ class CountriesManagerClass {
     const {
       idd: { root, suffixes },
     } = country;
-    const suffix = suffixes[0] ?? '';
+    const suffix = suffixes.length === 1 ? suffixes[0] : '';
     return `${root}${suffix}`;
   }
 
   public getLocalNames(country: Country, languages: string[]): string[] {
-    return filter(country.translations, (_value, key) =>
-      languages.includes(key)
+    return filter(
+      {
+        ...country.translations,
+        ...country.name.native,
+      },
+      (_value, key) => languages.includes(key)
     ).map((translation) => translation.common);
   }
 
@@ -49,6 +54,10 @@ class CountriesManagerClass {
 
   public getFlagCdnUrl(country: Country): string {
     return `https://flagcdn.com/${lowerCase(country.cca2)}.svg`;
+  }
+
+  public getFlagEmoji(country: Country): string {
+    return country.flag;
   }
 
   public getKeyPropValue(
@@ -69,12 +78,14 @@ class CountriesManagerClass {
     const { keyProp, searchValue = '', country } = params;
     // try to match common name and local names
     const commonName = this.getCommonName(country);
-    if (commonName.includes(searchValue)) {
+    if (includesIgnoreCase(commonName, searchValue)) {
       return true;
     }
     const { languages } = country;
     const localNames = this.getLocalNames(country, Object.keys(languages));
-    if (localNames.some((localName) => localName.includes(searchValue))) {
+    if (
+      localNames.some((localName) => includesIgnoreCase(localName, searchValue))
+    ) {
       return true;
     }
     // try to match key prop

@@ -26,6 +26,7 @@ export function Text({
         numberOfLines &&
           Platform.OS === 'web' && {
             overflow: 'hidden',
+            whiteSpace: 'normal',
             textOverflow: 'ellipsis',
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',

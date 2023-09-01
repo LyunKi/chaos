@@ -1,6 +1,5 @@
 import { FlatList } from 'react-native';
-import filter from 'lodash-es/filter';
-import take from 'lodash-es/take';
+import { filter } from 'lodash-es';
 import React from 'react';
 import {
   CountriesManager,
@@ -14,41 +13,60 @@ import { Text } from '../text';
 import { Divider } from '../divider';
 import { Input } from '../input';
 import { Button } from '../button';
-import { Image } from 'react-native';
 import { CountryItemProps, CountryPickerProps } from './api';
+import { ThemeManager } from '../common';
 
-function CountryItem(props: CountryItemProps) {
-  const { country, selectedCountry, keyProp = 'callingCode' } = props;
-  const { cca2 } = country;
-  const keyPropValue = CountriesManager.getKeyPropValue(country, keyProp);
-  const showName = CountriesManager.getShowName(country, selectedCountry);
-  return (
-    <View
-      ts={{
-        alignItems: 'center',
-        width: '100%',
-      }}
-    >
-      <Icon
-        icon={(iconProps) => (
-          <Image
-            {...iconProps}
-            source={{ uri: CountriesManager.getFlagCdnUrl(country) }}
-          />
+const CountryItem = React.memo(
+  (props: CountryItemProps) => {
+    const {
+      country,
+      selectedCountry,
+      keyProp = 'callingCode',
+      onChange,
+    } = props;
+    const { cca2 } = country;
+    const keyPropValue = CountriesManager.getKeyPropValue(country, keyProp);
+    const showName = CountriesManager.getShowName(country, selectedCountry);
+    return (
+      <Button
+        ts={{ borderRadius: 0 }}
+        variant="ghost"
+        onPress={() => {
+          onChange?.(country.cca2);
+        }}
+        value={() => (
+          <View
+            ts={{
+              alignItems: 'center',
+              width: '100%',
+            }}
+          >
+            <Text value={CountriesManager.getFlagEmoji(country)} />
+            <Text
+              ts={{ marginHorizontal: '$rem:0.5', flex: 1 }}
+              value={showName}
+              numberOfLines={1}
+            />
+            <Text value={keyPropValue ?? ''} />
+            <View style={{ width: 40, justifyContent: 'center' }}>
+              {cca2 === selectedCountry?.cca2 && (
+                <Icon color="$color.status.success" icon="checkmark-outline" />
+              )}
+            </View>
+          </View>
         )}
       />
-      <Text ts={{ marginLeft: '$rem:0.5', flex: 1 }} value={showName} />
-      {keyPropValue && <Text value={keyPropValue} />}
-      <View style={{ width: 40, justifyContent: 'center' }}>
-        {cca2 === selectedCountry?.cca2 && (
-          <Icon color="$color.status.success" icon="checkmark-outline" />
-        )}
-      </View>
-    </View>
-  );
-}
-
-const ITEM_HEIGHT = 10;
+    );
+  },
+  (prev, next) => {
+    return (
+      prev.country.cca2 === next.country.cca2 &&
+      prev.onChange === next.onChange &&
+      prev.selectedCountry?.cca2 === next.selectedCountry?.cca2 &&
+      prev.keyProp === next.keyProp
+    );
+  }
+);
 
 function useCountryItems(params: {
   searchValue?: string;
@@ -57,12 +75,12 @@ function useCountryItems(params: {
 }) {
   const { searchValue, selectedCountry, keyProp } = params;
   return React.useMemo(() => {
-    const countryItems = filter(take(COUNTRIES, 10), (country) => {
+    const countryItems = filter(COUNTRIES, (country) => {
       const { cca2 } = country;
       return (
-        !searchValue ||
-        (cca2 !== selectedCountry?.cca2 &&
-          !CountriesManager.matchSearch({
+        cca2 !== selectedCountry?.cca2 &&
+        (!searchValue ||
+          CountriesManager.matchSearch({
             keyProp,
             searchValue,
             country,
@@ -77,12 +95,9 @@ function useCountryItems(params: {
 }
 
 export function CountryPicker(props: CountryPickerProps) {
-  console.log('COUNTRIES', COUNTRIES);
   const { value, keyProp, onChange, hideFilter, title } = props;
   const country = value ? CountriesManager.getCountryByCca2(value) : undefined;
-  const [searchValue, setSearchValue] = React.useState<string | undefined>(
-    undefined
-  );
+  const [searchValue, setSearchValue] = React.useState<string>('');
   const searchCountry = React.useCallback((inputText: string) => {
     setSearchValue(inputText);
   }, []);
@@ -91,6 +106,7 @@ export function CountryPicker(props: CountryPickerProps) {
     selectedCountry: country,
     keyProp,
   });
+  const itemHeight = ThemeManager.themedValue('$size.10') + 1;
   return (
     <View style={{ flex: 1, flexDirection: 'column' }}>
       {title}
@@ -110,26 +126,18 @@ export function CountryPicker(props: CountryPickerProps) {
         <FlatList
           ItemSeparatorComponent={() => <Divider />}
           getItemLayout={(_data, index) => ({
-            length: ITEM_HEIGHT,
-            offset: ITEM_HEIGHT * index,
+            length: itemHeight,
+            offset: itemHeight * index,
             index,
           })}
           data={countryItems}
           renderItem={({ item }) => (
-            <Button
-              ts={{ borderRadius: 0 }}
-              key={item.countryCode}
-              variant="ghost"
-              onPress={() => {
-                onChange?.(item.countryCode);
-              }}
-              value={() => (
-                <CountryItem
-                  keyProp={keyProp}
-                  country={item}
-                  selectedCountry={country}
-                />
-              )}
+            <CountryItem
+              key={item.cca2}
+              keyProp={keyProp}
+              country={item}
+              selectedCountry={country}
+              onChange={onChange}
             />
           )}
         />

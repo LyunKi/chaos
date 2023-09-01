@@ -44,6 +44,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    '@typescript-eslint/no-explicit-any': 'off',
     'autofix/no-debugger': 'error',
     'autofix/no-plusplus': 'error',
     'import/no-unresolved': 'off',
@@ -65,4 +66,4 @@ module.exports = {
       },
     ],
   },
-}
+};

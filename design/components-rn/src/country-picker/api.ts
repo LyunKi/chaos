@@ -17,4 +17,5 @@ export interface CountryItemProps {
   country: Country;
   selectedCountry?: Country;
   keyProp?: SupportedCountryKeyProp;
+  onChange?: Fn;
 }
