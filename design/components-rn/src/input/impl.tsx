@@ -122,7 +122,6 @@ export const Input = forwardRef(
       paddingLeft: renderLeft ? undefined : '$rem:1',
       paddingRight: renderRight ? undefined : '$rem:1',
       lineHeight: '$rem:1.5',
-      outline: 'none',
       fontSize: '$fontSize.default',
       color: '$color.font.default',
       flex: 1,

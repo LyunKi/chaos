@@ -19,13 +19,12 @@
     "url": "https://github.com/LyunKi/chaos.git",
     "directory": "common/world-countries"
   },
-  "version": "0.7.0",
+  "version": "0.8.0",
   "scripts": {
     "build": "vite build && tsc -p tsconfig.lib.json",
     "prepublish": "pnpm build",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:updateSnap": "jest --updateSnapshot"
+    "test:watch": "jest --watch"
   },
   "files": [
     "dist"

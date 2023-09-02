@@ -81,7 +81,6 @@ exports[`FormField should match snapshot 1`] = `
             "fontSize": undefined,
             "lineHeight": 24,
             "minWidth": 0,
-            "outline": "none",
             "paddingLeft": 16,
             "paddingRight": 16,
           }
