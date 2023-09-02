@@ -13,7 +13,7 @@
       "require": "./dist/index.umd.js"
     }
   },
-  "version": "0.8.0",
+  "version": "0.8.1",
   "scripts": {
     "build": "vite build && tsc -p tsconfig.lib.json",
     "prepublish": "pnpm build",

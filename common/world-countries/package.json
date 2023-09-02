@@ -19,7 +19,7 @@
     "url": "https://github.com/LyunKi/chaos.git",
     "directory": "common/world-countries"
   },
-  "version": "0.8.0",
+  "version": "0.8.1",
   "scripts": {
     "build": "vite build && tsc -p tsconfig.lib.json",
     "prepublish": "pnpm build",

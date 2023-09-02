@@ -5,6 +5,13 @@
 ### Patch Changes
 
 - Updated dependencies
+  - @cloud-dragon/react-utils@0.8.1
+
+## null
+
+### Patch Changes
+
+- Updated dependencies
   - @cloud-dragon/react-utils@0.8.0
 
 ## null

@@ -1,5 +1,14 @@
 # @cloud-dragon/obx-react
 
+## 0.8.1
+
+### Patch Changes
+
+- fix: fix components-rn exports config
+- Updated dependencies
+  - @cloud-dragon/react-utils@0.8.1
+  - @cloud-dragon/obx-core@0.8.1
+
 ## 0.8.0
 
 ### Minor Changes
