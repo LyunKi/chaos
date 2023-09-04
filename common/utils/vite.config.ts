@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: './src/index.ts',
-      name: 'Utils',
+      name: 'CdUtils',
       fileName: 'index',
     },
   },

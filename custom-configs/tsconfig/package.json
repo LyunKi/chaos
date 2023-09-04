@@ -1,6 +1,7 @@
 {
   "name": "@cloud-dragon/tsconfig",
   "version": "0.8.1",
+  "type": "module",
   "description": "Typescript config",
   "license": "MIT",
   "dependencies": {

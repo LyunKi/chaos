@@ -1,18 +1,19 @@
 {
   "name": "@cloud-design/components",
   "version": "0.8.1",
+  "type": "module",
   "files": [
     "dist",
     "index.d.ts"
   ],
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.umd.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
     }
   },
   "scripts": {

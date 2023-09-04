@@ -2,7 +2,9 @@
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "resolveJsonModule": true,
-    "allowJs": true
+    "allowJs": true,
+    "moduleResolution": "node",
+    "module": "ESNext"
   },
   "$schema": "https://json.schemastore.org/tsconfig"
 }

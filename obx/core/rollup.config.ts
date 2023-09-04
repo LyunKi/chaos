@@ -29,7 +29,7 @@ const options = [
       },
       {
         file: 'dist/index.umd.js',
-        name: 'HObxCore',
+        name: 'CdObxCore',
         format: 'umd',
       },
     ],

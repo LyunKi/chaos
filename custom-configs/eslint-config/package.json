@@ -1,6 +1,7 @@
 {
   "name": "@cloud-dragon/eslint-config",
   "version": "0.8.1",
+  "type": "module",
   "description": "Eslint config",
   "main": "index.js",
   "devDependencies": {

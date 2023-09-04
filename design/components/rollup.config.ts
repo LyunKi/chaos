@@ -43,7 +43,7 @@ const options = [
       {
         ...globals,
         file: 'dist/index.umd.js',
-        name: 'HdComponents',
+        name: 'CdComponents',
         format: 'umd',
       },
     ],

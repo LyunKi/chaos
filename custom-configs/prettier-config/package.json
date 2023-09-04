@@ -1,6 +1,7 @@
 {
   "name": "@cloud-dragon/prettier-config",
   "version": "0.8.1",
+  "type": "module",
   "description": "Prettier config",
   "main": "index.js",
   "license": "MIT"

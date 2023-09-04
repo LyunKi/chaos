@@ -15,7 +15,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: './src/index.ts',
-      name: 'ReactUtils',
+      name: 'CdReactUtils',
       fileName: 'index',
     },
     rollupOptions: {
