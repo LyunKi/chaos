@@ -4,13 +4,12 @@
   "files": [
     "dist"
   ],
-  "type": "module",
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.mjs"
     }
   },
   "publishConfig": {
@@ -19,7 +18,7 @@
   "scripts": {
     "gen-icons": "pnpm exec ts-node --esm scripts/gen-icons.mts",
     "prepublish": "pnpm build",
-    "build": "tsc -p tsconfig.lib.json",
+    "build": "vite build -c vite.config.build.ts && tsc -p tsconfig.lib.json",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",

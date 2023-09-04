@@ -1,29 +1,7 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import customConfig from './vite.config.common';
 
-const extensions = [
-  '.web.tsx',
-  '.tsx',
-  '.web.ts',
-  '.ts',
-  '.web.jsx',
-  '.jsx',
-  '.web.js',
-  '.js',
-  '.css',
-  '.json',
-];
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    esbuildOptions: {
-      resolveExtensions: extensions,
-    },
-  },
+export default customConfig({
   resolve: {
-    extensions,
     alias: {
       'react-native': 'react-native-web',
       'react-native-svg': 'react-native-svg-web',

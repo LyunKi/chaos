@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import invoke from 'lodash/invoke';
-import isNil from 'lodash/isNil';
-import isEqual from 'lodash/isEqual';
+import invoke from 'lodash-es/invoke';
+import isNil from 'lodash-es/isNil';
+import isEqual from 'lodash-es/isEqual';
 import { combineRefs } from '@cloud-dragon/react-utils';
 import { SizeObserver } from '../size-observer';
 import {

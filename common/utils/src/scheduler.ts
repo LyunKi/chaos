@@ -1,5 +1,5 @@
-import map from 'lodash/map';
-import isEmpty from 'lodash/isEmpty';
+import map from 'lodash-es/map';
+import isEmpty from 'lodash-es/isEmpty';
 import { gcd } from './gcd';
 
 export type TaskCallback = (experiencedTime: number) => any;

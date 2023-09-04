@@ -1,5 +1,5 @@
 import { KV } from '@cloud-dragon/common-types';
-import reduce from 'lodash/reduce';
+import reduce from 'lodash-es/reduce';
 
 export type ConditionStyle = [boolean | undefined, KV];
 
