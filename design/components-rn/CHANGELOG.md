@@ -1,5 +1,15 @@
 # @cloud-design/components-rn
 
+## 0.8.2
+
+### Patch Changes
+
+- 修改打包流程
+- Updated dependencies
+  - @cloud-dragon/react-utils@0.8.2
+  - @cloud-dragon/common-utils@0.8.2
+  - @cloud-dragon/world-countries@0.8.2
+
 ## 0.8.1
 
 ### Patch Changes

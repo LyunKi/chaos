@@ -1,5 +1,14 @@
 # @cloud-dragon/obx-react
 
+## 0.8.2
+
+### Patch Changes
+
+- 修改打包流程
+- Updated dependencies
+  - @cloud-dragon/react-utils@0.8.2
+  - @cloud-dragon/obx-core@0.8.2
+
 ## 0.8.1
 
 ### Patch Changes

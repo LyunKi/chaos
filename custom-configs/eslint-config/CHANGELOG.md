@@ -1,5 +1,11 @@
 # @cloud-dragon/eslint-config
 
+## 0.8.2
+
+### Patch Changes
+
+- 修改打包流程
+
 ## 0.8.1
 
 ### Patch Changes

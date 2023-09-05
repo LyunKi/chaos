@@ -1,5 +1,13 @@
 # @cloud-dragon/world-countries
 
+## 0.8.2
+
+### Patch Changes
+
+- 修改打包流程
+- Updated dependencies
+  - @cloud-dragon/common-utils@0.8.2
+
 ## 0.8.1
 
 ### Patch Changes
