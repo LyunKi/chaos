@@ -3,18 +3,17 @@
   "description": "Common utils for React",
   "homepage": "https://github.com/LyunKi/chaos/tree/master/common/react-utils",
   "license": "MIT",
-  "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.umd.js"
     }
   },
   "version": "0.8.1",
-  "type": "module",
   "scripts": {
     "build": "vite build && tsc -p tsconfig.lib.json",
     "prepublish": "pnpm build",

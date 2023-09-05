@@ -1,6 +1,6 @@
 import { UserConfig, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import { merge } from 'lodash-es';
+import merge from 'lodash/merge';
 import pkg from './package.json';
 
 const externals = [...Object.keys(pkg.peerDependencies)];

@@ -1,16 +1,15 @@
 {
   "name": "@cloud-design/components-rn",
   "version": "0.8.1",
-  "type": "module",
   "files": [
     "dist"
   ],
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.mjs"
     }
   },
   "publishConfig": {

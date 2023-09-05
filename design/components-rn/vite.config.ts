@@ -1,4 +1,4 @@
-import customConfig from './vite.config.common';
+import customConfig from './vite.config.common.js';
 
 export default customConfig({
   resolve: {
