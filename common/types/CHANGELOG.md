@@ -1,5 +1,11 @@
 # @cloud-dragon/common-types
 
+## 0.8.3
+
+### Patch Changes
+
+- 修复 components-rn 导出字段
+
 ## 0.8.2
 
 ### Patch Changes
