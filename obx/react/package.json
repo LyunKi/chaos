@@ -1,6 +1,6 @@
 {
   "name": "@cloud-dragon/obx-react",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "files": [
     "dist",
     "index.d.ts"

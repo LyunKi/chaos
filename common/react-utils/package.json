@@ -13,7 +13,7 @@
       "require": "./dist/index.umd.js"
     }
   },
-  "version": "0.8.3",
+  "version": "0.8.4",
   "scripts": {
     "build": "vite build && tsc -p tsconfig.lib.json",
     "prepublish": "pnpm build",
@@ -30,5 +30,8 @@
   "peerDependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.19.3"
   }
 }

@@ -1,5 +1,11 @@
 # @cloud-dragon/prettier-config
 
+## 0.8.4
+
+### Patch Changes
+
+- add media query and storage
+
 ## 0.8.3
 
 ### Patch Changes
