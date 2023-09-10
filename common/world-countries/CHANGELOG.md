@@ -1,5 +1,13 @@
 # @cloud-dragon/world-countries
 
+## 0.8.5
+
+### Patch Changes
+
+- be able to run cas service
+- Updated dependencies
+  - @cloud-dragon/common-utils@0.8.5
+
 ## 0.8.4
 
 ### Patch Changes

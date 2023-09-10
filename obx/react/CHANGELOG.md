@@ -1,5 +1,14 @@
 # @cloud-dragon/obx-react
 
+## 0.8.5
+
+### Patch Changes
+
+- be able to run cas service
+- Updated dependencies
+  - @cloud-dragon/react-utils@0.8.5
+  - @cloud-dragon/obx-core@0.8.5
+
 ## 0.8.4
 
 ### Patch Changes

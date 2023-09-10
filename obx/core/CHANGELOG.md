@@ -1,5 +1,11 @@
 # @cloud-dragon/obx-core
 
+## 0.8.5
+
+### Patch Changes
+
+- be able to run cas service
+
 ## 0.8.4
 
 ### Patch Changes

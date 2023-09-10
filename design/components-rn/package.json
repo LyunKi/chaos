@@ -1,17 +1,17 @@
 {
   "name": "@cloud-design/components-rn",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "files": [
     "dist"
   ],
-  "main": "./dist/index.umd.js",
+  "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.umd.js"
+      "require": "./dist/index.js"
     }
   },
   "publishConfig": {
@@ -29,18 +29,19 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
+    "@gorhom/portal": "^1.0.14",
     "react-native": "^0.71.7"
   },
   "dependencies": {
     "@cloud-dragon/common-utils": "workspace:*",
     "@cloud-dragon/react-utils": "workspace:*",
     "@cloud-dragon/world-countries": "workspace:*",
-    "@gorhom/portal": "^1.0.14",
     "lodash-es": "^4.17.21",
     "react-native-safe-area-context": "^4.5.2",
-    "react-native-svg": "^13.9.0"
+    "react-native-svg": "^13.13.0"
   },
   "devDependencies": {
+    "@gorhom/portal": "^1.0.14",
     "@cloud-dragon/common-types": "workspace:*",
     "formik": "^2.3.2",
     "yup": "^0.32.11"

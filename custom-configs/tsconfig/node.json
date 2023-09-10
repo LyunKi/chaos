@@ -1,8 +1,9 @@
 {
-  "extends": "@tsconfig/node-lts",
+  "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
+    "module": "CommonJS",
     "allowJs": true,
-    "moduleResolution": "node",
-    "module": "ESNext"
-  }
+    "moduleResolution": "node"
+  },
+  "$schema": "https://json.schemastore.org/tsconfig"
 }

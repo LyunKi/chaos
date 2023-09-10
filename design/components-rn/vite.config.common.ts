@@ -38,6 +38,7 @@ export default function customConfig(viteConfig: DeepPartial<UserConfig>) {
             entry: './src/index.ts',
             name: 'CloudDesignComponentsRn',
             fileName: 'index',
+            formats: ['es', 'cjs'],
           },
           rollupOptions: {
             external: externals,
@@ -55,7 +56,7 @@ export default function customConfig(viteConfig: DeepPartial<UserConfig>) {
         resolve: {
           extensions,
         },
-      },
+      } as UserConfig,
       viteConfig
     )
   );

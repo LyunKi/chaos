@@ -126,6 +126,7 @@ export const Input = forwardRef(
       color: '$color.font.default',
       flex: 1,
       minWidth: 0,
+      outlineStyle: 'none',
       ...inputTs,
     });
     const accessoryProps = {
