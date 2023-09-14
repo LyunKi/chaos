@@ -56,10 +56,11 @@ function renderTip({ tip, error, tipTs }: any) {
 function useFieldProps(name: string, formConfig: FormConfig = {}) {
   return useMemo(() => {
     const { errors, values, handleChange, handleBlur, touched } = formConfig;
+    const fieldTouched = get(touched, name);
     return {
       name,
       formConfig,
-      error: get(errors, name),
+      error: fieldTouched && get(errors, name),
       touched: get(touched, name),
       value: get(values, name),
       onChange: handleChange?.(name),
