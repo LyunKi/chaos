@@ -1,5 +1,11 @@
 import React, { forwardRef, Ref, useRef, useState } from 'react';
-import { TextInput, StyleSheet, StyleProp, TextStyle } from 'react-native';
+import {
+  TextInput,
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+  Platform,
+} from 'react-native';
 import { combineRefs } from '@cloud-dragon/react-utils';
 import { styles } from '@cloud-dragon/common-utils';
 import { AccessoryProps, FONT_BASE, ThemeManager } from '../common';
@@ -126,7 +132,11 @@ export const Input = forwardRef(
       color: '$color.font.default',
       flex: 1,
       minWidth: 0,
-      outlineStyle: 'none',
+      ...Platform.select({
+        web: {
+          outline: 'none',
+        },
+      }),
       ...inputTs,
     });
     const accessoryProps = {

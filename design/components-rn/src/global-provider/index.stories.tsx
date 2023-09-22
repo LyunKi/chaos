@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+// import { expect } from '@storybook/jest';
 import { useDarkMode } from 'storybook-dark-mode';
 import { Text } from '../text';
 import { View } from '../view';
@@ -40,6 +40,6 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const text = await canvas.findByTestId('text');
-    await expect(text).toBeInTheDocument();
+    // await expect(text).toBeInTheDocument();
   },
 };

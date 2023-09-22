@@ -981,4 +981,3 @@ export const IconRegistry = {
   'wifi-outline': WifiOutline,
   wifi: Wifi,
 };
-
