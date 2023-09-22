@@ -25,7 +25,7 @@ export const Default: Story = {
         getContentPosition={(triggerRect) => {
           return {
             left: triggerRect.pageX,
-            top: triggerRect.pageY + triggerRect.height + window.scrollY,
+            top: triggerRect.pageY + triggerRect.height + window.scrollY + 4,
           };
         }}
       />

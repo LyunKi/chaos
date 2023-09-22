@@ -8,7 +8,7 @@ const meta = {
   component: View,
   args: {
     ts: {
-      width: '100%',
+      width: 375,
       height: '$rem:3',
       justifyContent: 'center',
       alignItems: 'center',
@@ -23,6 +23,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: <Text value="Hello, world!" />,
+    children: <Text value="This is a view container" />,
   },
 };

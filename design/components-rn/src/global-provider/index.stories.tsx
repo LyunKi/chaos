@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { within } from '@storybook/testing-library';
+import React from 'react';
 // import { expect } from '@storybook/jest';
 import { useDarkMode } from 'storybook-dark-mode';
 import { Text } from '../text';
@@ -10,9 +10,6 @@ import { GlobalProvider, GlobalProviderProps } from './index';
 const meta = {
   title: 'Cloud-Design/GlobalProvider',
   component: GlobalProvider,
-  parameters: {
-    layout: 'fullscreen',
-  },
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof GlobalProvider>;
 
@@ -28,15 +25,13 @@ const Template = (args: GlobalProviderProps) => {
   }
   return (
     <GlobalProvider {...args} themeMode={themeMode}>
-      <View ts={{ backgroundColor: '$color.bg.layout' }}>
-        <Text testID="text" value={'themed text'} />
-      </View>
+      <Text testID="text" value={'themed text'} />
     </GlobalProvider>
   );
 };
 
 export const Default: Story = {
-  render: (args) => <Template {...args} />,
+  render: (args: GlobalProviderProps) => <Template {...args} />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const text = await canvas.findByTestId('text');

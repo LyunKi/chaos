@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { GlobalProvider } from '../src/';
 import { themes } from '@storybook/theming';
 import { Preview } from '@storybook/react';
@@ -11,7 +11,6 @@ const preview: Preview & { darkMode: any } = {
     dark: { ...themes.dark },
     light: { ...themes.normal },
     stylePreview: true,
-    classTarget: 'html',
     current: 'light',
   },
   parameters: {
@@ -31,12 +30,9 @@ const preview: Preview & { darkMode: any } = {
     },
     docs: {
       container: ({ children, context, ...props }: any) => {
-        const theme = useDarkMode() ? 'dark' : 'light';
-        // useEffect(() => {
-        //   const backgroundColor =
-        //     theme === 'dark' ? themes.dark.appBg : themes.light.appBg;
-        //   document.body.style.backgroundColor = backgroundColor || 'inherit';
-        // }, [theme]);
+        const isDark = useDarkMode();
+        const theme = isDark ? 'dark' : 'light';
+        props.theme = isDark ? themes.dark : themes.light;
         return (
           <DocsContainer context={context} theme={themes[theme]} {...props}>
             {children}
@@ -48,6 +44,11 @@ const preview: Preview & { darkMode: any } = {
   decorators: [
     (Story, context) => {
       const theme = useDarkMode() ? 'dark' : 'light';
+      useLayoutEffect(() => {
+        const backgroundColor =
+          theme === 'dark' ? themes.dark.appBg : themes.light.appBg;
+        document.body.style.backgroundColor = backgroundColor || 'inherit';
+      }, [theme]);
       return (
         <GlobalProvider themeMode={theme}>
           <Story {...context} />

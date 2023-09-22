@@ -22,7 +22,6 @@ const Template = (args: ButtonProps) => {
         flexDirection: 'column',
         gap: '$rem:1',
         flexWrap: 'wrap',
-        backgroundColor: '$color.bg.layout',
       }}
     >
       {['solid', 'outline', 'ghost', 'link'].map((variant) => (
