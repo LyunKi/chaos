@@ -4,6 +4,7 @@ import { CloudDesignWrap } from '../common';
 
 export interface BasicViewProps {
   onPress?: (event: GestureResponderEvent) => any;
+  scrollable?: boolean;
 }
 
 export type ViewProps = PropsWithChildren<

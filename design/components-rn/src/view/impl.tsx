@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import {
   View as RnView,
+  ScrollView as RnScrollView,
   StyleSheet,
   TouchableWithoutFeedback,
 } from 'react-native';
@@ -9,9 +10,13 @@ import { ThemeManager } from '../common';
 import { ViewProps } from './api';
 
 export const View = forwardRef(
-  ({ ts, style, children, onPress }: ViewProps, ref?: React.Ref<RnView>) => {
+  (
+    { ts, style, children, onPress, scrollable }: ViewProps,
+    ref?: React.Ref<RnView>
+  ) => {
+    const ViewInstance = scrollable ? RnScrollView : RnView;
     const Inner = (
-      <RnView
+      <ViewInstance
         ref={ref}
         style={StyleSheet.flatten([
           { flexDirection: 'row', boxSizing: 'border-box' },
@@ -21,7 +26,7 @@ export const View = forwardRef(
         ])}
       >
         {children}
-      </RnView>
+      </ViewInstance>
     );
     return onPress ? (
       <TouchableWithoutFeedback onPress={onPress}>
