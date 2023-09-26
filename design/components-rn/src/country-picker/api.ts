@@ -4,18 +4,23 @@ import {
   Country,
   SupportedCountryKeyProp,
 } from '@cloud-dragon/world-countries';
+import { ViewStyle } from 'react-native';
+import { CloudDesignWrap } from '../common';
 
-export interface CountryPickerProps {
-  value?: string;
-  keyProp?: SupportedCountryKeyProp;
-  onChange?: Fn;
-  hideFilter?: boolean;
-  title?: ReactNode;
-}
+export type CountryPickerProps = CloudDesignWrap<
+  {
+    value?: string;
+    keyProp?: SupportedCountryKeyProp;
+    onChange?: Fn;
+    hideFilter?: boolean;
+    title?: ReactNode;
+  },
+  ViewStyle
+>;
 
-export interface CountryItemProps {
+export type CountryItemProps = {
   country: Country;
   selectedCountry?: Country;
   keyProp?: SupportedCountryKeyProp;
   onChange?: Fn;
-}
+};

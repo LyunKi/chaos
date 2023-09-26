@@ -79,6 +79,7 @@ export const FormField = ({
   ts,
   style,
   tipTs,
+  testID,
 }: FormFieldProps) => {
   const containerTs: ThemeStyle<ViewStyle> = {
     flexDirection: 'column',
@@ -88,7 +89,7 @@ export const FormField = ({
   const fieldProps = useFieldProps(name, formConfig);
   const error = fieldProps.error;
   return (
-    <View style={style} ts={containerTs}>
+    <View style={style} ts={containerTs} testID={testID}>
       {label && renderLabel({ label, isRequired })}
       {renderField(fieldProps)}
       {(error || tip) && renderTip({ tip, error, tipTs })}

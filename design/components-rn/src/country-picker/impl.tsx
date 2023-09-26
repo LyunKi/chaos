@@ -1,4 +1,4 @@
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import { filter } from 'lodash-es';
 import React from 'react';
 import {
@@ -95,7 +95,8 @@ function useCountryItems(params: {
 }
 
 export function CountryPicker(props: CountryPickerProps) {
-  const { value, keyProp, onChange, hideFilter, title } = props;
+  const { style, ts, testID, value, keyProp, onChange, hideFilter, title } =
+    props;
   const country = value ? CountriesManager.getCountryByCca2(value) : undefined;
   const [searchValue, setSearchValue] = React.useState<string>('');
   const searchCountry = React.useCallback((inputText: string) => {
@@ -108,7 +109,11 @@ export function CountryPicker(props: CountryPickerProps) {
   });
   const itemHeight = ThemeManager.themedValue('$size.10') + 1;
   return (
-    <View style={{ flex: 1, flexDirection: 'column' }}>
+    <View
+      ts={ts}
+      style={StyleSheet.flatten([{ flex: 1, flexDirection: 'column' }, style])}
+      testID={testID}
+    >
       {title}
       {!hideFilter && (
         <>

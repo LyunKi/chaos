@@ -4,4 +4,5 @@ import { ViewStyle } from 'react-native/types';
 
 export interface SafeAreaProps extends SafeAreaViewProps {
   ts?: ThemeStyle<ViewStyle>;
+  testID?: string;
 }
