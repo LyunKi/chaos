@@ -2,8 +2,8 @@ import React, { Ref } from 'react';
 import { Animated } from 'react-native';
 import isString from 'lodash-es/isString';
 import { getIconAnimation, ThemeManager } from '../common';
-import { IconRegistry } from './generated';
 import { IconComponentProps, IconProps, IconRef } from './api';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export const Icon = React.forwardRef(
   (
@@ -18,7 +18,17 @@ export const Icon = React.forwardRef(
     }: IconProps,
     ref: Ref<IconRef>
   ) => {
-    const Icon = isString(icon) ? IconRegistry[icon] : icon;
+    let Icon: any = icon;
+    const props = ThemeManager.themed({
+      width: width ?? size,
+      height: height ?? size,
+      size,
+      color,
+    });
+    if (isString(icon)) {
+      Icon = FontAwesome;
+      props.name = icon;
+    }
     const animationInstance = React.useMemo(() => {
       if (!animation) {
         return;
@@ -32,17 +42,11 @@ export const Icon = React.forwardRef(
         stopAnimation: animationInstance?.stop,
       };
     });
-    const props = ThemeManager.themed({
-      width: width ?? size,
-      height: height ?? size,
-      size,
-      fill: color,
-      color: color,
-    });
-    props.style = {
+    props.iconStyle = {
       width: props.width,
       height: props.height,
       color: props.color,
+      marginRight: 0,
     };
     return Icon ? (
       <Animated.View {...animationInstance?.toProps()} testID={testID}>

@@ -38,7 +38,7 @@ function renderPassword(
   setSecureTextEntry: Function
 ) {
   return (props: AccessoryProps) => {
-    const icon = secureTextEntry ? 'eye-outline' : 'eye-off';
+    const icon = secureTextEntry ? 'eye' : 'eye-slash';
     return (
       <Button
         variant="ghost"

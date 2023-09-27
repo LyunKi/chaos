@@ -1,15 +1,16 @@
 import { ComponentType } from 'react';
 import { Testable, AnimationConfig, SupportedAnimation } from '../common';
-import { IconRegistry } from './generated';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export type IconAnimationProp = {
   type: SupportedAnimation;
   config?: AnimationConfig;
 };
 
-export type PresetIcons = keyof typeof IconRegistry;
+export type PresetIcons = React.ComponentProps<typeof FontAwesome>['name'];
 
 export type IconComponentProps = {
+  name?: PresetIcons;
   size: number;
   width: number;
   height: number;

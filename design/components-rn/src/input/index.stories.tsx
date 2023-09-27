@@ -38,7 +38,7 @@ export const IconInput: Story = {
                 marginHorizontal: '$rem:0.25',
               }}
               renderLeft={() => {
-                return <Icon {...props} icon="smartphone-outline" />;
+                return <Icon {...props} icon="mobile-phone" />;
               }}
             />
           )}
@@ -54,7 +54,7 @@ export const IconInput: Story = {
                 marginHorizontal: '$rem:0.25',
               }}
               renderLeft={() => {
-                return <Icon {...props} icon="eye-outline" />;
+                return <Icon {...props} icon="eye" />;
               }}
             />
           )}
