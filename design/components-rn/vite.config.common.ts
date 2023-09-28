@@ -1,4 +1,4 @@
-import { UserConfig, defineConfig, transformWithEsbuild } from 'vite';
+import { UserConfig, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import merge from 'lodash/merge';
 import pkg from './package.json';

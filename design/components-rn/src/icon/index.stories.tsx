@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { View } from '../view';
 import { Button } from '../button';
+import { Text } from '../text';
 import { IconRef, Icon, PresetIcons, IconProps } from './';
 
 const ICONS = [
@@ -836,37 +837,44 @@ const DefaultTemplate = (args: IconProps) => {
 const GalleryTemplate = (args: IconProps) => {
   return (
     <View ts={{ alignItems: 'center', justifyContent: 'center' }}>
+      <Text value="FontAwesome icons gallery" />
       <View
         ts={{ flexDirection: 'column', alignItems: 'center', gap: '$rem:1' }}
       >
         <View ts={{ flexWrap: 'wrap', width: '$vw:30' }}>
           {ICONS.map((iconName) => {
             return (
-              <Button
-                variant="ghost"
-                ts={{
-                  width: '$rem:2',
-                  height: '$rem:2',
-                  marginHorizontal: '$rem:0.25',
-                }}
+              <View
                 onPress={async () => {
                   try {
                     await navigator.clipboard.writeText(iconName);
-                    alert(`Icon copied: ${iconName}`);
+                    alert(`FontAwesome icon copied: ${iconName}`);
                   } catch (err) {
                     console.error('Failed to copy: ', err);
                   }
                 }}
-                renderLeft={() => {
-                  return (
-                    <Icon
-                      key={iconName}
-                      {...args}
-                      icon={iconName as PresetIcons}
-                    />
-                  );
-                }}
-              />
+              >
+                <Button
+                  variant="ghost"
+                  ts={{
+                    flexDirection: 'column',
+                    gap: '$rem:0.25',
+                    width: '$rem:2',
+                    height: '$rem:2',
+                    marginHorizontal: '$rem:0.25',
+                  }}
+                  renderLeft={() => {
+                    return (
+                      <Icon
+                        key={iconName}
+                        {...args}
+                        icon={iconName as PresetIcons}
+                      />
+                    );
+                  }}
+                />
+                <Text value={iconName} />
+              </View>
             );
           })}
         </View>
