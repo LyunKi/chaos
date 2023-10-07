@@ -1,5 +1,16 @@
 # @cloud-dragon/world-countries
 
+## 0.9.0
+
+### Minor Changes
+
+- change components rn eva icons to fontawesome icons
+
+### Patch Changes
+
+- Updated dependencies
+  - @cloud-dragon/common-utils@0.9.0
+
 ## 0.8.5
 
 ### Patch Changes

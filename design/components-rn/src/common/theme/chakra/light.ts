@@ -63,6 +63,7 @@ const LIGHT_THEME = merge({}, variables, {
     },
     brand: {
       ...variables.color.teal,
+      default: variables.color.teal[500],
     },
     button: {
       normal: {

@@ -803,7 +803,7 @@ const meta = {
   args: {
     width: '$rem:1',
     height: '$rem:1',
-    color: '$color.brand.500',
+    color: '$color.brand.default',
     icon: 'user',
     animation: {
       type: 'pulse',

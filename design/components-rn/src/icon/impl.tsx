@@ -42,11 +42,13 @@ export const Icon = React.forwardRef(
         stopAnimation: animationInstance?.stop,
       };
     });
-    props.iconStyle = {
+    props.iconStyle = props.style = {
       width: props.width,
       height: props.height,
+      lineHeight: props.height,
       color: props.color,
       marginRight: 0,
+      textAlign: 'center',
     };
     return Icon ? (
       <Animated.View {...animationInstance?.toProps()} testID={testID}>

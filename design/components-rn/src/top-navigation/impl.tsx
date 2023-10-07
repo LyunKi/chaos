@@ -15,7 +15,7 @@ function getRenderGoBack(props: any) {
       <Button
         variant="ghost"
         value={(accessoryProps) => (
-          <Icon icon="arrow-ios-back-outline" {...accessoryProps} />
+          <Icon icon="arrow-left" {...accessoryProps} />
         )}
         {...props}
       />

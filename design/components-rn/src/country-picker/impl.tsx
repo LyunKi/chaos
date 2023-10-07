@@ -50,7 +50,7 @@ const CountryItem = React.memo(
             <Text value={keyPropValue ?? ''} />
             <View style={{ width: 40, justifyContent: 'center' }}>
               {cca2 === selectedCountry?.cca2 && (
-                <Icon color="$color.status.success" icon="checkmark-outline" />
+                <Icon color="$color.brand.default" icon="check" />
               )}
             </View>
           </View>

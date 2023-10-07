@@ -32,7 +32,7 @@ export const Tabs = (props: TabsProps) => {
         if (renderItem) {
           return renderItem(item);
         }
-        const activeColor = '$color.brand.500';
+        const activeColor = '$color.brand.default';
         return (
           <View
             ts={StyleSheet.flatten([

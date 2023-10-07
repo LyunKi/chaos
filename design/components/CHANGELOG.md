@@ -1,5 +1,11 @@
 # @cloud-design/components
 
+## 0.9.0
+
+### Minor Changes
+
+- change components rn eva icons to fontawesome icons
+
 ## 0.8.5
 
 ### Patch Changes

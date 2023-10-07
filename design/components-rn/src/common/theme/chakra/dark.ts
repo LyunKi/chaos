@@ -63,6 +63,7 @@ const DARK_THEME = merge({}, variables, {
     },
     brand: {
       ...variables.color.teal,
+      default: variables.color.teal[200],
     },
     button: {
       normal: {

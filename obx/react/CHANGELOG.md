@@ -1,5 +1,17 @@
 # @cloud-dragon/obx-react
 
+## 0.9.0
+
+### Minor Changes
+
+- change components rn eva icons to fontawesome icons
+
+### Patch Changes
+
+- Updated dependencies
+  - @cloud-dragon/react-utils@0.9.0
+  - @cloud-dragon/obx-core@0.9.0
+
 ## 0.8.5
 
 ### Patch Changes

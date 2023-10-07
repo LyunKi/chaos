@@ -1,16 +1,16 @@
 {
   "name": "@cloud-design/components-rn",
-  "version": "0.8.5",
+  "version": "1.0.0",
   "files": [
     "dist"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "require": "./dist/index.js"
     }
   },
@@ -20,7 +20,7 @@
   "scripts": {
     "gen-icons": "pnpm exec ts-node --esm scripts/gen-icons.mts",
     "prepublish": "pnpm build",
-    "build": "vite build -c vite.config.build.ts && tsc -p tsconfig.lib.json",
+    "build": "tsc -p tsconfig.lib.json",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
@@ -31,6 +31,7 @@
     "@cloud-dragon/world-countries": "workspace:*",
     "@gorhom/portal": "^1.0.14",
     "react": "^18.2.0",
+    "@expo/vector-icons": "^13.0.0",
     "react-native": "^0.71.7"
   },
   "dependencies": {
@@ -45,7 +46,6 @@
     "@cloud-dragon/world-countries": "workspace:*",
     "@expo/vector-icons": "^13.0.0",
     "@gorhom/portal": "^1.0.14",
-    "expo-font": "^11.6.0",
     "formik": "^2.3.2",
     "yup": "^0.32.11"
   }

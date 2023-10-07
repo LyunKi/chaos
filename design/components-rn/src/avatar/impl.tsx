@@ -26,7 +26,7 @@ export const Avatar: React.FC<AvatarProps> = ({
           ...computedStyle,
         }}
       >
-        <Icon color="white" icon="person" size={size} />
+        <Icon color="white" icon="user" size={size} />
       </View>
     );
   }
