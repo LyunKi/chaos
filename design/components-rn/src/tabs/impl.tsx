@@ -12,7 +12,7 @@ export const Tabs = (props: TabsProps) => {
     <View
       style={style}
       ts={StyleSheet.flatten([
-        { width: '100%', height: '$size.10', alignItems: 'center' },
+        { width: '100%', height: '$rem:3', alignItems: 'center' },
         ts,
       ])}
       {...rest}
@@ -39,7 +39,6 @@ export const Tabs = (props: TabsProps) => {
               {
                 flex: 1,
                 alignItems: 'center',
-                gap: '$rem:0.25',
                 flexDirection: 'column',
               },
               itemTs,
@@ -47,14 +46,18 @@ export const Tabs = (props: TabsProps) => {
             style={itemStyle}
             key={key ?? label}
             onPress={() => onPress?.(index)}
-            onLongPress={() => onPress?.(index)}
+            onLongPress={() => onLongPress?.(index)}
           >
             {icon && (
-              <Icon icon={icon} color={isActive ? activeColor : undefined} />
+              <Icon
+                size={'$rem:1.25'}
+                icon={icon}
+                color={isActive ? activeColor : undefined}
+              />
             )}
             {label && (
               <Text
-                size={'sm'}
+                size={'xs'}
                 ts={styles([isActive, { color: activeColor }])}
                 value={label}
               />

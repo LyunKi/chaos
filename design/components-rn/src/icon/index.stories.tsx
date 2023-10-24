@@ -791,7 +791,7 @@ const ICONS = [
   'snowflake-o',
   'superpowers',
   'wpexplorer',
-  'meetup,FontAwesome',
+  'meetup',
 ];
 
 const meta = {
@@ -836,7 +836,13 @@ const DefaultTemplate = (args: IconProps) => {
 
 const GalleryTemplate = (args: IconProps) => {
   return (
-    <View ts={{ alignItems: 'center', justifyContent: 'center' }}>
+    <View
+      ts={{
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <Text value="FontAwesome icons gallery" />
       <View
         ts={{ flexDirection: 'column', alignItems: 'center', gap: '$rem:1' }}
@@ -845,6 +851,13 @@ const GalleryTemplate = (args: IconProps) => {
           {ICONS.map((iconName) => {
             return (
               <View
+                ts={{
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  width: '$rem:8',
+                  paddingHorizontal: '$rem:0.25',
+                  marginVertical: '$rem:1',
+                }}
                 onPress={async () => {
                   try {
                     await navigator.clipboard.writeText(iconName);
@@ -854,26 +867,8 @@ const GalleryTemplate = (args: IconProps) => {
                   }
                 }}
               >
-                <Button
-                  variant="ghost"
-                  ts={{
-                    flexDirection: 'column',
-                    gap: '$rem:0.25',
-                    width: '$rem:2',
-                    height: '$rem:2',
-                    marginHorizontal: '$rem:0.25',
-                  }}
-                  renderLeft={() => {
-                    return (
-                      <Icon
-                        key={iconName}
-                        {...args}
-                        icon={iconName as PresetIcons}
-                      />
-                    );
-                  }}
-                />
-                <Text value={iconName} />
+                <Icon key={iconName} {...args} icon={iconName as PresetIcons} />
+                <Text numberOfLines={1} value={iconName} />
               </View>
             );
           })}

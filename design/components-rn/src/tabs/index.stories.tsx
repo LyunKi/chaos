@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Tabs, TabItemProps } from '.';
 import { View } from '../view';
+import { Icon } from '../icon';
+import { Button } from '../button';
 
 const meta = {
   title: 'Cloud-Design/Tabs',
@@ -22,27 +24,50 @@ export const Default: Story = {
     const items = [
       {
         label: 'tab1',
-        icon: 'home-outline',
+        icon: 'home',
         onPress,
       },
       {
+        key: 'action',
+        onPress,
+        renderItem: () => {
+          return (
+            <Button
+              ts={{
+                height: '$rem:3',
+                backgroundColor: undefined,
+              }}
+              value={() => {
+                return (
+                  <Icon
+                    color="$color.brand.default"
+                    size={'$rem:3'}
+                    icon={'plus-circle'}
+                  />
+                );
+              }}
+            ></Button>
+          );
+        },
+      },
+      {
         label: 'tab2',
-        icon: 'person-outline',
+        icon: 'user',
         onPress,
       },
     ] as TabItemProps[];
     return (
-      <View
+      <Tabs
         ts={{
           width: 375,
           borderColor: '$color.border.default',
           borderStyle: 'solid',
           borderWidth: 1,
-          padding: '$rem:0.5',
         }}
-      >
-        <Tabs value={index} {...args} items={items} />
-      </View>
+        value={index}
+        {...args}
+        items={items}
+      />
     );
   },
 };

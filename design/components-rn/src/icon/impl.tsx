@@ -45,6 +45,7 @@ export const Icon = React.forwardRef(
     props.iconStyle = props.style = {
       width: props.width,
       height: props.height,
+      fontSize: props.height,
       lineHeight: props.height,
       color: props.color,
       marginRight: 0,
