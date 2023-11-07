@@ -4,17 +4,13 @@ import { TabsProps } from './api';
 import { View } from '../view';
 import { Icon } from '../icon';
 import { Text } from '../text';
-import { styles } from '@cloud-dragon/common-utils';
 
 export const Tabs = (props: TabsProps) => {
   const { style, ts, items, value, ...rest } = props;
   return (
     <View
       style={style}
-      ts={StyleSheet.flatten([
-        { width: '100%', height: '$rem:3', alignItems: 'center' },
-        ts,
-      ])}
+      ts={StyleSheet.flatten([{ width: '100%', height: '$rem:3' }, ts])}
       {...rest}
     >
       {items.map((item, index) => {
@@ -27,19 +23,26 @@ export const Tabs = (props: TabsProps) => {
           renderItem,
           style: itemStyle,
           ts: itemTs,
+          activeColor,
+          activeIcon,
           label,
         } = item;
         if (renderItem) {
           return renderItem(item);
         }
-        const activeColor = '$color.brand.default';
+        const itemColor = isActive
+          ? activeColor ?? '$color.brand.default'
+          : '$color.placeholder.default';
+        const itemIcon = isActive && activeIcon ? activeIcon : icon;
         return (
           <View
             ts={StyleSheet.flatten([
               {
                 flex: 1,
                 alignItems: 'center',
+                justifyContent: 'center',
                 flexDirection: 'column',
+                alignSelf: 'center',
               },
               itemTs,
             ])}
@@ -48,19 +51,11 @@ export const Tabs = (props: TabsProps) => {
             onPress={() => onPress?.(index)}
             onLongPress={() => onLongPress?.(index)}
           >
-            {icon && (
-              <Icon
-                size={'$rem:1.25'}
-                icon={icon}
-                color={isActive ? activeColor : undefined}
-              />
+            {itemIcon && (
+              <Icon size={'$rem:1.25'} icon={itemIcon} color={itemColor} />
             )}
             {label && (
-              <Text
-                size={'xs'}
-                ts={styles([isActive, { color: activeColor }])}
-                value={label}
-              />
+              <Text size={'xs'} ts={{ color: itemColor }} value={label} />
             )}
           </View>
         );

@@ -8,6 +8,8 @@ export interface TabItemProps {
   key?: string;
   renderItem?: (props: Omit<TabItemProps, 'renderItem'>) => React.ReactNode;
   icon?: IconComponent;
+  activeColor?: string;
+  activeIcon?: IconComponent;
   label?: string;
   ts?: ThemeStyle<ViewStyle>;
   style?: ViewStyle;

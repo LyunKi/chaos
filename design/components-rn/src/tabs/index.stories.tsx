@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Tabs, TabItemProps } from '.';
-import { View } from '../view';
 import { Icon } from '../icon';
 import { Button } from '../button';
 
@@ -25,6 +24,9 @@ export const Default: Story = {
       {
         label: 'tab1',
         icon: 'home',
+        ts: {
+          height: '$rem:3',
+        },
         onPress,
       },
       {
@@ -35,7 +37,8 @@ export const Default: Story = {
             <Button
               ts={{
                 height: '$rem:3',
-                backgroundColor: undefined,
+                backgroundColor: 'unset',
+                width: '$rem:8',
               }}
               value={() => {
                 return (
@@ -54,6 +57,9 @@ export const Default: Story = {
         label: 'tab2',
         icon: 'user',
         onPress,
+        ts: {
+          height: '$rem:3',
+        },
       },
     ] as TabItemProps[];
     return (
