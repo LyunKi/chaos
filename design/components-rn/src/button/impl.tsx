@@ -108,10 +108,10 @@ export function Button({
       onLongPress={onLongPress}
       onBlur={onBlur}
       onFocus={onFocus}
-      style={{
+      style={ThemeManager.themed({
         height: '$size.10',
-        ...ThemeManager.themed(containerTs),
-      }}
+        ...containerTs,
+      })}
     >
       {({ pressed, hovered }: any) => {
         const { computedViewStyle, computedTextStyle } = computeStyles({

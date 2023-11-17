@@ -32,25 +32,25 @@ function computePropsByStatus(status: ToastStatus) {
     case 'success': {
       backgroundColor = `$color.status.${status}`;
       closeStatus = status;
-      icon = 'checkmark-circle-2';
+      icon = 'check-circle';
       break;
     }
     case 'error': {
       backgroundColor = `$color.status.${status}`;
       closeStatus = status;
-      icon = 'alert-circle';
+      icon = 'times-circle';
       break;
     }
     case 'warning': {
       backgroundColor = `$color.status.${status}`;
       closeStatus = status;
-      icon = 'alert-circle';
+      icon = 'exclamation-circle';
       break;
     }
     case 'info': {
       backgroundColor = `$color.status.${status}`;
       closeStatus = status;
-      icon = 'info';
+      icon = 'info-circle';
       break;
     }
     case 'loading': {
@@ -86,7 +86,12 @@ const ToastItem = (props: ToastItemProps) => {
         ...ts,
       }}
     >
-      <Icon color={fontColor} size="$rem:1.5" icon={icon as IconComponent} />
+      <Icon
+        color={fontColor}
+        size="$rem:1.25"
+        ts={{ lineHeight: '$rem:1.5' }}
+        icon={icon as IconComponent}
+      />
       <View ts={{ marginLeft: '$space.3', flexDirection: 'column' }}>
         {title && (
           <Text
@@ -123,7 +128,7 @@ const ToastItem = (props: ToastItemProps) => {
               height: '$size.6',
             }}
             value={() => (
-              <Icon size={'$rem:1'} color={fontColor} icon="close" />
+              <Icon size={'$rem:1'} color={fontColor} icon="times" />
             )}
           />
         </View>
@@ -132,7 +137,7 @@ const ToastItem = (props: ToastItemProps) => {
   );
 };
 
-const DEFAULT_DURATION = 3;
+const DEFAULT_DURATION = 300;
 
 export class ToastManager {
   private instance?: ToastInstance;

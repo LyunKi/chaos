@@ -1,6 +1,11 @@
 import { ComponentType } from 'react';
-import { Testable, AnimationConfig, SupportedAnimation } from '../common';
+import {
+  AnimationConfig,
+  SupportedAnimation,
+  CloudDesignWrap,
+} from '../common';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { TextStyle } from 'react-native';
 
 export type IconAnimationProp = {
   type: SupportedAnimation;
@@ -11,27 +16,32 @@ export type PresetIcons = React.ComponentProps<typeof FontAwesome>['name'];
 
 export type IconComponentProps = {
   name?: PresetIcons;
-  size: number;
-  width: number;
-  height: number;
-  color: string;
+  size?: number;
+  width?: number;
+  height?: number;
+  color?: string;
+  fill?: string;
   style: {
-    width: number;
-    height: number;
-    color: string;
+    width?: number;
+    height?: number;
+    color?: string;
+    fill?: string;
   };
 };
 
 export type IconComponent = PresetIcons | ComponentType<IconComponentProps>;
 
-export type IconProps = Testable<{
-  icon: IconComponent;
-  size?: number | string;
-  width?: number | string;
-  height?: number | string;
-  color?: string;
-  animation?: IconAnimationProp;
-}>;
+export type IconProps = CloudDesignWrap<
+  {
+    icon: IconComponent;
+    size?: number | string;
+    width?: number | string;
+    height?: number | string;
+    color?: string;
+    animation?: IconAnimationProp;
+  },
+  TextStyle
+>;
 
 export interface IconRef {
   startAnimation?: Function;

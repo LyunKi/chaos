@@ -1,5 +1,5 @@
 import React, { Ref } from 'react';
-import { Animated } from 'react-native';
+import { Animated, StyleSheet } from 'react-native';
 import isString from 'lodash-es/isString';
 import { getIconAnimation, ThemeManager } from '../common';
 import { IconComponentProps, IconProps, IconRef } from './api';
@@ -14,6 +14,8 @@ export const Icon = React.forwardRef(
       size = '$rem:1',
       color = '$color.font.default',
       animation,
+      ts,
+      style,
       testID,
     }: IconProps,
     ref: Ref<IconRef>
@@ -24,6 +26,7 @@ export const Icon = React.forwardRef(
       height: height ?? size,
       size,
       color,
+      fill: color,
     });
     if (isString(icon)) {
       Icon = FontAwesome;
@@ -42,15 +45,20 @@ export const Icon = React.forwardRef(
         stopAnimation: animationInstance?.stop,
       };
     });
-    props.iconStyle = props.style = {
-      width: props.width,
-      height: props.height,
-      fontSize: props.height,
-      lineHeight: props.height,
-      color: props.color,
-      marginRight: 0,
-      textAlign: 'center',
-    };
+    props.iconStyle = props.style = StyleSheet.flatten([
+      {
+        width: props.width,
+        height: props.height,
+        color: props.color,
+        fill: props.color,
+        fontSize: props.height,
+        lineHeight: props.height,
+        marginRight: 0,
+        textAlign: 'center',
+      },
+      ThemeManager.themed(ts),
+      style,
+    ]);
     return Icon ? (
       <Animated.View {...animationInstance?.toProps()} testID={testID}>
         {React.createElement(Icon, props as IconComponentProps)}

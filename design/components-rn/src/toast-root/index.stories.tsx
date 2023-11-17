@@ -48,7 +48,11 @@ export const Default = {
           value="error"
           status="error"
           onPress={() =>
-            Toast.error({ title: 'title', description: 'description' })
+            Toast.error({
+              title: 'title',
+              description: 'description',
+              closeable: true,
+            })
           }
         />
         <Button
