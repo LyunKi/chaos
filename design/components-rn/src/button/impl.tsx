@@ -97,6 +97,7 @@ export function Button({
   loadingText,
   disabled,
   testID,
+  containerTs,
 }: ButtonProps) {
   return (
     <Pressable
@@ -107,6 +108,10 @@ export function Button({
       onLongPress={onLongPress}
       onBlur={onBlur}
       onFocus={onFocus}
+      style={{
+        height: '$size.10',
+        ...ThemeManager.themed(containerTs),
+      }}
     >
       {({ pressed, hovered }: any) => {
         const { computedViewStyle, computedTextStyle } = computeStyles({
@@ -133,7 +138,7 @@ export function Button({
               borderRadius: '$radius.md',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '$size.10',
+              height: '100%',
               paddingHorizontal: '$space.3',
               gap: '$rem:0.5',
               outline: 'unset',

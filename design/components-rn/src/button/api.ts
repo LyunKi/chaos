@@ -21,6 +21,7 @@ export interface BasicButtonProps {
   disabled?: boolean;
   value?: string | AccessoryRenderProp;
   textTs?: ThemeStyle<TextStyle>;
+  containerTs?: ThemeStyle<ViewStyle>;
   onPress?: (event?: any) => any;
   onFocus?: (event: any) => void;
   onLongPress?: (event: GestureResponderEvent) => void;

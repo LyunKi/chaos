@@ -14,3 +14,4 @@ export * from './top-navigation';
 export * from './view';
 export * from './overlay';
 export * from './country-picker';
+export * from './tabs';
