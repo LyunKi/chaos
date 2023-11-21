@@ -1,26 +1,40 @@
-import { isString } from 'lodash-es';
+import { find, isString, kebabCase, upperCase } from 'lodash-es';
 
 export interface LanguagePack {
   code: string;
   quality: number;
   region?: string;
+  origin: string;
+  formatted: string;
 }
 
 export const AcceptLanguageParser = {
-  parse: (acceptLanguages: string | string[] = []): LanguagePack[] => {
+  formatLanguageStr(languageStr: string) {
+    const [locale, quality] = languageStr.split(';q=');
+    const tmp = kebabCase(locale);
+    const [code, region] = tmp.split(/[_-]/);
+    let formattedRegion = region;
+    let formatted = code;
+    if (formattedRegion) {
+      formattedRegion = upperCase(region);
+      formatted = `${formatted}-${formattedRegion}`;
+    }
+    return {
+      code,
+      region: formattedRegion,
+      quality: quality ? parseFloat(quality) : 1,
+      origin: languageStr,
+      formatted,
+    };
+  },
+  parse(acceptLanguages: string | string[] = []): LanguagePack[] {
     const languageArray = isString(acceptLanguages)
       ? acceptLanguages.split(',')
       : acceptLanguages;
     return (
       languageArray
         .map((languageStr) => {
-          const [locale, quality] = languageStr.split(';q=');
-          const [code, region] = locale.split('-');
-          return {
-            code,
-            region,
-            quality: quality ? parseFloat(quality) : 1,
-          };
+          return AcceptLanguageParser.formatLanguageStr(languageStr);
         })
         .sort((a, b) => {
           return b.quality - a.quality;
@@ -28,19 +42,16 @@ export const AcceptLanguageParser = {
     );
   },
 
-  pick: (acceptLanguageStr: string, supportedLanguages: string[]) => {
-    const languagePacks = AcceptLanguageParser.parse(acceptLanguageStr);
-    return languagePacks
-      .map((pack) => {
-        const { code, region } = pack;
-        let language = code;
-        if (region) {
-          language += `-${region}`;
-        }
-        return language;
-      })
-      .find((language) => {
-        return supportedLanguages.includes(language);
-      });
+  pick(acceptLanguageStr: string, supportedLanguages: string[]) {
+    const formattedLanguagePacks = AcceptLanguageParser.parse(
+      acceptLanguageStr
+    ).map((languagePack) => languagePack.formatted);
+    return find(supportedLanguages, (supportedLanguage) => {
+      const formattedSupportLanguage =
+        AcceptLanguageParser.formatLanguageStr(supportedLanguage);
+      return formattedLanguagePacks.includes(
+        formattedSupportLanguage.formatted
+      );
+    });
   },
 };
