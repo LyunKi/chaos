@@ -61,6 +61,9 @@ const LIGHT_THEME = merge({}, variables, {
       default: '$color.gray.800',
       reverse: '$color.whiteAlpha.900',
     },
+    shadow: {
+      base: 'rgba(0,0,0,0.1)',
+    },
     brand: {
       ...variables.color.teal,
       default: variables.color.teal[500],

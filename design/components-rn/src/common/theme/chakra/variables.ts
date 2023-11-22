@@ -277,9 +277,6 @@ const VARIABLES = {
   size: SIZE,
   opacity: OPACITY,
   zIndex: Z_INDEX,
-  shadow: {
-    base: 'rgba(0,0,0,0.1)',
-  },
 };
 
 export default VARIABLES;

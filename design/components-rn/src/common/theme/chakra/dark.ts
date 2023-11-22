@@ -65,6 +65,9 @@ const DARK_THEME = merge({}, variables, {
       ...variables.color.teal,
       default: variables.color.teal[200],
     },
+    shadow: {
+      base: 'rgba(0,0,0,0.1)',
+    },
     button: {
       normal: {
         outlineColor: '$color.border.default',
