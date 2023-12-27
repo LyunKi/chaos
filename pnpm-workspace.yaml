@@ -3,3 +3,4 @@ packages:
   - 'custom-configs/*'
   - 'common/*'
   - 'obx/*'
+  - 'ui-creator/*'
