@@ -1,6 +1,6 @@
 {
-  "name": "@cloud-design/creator-builder-rn",
-  "homepage": "https://github.com/LyunKi/chaos/tree/master/ui-creator/builder-rn",
+  "name": "@cloud-design/creator-builder",
+  "homepage": "https://github.com/LyunKi/chaos/tree/master/ui-creator/builder",
   "license": "MIT",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.mjs",
@@ -28,8 +28,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-native": "^0.71.7"
+    "react": "^18.2.0"
   },
   "dependencies": {
     "@cloud-design/creator-common": "workspace:*",

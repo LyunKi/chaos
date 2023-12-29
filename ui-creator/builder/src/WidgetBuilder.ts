@@ -2,19 +2,14 @@ import { KV } from '@cloud-dragon/common-types';
 import React, { ReactElement, Fragment } from 'react';
 import {
   WidgetBuilder,
-  WidgetRegistry,
   Prop,
   Widget,
-  ConfigManager,
   isRemPropValue,
-  I18nManager,
-  Navigator,
-  ThemeManager,
   PropValue,
   BuilderContext,
 } from '@cloud-design/creator-common';
 import mapValues from 'lodash-es/mapValues';
-import { CloudRnBuilderContextInstance } from './BuilderContext';
+import { CloudBuilderContextInstance } from './BuilderContext';
 
 const WIDGET_TYPE_RECORD: KV<number> = {};
 
@@ -27,7 +22,7 @@ function generateWidgetKey(type: string) {
 }
 
 class CloudRnWidgetBuilder extends WidgetBuilder<ReactElement> {
-  public context: BuilderContext = CloudRnBuilderContextInstance;
+  public context: BuilderContext = CloudBuilderContextInstance;
 
   private parsePropValue(value: PropValue) {
     if (isRemPropValue(value)) {
@@ -84,4 +79,4 @@ class CloudRnWidgetBuilder extends WidgetBuilder<ReactElement> {
   }
 }
 
-export const CloudRnWidgetBuilderInstance = new CloudRnWidgetBuilder();
+export const CloudWidgetBuilderInstance = new CloudRnWidgetBuilder();

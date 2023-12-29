@@ -8,7 +8,7 @@ import {
 } from '@cloud-design/creator-common';
 import { createNavigationContainerRef } from '@react-navigation/native';
 
-class CloudRnBuilderContext extends BuilderContext {
+class CloudBuilderContext extends BuilderContext {
   public widgetRegistry: WidgetRegistry;
   public i18nManager: I18nManager;
   public themeManager: ThemeManager;
@@ -25,4 +25,4 @@ class CloudRnBuilderContext extends BuilderContext {
   }
 }
 
-export const CloudRnBuilderContextInstance = new CloudRnBuilderContext();
+export const CloudBuilderContextInstance = new CloudBuilderContext();

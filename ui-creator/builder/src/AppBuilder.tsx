@@ -19,13 +19,13 @@ import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import snakeCase from 'lodash/snakeCase';
 import merge from 'lodash/merge';
-import { CloudRnWidgetBuilderInstance } from './WidgetBuilder';
-import { CloudRnViewBuilderInstance } from './ViewBuilder';
-import { CloudRnBuilderContextInstance } from './BuilderContext';
+import { CloudWidgetBuilderInstance } from './WidgetBuilder';
+import { CloudViewBuilderInstance } from './ViewBuilder';
+import { CloudBuilderContextInstance } from './BuilderContext';
 
 const Stack = createNativeStackNavigator();
 
-export class CloudRnAppBuilder extends AppBuilder<
+export class CloudAppBuilder extends AppBuilder<
   ReactElement,
   ReactElement,
   ReactElement
@@ -37,13 +37,13 @@ export class CloudRnAppBuilder extends AppBuilder<
     this.builderName = builderName;
   }
 
-  public context: BuilderContext = CloudRnBuilderContextInstance;
+  public context: BuilderContext = CloudBuilderContextInstance;
 
   public viewBuilder: ViewBuilder<ReactElement, ReactElement> =
-    CloudRnViewBuilderInstance;
+    CloudViewBuilderInstance;
 
   public widgetBuilder: WidgetBuilder<ReactElement> =
-    CloudRnWidgetBuilderInstance;
+    CloudWidgetBuilderInstance;
 
   private buildRouteItem = (item: RouteItem) => {
     const { name, view } = item;

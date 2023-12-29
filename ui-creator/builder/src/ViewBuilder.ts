@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import {
   ViewBuilder,
   WidgetSnippet,
@@ -9,15 +9,14 @@ import {
   WidgetBuilder,
   BuilderContext,
 } from '@cloud-design/creator-common';
-import { SafeAreaView } from 'react-native';
-import { CloudRnBuilderContextInstance } from './BuilderContext';
-import { CloudRnWidgetBuilderInstance } from './WidgetBuilder';
+import { CloudBuilderContextInstance } from './BuilderContext';
+import { CloudWidgetBuilderInstance } from './WidgetBuilder';
 
-class CloudRnViewBuilder extends ViewBuilder<ReactElement, ReactElement> {
-  public context: BuilderContext = CloudRnBuilderContextInstance;
+class CloudViewBuilder extends ViewBuilder<ReactElement, ReactElement> {
+  public context: BuilderContext = CloudBuilderContextInstance;
 
   public widgetBuilder: WidgetBuilder<ReactElement> =
-    CloudRnWidgetBuilderInstance;
+    CloudWidgetBuilderInstance;
 
   public buildWidgetSnippet = (widgetSnippet: WidgetSnippet) => {
     return widgetSnippet.children.map(this.buildWidget);
@@ -36,11 +35,11 @@ class CloudRnViewBuilder extends ViewBuilder<ReactElement, ReactElement> {
   public build(view: View): ReactElement {
     const { children } = view;
     return React.createElement(
-      SafeAreaView,
+      Fragment,
       null,
       children.flatMap(this.buildViewChild)
     );
   }
 }
 
-export const CloudRnViewBuilderInstance = new CloudRnViewBuilder();
+export const CloudViewBuilderInstance = new CloudViewBuilder();
