@@ -1,5 +1,5 @@
 {
-  "name": "@cloud-design/creator-common",
+  "name": "@cloud-creator/common",
   "homepage": "https://github.com/LyunKi/chaos/tree/master/ui-creator/common",
   "license": "MIT",
   "main": "./dist/index.umd.js",

@@ -1,0 +1,35 @@
+{
+  "name": "app-frontend",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@cloud-creator/builder": "workspace:*",
+    "@cloud-creator/common": "workspace:*",
+    "@cloud-creator/prelude-rn": "workspace:*",
+    "@cloud-design/components-rn": "workspace:*",
+    "expo": "~49.0.15",
+    "expo-app-loading": "^2.1.1",
+    "expo-status-bar": "~1.6.0",
+    "react": "18.2.0",
+    "react-native": "0.72.6",
+    "@react-navigation/native": "^6.0.11",
+    "@react-navigation/stack": "^6.3.20",
+    "expo-linking": "~5.0.2",
+    "lodash-es": "^4.17.21",
+    "react-native-svg": "13.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@cloud-dragon/common-types": "workspace:*",
+    "@expo/webpack-config": "19.0.0",
+    "@types/react": "~18.2.14",
+    "typescript": "^5.1.3"
+  },
+  "private": true
+}

@@ -1,5 +1,5 @@
 # Installation
 
-> `npm i @cloud-design/creator-rn-builder`
+> `npm i @cloud-design/creator-builder`
 
-This package is a react native builder for cloud design creator.
+This package is a react native builder for cloud creator.

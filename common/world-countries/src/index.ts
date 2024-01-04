@@ -1,5 +1,6 @@
 import worldCountries, { Country } from 'world-countries';
-import { filter, lowerCase } from 'lodash-es';
+import filter from 'lodash-es/filter';
+import lowerCase from 'lodash-es/lowerCase';
 import { includesIgnoreCase } from '@cloud-dragon/common-utils';
 
 const COUNTRIES = worldCountries as unknown as Country[];

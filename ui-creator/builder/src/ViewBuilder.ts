@@ -8,7 +8,7 @@ import {
   View,
   WidgetBuilder,
   BuilderContext,
-} from '@cloud-design/creator-common';
+} from '@cloud-creator/common';
 import { CloudBuilderContextInstance } from './BuilderContext';
 import { CloudWidgetBuilderInstance } from './WidgetBuilder';
 

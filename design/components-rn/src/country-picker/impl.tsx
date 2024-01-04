@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet } from 'react-native';
-import { filter } from 'lodash-es';
+import filter from 'lodash-es/filter';
 import React from 'react';
 import {
   CountriesManager,

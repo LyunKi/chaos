@@ -7,7 +7,7 @@ import {
   isRemPropValue,
   PropValue,
   BuilderContext,
-} from '@cloud-design/creator-common';
+} from '@cloud-creator/common';
 import mapValues from 'lodash-es/mapValues';
 import { CloudBuilderContextInstance } from './BuilderContext';
 
@@ -69,10 +69,18 @@ class CloudRnWidgetBuilder extends WidgetBuilder<ReactElement> {
   }
 
   public getWidgetInstance(type: string) {
-    const [namespace, specifier] = type.split(':');
+    let namespace = this.context.configManager.config.defaultWidgetNamespace;
+    let specifier;
+    const [first, second] = type.split(':');
+    if (second) {
+      namespace = first;
+      specifier = second;
+    } else {
+      specifier = first;
+    }
     return (
       this.context.widgetRegistry.getInstance({
-        namespace: namespace,
+        namespace: namespace!,
         type: specifier,
       }) ?? Fragment
     );

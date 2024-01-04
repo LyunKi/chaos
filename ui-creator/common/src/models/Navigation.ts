@@ -1,9 +1,12 @@
+import { KV } from '@cloud-dragon/common-types';
 import { View } from './View';
+import { isEmpty } from 'lodash';
 
-export interface RouteItem {
+export type RouteItem = {
   name: string;
-  view: View;
-}
+  route?: string;
+  child: View | Navigation;
+};
 
 export interface RouteGroup {
   name: string;
@@ -11,10 +14,15 @@ export interface RouteGroup {
 }
 
 export interface Navigation {
-  initialRouteName: string;
   groups: RouteGroup[];
+  type: string;
+  initialRouteName?: string;
 }
 
 export interface Navigator {
   navigate(route: string): any;
+}
+
+export function isNavigation(scheme: KV<any>): scheme is Navigation {
+  return !isEmpty(scheme.groups);
 }

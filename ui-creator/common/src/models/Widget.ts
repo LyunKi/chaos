@@ -8,7 +8,7 @@ export interface Widget {
 
 export interface WidgetDep {
   name: string;
-  version: string;
+  version?: string;
   specifiers?: {
     name: string;
     alias?: string;
