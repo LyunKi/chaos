@@ -1,4 +1,3 @@
-import set from 'lodash-es/set';
 import {
   App,
   DEFAULT_APP_CONFIG,
@@ -7,22 +6,25 @@ import {
   Navigation,
   View,
   Widget,
-  Navigator,
 } from '../models';
 import { BuilderContext } from './context';
 import merge from 'lodash-es/merge';
+import { ReactElement } from 'react';
 
 export interface BuildAppOptions {
   theme?: string;
   locale?: string;
 }
 
-export abstract class WidgetBuilder<WidgetInstance> {
+export abstract class WidgetBuilder<WidgetInstance = ReactElement> {
   public abstract context: BuilderContext;
   public abstract build(config: Widget): WidgetInstance;
 }
 
-export abstract class ViewBuilder<ViewInstance, WidgetInstance> {
+export abstract class ViewBuilder<
+  ViewInstance = ReactElement,
+  WidgetInstance = ReactElement
+> {
   public abstract context: BuilderContext;
 
   public abstract widgetBuilder: WidgetBuilder<WidgetInstance>;
@@ -30,12 +32,20 @@ export abstract class ViewBuilder<ViewInstance, WidgetInstance> {
   public abstract build(config: View): ViewInstance;
 }
 
-export abstract class AppBuilder<AppInstance, ViewInstance, WidgetInstance> {
+export abstract class AppBuilder<
+  AppInstance = ReactElement,
+  ViewInstance = ReactElement,
+  WidgetInstance = ReactElement
+> {
   public abstract context: BuilderContext;
 
   public abstract viewBuilder: ViewBuilder<ViewInstance, WidgetInstance>;
 
   public buildNavigation!: (navigation: Navigation) => AppInstance;
+
+  public buildDecorator(children: AppInstance) {
+    return children;
+  }
 
   public loadPlugin(
     plugin: BuilderPlugin<AppInstance, ViewInstance, WidgetInstance>
@@ -51,25 +61,29 @@ export abstract class AppBuilder<AppInstance, ViewInstance, WidgetInstance> {
     const { theme = DEFAULT_THEME, locale = DEFAULT_LOCALE } = options;
 
     this.context.i18nManager.locale = locale;
-    this.context.i18nManager.i18nPacks = i18nPacks;
+    this.context.i18nManager.i18nPack = i18nPacks;
     this.context.themeManager.theme = theme;
-    this.context.themeManager.themePacks = themePacks;
+    this.context.themeManager.themePack = themePacks;
     this.context.configManager.config = merge({}, DEFAULT_APP_CONFIG, config);
 
-    return this.buildNavigation(navigation);
+    return this.buildDecorator(this.buildNavigation(navigation));
   }
 }
 
-export abstract class BuilderPlugin<AppInstance, ViewInstance, WidgetInstance> {
+export abstract class BuilderPlugin<
+  AppInstance = ReactElement,
+  ViewInstance = ReactElement,
+  WidgetInstance = ReactElement
+> {
   public abstract load(
     params: BuilderPluginParams<AppInstance, ViewInstance, WidgetInstance>
   ): any;
 }
 
 export interface BuilderPluginParams<
-  AppInstance,
-  ViewInstance,
-  WidgetInstance
+  AppInstance = ReactElement,
+  ViewInstance = ReactElement,
+  WidgetInstance = ReactElement
 > {
   builder: AppBuilder<AppInstance, ViewInstance, WidgetInstance>;
 }

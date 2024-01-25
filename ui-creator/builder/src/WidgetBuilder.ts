@@ -60,7 +60,8 @@ class CloudRnWidgetBuilder extends WidgetBuilder<ReactElement> {
 
   public build(widget: Widget): ReactElement {
     const { children, type, props } = widget;
-    const instance = this.getWidgetInstance(type);
+    const fullType = this.getFullType(type);
+    const instance = this.getWidgetInstance(fullType);
     return React.createElement(
       instance,
       this.parseWidgetProps(type, props),
@@ -68,7 +69,7 @@ class CloudRnWidgetBuilder extends WidgetBuilder<ReactElement> {
     );
   }
 
-  public getWidgetInstance(type: string) {
+  private getFullType(type: string) {
     let namespace = this.context.configManager.config.defaultWidgetNamespace;
     let specifier;
     const [first, second] = type.split(':');
@@ -78,6 +79,11 @@ class CloudRnWidgetBuilder extends WidgetBuilder<ReactElement> {
     } else {
       specifier = first;
     }
+    return `${namespace}:${specifier}`;
+  }
+
+  public getWidgetInstance(type: string) {
+    const [namespace, specifier] = type.split(':');
     return (
       this.context.widgetRegistry.getInstance({
         namespace: namespace!,

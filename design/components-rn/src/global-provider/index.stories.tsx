@@ -4,7 +4,6 @@ import React from 'react';
 // import { expect } from '@storybook/jest';
 import { useDarkMode } from 'storybook-dark-mode';
 import { Text } from '../text';
-import { View } from '../view';
 import { GlobalProvider, GlobalProviderProps } from './index';
 
 const meta = {

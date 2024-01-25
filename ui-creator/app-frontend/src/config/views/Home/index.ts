@@ -19,7 +19,8 @@ const HOME: View = {
               name: 'ts',
               value: {
                 height: '$rem:4',
-                paddingHorizontal: '$space.6',
+                paddingHorizontal: '$rem:0.5',
+                paddingVertical: '$rem:1',
                 alignItems: 'center',
                 justifyContent: 'space-between',
               },
@@ -60,7 +61,6 @@ const HOME: View = {
                         fontSize: '$fontSize.xl',
                         fontWeight: '$fontWeight.bold',
                       },
-                      valueType: 'object',
                     },
                   ],
                 },

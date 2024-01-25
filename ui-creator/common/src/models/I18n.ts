@@ -12,14 +12,10 @@ export const DEFAULT_LOCALE = 'en_US';
 export class I18nManager {
   public locale = DEFAULT_LOCALE;
 
-  public i18nPacks: I18nPacks = {};
-
-  public get i18nPack(): KV<NestedString> {
-    return this.i18nPacks[this.locale];
-  }
+  public i18nPack: I18nPacks = {};
 
   public t(key: string, context?: KV<any>) {
-    const template = get(this.i18nPack, key);
+    const template = get(this.i18nPack[this.locale], key);
     if (!isString(template)) {
       return key;
     }

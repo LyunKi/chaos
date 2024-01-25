@@ -12,6 +12,12 @@ import {
 import { CloudBuilderContextInstance } from './BuilderContext';
 import { CloudWidgetBuilderInstance } from './WidgetBuilder';
 
+class ViewComponent extends React.PureComponent<any> {
+  render() {
+    return this.props.children;
+  }
+}
+
 class CloudViewBuilder extends ViewBuilder<ReactElement, ReactElement> {
   public context: BuilderContext = CloudBuilderContextInstance;
 

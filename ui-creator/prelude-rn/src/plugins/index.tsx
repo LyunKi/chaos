@@ -21,6 +21,8 @@ import * as ReactIs from 'react-is';
 import * as Linking from 'expo-linking';
 import { NestedString } from '@cloud-dragon/common-types';
 import { createStackNavigator } from '@react-navigation/stack';
+import { DecoratorPlugin } from '@cloud-creator/common';
+import { Appearance } from 'react-native';
 
 export class CloudDesignRnWidgetRegistryPlugin extends WidgetRegistryPlugin<
   ReactElement,
@@ -136,5 +138,31 @@ export class RnNavigationPlugin extends NavigationPlugin<
 
   protected createNavigator() {
     this.builder.context.navigator = createNavigationContainerRef();
+  }
+}
+
+export class RnDecoratorPlugin extends DecoratorPlugin<
+  ReactElement,
+  ReactElement,
+  ReactElement
+> {
+  protected buildDecorator(children: ReactElement): ReactElement {
+    const { i18nManager, themeManager, configManager } = this.builder.context;
+    const { theme, themePack } = themeManager as any;
+    const { locale } = i18nManager as any;
+    const { config } = configManager;
+    const themeMode = Appearance.getColorScheme() ?? theme ?? 'light';
+    return (
+      <CloudDesignComponentsRn.GlobalProvider
+        themeMode={themeMode}
+        themePack={CloudDesignComponentsRn.extendTheme(themePack)}
+        themeContext={{
+          baseFontSize: config.baseFontSize,
+        }}
+        locale={locale}
+      >
+        {children}
+      </CloudDesignComponentsRn.GlobalProvider>
+    );
   }
 }

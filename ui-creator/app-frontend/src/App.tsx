@@ -51,5 +51,5 @@ export default function App() {
   if (!loaded) {
     return <AppLoading />;
   }
-  return builder.build(AppConfig);
+  return builder.build(AppConfig, { theme: 'dark' });
 }

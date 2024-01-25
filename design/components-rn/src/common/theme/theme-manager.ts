@@ -42,6 +42,7 @@ function handleVhValue(value: string, windowHeight: number) {
   return (windowHeight / 100) * multiple;
 }
 
+//  TODO: extract to common implement
 class ThemeManagerClass {
   private themeContext: ThemeContext = DEFAULT_THEME_CONTEXT;
 

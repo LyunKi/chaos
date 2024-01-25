@@ -1,11 +1,12 @@
-import { Navigation, Navigator } from '../models';
+import { ReactElement } from 'react';
+import { Navigation } from '../models';
 import { WidgetRegistry } from '../registries';
 import { AppBuilder, BuilderPlugin, BuilderPluginParams } from './models';
 
 export abstract class WidgetRegistryPlugin<
-  AppInstance,
-  ViewInstance,
-  WidgetInstance
+  AppInstance = ReactElement,
+  ViewInstance = ReactElement,
+  WidgetInstance = ReactElement
 > extends BuilderPlugin<AppInstance, ViewInstance, WidgetInstance> {
   protected abstract loadWidgets(widgetRegistry: WidgetRegistry): any;
 
@@ -24,9 +25,9 @@ export abstract class WidgetRegistryPlugin<
 }
 
 export abstract class NavigationPlugin<
-  AppInstance,
-  ViewInstance,
-  WidgetInstance
+  AppInstance = ReactElement,
+  ViewInstance = ReactElement,
+  WidgetInstance = ReactElement
 > extends BuilderPlugin<AppInstance, ViewInstance, WidgetInstance> {
   protected abstract buildNavigation(navigation: Navigation): AppInstance;
 
@@ -41,5 +42,23 @@ export abstract class NavigationPlugin<
     this.builder = builder;
     this.createNavigator();
     builder.buildNavigation = this.buildNavigation.bind(this);
+  }
+}
+
+export abstract class DecoratorPlugin<
+  AppInstance = ReactElement,
+  ViewInstance = ReactElement,
+  WidgetInstance = ReactElement
+> extends BuilderPlugin<AppInstance, ViewInstance, WidgetInstance> {
+  protected abstract buildDecorator(children: AppInstance): AppInstance;
+
+  protected builder!: AppBuilder<AppInstance, ViewInstance, WidgetInstance>;
+
+  public load(
+    params: BuilderPluginParams<AppInstance, ViewInstance, WidgetInstance>
+  ) {
+    const { builder } = params;
+    this.builder = builder;
+    builder.buildDecorator = this.buildDecorator.bind(this);
   }
 }

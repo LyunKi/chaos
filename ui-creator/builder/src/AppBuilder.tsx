@@ -1,15 +1,9 @@
 import {
-  App,
-  BuildAppOptions,
-  DEFAULT_LOCALE,
-  DEFAULT_THEME,
   AppBuilder,
   ViewBuilder,
   WidgetBuilder,
-  DEFAULT_APP_CONFIG,
   BuilderContext,
 } from '@cloud-creator/common';
-import merge from 'lodash/merge';
 import { CloudWidgetBuilderInstance } from './WidgetBuilder';
 import { CloudViewBuilderInstance } from './ViewBuilder';
 import { CloudBuilderContextInstance } from './BuilderContext';
