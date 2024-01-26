@@ -31,7 +31,6 @@
   ],
   "devDependencies": {
     "@cloud-dragon/common-types": "workspace:*",
-    "@cloud-dragon/eslint-config": "workspace:*",
     "@cloud-dragon/tsconfig": "workspace:*",
     "ts-node": "^10.9.1"
   },
