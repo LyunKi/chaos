@@ -2,7 +2,7 @@
   "name": "@cloud-creator/common",
   "homepage": "https://github.com/LyunKi/chaos/tree/master/ui-creator/common",
   "license": "MIT",
-  "main": "./dist/index.umd.js",
+  "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "unpkg": "./dist/index.umd.js",
   "types": "./dist/index.d.ts",

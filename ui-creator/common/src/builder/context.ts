@@ -1,4 +1,3 @@
-import React from 'react';
 import { I18nManager, ThemeManager, ConfigManager, Navigator } from '../models';
 import { WidgetRegistry } from '../registries';
 

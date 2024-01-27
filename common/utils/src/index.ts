@@ -6,3 +6,4 @@ export * from './validation';
 export * from './styles';
 export * from './iterable-weak-set';
 export * from './string';
+export * from './variable-manager';
