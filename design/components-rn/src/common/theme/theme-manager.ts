@@ -56,6 +56,10 @@ class ThemeManagerClass extends VariableManager {
     return this.processedValue(value);
   }
 
+  public getThemePacks() {
+    return this.packs;
+  }
+
   public handlePresetVariableValue(value: any) {
     const { baseFontSize, windowHeight, windowWidth } = ConfigManager.configs;
     if (isRemValue(value)) {

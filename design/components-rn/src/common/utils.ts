@@ -3,5 +3,5 @@ import { ThemeManager } from './theme';
 import { CloudDesignTheme } from './types';
 
 export function extendTheme(themePack: CloudDesignTheme) {
-  return merge({}, ThemeManager.getThemePack(), themePack);
+  return merge({}, ThemeManager.getThemePacks(), themePack);
 }
