@@ -1,5 +1,11 @@
 # @cloud-dragon/eslint-config
 
+## 0.10.0
+
+### Minor Changes
+
+- refactor some code
+
 ## 0.9.0
 
 ### Minor Changes

@@ -1,17 +1,17 @@
 # @cloud-design/components-rn
 
-## 1.0.0
+## 0.10.0
 
 ### Minor Changes
 
-- change components rn eva icons to fontawesome icons
+- refactor some code
 
 ### Patch Changes
 
 - Updated dependencies
-  - @cloud-dragon/react-utils@0.9.0
-  - @cloud-dragon/common-utils@0.9.0
-  - @cloud-dragon/world-countries@0.9.0
+  - @cloud-dragon/react-utils@0.10.0
+  - @cloud-dragon/common-utils@0.10.0
+  - @cloud-dragon/world-countries@0.10.0
 
 ## 0.8.5
 

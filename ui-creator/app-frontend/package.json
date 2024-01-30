@@ -1,6 +1,6 @@
 {
   "name": "app-frontend",
-  "version": "1.0.0",
+  "version": "0.10.0",
   "main": "src/index.ts",
   "scripts": {
     "start": "expo start",

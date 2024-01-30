@@ -1,5 +1,6 @@
 {
   "name": "@cloud-creator/common",
+  "private": true,
   "homepage": "https://github.com/LyunKi/chaos/tree/master/ui-creator/common",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -17,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/LyunKi/chaos.git"
   },
-  "version": "0.9.0",
+  "version": "0.10.0",
   "scripts": {
     "build": "vite build && tsc -p tsconfig.lib.json",
     "prepublish": "pnpm build",

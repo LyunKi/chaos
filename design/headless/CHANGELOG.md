@@ -1,5 +1,16 @@
 # @cloud-design/headless
 
+## 0.10.0
+
+### Minor Changes
+
+- refactor some code
+
+### Patch Changes
+
+- Updated dependencies
+  - @cloud-dragon/react-utils@0.10.0
+
 ## 0.9.0
 
 ### Minor Changes

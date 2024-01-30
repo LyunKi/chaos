@@ -29,5 +29,5 @@
     "lodash-es": "^4.17.21",
     "@cloud-dragon/react-utils": "workspace:*"
   },
-  "version": "0.9.0"
+  "version": "0.10.0"
 }
