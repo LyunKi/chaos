@@ -8,7 +8,7 @@ import { AvatarProps } from './api';
 export const Avatar: React.FC<AvatarProps> = ({
   ts,
   style,
-  size = '$size.6',
+  size = '$rem:1.5',
   src,
 }) => {
   const themeStyle: ThemeStyle<ViewStyle & ImageStyle> = {

@@ -7,20 +7,19 @@ import { ThemeManager } from '../common';
 import { ActivityIndicatorProps } from './api';
 
 export const ActivityIndicator = ({
-  size = 'md',
+  size = '$rem:1',
   color = '$color.font.default',
   style,
   ts,
   ...rest
 }: ActivityIndicatorProps) => {
-  const fontSize = `$fontSize.${size}`;
   const {
     size: computedFontSize,
     color: computedColor,
     ...computedStyle
   } = ThemeManager.themed({
     color,
-    fontSize,
+    size,
     ...ts,
   });
   return (

@@ -30,6 +30,12 @@ export interface ToastItemProps {
 export interface ToastOptions
   extends Omit<ToastItemProps, 'id' | 'duration' | 'status' | 'onClose'> {
   id?: string;
+  /**
+   * toast显示的时间，单位ms，只能为100的倍数
+   *
+   * @type {number}
+   * @memberof ToastOptions
+   */
   duration?: number;
   status?: ToastStatus;
   ts?: ThemeStyle<ViewStyle>;

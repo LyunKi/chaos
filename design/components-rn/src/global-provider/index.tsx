@@ -4,26 +4,27 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PortalProvider } from '@gorhom/portal';
 import {
   SupportedLocale,
-  ThemeContext,
+  GlobalConfigs,
   ThemeManager,
   ThemePack,
   I18nManager,
   ThemeMode,
+  ConfigManager,
 } from '../common';
 
 export interface ThemeConfig {
   /**
-   * Theme pack: This option includes a dark theme and a light theme by default, and it can be customized by users.
+   * Theme packs: This option includes a dark theme and a light theme by default, and it can be customized by users.
    */
-  themePack?: ThemePack;
+  themePacks?: ThemePack;
   /**
    * Theme mode: This option allows you to choose which theme in the pack will be used. The default theme is light.
    */
   themeMode?: ThemeMode;
   /**
-   * Theme context: This option controls some global theme settings, such as “fontSize”.
+   * configs: This option controls some global settings, such as “fontSize”.
    */
-  themeContext?: Partial<Omit<ThemeContext, 'windowWidth' | 'windowHeight'>>;
+  configs?: Partial<Omit<GlobalConfigs, 'windowWidth' | 'windowHeight'>>;
 
   themeMaxReferenceDepth?: number;
 }
@@ -38,9 +39,9 @@ export interface I18nConfig {
 export interface GlobalProviderProps extends ThemeConfig, I18nConfig {}
 
 export const GlobalProvider = ({
-  themePack,
+  themePacks,
   themeMode = 'light',
-  themeContext,
+  configs,
   locale = 'en_US',
   themeMaxReferenceDepth = 10,
   children,
@@ -50,25 +51,28 @@ export const GlobalProvider = ({
   useEffect(() => {
     // local
     I18nManager.setLocale(locale);
-    // theme
+    I18nManager.initManager();
+    // config
     const window = Dimensions.get('window');
-    ThemeManager.setThemeContext({
-      ...themeContext,
+    ConfigManager.updateVariables({
+      ...configs,
       windowWidth: window.width,
       windowHeight: window.height,
     });
+    ConfigManager.initManager();
+    // theme
     ThemeManager.setMode(themeMode);
     ThemeManager.setMaxReferenceDepth(themeMaxReferenceDepth);
-    if (themePack) {
-      ThemeManager.setThemePack(themePack);
+    if (themePacks) {
+      ThemeManager.setThemePacks(themePacks);
     }
-    ThemeManager.computeTheme();
+    ThemeManager.initManager();
     const subscription = Dimensions.addEventListener('change', ({ window }) => {
-      ThemeManager.updateThemeContext({
+      ConfigManager.updateVariables({
         windowWidth: window.width,
         windowHeight: window.height,
       });
-      ThemeManager.computeTheme();
+      ThemeManager.initManager();
       setKey((previous) => previous + 1);
     });
     setKey((previous) => previous + 1);
@@ -77,14 +81,7 @@ export const GlobalProvider = ({
       setReady(false);
       subscription?.remove();
     };
-  }, [
-    locale,
-    themeMode,
-    themePack,
-    themeContext,
-    setKey,
-    themeMaxReferenceDepth,
-  ]);
+  }, [locale, themeMode, themePacks, configs, setKey, themeMaxReferenceDepth]);
   return (
     <PortalProvider>
       <SafeAreaProvider>

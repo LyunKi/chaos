@@ -38,19 +38,19 @@ function computePropsByStatus(status: ToastStatus) {
     case 'error': {
       backgroundColor = `$color.status.${status}`;
       closeStatus = status;
-      icon = 'times-circle';
+      icon = 'error';
       break;
     }
     case 'warning': {
       backgroundColor = `$color.status.${status}`;
       closeStatus = status;
-      icon = 'exclamation-circle';
+      icon = 'warning';
       break;
     }
     case 'info': {
       backgroundColor = `$color.status.${status}`;
       closeStatus = status;
-      icon = 'info-circle';
+      icon = 'info';
       break;
     }
     case 'loading': {
@@ -86,19 +86,14 @@ const ToastItem = (props: ToastItemProps) => {
         ...ts,
       }}
     >
-      <Icon
-        color={fontColor}
-        size="$rem:1.25"
-        ts={{ lineHeight: '$rem:1.5' }}
-        icon={icon as IconComponent}
-      />
+      <Icon color={fontColor} size="$rem:1.25" icon={icon as IconComponent} />
       <View ts={{ marginLeft: '$space.3', flexDirection: 'column' }}>
         {title && (
           <Text
             numberOfLines={1}
             ts={{
               color: fontColor,
-              lineHeight: '$rem:1.5',
+              lineHeight: '$rem:1.25',
               fontWeight: '$fontWeight.semibold',
             }}
             value={title}
@@ -107,7 +102,7 @@ const ToastItem = (props: ToastItemProps) => {
         {description && (
           <Text
             numberOfLines={2}
-            ts={{ lineHeight: '$rem:1.5', maxWidth: 200, color: fontColor }}
+            ts={{ lineHeight: '$rem:1.25', maxWidth: 200, color: fontColor }}
             value={description}
           />
         )}
@@ -128,7 +123,7 @@ const ToastItem = (props: ToastItemProps) => {
               height: '$size.6',
             }}
             value={() => (
-              <Icon size={'$rem:1'} color={fontColor} icon="times" />
+              <Icon size={'$rem:1'} color={fontColor} icon="close" />
             )}
           />
         </View>
@@ -137,7 +132,7 @@ const ToastItem = (props: ToastItemProps) => {
   );
 };
 
-const DEFAULT_DURATION = 300;
+const DEFAULT_DURATION = 1500;
 
 export class ToastManager {
   private instance?: ToastInstance;
@@ -170,7 +165,7 @@ export class ToastManager {
         new Scheduler.Task({
           id: id,
           onComplete: () => this.close(itemId),
-          totalPeriod: (duration * 1000) / BASE_PERIOD,
+          totalPeriod: duration,
         })
       );
     }
@@ -265,6 +260,7 @@ export const ToastRoot = forwardRef(
       return () => {};
     }, [visible]);
     const onClose = useCallback((id?: string) => {
+      console.log('id', id);
       if (id) {
         setItems((prev: ToastItemProps[]) =>
           prev.filter((item) => item.id !== id)

@@ -1,4 +1,5 @@
 import { KV, NestedString } from '@cloud-dragon/common-types';
+import { merge } from 'lodash-es';
 import forEach from 'lodash-es/forEach';
 import get from 'lodash-es/get';
 import isEmpty from 'lodash-es/isEmpty';
@@ -11,8 +12,7 @@ function isReferenceValue(value: string | NestedString): value is string {
   return isString(value) && value.startsWith('$') && !value.includes(':');
 }
 
-export type VariableManagerContext = NestedString;
-export type VariablePack = KV<NestedString>;
+export type VariablePack = KV<any>;
 export type VariablePacks = KV<VariablePack>;
 
 export type VariableManagerOptions = {
@@ -21,21 +21,43 @@ export type VariableManagerOptions = {
 };
 
 export class VariableManager {
-  private variables = {};
-
-  private packs: VariablePacks = {};
-
-  public setPacks(packs: VariablePacks) {
+  public constructor(packs: VariablePacks = {}, packKey?: string) {
     this.packs = packs;
-  }
-
-  private packKey: string | undefined;
-
-  public setPackKey(packKey: string) {
     this.packKey = packKey;
   }
 
-  public get pack() {
+  protected staticVariables = {};
+
+  public updateVariables(variables: KV<any>) {
+    merge(this.staticVariables, variables);
+  }
+
+  public setVariables(variables: KV<any>) {
+    this.staticVariables = variables;
+  }
+
+  public get variables() {
+    return {
+      ...this.dynamicVariables,
+      ...this.staticVariables,
+    };
+  }
+
+  protected dynamicVariables = {};
+
+  protected packs: VariablePacks;
+
+  protected setPacks(packs: VariablePacks) {
+    this.packs = packs;
+  }
+
+  protected packKey: string | undefined;
+
+  protected setPackKey(packKey: string) {
+    this.packKey = packKey;
+  }
+
+  protected get pack() {
     if (!this.packKey) {
       return {};
     }
@@ -43,6 +65,7 @@ export class VariableManager {
   }
 
   public initManager() {
+    this.dynamicVariables = {};
     this.processVariables();
   }
 
@@ -103,11 +126,11 @@ export class VariableManager {
 
   private calcVariables(flatVariables: KV) {
     forEach(flatVariables, (value, key) => {
-      setWith(this.variables, key, value, Object);
+      setWith(this.dynamicVariables, key, value, Object);
     });
   }
 
-  private processVariables = () => {
+  public processVariables = () => {
     const flatVariables = {};
     this.flatVariables(flatVariables, this.pack);
     this.reduceReferences(flatVariables);

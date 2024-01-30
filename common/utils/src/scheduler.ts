@@ -39,11 +39,7 @@ function isIntervalTaskConfig(task: TaskConfig): task is IntervalTaskConfig {
   );
 }
 
-/**
- * 基本间隔周期 10 ms,
- * 出于浏览器规范兼容性，以及便于计算的同时不影响准确性等多方考虑，基本间隔周期为 10 ms
- */
-export const BASE_PERIOD = 10;
+export const BASE_PERIOD = 1;
 
 export type SchedulerTask = InstanceType<typeof Scheduler.Task>;
 

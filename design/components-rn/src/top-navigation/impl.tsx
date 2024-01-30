@@ -15,7 +15,7 @@ function getRenderGoBack(props: any) {
       <Button
         variant="ghost"
         value={(accessoryProps) => (
-          <Icon icon="arrow-left" {...accessoryProps} />
+          <Icon icon="chevron-left" {...accessoryProps} />
         )}
         {...props}
       />
@@ -48,10 +48,12 @@ export const TopNavigation = ({
   };
   return (
     <View style={style} ts={containerTs}>
-      <View>{computedRenderLeft && computedRenderLeft()}</View>
+      <View style={{ flex: 1 }}>
+        {computedRenderLeft && computedRenderLeft()}
+      </View>
       {isString(title) && <Text ts={textTs} value={title} />}
       {isFunction(title) && title({ textTs })}
-      <View>{renderRight && renderRight()}</View>
+      <View style={{ flex: 1 }}>{renderRight && renderRight()}</View>
     </View>
   );
 };

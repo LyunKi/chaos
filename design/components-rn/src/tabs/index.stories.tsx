@@ -23,7 +23,7 @@ export const Default: Story = {
     const items = [
       {
         label: 'tab1',
-        icon: 'home',
+        icon: 'home-filled',
         ts: {
           height: '$rem:3',
         },
@@ -45,7 +45,7 @@ export const Default: Story = {
                   <Icon
                     color="$color.brand.default"
                     size={'$rem:3'}
-                    icon={'plus-circle'}
+                    icon="add-circle"
                   />
                 );
               }}
@@ -55,7 +55,7 @@ export const Default: Story = {
       },
       {
         label: 'tab2',
-        icon: 'user',
+        icon: 'group',
         onPress,
         ts: {
           height: '$rem:3',

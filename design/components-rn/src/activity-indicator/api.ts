@@ -12,7 +12,7 @@ export type ActivityIndicatorProps = CloudDesignWrap<
      *
      * @type {Size}
      */
-    size?: Size;
+    size?: string;
   },
   ViewStyle
 >;

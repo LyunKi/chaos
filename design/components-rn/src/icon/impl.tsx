@@ -11,7 +11,7 @@ export const Icon = React.forwardRef(
       icon,
       width,
       height,
-      size = '$rem:1.5',
+      size = '$rem:1',
       color = '$color.font.default',
       animation,
       ts,
