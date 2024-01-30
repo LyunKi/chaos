@@ -5,7 +5,6 @@ import isEmpty from 'lodash-es/isEmpty';
 import isObject from 'lodash-es/isObject';
 import isString from 'lodash-es/isString';
 import mapValues from 'lodash-es/mapValues';
-import merge from 'lodash-es/merge';
 import setWith from 'lodash-es/setWith';
 
 function isReferenceValue(value: string | NestedString): value is string {
@@ -22,22 +21,6 @@ export type VariableManagerOptions = {
 };
 
 export class VariableManager {
-  public constructor(options: VariableManagerOptions) {
-    const { packKey, packs } = options;
-    this.packKey = packKey;
-    this.packs = packs;
-  }
-
-  private context = {};
-
-  public updateContext(context?: Partial<VariableManagerContext>) {
-    merge(this.context, context);
-  }
-
-  public setContext(context: VariableManagerContext) {
-    this.context = context;
-  }
-
   private variables = {};
 
   private packs: VariablePacks = {};
@@ -46,13 +29,16 @@ export class VariableManager {
     this.packs = packs;
   }
 
-  private packKey: string;
+  private packKey: string | undefined;
 
   public setPackKey(packKey: string) {
     this.packKey = packKey;
   }
 
   public get pack() {
+    if (!this.packKey) {
+      return {};
+    }
     return this.packs[this.packKey] ?? {};
   }
 

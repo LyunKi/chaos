@@ -4,7 +4,7 @@ import {
   SupportedAnimation,
   CloudDesignWrap,
 } from '../common';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { TextStyle } from 'react-native';
 
 export type IconAnimationProp = {
@@ -12,7 +12,7 @@ export type IconAnimationProp = {
   config?: AnimationConfig;
 };
 
-export type PresetIcons = React.ComponentProps<typeof FontAwesome>['name'];
+export type PresetIcons = React.ComponentProps<typeof MaterialIcons>['name'];
 
 export type IconComponentProps = {
   name?: PresetIcons;

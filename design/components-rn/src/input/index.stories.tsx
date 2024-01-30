@@ -31,14 +31,10 @@ export const IconInput: Story = {
         <Input
           renderLeft={(props) => (
             <Button
+              containerTs={props.containerTs}
               variant="ghost"
-              ts={{
-                width: '$rem:2',
-                height: '$rem:2',
-                marginHorizontal: '$rem:0.25',
-              }}
               renderLeft={() => {
-                return <Icon {...props} icon="mobile-phone" />;
+                return <Icon {...props} icon="phone" />;
               }}
             />
           )}
@@ -47,14 +43,10 @@ export const IconInput: Story = {
         <Input
           renderRight={(props) => (
             <Button
+              containerTs={props.containerTs}
               variant="ghost"
-              ts={{
-                width: '$rem:2',
-                height: '$rem:2',
-                marginHorizontal: '$rem:0.25',
-              }}
               renderLeft={() => {
-                return <Icon {...props} icon="eye" />;
+                return <Icon {...props} icon="lock-outline" />;
               }}
             />
           )}

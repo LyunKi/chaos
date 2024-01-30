@@ -1,5 +1,5 @@
-import { Animated, Easing, Platform, ViewProps } from 'react-native'
-import { Animation, AnimationConfig } from './animation'
+import { Animated, Easing, Platform, ViewProps } from 'react-native';
+import { Animation, AnimationConfig } from './animation';
 
 const DEFAULT_CONFIG: ShakeAnimationConfig = {
   start: 0.0,
@@ -8,22 +8,22 @@ const DEFAULT_CONFIG: ShakeAnimationConfig = {
   duration: 25,
   cycles: 8,
   useNativeDriver: Platform.OS !== 'web',
-}
+};
 
-type TimingAnimationConfig = Omit<Animated.TimingAnimationConfig, 'toValue'>
+type TimingAnimationConfig = Omit<Animated.TimingAnimationConfig, 'toValue'>;
 
 export interface ShakeAnimationConfig
   extends AnimationConfig,
     TimingAnimationConfig {
-  start: number
-  offset: number
+  start: number;
+  offset: number;
 }
 
 export class ShakeAnimation extends Animation<ShakeAnimationConfig, ViewProps> {
-  private value: Animated.Value
+  private value: Animated.Value;
 
   protected get animation(): Animated.CompositeAnimation {
-    const { start, offset, ...restConfig } = this.config
+    const { start, offset, ...restConfig } = this.config;
 
     const startAnimation: Animated.CompositeAnimation = Animated.timing(
       this.value,
@@ -31,7 +31,7 @@ export class ShakeAnimation extends Animation<ShakeAnimationConfig, ViewProps> {
         toValue: this.counter % 2 !== 0 ? -offset : offset,
         ...restConfig,
       }
-    )
+    );
 
     const endAnimation: Animated.CompositeAnimation = Animated.timing(
       this.value,
@@ -39,14 +39,14 @@ export class ShakeAnimation extends Animation<ShakeAnimationConfig, ViewProps> {
         toValue: this.counter % 2 !== 0 ? offset : -offset,
         ...restConfig,
       }
-    )
+    );
 
-    return Animated.sequence([startAnimation, endAnimation])
+    return Animated.sequence([startAnimation, endAnimation]);
   }
 
   constructor(config?: Partial<ShakeAnimationConfig>) {
-    super({ ...DEFAULT_CONFIG, ...config })
-    this.value = new Animated.Value(this.config.start)
+    super({ ...DEFAULT_CONFIG, ...config });
+    this.value = new Animated.Value(this.config.start);
   }
 
   public toProps(): ViewProps {
@@ -54,6 +54,6 @@ export class ShakeAnimation extends Animation<ShakeAnimationConfig, ViewProps> {
       style: {
         transform: [{ translateX: this.value as unknown as number }],
       },
-    }
+    };
   }
 }

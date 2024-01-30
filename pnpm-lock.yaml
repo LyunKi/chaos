@@ -341,9 +341,6 @@ importers:
       '@cloud-dragon/world-countries':
         specifier: workspace:*
         version: link:../../common/world-countries
-      '@expo/vector-icons':
-        specifier: ^13.0.0
-        version: 13.0.0
       '@gorhom/portal':
         specifier: ^1.0.14
         version: 1.0.14(react-native@0.71.13)(react@18.2.0)
@@ -366,6 +363,9 @@ importers:
       '@cloud-dragon/common-types':
         specifier: workspace:*
         version: link:../../common/types
+      '@expo/vector-icons':
+        specifier: ^14.0.0
+        version: 14.0.0
       formik:
         specifier: ^2.3.2
         version: 2.4.4(react@18.2.0)
@@ -4230,6 +4230,10 @@ packages:
 
   /@expo/vector-icons@13.0.0:
     resolution: {integrity: sha512-TI+l71+5aSKnShYclFa14Kum+hQMZ86b95SH6tQUG3qZEmLTarvWpKwqtTwQKqvlJSJrpFiSFu3eCuZokY6zWA==}
+
+  /@expo/vector-icons@14.0.0:
+    resolution: {integrity: sha512-5orm59pdnBQlovhU9k4DbjMUZBHNlku7IRgFY56f7pcaaCnXq9yaLJoOQl9sMwNdFzf4gnkTyHmR5uN10mI9rA==}
+    dev: true
 
   /@expo/webpack-config@19.0.0(@swc/core@1.3.84)(esbuild@0.18.20)(expo@49.0.21):
     resolution: {integrity: sha512-mX28BNyf4Cs0+4L44QQyhy5QMVfsYhOdB9Fpf3rp982KTKUsy01UFJ0irGI1jQ68jXrQn5/WU4u1pvN6DDao5Q==}

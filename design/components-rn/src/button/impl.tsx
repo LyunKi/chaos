@@ -109,7 +109,6 @@ export function Button({
       onBlur={onBlur}
       onFocus={onFocus}
       style={ThemeManager.themed({
-        height: '$size.10',
         ...containerTs,
       })}
     >
@@ -123,6 +122,7 @@ export function Button({
         });
         const mergedTs: KV = {
           fontSize: '$fontSize.md',
+          lineHeight: '$rem:1',
           fontWeight: '$fontWeight.semibold',
           ...computedTextStyle,
           ...textTs,
@@ -139,7 +139,8 @@ export function Button({
               alignItems: 'center',
               justifyContent: 'center',
               height: '100%',
-              paddingHorizontal: '$space.3',
+              paddingHorizontal: '$rem:0.75',
+              paddingVertical: '$rem:0.75',
               gap: '$rem:0.5',
               outline: 'unset',
               boxSizing: 'border-box',

@@ -19,11 +19,7 @@ function renderSearch({ onSearch }: SearchFormat, value?: string) {
     return (
       <Button
         variant="ghost"
-        ts={{
-          width: '$rem:2',
-          height: '$rem:2',
-          marginHorizontal: '$rem:0.25',
-        }}
+        containerTs={props.containerTs}
         onPress={() => onSearch?.(value)}
         value={() => {
           return <Icon {...props} icon="search" />;
@@ -38,15 +34,11 @@ function renderPassword(
   setSecureTextEntry: Function
 ) {
   return (props: AccessoryProps) => {
-    const icon = secureTextEntry ? 'eye' : 'eye-slash';
+    const icon = secureTextEntry ? 'visibility' : 'visibility-off';
     return (
       <Button
         variant="ghost"
-        ts={{
-          width: '$rem:2',
-          height: '$rem:2',
-          marginHorizontal: '$rem:0.25',
-        }}
+        containerTs={props.containerTs}
         onPress={() => setSecureTextEntry(!secureTextEntry)}
         value={() => {
           return <Icon {...props} icon={icon} />;
@@ -100,9 +92,10 @@ export const Input = forwardRef(
       ThemeManager.themed({
         borderColor: '$color.border.input',
         borderWidth: 1,
-        height: '$size.10',
+        height: '$rem:2.5',
         borderRadius: '$radius.md',
         alignItems: 'center',
+        justifyContent: 'center',
         width: '100%',
         ...styles(
           [
@@ -142,6 +135,11 @@ export const Input = forwardRef(
     const accessoryProps = {
       color: containerTs.borderColor,
       size: computedInputTs.fontSize ?? FONT_BASE,
+      containerTs: {
+        width: 0.8 * containerTs.height,
+        height: 0.8 * containerTs.height,
+        marginHorizontal: '$rem:0.25',
+      },
     };
     const computedRenderLeft = renderLeft ?? renderLeft;
     return (

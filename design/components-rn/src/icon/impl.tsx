@@ -3,7 +3,7 @@ import { Animated, StyleSheet } from 'react-native';
 import isString from 'lodash-es/isString';
 import { getIconAnimation, ThemeManager } from '../common';
 import { IconComponentProps, IconProps, IconRef } from './api';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export const Icon = React.forwardRef(
   (
@@ -11,7 +11,7 @@ export const Icon = React.forwardRef(
       icon,
       width,
       height,
-      size = '$rem:1',
+      size = '$rem:1.5',
       color = '$color.font.default',
       animation,
       ts,
@@ -29,7 +29,7 @@ export const Icon = React.forwardRef(
       fill: color,
     });
     if (isString(icon)) {
-      Icon = FontAwesome;
+      Icon = MaterialIcons;
       props.name = icon;
     }
     const animationInstance = React.useMemo(() => {
@@ -51,7 +51,7 @@ export const Icon = React.forwardRef(
         height: props.height,
         color: props.color,
         fill: props.color,
-        fontSize: props.height,
+        fontSize: props.size,
         lineHeight: props.height,
         marginRight: 0,
         textAlign: 'center',

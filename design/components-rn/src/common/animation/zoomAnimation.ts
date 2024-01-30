@@ -1,5 +1,5 @@
-import { Animated, Easing, Platform, ViewProps } from 'react-native'
-import { Animation, AnimationConfig } from './animation'
+import { Animated, Easing, Platform, ViewProps } from 'react-native';
+import { Animation, AnimationConfig } from './animation';
 
 const DEFAULT_CONFIG: ZoomAnimationConfig = {
   start: 1.0,
@@ -7,22 +7,22 @@ const DEFAULT_CONFIG: ZoomAnimationConfig = {
   easing: Easing.linear,
   duration: 500,
   useNativeDriver: Platform.OS !== 'web',
-}
+};
 
-type TimingAnimationConfig = Omit<Animated.TimingAnimationConfig, 'toValue'>
+type TimingAnimationConfig = Omit<Animated.TimingAnimationConfig, 'toValue'>;
 
 export interface ZoomAnimationConfig
   extends AnimationConfig,
     TimingAnimationConfig {
-  start: number
-  end: number
+  start: number;
+  end: number;
 }
 
 export class ZoomAnimation extends Animation<ZoomAnimationConfig, ViewProps> {
-  private value: Animated.Value
+  private value: Animated.Value;
 
   protected get animation(): Animated.CompositeAnimation {
-    const { start, end, ...restConfig } = this.config
+    const { start, end, ...restConfig } = this.config;
 
     const startAnimation: Animated.CompositeAnimation = Animated.timing(
       this.value,
@@ -30,7 +30,7 @@ export class ZoomAnimation extends Animation<ZoomAnimationConfig, ViewProps> {
         toValue: end,
         ...restConfig,
       }
-    )
+    );
 
     const endAnimation: Animated.CompositeAnimation = Animated.timing(
       this.value,
@@ -38,14 +38,14 @@ export class ZoomAnimation extends Animation<ZoomAnimationConfig, ViewProps> {
         toValue: start,
         ...restConfig,
       }
-    )
+    );
 
-    return Animated.sequence([startAnimation, endAnimation])
+    return Animated.sequence([startAnimation, endAnimation]);
   }
 
   constructor(config?: Partial<ZoomAnimationConfig>) {
-    super({ ...DEFAULT_CONFIG, ...config })
-    this.value = new Animated.Value(this.config.start)
+    super({ ...DEFAULT_CONFIG, ...config });
+    this.value = new Animated.Value(this.config.start);
   }
 
   public toProps(): ViewProps {
@@ -53,6 +53,6 @@ export class ZoomAnimation extends Animation<ZoomAnimationConfig, ViewProps> {
       style: {
         transform: [{ scale: this.value as unknown as number }],
       },
-    }
+    };
   }
 }

@@ -35,6 +35,11 @@ export type Id = string | number;
 export interface AccessoryProps {
   color: string;
   size: number;
+  containerTs?: {
+    width: number;
+    height: number;
+    marginHorizontal: number | string;
+  };
 }
 
 export type AccessoryRenderProp = (props?: AccessoryProps) => ReactNode;
