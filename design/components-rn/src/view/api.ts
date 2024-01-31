@@ -5,6 +5,7 @@ import { CloudDesignWrap } from '../common';
 export interface BasicViewProps {
   onLongPress?: (event: GestureResponderEvent) => any;
   onPress?: (event: GestureResponderEvent) => any;
+  stopPropagation?: boolean;
   scrollable?: boolean;
 }
 

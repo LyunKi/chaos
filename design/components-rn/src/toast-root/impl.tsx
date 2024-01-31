@@ -199,6 +199,7 @@ export class ToastManager {
   public loading(options: ToastOptions) {
     return this.toast({
       ...options,
+      duration: null,
       status: 'loading',
     });
   }
@@ -280,6 +281,7 @@ export const ToastRoot = forwardRef(
           ts={{
             zIndex: '$zIndex.toast',
             width: '100%',
+            height: '$vh:100',
             flexDirection: 'column',
             alignItems: 'center',
             display: 'none',
@@ -302,7 +304,6 @@ export const ToastRoot = forwardRef(
               [
                 !!mask,
                 {
-                  height: '$vh:100',
                   background: '$color.bg.mask',
                 },
               ]

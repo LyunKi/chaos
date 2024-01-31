@@ -31,6 +31,7 @@ export const Overlay = ({
         ...position,
         ...contentContainerTs,
       }}
+      stopPropagation
     >
       {renderContent({ onPress: toggle })}
     </View>

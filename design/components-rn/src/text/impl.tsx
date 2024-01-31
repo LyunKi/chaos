@@ -17,6 +17,7 @@ export function Text({
     fontSize,
     ...ts,
   });
+  computedStyle.lineHeight = 1.5 * computedStyle.fontSize;
   return (
     <RnText
       testID={testID}

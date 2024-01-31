@@ -150,6 +150,7 @@ export const Input = forwardRef(
           ref={combineRefs(innerRef, ref)}
           secureTextEntry={secureTextEntry}
           onFocus={(e) => {
+            e.stopPropagation();
             setFocused(true);
             onFocus?.(e);
           }}

@@ -36,7 +36,7 @@ export interface ToastOptions
    * @type {number}
    * @memberof ToastOptions
    */
-  duration?: number;
+  duration?: number | null;
   status?: ToastStatus;
   ts?: ThemeStyle<ViewStyle>;
 }

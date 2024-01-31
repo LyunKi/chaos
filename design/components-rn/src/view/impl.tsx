@@ -4,6 +4,8 @@ import {
   ScrollView as RnScrollView,
   StyleSheet,
   TouchableWithoutFeedback,
+  Platform,
+  GestureResponderEvent,
 } from 'react-native';
 import { styles } from '@cloud-dragon/common-utils';
 import { ThemeManager } from '../common';
@@ -11,7 +13,15 @@ import { ViewProps } from './api';
 
 export const View = forwardRef(
   (
-    { ts, style, children, onPress, onLongPress, scrollable }: ViewProps,
+    {
+      ts,
+      style,
+      children,
+      onPress,
+      onLongPress,
+      scrollable,
+      stopPropagation,
+    }: ViewProps,
     ref?: React.Ref<RnView>
   ) => {
     const ViewInstance = scrollable ? RnScrollView : RnView;
@@ -21,7 +31,10 @@ export const View = forwardRef(
         ref={ref}
         style={StyleSheet.flatten([
           { flexDirection: 'row', boxSizing: 'border-box' },
-          styles([!!isInteractive, { cursor: 'pointer' }]),
+          styles(
+            [!!isInteractive, { cursor: 'pointer' }],
+            [stopPropagation, { cursor: 'default' }]
+          ),
           ThemeManager.themed(ts),
           style,
         ])}
@@ -29,8 +42,14 @@ export const View = forwardRef(
         {children}
       </ViewInstance>
     );
-    return isInteractive ? (
-      <TouchableWithoutFeedback onLongPress={onLongPress} onPress={onPress}>
+    const realOnPress = (e: GestureResponderEvent) => {
+      if (stopPropagation) {
+        e.stopPropagation();
+      }
+      onPress?.(e);
+    };
+    return isInteractive || stopPropagation ? (
+      <TouchableWithoutFeedback onLongPress={onLongPress} onPress={realOnPress}>
         {Inner}
       </TouchableWithoutFeedback>
     ) : (

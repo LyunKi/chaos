@@ -53,7 +53,9 @@ export const TopNavigation = ({
       </View>
       {isString(title) && <Text ts={textTs} value={title} />}
       {isFunction(title) && title({ textTs })}
-      <View style={{ flex: 1 }}>{renderRight && renderRight()}</View>
+      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+        {renderRight && renderRight()}
+      </View>
     </View>
   );
 };
