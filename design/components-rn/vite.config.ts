@@ -7,6 +7,7 @@ export default customConfig({
       'react-native/Libraries/Image/AssetRegistry':
         'react-native-web/dist/modules/AssetRegistry',
       'react-native': 'react-native-web',
+      'react-native-webview': 'react-native-web-webview',
     },
   },
   define: {

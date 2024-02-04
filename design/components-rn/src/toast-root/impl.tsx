@@ -281,7 +281,6 @@ export const ToastRoot = forwardRef(
           ts={{
             zIndex: '$zIndex.toast',
             width: '100%',
-            height: '$vh:100',
             flexDirection: 'column',
             alignItems: 'center',
             display: 'none',

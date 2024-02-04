@@ -42,9 +42,10 @@ export default function customConfig(viteConfig: DeepPartial<UserConfig>) {
           esbuildOptions: {
             resolveExtensions: extensions,
             loader: {
-              '.js': 'jsx',
+              '.js': 'tsx',
             },
           },
+          exclude: ['*.html'],
         },
         resolve: {
           extensions,

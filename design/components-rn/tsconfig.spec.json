@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "ESNext",
-    "jsx": "react",
+    "jsx": "react-native",
     "types": [
       "jest",
       "@testing-library/jest-native",
