@@ -2,21 +2,15 @@ import { KV } from '@cloud-dragon/common-types';
 import { View } from './View';
 import { isEmpty } from 'lodash';
 
-export type RouteItem = {
-  name: string;
-  route?: string;
-  child: View | Navigation;
-};
-
-export interface RouteGroup {
-  name: string;
-  items: RouteItem[];
+export interface Route {
+  route: string;
+  view: View;
+  children: Route[];
 }
 
 export interface Navigation {
-  groups: RouteGroup[];
+  routes: Route[];
   type: string;
-  initialRouteName?: string;
 }
 
 export interface Navigator {

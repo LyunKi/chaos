@@ -1,0 +1,30 @@
+{
+  "name": "@cloud-creator/prelude-web",
+  "private": true,
+  "homepage": "https://github.com/LyunKi/chaos/tree/master/ui-creator/prelude-web",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LyunKi/chaos.git"
+  },
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.lib.json",
+    "prepublish": "pnpm build",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@cloud-creator/common": "workspace:*",
+    "lodash-es": "^4.17.21",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@cloud-dragon/common-types": "workspace:*"
+  }
+}
