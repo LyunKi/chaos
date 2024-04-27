@@ -1,6 +1,6 @@
 import { KV } from '@cloud-dragon/common-types';
+import { isEmpty } from 'lodash-es';
 import { View } from './View';
-import { isEmpty } from 'lodash';
 
 export interface Route {
   route: string;
