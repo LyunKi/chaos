@@ -1,22 +1,16 @@
-import React, { Fragment, ReactElement } from 'react';
 import {
-  ViewBuilder,
-  WidgetSnippet,
-  Widget,
-  ViewChild,
-  isWidgetSnippet,
-  View,
-  WidgetBuilder,
   BuilderContext,
+  View,
+  ViewBuilder,
+  ViewChild,
+  Widget,
+  WidgetBuilder,
+  WidgetSnippet,
+  isWidgetSnippet,
 } from '@cloud-creator/common';
+import React, { Fragment, ReactElement } from 'react';
 import { CloudBuilderContextInstance } from './BuilderContext';
 import { CloudWidgetBuilderInstance } from './WidgetBuilder';
-
-class ViewComponent extends React.PureComponent<any> {
-  render() {
-    return this.props.children;
-  }
-}
 
 class CloudViewBuilder extends ViewBuilder<ReactElement, ReactElement> {
   public context: BuilderContext = CloudBuilderContextInstance;

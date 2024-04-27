@@ -1,24 +1,37 @@
 import { KV, NestedString } from '@cloud-dragon/common-types';
-import { interpolate } from '@cloud-dragon/common-utils';
-import get from 'lodash-es/get';
+import { VariableManager, interpolate } from '@cloud-dragon/common-utils';
 import isString from 'lodash-es/isString';
 
 export type I18nPack = KV<NestedString>;
 
-export type I18nPacks = KV<I18nPack>;
+export type SupportedLocale = 'en_US' | 'zh_CN';
+
+export type I18nPacks = Record<SupportedLocale, I18nPack>;
 
 export const DEFAULT_LOCALE = 'en_US';
 
-export class I18nManager {
-  public locale = DEFAULT_LOCALE;
+export class I18nManager extends VariableManager {
+  public get locale() {
+    return this.packKey;
+  }
 
-  public i18nPack: I18nPacks = {};
+  public init(i18nPacks: I18nPacks, locale?: SupportedLocale) {
+    this.packs = i18nPacks;
+    this.packKey = locale ?? DEFAULT_LOCALE;
+    this.initManager();
+  }
+
+  public setLocale(locale: string) {
+    this.setPackKey(locale);
+    this.initManager();
+  }
 
   public t(key: string, context?: KV<any>) {
-    const template = get(this.i18nPack[this.locale], key);
+    const template = this.processedValue(`$${key}`);
     if (!isString(template)) {
       return key;
     }
     return interpolate({ template, context }) ?? key;
   }
 }
+

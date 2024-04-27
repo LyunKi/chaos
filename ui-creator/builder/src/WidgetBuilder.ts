@@ -21,13 +21,13 @@ function generateWidgetKey(type: string) {
   return id;
 }
 
-class CloudRnWidgetBuilder extends WidgetBuilder<ReactElement> {
+class CloudWidgetBuilder extends WidgetBuilder<ReactElement> {
   public context: BuilderContext = CloudBuilderContextInstance;
 
   private parsePropValue(value: PropValue) {
     if (isRemPropValue(value)) {
       const number = parseFloat(value.slice('$rem:'.length));
-      const { baseFontSize } = this.context.configManager.config;
+      const baseFontSize = this.context.configManager.getConfig('baseFontSize');
       if (Number.isNaN(number)) {
         console.error('Invalid rem value: ', value);
         return baseFontSize;
@@ -70,7 +70,9 @@ class CloudRnWidgetBuilder extends WidgetBuilder<ReactElement> {
   }
 
   private getFullType(type: string) {
-    let namespace = this.context.configManager.config.defaultWidgetNamespace;
+    let namespace = this.context.configManager.getConfig(
+      'defaultWidgetNamespace'
+    );
     let specifier;
     const [first, second] = type.split(':');
     if (second) {
@@ -93,4 +95,4 @@ class CloudRnWidgetBuilder extends WidgetBuilder<ReactElement> {
   }
 }
 
-export const CloudWidgetBuilderInstance = new CloudRnWidgetBuilder();
+export const CloudWidgetBuilderInstance = new CloudWidgetBuilder();

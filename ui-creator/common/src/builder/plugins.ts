@@ -18,8 +18,9 @@ export abstract class WidgetRegistryPlugin<
     const { builder } = params;
     this.loadWidgets(builder.context.widgetRegistry);
     if (this.configureDefaultNamespace) {
-      builder.context.configManager.config.defaultWidgetNamespace =
-        this.configureDefaultNamespace();
+      builder.context.configManager.setVariables({
+        defaultWidgetNamespace: this.configureDefaultNamespace(),
+      });
     }
   }
 }

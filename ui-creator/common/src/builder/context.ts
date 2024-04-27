@@ -1,4 +1,4 @@
-import { I18nManager, ThemeManager, ConfigManager, Navigator } from '../models';
+import { ConfigManager, I18nManager, Navigator, ThemeManager } from '../models';
 import { WidgetRegistry } from '../registries';
 
 export abstract class BuilderContext {

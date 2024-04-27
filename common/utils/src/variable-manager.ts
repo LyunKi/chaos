@@ -26,25 +26,50 @@ export class VariableManager {
     this.packKey = packKey;
   }
 
+  /**
+   * 获取完整的变量,包括静态变量和动态变量
+   */
+  public get variables() {
+    return {
+      ...this.staticVariables,
+      ...this.dynamicVariables,
+    };
+  }
+
+  public setMaxReferenceDepth(maxReferenceDepth: number) {
+    this.maxReferenceDepth = maxReferenceDepth;
+  }
+
+  /**
+   * 静态的变量，永远会生效
+   */
   protected staticVariables = {};
 
+  /**
+   * 更新变量
+   * @param variables
+   */
   public updateVariables(variables: KV<any>) {
     merge(this.staticVariables, variables);
   }
 
+  /**
+   * 设置新变量
+   *
+   * @param variables
+   */
   public setVariables(variables: KV<any>) {
     this.staticVariables = variables;
   }
 
-  public get variables() {
-    return {
-      ...this.dynamicVariables,
-      ...this.staticVariables,
-    };
-  }
-
+  /**
+   * 动态变量，根据场景决定是否生效
+   */
   protected dynamicVariables = {};
 
+  /**
+   * 变量包
+   */
   protected packs: VariablePacks;
 
   protected setPacks(packs: VariablePacks) {
@@ -64,7 +89,10 @@ export class VariableManager {
     return this.packs[this.packKey] ?? {};
   }
 
-  public initManager() {
+  /**
+   * 初始化管理器
+   */
+  protected initManager() {
     this.dynamicVariables = {};
     this.processVariables();
   }
@@ -73,6 +101,13 @@ export class VariableManager {
     return value;
   }
 
+  private maxReferenceDepth = 10;
+
+  private calcVariables(flatVariables: KV) {
+    forEach(flatVariables, (value, key) => {
+      setWith(this.dynamicVariables, key, value, Object);
+    });
+  }
   private flatVariables(flatVariables: KV, variables: KV, path?: string) {
     forEach(variables, (value, key) => {
       const currentPath = path ? `${path}.${key}` : key;
@@ -84,13 +119,6 @@ export class VariableManager {
       flatVariables[currentPath] = firstProcessed;
     });
   }
-
-  private maxReferenceDepth = 10;
-
-  public setMaxReferenceDepth(maxReferenceDepth: number) {
-    this.maxReferenceDepth = maxReferenceDepth;
-  }
-
   private reduceReferences(flatVariables: KV) {
     const references: KV = {};
     forEach(flatVariables, (value, key) => {
@@ -124,20 +152,14 @@ export class VariableManager {
     }
   }
 
-  private calcVariables(flatVariables: KV) {
-    forEach(flatVariables, (value, key) => {
-      setWith(this.dynamicVariables, key, value, Object);
-    });
-  }
-
-  public processVariables = () => {
+  private processVariables = () => {
     const flatVariables = {};
     this.flatVariables(flatVariables, this.pack);
     this.reduceReferences(flatVariables);
     this.calcVariables(flatVariables);
   };
 
-  public processedValue(value: any) {
+  protected processedValue(value: any) {
     if (isReferenceValue(value)) {
       const path = value.slice(1);
       return get(this.variables, path);
@@ -145,8 +167,8 @@ export class VariableManager {
     return this.handlePresetVariableValue(value);
   }
 
-  public processed(variables?: KV) {
-    return mapValues(variables, (value) => {
+  protected processed(references?: KV) {
+    return mapValues(references, (value) => {
       return this.processedValue(value);
     });
   }

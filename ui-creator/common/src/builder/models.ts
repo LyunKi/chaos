@@ -1,19 +1,22 @@
+import { ReactElement } from 'react';
 import {
   App,
-  DEFAULT_APP_CONFIG,
+  ConfigPacks,
   DEFAULT_LOCALE,
-  DEFAULT_THEME,
+  DEFAULT_THEME_MODE,
+  I18nPacks,
   Navigation,
+  SupportedLocale,
+  SupportedThemeMode,
+  ThemePacks,
   View,
   Widget,
 } from '../models';
 import { BuilderContext } from './context';
-import merge from 'lodash-es/merge';
-import { ReactElement } from 'react';
 
 export interface BuildAppOptions {
-  theme?: string;
-  locale?: string;
+  theme?: SupportedThemeMode;
+  locale?: SupportedLocale;
 }
 
 export abstract class WidgetBuilder<WidgetInstance = ReactElement> {
@@ -57,14 +60,17 @@ export abstract class AppBuilder<
     if (!this.buildNavigation || !this.context.navigator) {
       throw new Error('You should load navigation plugin first.');
     }
-    const { config, i18nPacks = {}, themePacks = {}, navigation } = app;
-    const { theme = DEFAULT_THEME, locale = DEFAULT_LOCALE } = options;
+    const {
+      configPacks = {},
+      i18nPacks = {},
+      themePacks = {},
+      navigation,
+    } = app;
+    const { theme = DEFAULT_THEME_MODE, locale = DEFAULT_LOCALE } = options;
 
-    this.context.i18nManager.locale = locale;
-    this.context.i18nManager.i18nPack = i18nPacks;
-    this.context.themeManager.theme = theme;
-    this.context.themeManager.themePack = themePacks;
-    this.context.configManager.config = merge({}, DEFAULT_APP_CONFIG, config);
+    this.context.i18nManager.init(i18nPacks as I18nPacks, locale);
+    this.context.themeManager.init(themePacks as ThemePacks, theme);
+    this.context.configManager.init(configPacks as ConfigPacks);
 
     return this.buildDecorator(this.buildNavigation(navigation));
   }
