@@ -1,4 +1,5 @@
 import {
+  DecoratorPlugin,
   Navigation,
   NavigationPlugin,
   RouteGroup,
@@ -8,20 +9,18 @@ import {
   isNavigation,
 } from '@cloud-creator/common';
 import * as CloudDesignComponentsRn from '@cloud-design/components-rn';
+import { NestedString } from '@cloud-dragon/common-types';
 import {
   LinkingOptions,
   NavigationContainer,
   createNavigationContainerRef,
 } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import * as Linking from 'expo-linking';
 import forEach from 'lodash-es/forEach';
 import snakeCase from 'lodash-es/snakeCase';
-import React from 'react';
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import * as ReactIs from 'react-is';
-import * as Linking from 'expo-linking';
-import { NestedString } from '@cloud-dragon/common-types';
-import { createStackNavigator } from '@react-navigation/stack';
-import { DecoratorPlugin } from '@cloud-creator/common';
 import { Appearance } from 'react-native';
 
 export class CloudDesignRnWidgetRegistryPlugin extends WidgetRegistryPlugin<
