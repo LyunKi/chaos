@@ -38,9 +38,9 @@ export class Observer {
     }
     if (!instances) {
       instances = new WeakMap();
-      instances.set(thisArg, instance);
       Observer.instances.set(observer, instances);
     }
+    instances.set(thisArg, instance);
     return instance;
   }
 }

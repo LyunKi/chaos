@@ -2,6 +2,14 @@ import { Fn, Constructor } from '@cloud-dragon/common-types';
 import { subscribe } from '@cloud-dragon/obx-core';
 import { useForceUpdate } from '@cloud-dragon/react-utils';
 
+const hoistBlackList: any = {
+  $$typeof: true,
+  render: true,
+  compare: true,
+  type: true,
+  displayName: true,
+};
+
 export function observer<F extends Fn, C extends Constructor>(
   value: F | C,
   context?: ClassDecoratorContext
@@ -29,5 +37,15 @@ export function observer<F extends Fn, C extends Constructor>(
   }
   Inherit.contextTypes = (value as any).contextTypes;
   Inherit.displayName = (value as any).displayName ?? value.name;
+
+  // 复制其它静态属性
+  Object.keys(value).forEach((key) => {
+    if (!hoistBlackList[key]) {
+      const propertyDescriptor = Object.getOwnPropertyDescriptor(value, key);
+      if (propertyDescriptor) {
+        Object.defineProperty(Inherit, key, propertyDescriptor);
+      }
+    }
+  });
   return Inherit;
 }

@@ -73,12 +73,12 @@ describe('observer', () => {
             changeName
           </button>
           <button
-            data-testid="changeAge"
+            data-testid="changePet"
             onClick={() => {
               user.changePet();
             }}
           >
-            changeAge
+            changePet
           </button>
         </>
       );
@@ -86,7 +86,7 @@ describe('observer', () => {
 
     render(<App />);
 
-    fireEvent.click(screen.getByTestId('changeAge'));
+    fireEvent.click(screen.getByTestId('changePet'));
     await waitFor(() => {
       expect(fc).toHaveBeenCalledTimes(1);
       expect(app).toHaveBeenCalledTimes(1);
