@@ -1,7 +1,8 @@
-import worldCountries, { Country } from 'world-countries';
-import filter from 'lodash-es/filter';
-import lowerCase from 'lodash-es/lowerCase';
 import { includesIgnoreCase } from '@cloud-dragon/common-utils';
+import { filter, first, isEmpty, map } from 'lodash-es';
+import lowerCase from 'lodash-es/lowerCase';
+import { type Country } from 'world-countries';
+import worldCountries from './assets/world-countries.json';
 
 const COUNTRIES = worldCountries as unknown as Country[];
 
@@ -32,25 +33,30 @@ class CountriesManagerClass {
     return `${root}${suffix}`;
   }
 
-  public getLocalNames(country: Country, languages: string[]): string[] {
-    return filter(
-      {
-        ...country.translations,
-        ...country.name.native,
-      },
-      (_value, key) => languages.includes(key)
-    ).map((translation) => translation.common);
+  public getNativeNames(country: Country) {
+    return map(country.name.native, (value) => value.common);
+  }
+
+  public getCalledNames(country: Country) {
+    return map(country.translations, (e) => e.common);
   }
 
   public getShowName(country: Country, subjectCountry?: Country): string {
-    const languages = subjectCountry?.languages;
-    if (!languages) {
-      return this.getCommonName(country);
+    // 优先显示目标国家称呼
+    const languages = Object.keys(subjectCountry?.languages ?? {});
+    let name;
+    if (!isEmpty(languages)) {
+      name = first(
+        filter(country.translations, (_translation, key) =>
+          languages.includes(key)
+        ).map((translation) => translation.common)
+      );
     }
-    return (
-      this.getLocalNames(country, Object.keys(languages))[0] ??
-      this.getCommonName(country)
-    );
+    // 随后现实该国家的自称
+    name ??= first(this.getNativeNames(country));
+    // 最后显示国家的通用名
+    name ??= this.getCommonName(country);
+    return name;
   }
 
   public getFlagCdnUrl(country: Country): string {
@@ -77,29 +83,28 @@ class CountriesManagerClass {
 
   public matchSearch(params: SearchCountryParams): boolean {
     const { keyProp, searchValue = '', country } = params;
+
     // try to match common name and local names
     const commonName = this.getCommonName(country);
     if (includesIgnoreCase(commonName, searchValue)) {
       return true;
     }
-    const { languages } = country;
-    const localNames = this.getLocalNames(country, Object.keys(languages));
     if (
-      localNames.some((localName) => includesIgnoreCase(localName, searchValue))
+      this.getNativeNames(country).some((element) =>
+        includesIgnoreCase(element, searchValue)
+      )
     ) {
       return true;
     }
-    // try to match key prop
-    switch (keyProp) {
-      case 'callingCode': {
-        // match callingCode
-        const callingCode = this.getCallingCode(country);
-        return callingCode.includes(searchValue);
-      }
-      default: {
-        return false;
-      }
+    if (
+      this.getCalledNames(country).some((element) =>
+        includesIgnoreCase(element, searchValue)
+      )
+    ) {
+      return true;
     }
+    const keyPropValue = this.getKeyPropValue(country, keyProp);
+    return keyPropValue?.includes(searchValue) ?? false;
   }
 }
 
@@ -107,8 +112,8 @@ const CountriesManager = new CountriesManagerClass();
 
 export {
   COUNTRIES,
-  SUPPORTED_COUNTRY_CCA2_CODES,
-  Country,
-  SupportedCountryKeyProp,
   CountriesManager,
+  Country,
+  SUPPORTED_COUNTRY_CCA2_CODES,
+  SupportedCountryKeyProp,
 };

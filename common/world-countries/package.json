@@ -29,7 +29,6 @@
     "dist"
   ],
   "dependencies": {
-    "@cloud-dragon/common-utils": "workspace:*",
-    "world-countries": "4.0.0"
+    "@cloud-dragon/common-utils": "workspace:*"
   }
 }
