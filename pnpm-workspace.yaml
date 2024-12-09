@@ -1,6 +1,0 @@
-packages:
-  - 'design/*'
-  - 'custom-configs/*'
-  - 'common/*'
-  - 'obx/*'
-  - 'ui-creator/*'

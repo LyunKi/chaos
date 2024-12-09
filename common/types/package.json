@@ -1,8 +1,0 @@
-{
-  "name": "@cloud-dragon/common-types",
-  "description": "Frequently used common TypeScript definitions",
-  "license": "MIT",
-  "main": "",
-  "types": "index.d.ts",
-  "version": "0.10.0"
-}

@@ -1,8 +1,0 @@
-{
-  "extends": "@tsconfig/create-react-app/tsconfig.json",
-  "compilerOptions": {
-    "allowJs": true,
-    "jsx": "react-jsx"
-  },
-  "$schema": "https://json.schemastore.org/tsconfig"
-}

@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Portal should render child in specify container 1`] = `
-<div
-  id="remote"
->
-  test
-</div>
-`;
