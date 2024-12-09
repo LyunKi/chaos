@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "pnpm build:types && vite build && pnpm build:styles",
     "build:styles": "postcss ./src/index.css -o ./dist/style.css",
-    "build:types": "tsc -p tsconfig.lib.json",
+    "build:types": "tsc -p tsconfig.lib.json"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",
