@@ -1,5 +1,5 @@
-import { createRoot } from "react-dom/client";
 import { Button } from "@/index";
+import { createRoot } from "react-dom/client";
 import "@/index.css";
 function App() {
 	return (

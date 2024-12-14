@@ -19,7 +19,7 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"style":{
+			"style": {
 				"noNonNullAssertion": "off"
 			}
 		}

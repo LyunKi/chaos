@@ -1,22 +1,22 @@
 {
-  "name": "chaos",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "turbo format",
-    "check": "turbo check",
-    "format:workspace": "biome format --write ."
-  },
-  "devDependencies": {
-    "prettier": "^3.2.5",
-    "@biomejs/biome": "1.9.4",
-    "turbo": "^2.3.3",
-    "typescript": "5.5.4"
-  },
-  "packageManager": "pnpm@9.0.0",
-  "engines": {
-    "node": ">=18"
-  }
+	"name": "chaos",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"lint": "turbo lint",
+		"format": "turbo format",
+		"check": "turbo check",
+		"check:workspace": "biome check --write ."
+	},
+	"devDependencies": {
+		"prettier": "^3.2.5",
+		"@biomejs/biome": "1.9.4",
+		"turbo": "^2.3.3",
+		"typescript": "5.5.4"
+	},
+	"packageManager": "pnpm@9.0.0",
+	"engines": {
+		"node": ">=18"
+	}
 }
