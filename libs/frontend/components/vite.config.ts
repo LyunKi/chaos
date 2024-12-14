@@ -13,8 +13,9 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src', 'index.ts'),
-      formats: ['es', 'cjs'],
+      name: 'CloudDesignComponents',
+      entry: './src/index.ts',
+      fileName: 'index',
     },
     rollupOptions: {
       output: {

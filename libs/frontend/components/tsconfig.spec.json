@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "outDir": "dist",
     "useDefineForClassFields": true,
     "lib": [
       "ES2020",
@@ -23,18 +22,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    // "noUncheckedSideEffectImports": true,
+    "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
       ]
-    },
-    "plugins": [
-      { "transform": "typescript-transform-paths", "afterDeclarations": true },
-    ]
+    }
   },
   "include": [
-    "src"
+    "demo", "tests"
   ]
 }

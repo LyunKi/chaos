@@ -2,11 +2,14 @@
   "name": "@cloud-design/components",
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/style.css",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm build:types && vite build && pnpm build:styles",
-    "build:styles": "postcss ./src/index.css -o ./dist/style.css",
-    "build:types": "tsc -p tsconfig.lib.json"
+    "build": "vite build && tspc -p tsconfig.lib.json && pnpm build:styles",
+    "build:styles": "postcss ./src/index.css -o ./dist/index.css"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.1",
@@ -31,7 +34,9 @@
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
     "tailwindcss": "^3.4.16",
+    "ts-patch": "^3.3.0",
     "typescript": "~5.6.3",
+    "typescript-transform-paths": "^3.5.2",
     "vite": "^6.0.1",
     "vite-plugin-dts": "^4.3.0"
   }
