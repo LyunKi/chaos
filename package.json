@@ -7,7 +7,7 @@
 		"lint": "turbo lint",
 		"format": "turbo format",
 		"check": "turbo check",
-		"check:workspace": "biome check --write ."
+		"check:workspace": "biome check --write xxx"
 	},
 	"devDependencies": {
 		"prettier": "^3.2.5",

@@ -1,0 +1,39 @@
+{
+  "name": "@cloud-creator/common",
+  "private": true,
+  "homepage": "https://github.com/LyunKi/chaos/tree/master/apps/ui-creator/common",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "unpkg": "./dist/index.umd.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.umd.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LyunKi/chaos.git"
+  },
+  "version": "0.10.0",
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.lib.json",
+    "prepublish": "pnpm build"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@cloud-dragon/common-utils": "workspace:*",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@cloud-dragon/common-types": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
