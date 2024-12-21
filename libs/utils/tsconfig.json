@@ -1,0 +1,17 @@
+{
+  "extends": "@cloud-dragon/tsconfig/node",
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "noEmit": true
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
